@@ -25,7 +25,6 @@ https://uni-bonn.zoom-x.de/j/99283287705?pwd=UHFoRTlwYkNqb0k2ODRjdEluY2FXZz09) (
 * [eWhiteboard](https://www.dropbox.com/scl/fi/k622jlvxst8qw5u3gjx4i/Metrics_eWhiteboard_2526_annotated.pdf?rlkey=x23yl1zjajb25imp6wlikzfxi&st=skpobmz4&dl=0)
 * [Folder containing `R`-Scripts](https://www.dropbox.com/scl/fo/ltxt9j4ycoez1rd8njwvb/AOs1epM3RvSXthit4wFuKhw?rlkey=yz7km5u071dxtb41p8b3twfp4&st=uroyjvaj&dl=0)
 
-
 ### Literature {-}
 
 The script is self-contained. To prepare well for the exam, it's a good idea to work with this script. 
