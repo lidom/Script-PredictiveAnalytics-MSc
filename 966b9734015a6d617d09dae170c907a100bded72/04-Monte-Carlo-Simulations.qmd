@@ -1,4 +1,8 @@
 <!-- LTeX: language=en-US -->
+```{r setup, include=FALSE, cache=FALSE}
+source("_common.R")
+```
+
 # Estimation Theory and Monte Carlo Simulations {#sec-EstimTheory}
 
 

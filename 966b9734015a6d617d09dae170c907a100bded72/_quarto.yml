@@ -3,13 +3,13 @@ project:
   output-dir: docs
   
 book:
-  title: Basis Module Econometrics (M.Sc.)
-  author: Prof. Dr. Dominik Liebl 
+  title: "Statistical Models and Inference: Foundations of Econometrics"
+  author: Prof. Dr. Dominik Liebl
   date: last-modified
   date-format: "[Last Updated on] MMMM DD, YYYY"
   search: true
-  sidebar: 
-    logo: images/Uni_Bonn_Logo.jpeg
+  sidebar:
+    logo: images/KU_Logo_Schwarz_RGB300_L.png
     number-depth: 3
   chapters:
     - index.qmd
@@ -31,7 +31,7 @@ format:
   html:
     theme:
       light: [flatly, theme.scss]
-      dark: [flatly, darkly, theme.scss]
+      dark: [flatly, darkly, theme.scss, theme-dark.scss]
     html-math-method:
       method: mathjax
       url: "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML"
@@ -43,3 +43,5 @@ format:
       opts_chunk:
         fig.align: center
         fig-align: center
+        # Plot theming (transparent canvas + dark-mode-safe chrome colours)
+        # lives in _common.R, sourced by the setup chunk of every chapter.

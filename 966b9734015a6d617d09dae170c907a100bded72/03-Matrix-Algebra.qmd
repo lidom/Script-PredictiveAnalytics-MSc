@@ -1,4 +1,8 @@
 <!-- LTeX: language=en-US -->
+```{r setup, include=FALSE, cache=FALSE}
+source("_common.R")
+```
+
 # Matrix Algebra {#sec-matrixAlgebra}
 
 Relevance for the exam: 

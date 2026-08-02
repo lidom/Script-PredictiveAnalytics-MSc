@@ -1,4 +1,8 @@
 <!-- LTeX: language=en-US -->
+```{r setup, include=FALSE, cache=FALSE}
+source("_common.R")
+```
+
 # Probability {#ReviewStats}
 
 The content of this chapter follows closely (often verbatim) the fantastic book by @Wasserman2004. 

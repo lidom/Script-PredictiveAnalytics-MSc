@@ -1,0 +1,11 @@
+/*-- scss:rules --*/
+
+// Applied to the dark theme only (see the `dark:` theme list in _quarto.yml).
+//
+// The KU logo is monochrome black artwork on a transparent background, so it
+// vanishes against the dark page. Inverting turns the ink white and leaves the
+// transparent pixels untouched; since the artwork carries no colour, nothing is
+// distorted. Replace this rule if KU supplies an official white/negative logo.
+.sidebar-logo {
+  filter: invert(1);
+}

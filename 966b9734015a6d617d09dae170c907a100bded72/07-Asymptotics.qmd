@@ -1,3 +1,8 @@
+<!-- LTeX: language=en-US -->
+```{r setup, include=FALSE, cache=FALSE}
+source("_common.R")
+```
+
 # Large Sample Inference {#sec-lsinf}
 
 The content of this chapter is very much inspired by Chapter 2 of the textbook of @Hayashi2000. 
@@ -1468,7 +1473,12 @@ stargazer(lm_obj, lm_obj,
 
 ## Exercises
 
-* [Exercises for Chapter 7](https://www.dropbox.com/preview/Teaching/My_Courses/EC_MA/EC_MA_WS_25_26/Exercises/output/Ch7_Exercises1.pdf?session_id=e23e3b15c710460b)
+<!-- TODO: the link below was a private /preview/?session_id= URL, which only works
+     in your own logged-in Dropbox session and 404s for students. Replace it with a
+     proper /scl/fi/...?rlkey=... share link (as used for the solutions below), or
+     with a relative Exercises/ path once the PDFs move into the repo. -->
+<!-- * [Exercises for Chapter 7](REPLACE-WITH-SHARE-LINK) -->
+
 
 * [Exercises of Chapter 7 with Solutions](https://www.dropbox.com/scl/fi/lukwgwqhpat56svnknh8t/Ch7_Exercises_with_Solutions1.pdf?rlkey=9i7ueeiqrlewcwo1617kvfhjr&st=mcpflw0i&dl=0) 
 
