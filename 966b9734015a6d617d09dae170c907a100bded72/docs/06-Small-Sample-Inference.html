@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.5.57">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>6&nbsp; Small Sample Inference – Basis Module Econometrics (M.Sc.)</title>
+<title>6&nbsp; Small Sample Inference – Statistical Models and Inference: Foundations of Econometrics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -163,9 +163,9 @@ window.Quarto = {
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
       <a href="./index.html" class="sidebar-logo-link">
-      <img src="./images/Uni_Bonn_Logo.jpeg" alt="" class="sidebar-logo py-0 d-lg-inline d-none"></a>
+      <img src="./images/KU_Logo_Schwarz_RGB300_L.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none"></a>
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Basis Module Econometrics (M.Sc.)</a> 
+      <a href="./">Statistical Models and Inference: Foundations of Econometrics</a> 
         <div class="sidebar-tools-main">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
@@ -1727,10 +1727,10 @@ X_{i3}&amp;\sim U[12,22]\\
 <span><span class="co">## Look at the first six lines of the data frame</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">test_data</span>,     <span class="fl">3</span><span class="op">)</span>, <span class="fl">2</span><span class="op">)</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>      Y X_1  X_2   X_3
-1 97.53   1 4.23 20.50
-2 75.37   1 8.06 12.35
-3 70.92   1 4.70 14.95</code></pre>
+<pre><code>       Y X_1  X_2   X_3
+1 107.03   1 9.61 18.18
+2  93.89   1 9.66 16.40
+3 101.69   1 6.79 20.64</code></pre>
 </div>
 </div>
 <section id="check-testing-multiple-parameters" class="level3" data-number="6.6.1"><h3 data-number="6.6.1" class="anchored" data-anchor-id="check-testing-multiple-parameters">
@@ -1776,14 +1776,14 @@ X_3 = 4
 Model 1: restricted model
 Model 2: Y ~ X_2 + X_3
 
-  Res.Df    RSS Df Sum of Sq      F Pr(&gt;F)
-1      6 46.527                           
-2      4 32.573  2    13.954 0.8568 0.4901</code></pre>
+  Res.Df    RSS Df Sum of Sq     F Pr(&gt;F)
+1      6 27.248                          
+2      4 22.679  2    4.5695 0.403 0.6927</code></pre>
 </div>
 </div>
 The <span class="math inline">\(p\)</span>-value
 <center>
-<span class="math inline">\(p_{\text{obs}}=\)</span> 0.4901 <span class="math inline">\(\;&gt;\alpha=0.05\)</span>
+<span class="math inline">\(p_{\text{obs}}=\)</span> 0.6927 <span class="math inline">\(\;&gt;\alpha=0.05\)</span>
 </center>
 <p>is larger than the chosen significance level <span class="math inline">\(\alpha=0.05.\)</span> Thus we <strong>cannot reject</strong> the null hypothesis <span class="math display">\[
 H_0:\;\beta_2=3\quad\text{and}\quad \beta_3=4.
@@ -1824,7 +1824,7 @@ H_0:\;\beta_2=3\quad\text{and}\quad \beta_3=4.
 <span><span class="va">rejections</span>   <span class="op">&lt;-</span> <span class="va">F_test_pvalues</span><span class="op">[</span><span class="va">F_test_pvalues</span> <span class="op">&lt;</span> <span class="va">alpha</span><span class="op">]</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">rejections</span><span class="op">)</span><span class="op">/</span><span class="va">B</span>, <span class="fl">4</span><span class="op">)</span> <span class="co"># actual type-I-error rate </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.0524</code></pre>
+<pre><code>[1] 0.0498</code></pre>
 </div>
 </div>
 <p>For <span class="math inline">\(\alpha = 0.01:\)</span></p>
@@ -1833,7 +1833,7 @@ H_0:\;\beta_2=3\quad\text{and}\quad \beta_3=4.
 <span><span class="va">rejections</span>   <span class="op">&lt;-</span> <span class="va">F_test_pvalues</span><span class="op">[</span><span class="va">F_test_pvalues</span> <span class="op">&lt;</span> <span class="va">alpha</span><span class="op">]</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">rejections</span><span class="op">)</span><span class="op">/</span><span class="va">B</span>, <span class="fl">4</span><span class="op">)</span> <span class="co"># actual type-I-error rate </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.0092</code></pre>
+<pre><code>[1] 0.0102</code></pre>
 </div>
 </div>
 <p>Observations:</p>
@@ -1868,11 +1868,11 @@ H_1:\;&amp;\beta_2\neq 4\quad\text{and/or}\quad\beta_3\neq 4
 <span><span class="va">rejections</span>  <span class="op">&lt;-</span> <span class="va">F_test_pvalues</span><span class="op">[</span><span class="va">F_test_pvalues</span> <span class="op">&lt;</span> <span class="va">alpha</span><span class="op">]</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">rejections</span><span class="op">)</span><span class="op">/</span><span class="va">B</span>  <span class="co"># power </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.204</code></pre>
+<pre><code>[1] 0.2</code></pre>
 </div>
 </div>
-<p>We can now correctly reject the false null hypothesis in approximately 20.4 % of all Monte Carlo replications.</p>
-<p><strong>Caution:</strong> This means that we are not able to detect the violation of the null hypothesis in 79.6 % of cases. Therefore, we can never use an insignificant test result (<span class="math inline">\(p\)</span>-value <span class="math inline">\(\geq\alpha\)</span>) as a confirmation of the null hypothesis. Obviously, there are type-II-error events (not rejecting a false <span class="math inline">\(H_0\)</span>), but since we typically do not know the distribution of the test statistic under the alternative hypothesis, we cannot control the type-II-error rate. We can only control the type-I-error rate by using a small significance level <span class="math inline">\(\alpha\)</span>.</p>
+<p>We can now correctly reject the false null hypothesis in approximately 20 % of all Monte Carlo replications.</p>
+<p><strong>Caution:</strong> This means that we are not able to detect the violation of the null hypothesis in 80 % of cases. Therefore, we can never use an insignificant test result (<span class="math inline">\(p\)</span>-value <span class="math inline">\(\geq\alpha\)</span>) as a confirmation of the null hypothesis. Obviously, there are type-II-error events (not rejecting a false <span class="math inline">\(H_0\)</span>), but since we typically do not know the distribution of the test statistic under the alternative hypothesis, we cannot control the type-II-error rate. We can only control the type-I-error rate by using a small significance level <span class="math inline">\(\alpha\)</span>.</p>
 <p>Moreover, note that the <span class="math inline">\(F\)</span> test is not informative about which part of the null hypothesis (<span class="math inline">\(\beta_2=4\)</span> and/or <span class="math inline">\(\beta_3=4\)</span>) is violated. We only get the information that at least one of the multiple parameter hypotheses is violated. Test statistics with this property are called <strong>omnibus tests</strong>.</p>
 </section><section id="check-dualty-of-confidence-intervals-and-hypothesis-tests" class="level3" data-number="6.6.2"><h3 data-number="6.6.2" class="anchored" data-anchor-id="check-dualty-of-confidence-intervals-and-hypothesis-tests">
 <span class="header-section-number">6.6.2</span> Check: Dualty of Confidence Intervals and Hypothesis Tests</h3>
@@ -1886,14 +1886,14 @@ H_1:\;&amp;\beta_2\neq 4\quad\text{and/or}\quad\beta_3\neq 4
 <span><span class="co">## 95% CI for beta_2</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/stats/confint.html">confint</a></span><span class="op">(</span><span class="va">lm_obj</span>, parm <span class="op">=</span> <span class="st">"X_2"</span>, level <span class="op">=</span> <span class="va">conf_level</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>       2.5 %  97.5 %
-X_2 2.984806 4.18956</code></pre>
+<pre><code>       2.5 %   97.5 %
+X_2 1.928541 4.398959</code></pre>
 </div>
 <div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">## 95% CI for beta_3 </span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/stats/confint.html">confint</a></span><span class="op">(</span><span class="va">lm_obj</span>, parm <span class="op">=</span> <span class="st">"X_3"</span>, level <span class="op">=</span> <span class="va">conf_level</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>       2.5 %   97.5 %
-X_3 3.877389 4.489954</code></pre>
+X_3 2.146026 4.798138</code></pre>
 </div>
 </div>
 <p>We can use these two-sided confidence intervals to conduct hypotheses tests. This property of confidence intervals is called the <strong>duality of confidence intervals and hypothesis tests</strong>.</p>
@@ -1935,20 +1935,20 @@ H_0:&amp;\;\beta_2=3\\
 <span><span class="co">## CI-lower, CI-upper, beta_true_2 inside?</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/t.html">t</a></span><span class="op">(</span><span class="va">confint_m</span><span class="op">)</span>, <span class="va">inside_CI</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>                       inside_CI
-[1,] 2.507509 4.505450         1
-[2,] 1.479413 4.468068         1
-[3,] 2.540762 5.533256         1
-[4,] 1.129250 6.473386         1
-[5,] 1.167703 4.362476         1
-[6,] 1.430087 4.107289         1</code></pre>
+<pre><code>                         inside_CI
+[1,] 2.56684716 4.792015         1
+[2,] 2.43393650 4.839696         1
+[3,] 1.78822216 4.011768         1
+[4,] 1.25313999 3.945284         1
+[5,] 0.05027229 5.494576         1
+[6,] 2.37439414 4.308823         1</code></pre>
 </div>
 </div>
 <p>The following code computes the relative frequency of confidence intervals <strong>not containing</strong> the true parameter value <span class="math inline">\((\beta_2=3)\)</span>:</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb31"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">inside_CI</span><span class="op">[</span><span class="va">inside_CI</span> <span class="op">==</span> <span class="cn">FALSE</span><span class="op">]</span><span class="op">)</span><span class="op">/</span><span class="va">B</span>, <span class="fl">4</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.0442</code></pre>
+<pre><code>[1] 0.0498</code></pre>
 </div>
 </div>
 <p>That’s good! The relative frequency is basically equal to the chosen <span class="math inline">\(\alpha=0.05\)</span> value.</p>

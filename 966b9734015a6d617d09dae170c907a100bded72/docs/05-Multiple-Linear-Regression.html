@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.5.57">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>5&nbsp; Multiple Linear Regression – Basis Module Econometrics (M.Sc.)</title>
+<title>5&nbsp; Multiple Linear Regression – Statistical Models and Inference: Foundations of Econometrics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -164,9 +164,9 @@ window.Quarto = {
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
       <a href="./index.html" class="sidebar-logo-link">
-      <img src="./images/Uni_Bonn_Logo.jpeg" alt="" class="sidebar-logo py-0 d-lg-inline d-none"></a>
+      <img src="./images/KU_Logo_Schwarz_RGB300_L.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none"></a>
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Basis Module Econometrics (M.Sc.)</a> 
+      <a href="./">Statistical Models and Inference: Foundations of Econometrics</a> 
         <div class="sidebar-tools-main">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
@@ -1745,6 +1745,25 @@ Y_i = \beta_1 + \beta_2 X_{i2} +  \varepsilon_i
 </div>
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">## Diagnostic Plot: Simple Linear Regression </span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html">autoplot</a></span><span class="op">(</span><span class="va">lm_obj_1</span>, which <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: `fortify(&lt;lm&gt;)` was deprecated in ggplot2 4.0.0.
+ℹ Please use `broom::augment(&lt;lm&gt;)` instead.
+ℹ The deprecated feature was likely used in the ggfortify package.
+  Please report the issue at &lt;https://github.com/sinhrks/ggfortify/issues&gt;.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: `aes_string()` was deprecated in ggplot2 3.0.0.
+ℹ Please use tidy evaluation idioms with `aes()`.
+ℹ See also `vignette("ggplot2-in-packages")` for more information.
+ℹ The deprecated feature was likely used in the ggfortify package.
+  Please report the issue at &lt;https://github.com/sinhrks/ggfortify/issues&gt;.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
+ℹ Please use `linewidth` instead.
+ℹ The deprecated feature was likely used in the ggfortify package.
+  Please report the issue at &lt;https://github.com/sinhrks/ggfortify/issues&gt;.</code></pre>
+</div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure"><p><img src="05-Multiple-Linear-Regression_files/figure-html/unnamed-chunk-17-2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672"></p>
@@ -1782,7 +1801,7 @@ Y_i = \beta_1 + \beta_2 X_{i2} + \beta_3 X_{i2}^2 +  \varepsilon_i
 <div class="tab-content">
 <div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">## Adding new variable HP squared:</span></span>
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">## Adding new variable HP squared:</span></span>
 <span><span class="va">my_car_df</span><span class="op">$</span><span class="va">HP_sq</span> <span class="op">&lt;-</span> <span class="va">car_data</span><span class="op">$</span><span class="va">Horsepower</span><span class="op">^</span><span class="fl">2</span></span>
 <span></span>
 <span><span class="va">lm_obj_2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">MPG</span> <span class="op">~</span> <span class="va">HP</span> <span class="op">+</span> <span class="va">HP_sq</span>, data <span class="op">=</span> <span class="va">my_car_df</span><span class="op">)</span></span>
@@ -1810,7 +1829,7 @@ Y_i = \beta_1 + \beta_2 X_{i2} + \beta_3 X_{i2}^2 +  \varepsilon_i
 </div>
 <div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">## install.packages("tidyverse")</span></span>
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">## install.packages("tidyverse")</span></span>
 <span><span class="co">## install.packages("ggfortify")</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/message.html">suppressPackageStartupMessages</a></span><span class="op">(</span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://tidyverse.tidyverse.org">"tidyverse"</a></span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://github.com/sinhrks/ggfortify">"ggfortify"</a></span><span class="op">)</span> <span class="co"># tidy diagnostic plots</span></span>
@@ -1840,7 +1859,7 @@ Y_i = \beta_1 + \beta_2 X_{i2} + \beta_3 X_{i2}^2 +  \varepsilon_i
 </figure>
 </div>
 </div>
-<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">## Diagnostic Plot: Polynomial Regression</span></span>
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">## Diagnostic Plot: Polynomial Regression</span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html">autoplot</a></span><span class="op">(</span><span class="va">lm_obj_2</span>, which <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>     </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -1864,7 +1883,7 @@ Y_i = \beta_1 + \beta_2 X_{i2} + \beta_3 X_{i2}^2 +  \varepsilon_i
 </ul>
 <p>A first idea about the statistical properties of the estimator <span class="math inline">\(\hat{\beta}\)</span> can be gained using Monte Carlo simulations as following.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">## Sample sizes</span></span>
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">## Sample sizes</span></span>
 <span><span class="va">n_small</span>      <span class="op">&lt;-</span>  <span class="fl">30</span> <span class="co"># smallish sample size</span></span>
 <span><span class="va">n_large</span>      <span class="op">&lt;-</span> <span class="fl">100</span> <span class="co"># largish sample size</span></span>
 <span></span>

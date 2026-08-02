@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.5.57">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>4&nbsp; Estimation Theory and Monte Carlo Simulations – Basis Module Econometrics (M.Sc.)</title>
+<title>4&nbsp; Estimation Theory and Monte Carlo Simulations – Statistical Models and Inference: Foundations of Econometrics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -144,9 +144,9 @@ window.Quarto = {
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
       <a href="./index.html" class="sidebar-logo-link">
-      <img src="./images/Uni_Bonn_Logo.jpeg" alt="" class="sidebar-logo py-0 d-lg-inline d-none"></a>
+      <img src="./images/KU_Logo_Schwarz_RGB300_L.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none"></a>
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Basis Module Econometrics (M.Sc.)</a> 
+      <a href="./">Statistical Models and Inference: Foundations of Econometrics</a> 
         <div class="sidebar-tools-main">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
@@ -781,7 +781,6 @@ These realizations are then used to approximate the true distribution of $\bar{X
 
 
 
-
 ::: {.cell layout-align="center"}
 
 ```{.r .cell-code}
@@ -838,11 +837,9 @@ estimates_mat <- cbind(
 
 
 
-
 Based on the $B=10,000$ realizations of the estimator $\bar{X}_n$, we can compute the empirical density functions $\hat{F}_{X_n,B}$ (see @fig-ecdf) and histograms (see @fig-histdensplots) to get an idea about the true distribution of $\bar{X}_n.$ 
 
 In this simple case, we also know the theoretical distribution function $F_{X_n}$ and density function which allows us to check the simulation results (see @fig-ecdf and @fig-histdensplots). 
-
 
 
 
@@ -850,6 +847,41 @@ In this simple case, we also know the theoretical distribution function $F_{X_n}
 
 ```{.r .cell-code}
 library(scales)
+```
+
+::: {.cell-output .cell-output-stderr}
+
+```
+
+Attaching package: 'scales'
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr}
+
+```
+The following object is masked from 'package:purrr':
+
+    discard
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr}
+
+```
+The following object is masked from 'package:readr':
+
+    col_factor
+```
+
+
+:::
+
+```{.r .cell-code}
 par(mfrow=c(1,2))
 plot(ecdf(estimates_mat[,1]), main="n=5", ylab="", xlab="", col = "black", xlim = range(estimates_mat[,1]), ylim=c(0,1.25))
 mtext(expression(mu==10), side = 1, at = 10, line = 2.5)
@@ -889,7 +921,6 @@ legend("topleft", legend = c("Histogram","True Density"),
 ![Histrograms of $(B=10000)$ simulated realizations $\bar{X}_{n,1,obs},\dots,\bar{X}_{n,B,obs}$ and true density functions for $n=5,50.$ The empirical (simulation based) histrograms and the theoretical density functions match perfectly.](04-Monte-Carlo-Simulations_files/figure-html/fig-histdensplots-1.png){#fig-histdensplots fig-align='center' width=672}
 :::
 :::
-
 
 
 
