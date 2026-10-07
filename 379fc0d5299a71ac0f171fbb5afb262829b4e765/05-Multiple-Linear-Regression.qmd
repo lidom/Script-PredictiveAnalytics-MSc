@@ -1793,14 +1793,14 @@ However, this was only a simulation for one specific data generating process. Su
 In the following chapters, we use theoretical arguments to investigate under which assumptions we can make *general* statements about the distributional properties of the estimator $\hat\beta.$
 :::  
 
-
+<!-- 
 ## Exercises 
 
 * [Exercises for Chapter 5](https://www.dropbox.com/scl/fi/xxk62qh53yk11omgyengv/Ch5_Exercises1.pdf?rlkey=odrz6y0zpjel489trhf95pl7r&st=gyyhl96i&dl=0)
 
 
 * [Exercises of Chapter 5 with Solutions](https://www.dropbox.com/scl/fi/8ndrotu3pwkiqapnm5mwg/Ch5_Exercises_with_Solutions1.pdf?rlkey=24j0xuhqoz830wj2xg3ut7qd2&st=0o597u2z&dl=0) 
-
+ -->
 
 
 

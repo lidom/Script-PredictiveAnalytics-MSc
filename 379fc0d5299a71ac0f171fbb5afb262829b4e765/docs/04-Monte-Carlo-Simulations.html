@@ -219,7 +219,6 @@ window.Quarto = {
   <li><a href="#assessing-the-quality-of-estimators" id="toc-assessing-the-quality-of-estimators" class="nav-link" data-scroll-target="#assessing-the-quality-of-estimators"><span class="header-section-number">3.2</span> Assessing the Quality of Estimators</a></li>
   <li><a href="#approximating-bias-variance-and-mse-using-mc-simulations" id="toc-approximating-bias-variance-and-mse-using-mc-simulations" class="nav-link" data-scroll-target="#approximating-bias-variance-and-mse-using-mc-simulations"><span class="header-section-number">3.3</span> Approximating Bias, Variance, and MSE using MC Simulations</a></li>
   <li><a href="#example-sample-mean" id="toc-example-sample-mean" class="nav-link" data-scroll-target="#example-sample-mean"><span class="header-section-number">3.4</span> Example: Sample Mean</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">3.5</span> Exercises</a></li>
   </ul></nav>
     </div>
 <!-- main -->
@@ -781,6 +780,7 @@ These realizations are then used to approximate the true distribution of $\bar{X
 
 
 
+
 ::: {.cell layout-align="center"}
 
 ```{.r .cell-code}
@@ -837,9 +837,11 @@ estimates_mat <- cbind(
 
 
 
+
 Based on the $B=10,000$ realizations of the estimator $\bar{X}_n$, we can compute the empirical density functions $\hat{F}_{X_n,B}$ (see @fig-ecdf) and histograms (see @fig-histdensplots) to get an idea about the true distribution of $\bar{X}_n.$ 
 
 In this simple case, we also know the theoretical distribution function $F_{X_n}$ and density function which allows us to check the simulation results (see @fig-ecdf and @fig-histdensplots). 
+
 
 
 
@@ -925,6 +927,7 @@ legend("topleft", legend = c("Histogram","True Density"),
 
 
 
+
 Observations in @fig-ecdf and @fig-histdensplots: The empirical distribution functions and the histograms based on the simulated realizations 
 $$
 \bar{X}_{n,1,obs},\dots,\bar{X}_{n,B,obs}
@@ -945,13 +948,31 @@ We can use Monte Carlo simulations to approximate the *exact* distribution of an
 * As the sample size increases, the distributions of the estimators $\bar{X}_n$ concentrate around the target parameter $\mu=10$. This feature of the estimator's distribution is summarized by the **mean squared error** (see next section) of an estimator.
 
 Thus here the quality of the estimator $\bar{X}_n$ gets better as $n$ gets large. To describe the quality of estimators more compactly, statisticians/econometricians use specific metrics like bias, variance and the mean squared error of the distribution of a estimator $\hat\theta$. -->
-</section><section id="exercises" class="level2" data-number="3.5"><h2 data-number="3.5" class="anchored" data-anchor-id="exercises">
-<span class="header-section-number">3.5</span> Exercises</h2>
-<ul>
-<li><p><a href="https://www.dropbox.com/scl/fi/w1nj9wnpj15r53opudhns/Ch4_Exercises1.pdf?rlkey=4bk9h4rpg4mkizi46s2r11okv&amp;st=0dawfy6m&amp;dl=0">Exercises for Chapter 4</a></p></li>
-<li><p><a href="https://www.dropbox.com/scl/fi/jssefvtifo6wczxaxr250/Ch4_Exercises_with_Solutions1.pdf?rlkey=wcineb1vy4vpqxy8989qplexr&amp;st=fp5sf04v&amp;dl=0">Exercises for Chapter 4 with Solutions</a></p></li>
-</ul>
-<!-- ```{r, fig.align="center"} --><!-- par(mfrow=c(1,3)) --><!-- plot(x = n_seq, y = Bias_n_seq, type = "b", ylim = c(-0.2, 0.2),  --><!--      main="Bias", xlab = "n", ylab = "") --><!-- abline(h = 0) --><!-- plot(x = n_seq, y = Var_n_seq, type = "b", ylim = c(0, 1.5), --><!--      main="Variance", xlab = "n", ylab = "") --><!-- abline(h = 0) --><!-- plot(x = n_seq, y = MSE_n_seq, type = "b", ylim = c(0, 1.5), --><!--      main="MSE", xlab = "n", ylab = "") --><!-- abline(h = 0) --><!-- ``` --><!-- like, for instance, the arithmetic mean   --><!-- $$ --><!-- \bar{X}_n=\frac{1}{n}\sum_{i=1}^nX_i --><!-- $$ --><!-- as an estimator of the population mean value $\mu$.  -->
+<!-- 
+## Exercises
+
+* [Exercises for Chapter 4](https://www.dropbox.com/scl/fi/w1nj9wnpj15r53opudhns/Ch4_Exercises1.pdf?rlkey=4bk9h4rpg4mkizi46s2r11okv&st=0dawfy6m&dl=0)
+
+* [Exercises for Chapter 4 with Solutions](https://www.dropbox.com/scl/fi/jssefvtifo6wczxaxr250/Ch4_Exercises_with_Solutions1.pdf?rlkey=wcineb1vy4vpqxy8989qplexr&st=fp5sf04v&dl=0)
+-->
+<!-- ```{r, fig.align="center"} -->
+<!-- par(mfrow=c(1,3)) -->
+<!-- plot(x = n_seq, y = Bias_n_seq, type = "b", ylim = c(-0.2, 0.2),  -->
+<!--      main="Bias", xlab = "n", ylab = "") -->
+<!-- abline(h = 0) -->
+<!-- plot(x = n_seq, y = Var_n_seq, type = "b", ylim = c(0, 1.5), -->
+<!--      main="Variance", xlab = "n", ylab = "") -->
+<!-- abline(h = 0) -->
+<!-- plot(x = n_seq, y = MSE_n_seq, type = "b", ylim = c(0, 1.5), -->
+<!--      main="MSE", xlab = "n", ylab = "") -->
+<!-- abline(h = 0) -->
+<!-- ``` -->
+<!-- like, for instance, the arithmetic mean   -->
+<!-- $$ -->
+<!-- \bar{X}_n=\frac{1}{n}\sum_{i=1}^nX_i -->
+<!-- $$ -->
+<!-- as an estimator of the population mean value $\mu$.  -->
+
 
 </section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
