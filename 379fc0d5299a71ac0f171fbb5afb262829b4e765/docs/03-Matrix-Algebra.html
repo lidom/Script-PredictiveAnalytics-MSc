@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.5.57">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>3&nbsp; Matrix Algebra – Predictive Analytics</title>
+<title>4&nbsp; Matrix Algebra – Predictive Analytics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -60,8 +60,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./04-Monte-Carlo-Simulations.html" rel="next">
-<link href="./02-Probability.html" rel="prev">
+<link href="./05-Multiple-Linear-Regression.html" rel="next">
+<link href="./04-Monte-Carlo-Simulations.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -132,7 +132,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./03-Matrix-Algebra.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Matrix Algebra</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./03-Matrix-Algebra.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Matrix Algebra</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -178,14 +178,14 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./03-Matrix-Algebra.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Matrix Algebra</span></span></a>
+  <a href="./04-Monte-Carlo-Simulations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Estimation Theory and Monte Carlo Simulations</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./04-Monte-Carlo-Simulations.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Estimation Theory and Monte Carlo Simulations</span></span></a>
+  <a href="./03-Matrix-Algebra.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Matrix Algebra</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -215,67 +215,66 @@ window.Quarto = {
    
   <ul>
 <li>
-<a href="#basic-definitions" id="toc-basic-definitions" class="nav-link active" data-scroll-target="#basic-definitions"><span class="header-section-number">3.1</span> Basic Definitions</a>
+<a href="#basic-definitions" id="toc-basic-definitions" class="nav-link active" data-scroll-target="#basic-definitions"><span class="header-section-number">4.1</span> Basic Definitions</a>
   <ul class="collapse">
-<li><a href="#scalar-vector-and-matrix" id="toc-scalar-vector-and-matrix" class="nav-link" data-scroll-target="#scalar-vector-and-matrix"><span class="header-section-number">3.1.1</span> Scalar, Vector and Matrix</a></li>
-  <li><a href="#some-specific-matrices" id="toc-some-specific-matrices" class="nav-link" data-scroll-target="#some-specific-matrices"><span class="header-section-number">3.1.2</span> Some Specific Matrices</a></li>
-  <li><a href="#transposition" id="toc-transposition" class="nav-link" data-scroll-target="#transposition"><span class="header-section-number">3.1.3</span> Transposition</a></li>
-  <li><a href="#matrices-in-r" id="toc-matrices-in-r" class="nav-link" data-scroll-target="#matrices-in-r"><span class="header-section-number">3.1.4</span> Matrices in <code>R</code></a></li>
+<li><a href="#scalar-vector-and-matrix" id="toc-scalar-vector-and-matrix" class="nav-link" data-scroll-target="#scalar-vector-and-matrix"><span class="header-section-number">4.1.1</span> Scalar, Vector and Matrix</a></li>
+  <li><a href="#some-specific-matrices" id="toc-some-specific-matrices" class="nav-link" data-scroll-target="#some-specific-matrices"><span class="header-section-number">4.1.2</span> Some Specific Matrices</a></li>
+  <li><a href="#transposition" id="toc-transposition" class="nav-link" data-scroll-target="#transposition"><span class="header-section-number">4.1.3</span> Transposition</a></li>
+  <li><a href="#matrices-in-r" id="toc-matrices-in-r" class="nav-link" data-scroll-target="#matrices-in-r"><span class="header-section-number">4.1.4</span> Matrices in <code>R</code></a></li>
   </ul>
 </li>
   <li>
-<a href="#sums-and-products" id="toc-sums-and-products" class="nav-link" data-scroll-target="#sums-and-products"><span class="header-section-number">3.2</span> Sums and Products</a>
+<a href="#sums-and-products" id="toc-sums-and-products" class="nav-link" data-scroll-target="#sums-and-products"><span class="header-section-number">4.2</span> Sums and Products</a>
   <ul class="collapse">
-<li><a href="#matrix-summation" id="toc-matrix-summation" class="nav-link" data-scroll-target="#matrix-summation"><span class="header-section-number">3.2.1</span> Matrix Summation</a></li>
-  <li><a href="#scalar-matrix-multiplication" id="toc-scalar-matrix-multiplication" class="nav-link" data-scroll-target="#scalar-matrix-multiplication"><span class="header-section-number">3.2.2</span> Scalar-Matrix Multiplication</a></li>
-  <li><a href="#element-by-element-operations-in-r" id="toc-element-by-element-operations-in-r" class="nav-link" data-scroll-target="#element-by-element-operations-in-r"><span class="header-section-number">3.2.3</span> Element-by-Element Operations in R</a></li>
-  <li><a href="#vector-vector-multiplication" id="toc-vector-vector-multiplication" class="nav-link" data-scroll-target="#vector-vector-multiplication"><span class="header-section-number">3.2.4</span> Vector-Vector Multiplication</a></li>
-  <li><a href="#matrix-matrix-multiplication" id="toc-matrix-matrix-multiplication" class="nav-link" data-scroll-target="#matrix-matrix-multiplication"><span class="header-section-number">3.2.5</span> Matrix-Matrix Multiplication</a></li>
+<li><a href="#matrix-summation" id="toc-matrix-summation" class="nav-link" data-scroll-target="#matrix-summation"><span class="header-section-number">4.2.1</span> Matrix Summation</a></li>
+  <li><a href="#scalar-matrix-multiplication" id="toc-scalar-matrix-multiplication" class="nav-link" data-scroll-target="#scalar-matrix-multiplication"><span class="header-section-number">4.2.2</span> Scalar-Matrix Multiplication</a></li>
+  <li><a href="#element-by-element-operations-in-r" id="toc-element-by-element-operations-in-r" class="nav-link" data-scroll-target="#element-by-element-operations-in-r"><span class="header-section-number">4.2.3</span> Element-by-Element Operations in R</a></li>
+  <li><a href="#vector-vector-multiplication" id="toc-vector-vector-multiplication" class="nav-link" data-scroll-target="#vector-vector-multiplication"><span class="header-section-number">4.2.4</span> Vector-Vector Multiplication</a></li>
+  <li><a href="#matrix-matrix-multiplication" id="toc-matrix-matrix-multiplication" class="nav-link" data-scroll-target="#matrix-matrix-multiplication"><span class="header-section-number">4.2.5</span> Matrix-Matrix Multiplication</a></li>
   </ul>
 </li>
   <li>
-<a href="#rank-and-inverse" id="toc-rank-and-inverse" class="nav-link" data-scroll-target="#rank-and-inverse"><span class="header-section-number">3.3</span> Rank and Inverse</a>
+<a href="#rank-and-inverse" id="toc-rank-and-inverse" class="nav-link" data-scroll-target="#rank-and-inverse"><span class="header-section-number">4.3</span> Rank and Inverse</a>
   <ul class="collapse">
-<li><a href="#linear-combination" id="toc-linear-combination" class="nav-link" data-scroll-target="#linear-combination"><span class="header-section-number">3.3.1</span> Linear Combination</a></li>
-  <li><a href="#column-rank" id="toc-column-rank" class="nav-link" data-scroll-target="#column-rank"><span class="header-section-number">3.3.2</span> Column Rank</a></li>
-  <li><a href="#nonsingular-matrix" id="toc-nonsingular-matrix" class="nav-link" data-scroll-target="#nonsingular-matrix"><span class="header-section-number">3.3.3</span> Nonsingular Matrix</a></li>
-  <li><a href="#determinant" id="toc-determinant" class="nav-link" data-scroll-target="#determinant"><span class="header-section-number">3.3.4</span> Determinant</a></li>
-  <li><a href="#inverse-matrix" id="toc-inverse-matrix" class="nav-link" data-scroll-target="#inverse-matrix"><span class="header-section-number">3.3.5</span> Inverse Matrix</a></li>
+<li><a href="#linear-combination" id="toc-linear-combination" class="nav-link" data-scroll-target="#linear-combination"><span class="header-section-number">4.3.1</span> Linear Combination</a></li>
+  <li><a href="#column-rank" id="toc-column-rank" class="nav-link" data-scroll-target="#column-rank"><span class="header-section-number">4.3.2</span> Column Rank</a></li>
+  <li><a href="#nonsingular-matrix" id="toc-nonsingular-matrix" class="nav-link" data-scroll-target="#nonsingular-matrix"><span class="header-section-number">4.3.3</span> Nonsingular Matrix</a></li>
+  <li><a href="#determinant" id="toc-determinant" class="nav-link" data-scroll-target="#determinant"><span class="header-section-number">4.3.4</span> Determinant</a></li>
+  <li><a href="#inverse-matrix" id="toc-inverse-matrix" class="nav-link" data-scroll-target="#inverse-matrix"><span class="header-section-number">4.3.5</span> Inverse Matrix</a></li>
   </ul>
 </li>
   <li>
-<a href="#further-concepts" id="toc-further-concepts" class="nav-link" data-scroll-target="#further-concepts"><span class="header-section-number">3.4</span> Further Concepts</a>
+<a href="#further-concepts" id="toc-further-concepts" class="nav-link" data-scroll-target="#further-concepts"><span class="header-section-number">4.4</span> Further Concepts</a>
   <ul class="collapse">
-<li><a href="#trace" id="toc-trace" class="nav-link" data-scroll-target="#trace"><span class="header-section-number">3.4.1</span> Trace</a></li>
-  <li><a href="#idempotent-matrix" id="toc-idempotent-matrix" class="nav-link" data-scroll-target="#idempotent-matrix"><span class="header-section-number">3.4.2</span> Idempotent Matrix</a></li>
-  <li><a href="#definite-matrix" id="toc-definite-matrix" class="nav-link" data-scroll-target="#definite-matrix"><span class="header-section-number">3.4.3</span> Definite Matrix</a></li>
+<li><a href="#trace" id="toc-trace" class="nav-link" data-scroll-target="#trace"><span class="header-section-number">4.4.1</span> Trace</a></li>
+  <li><a href="#idempotent-matrix" id="toc-idempotent-matrix" class="nav-link" data-scroll-target="#idempotent-matrix"><span class="header-section-number">4.4.2</span> Idempotent Matrix</a></li>
+  <li><a href="#definite-matrix" id="toc-definite-matrix" class="nav-link" data-scroll-target="#definite-matrix"><span class="header-section-number">4.4.3</span> Definite Matrix</a></li>
   </ul>
 </li>
   <li>
-<a href="#matrix-calculus" id="toc-matrix-calculus" class="nav-link" data-scroll-target="#matrix-calculus"><span class="header-section-number">3.5</span> Matrix Calculus</a>
+<a href="#matrix-calculus" id="toc-matrix-calculus" class="nav-link" data-scroll-target="#matrix-calculus"><span class="header-section-number">4.5</span> Matrix Calculus</a>
   <ul class="collapse">
-<li><a href="#gradient" id="toc-gradient" class="nav-link" data-scroll-target="#gradient"><span class="header-section-number">3.5.1</span> Gradient</a></li>
-  <li><a href="#hessian" id="toc-hessian" class="nav-link" data-scroll-target="#hessian"><span class="header-section-number">3.5.2</span> Hessian</a></li>
-  <li><a href="#optimization" id="toc-optimization" class="nav-link" data-scroll-target="#optimization"><span class="header-section-number">3.5.3</span> Optimization</a></li>
+<li><a href="#gradient" id="toc-gradient" class="nav-link" data-scroll-target="#gradient"><span class="header-section-number">4.5.1</span> Gradient</a></li>
+  <li><a href="#hessian" id="toc-hessian" class="nav-link" data-scroll-target="#hessian"><span class="header-section-number">4.5.2</span> Hessian</a></li>
+  <li><a href="#optimization" id="toc-optimization" class="nav-link" data-scroll-target="#optimization"><span class="header-section-number">4.5.3</span> Optimization</a></li>
   </ul>
 </li>
   <li>
-<a href="#advanced-concepts" id="toc-advanced-concepts" class="nav-link" data-scroll-target="#advanced-concepts"><span class="header-section-number">3.6</span> Advanced Concepts</a>
+<a href="#advanced-concepts" id="toc-advanced-concepts" class="nav-link" data-scroll-target="#advanced-concepts"><span class="header-section-number">4.6</span> Advanced Concepts</a>
   <ul class="collapse">
-<li><a href="#eigendecomposition" id="toc-eigendecomposition" class="nav-link" data-scroll-target="#eigendecomposition"><span class="header-section-number">3.6.1</span> Eigendecomposition</a></li>
-  <li><a href="#definiteness-property-and-eigenvalues" id="toc-definiteness-property-and-eigenvalues" class="nav-link" data-scroll-target="#definiteness-property-and-eigenvalues"><span class="header-section-number">3.6.2</span> Definiteness Property and Eigenvalues</a></li>
-  <li><a href="#cholesky-decomposition" id="toc-cholesky-decomposition" class="nav-link" data-scroll-target="#cholesky-decomposition"><span class="header-section-number">3.6.3</span> Cholesky Decomposition</a></li>
-  <li><a href="#vectorization" id="toc-vectorization" class="nav-link" data-scroll-target="#vectorization"><span class="header-section-number">3.6.4</span> Vectorization</a></li>
-  <li><a href="#kronecker-product" id="toc-kronecker-product" class="nav-link" data-scroll-target="#kronecker-product"><span class="header-section-number">3.6.5</span> Kronecker Product</a></li>
-  <li><a href="#vector-and-matrix-norm" id="toc-vector-and-matrix-norm" class="nav-link" data-scroll-target="#vector-and-matrix-norm"><span class="header-section-number">3.6.6</span> Vector and Matrix Norm</a></li>
+<li><a href="#eigendecomposition" id="toc-eigendecomposition" class="nav-link" data-scroll-target="#eigendecomposition"><span class="header-section-number">4.6.1</span> Eigendecomposition</a></li>
+  <li><a href="#definiteness-property-and-eigenvalues" id="toc-definiteness-property-and-eigenvalues" class="nav-link" data-scroll-target="#definiteness-property-and-eigenvalues"><span class="header-section-number">4.6.2</span> Definiteness Property and Eigenvalues</a></li>
+  <li><a href="#cholesky-decomposition" id="toc-cholesky-decomposition" class="nav-link" data-scroll-target="#cholesky-decomposition"><span class="header-section-number">4.6.3</span> Cholesky Decomposition</a></li>
+  <li><a href="#vectorization" id="toc-vectorization" class="nav-link" data-scroll-target="#vectorization"><span class="header-section-number">4.6.4</span> Vectorization</a></li>
+  <li><a href="#kronecker-product" id="toc-kronecker-product" class="nav-link" data-scroll-target="#kronecker-product"><span class="header-section-number">4.6.5</span> Kronecker Product</a></li>
+  <li><a href="#vector-and-matrix-norm" id="toc-vector-and-matrix-norm" class="nav-link" data-scroll-target="#vector-and-matrix-norm"><span class="header-section-number">4.6.6</span> Vector and Matrix Norm</a></li>
   </ul>
 </li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">3.7</span> Exercises</a></li>
   </ul></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
-<h1 class="title"><span id="sec-matrixAlgebra" class="quarto-section-identifier"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Matrix Algebra</span></span></h1>
+<h1 class="title"><span id="sec-matrixAlgebra" class="quarto-section-identifier"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Matrix Algebra</span></span></h1>
 </div>
 
 
@@ -291,15 +290,15 @@ window.Quarto = {
 
 </header><!-- LTeX: language=en-US --><p>Relevance for the exam:</p>
 <ul>
-<li>Chapters 3.1 to 3.4</li>
-<li>For Chapter 3.5 there will be a exercise question, however, for the exam “only” a general/basic understanding is sufficient</li>
-<li>Chapter 3.6 is not relevant for the exam of this course, but may/will be useful in more advanced courses.</li>
+<li>Mainly Chapters 3.1 to 3.4</li>
+<li>For Chapter 3.5 only a general/basic understanding is sufficient</li>
+<li>Chapter 3.6 is not relevant for the exam of this course, but may be useful in more advanced courses.</li>
 </ul>
-<section id="basic-definitions" class="level2" data-number="3.1"><h2 data-number="3.1" class="anchored" data-anchor-id="basic-definitions">
-<span class="header-section-number">3.1</span> Basic Definitions</h2>
+<section id="basic-definitions" class="level2" data-number="4.1"><h2 data-number="4.1" class="anchored" data-anchor-id="basic-definitions">
+<span class="header-section-number">4.1</span> Basic Definitions</h2>
 <p>Let’s start with some basic definitions and specific examples.</p>
-<section id="scalar-vector-and-matrix" class="level3" data-number="3.1.1"><h3 data-number="3.1.1" class="anchored" data-anchor-id="scalar-vector-and-matrix">
-<span class="header-section-number">3.1.1</span> Scalar, Vector and Matrix</h3>
+<section id="scalar-vector-and-matrix" class="level3" data-number="4.1.1"><h3 data-number="4.1.1" class="anchored" data-anchor-id="scalar-vector-and-matrix">
+<span class="header-section-number">4.1.1</span> Scalar, Vector and Matrix</h3>
 <p>A <strong>scalar</strong> <span class="math inline">\(a\)</span> is a single real number. We write <span class="math inline">\(a \in \mathbb R\)</span>.</p>
 <p>A <strong>vector</strong> <span class="math inline">\(a\)</span> of dimension <span class="math inline">\(k\)</span> is a <span class="math inline">\((k \times 1)\)</span> list of real numbers <span class="math display">\[
 a = \begin{pmatrix} a_1 \\ a_2 \\ \vdots \\ a_k \end{pmatrix}.
@@ -323,8 +322,8 @@ a_i = \begin{pmatrix} a_{1i} \\ \vdots \\ a_{ki} \end{pmatrix}
 \]</span> is the <span class="math inline">\(i\)</span>-th column of <span class="math inline">\(A\)</span> and <span class="math display">\[
 \alpha_i = (a_{i1}, \ldots, a_{im})
 \]</span> is the <span class="math inline">\(i\)</span>-th row.</p>
-</section><section id="some-specific-matrices" class="level3" data-number="3.1.2"><h3 data-number="3.1.2" class="anchored" data-anchor-id="some-specific-matrices">
-<span class="header-section-number">3.1.2</span> Some Specific Matrices</h3>
+</section><section id="some-specific-matrices" class="level3" data-number="4.1.2"><h3 data-number="4.1.2" class="anchored" data-anchor-id="some-specific-matrices">
+<span class="header-section-number">4.1.2</span> Some Specific Matrices</h3>
 <p>A matrix is called <strong>square matrix</strong> if the numbers of rows and columns coincide, i.e., <span class="math inline">\(k=m.\)</span> For instance, <span class="math display">\[
 {B} = \begin{pmatrix}1 &amp; 2 \\ 3 &amp; 4 \end{pmatrix}
 \]</span> is a <span class="math inline">\((2\times 2)\)</span> square matrix. A square matrix is called <strong>diagonal matrix</strong> if all off-diagonal elements are zero. <span class="math display">\[
@@ -368,8 +367,8 @@ C = \mathop{\mathrm{diag}}(1,4).
 </div>
 </div>
 </div>
-</section><section id="transposition" class="level3" data-number="3.1.3"><h3 data-number="3.1.3" class="anchored" data-anchor-id="transposition">
-<span class="header-section-number">3.1.3</span> Transposition</h3>
+</section><section id="transposition" class="level3" data-number="4.1.3"><h3 data-number="4.1.3" class="anchored" data-anchor-id="transposition">
+<span class="header-section-number">4.1.3</span> Transposition</h3>
 <p>The <strong>transpose</strong> <span class="math inline">\(A^{\top}\)</span> of the matrix <span class="math inline">\(A\)</span> is obtained by flipping rows and columns on the main diagonal: <span class="math display">\[
 A =\begin{pmatrix}
              a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1m}\\
@@ -403,8 +402,8 @@ a^{\top} = (a_1, \ldots, a_k)
 <p>A <strong>symmetric matrix</strong> is a square matrix <span class="math inline">\(A\)</span> with <span class="math inline">\({A}^{\top}={A}\)</span>. An example of a symmetric matrix is <span class="math display">\[
 A = \begin{aligned}         \left(\begin{matrix}1 &amp; 2 \\ 2 &amp; 4 \end{matrix}\right)\end{aligned}.
 \]</span></p>
-</section><section id="matrices-in-r" class="level3" data-number="3.1.4"><h3 data-number="3.1.4" class="anchored" data-anchor-id="matrices-in-r">
-<span class="header-section-number">3.1.4</span> Matrices in <code>R</code>
+</section><section id="matrices-in-r" class="level3" data-number="4.1.4"><h3 data-number="4.1.4" class="anchored" data-anchor-id="matrices-in-r">
+<span class="header-section-number">4.1.4</span> Matrices in <code>R</code>
 </h3>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">A</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">4</span>,<span class="fl">7</span>,<span class="fl">2</span>,<span class="fl">5</span>,<span class="fl">8</span><span class="op">)</span>, nrow <span class="op">=</span> <span class="fl">3</span>, ncol <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
@@ -454,10 +453,10 @@ A = \begin{aligned}         \left(\begin{matrix}1 &amp; 2 \\ 2 &amp; 4 \end{matr
 <pre><code>[1] 3 2</code></pre>
 </div>
 </div>
-</section></section><section id="sums-and-products" class="level2" data-number="3.2"><h2 data-number="3.2" class="anchored" data-anchor-id="sums-and-products">
-<span class="header-section-number">3.2</span> Sums and Products</h2>
-<section id="matrix-summation" class="level3" data-number="3.2.1"><h3 data-number="3.2.1" class="anchored" data-anchor-id="matrix-summation">
-<span class="header-section-number">3.2.1</span> Matrix Summation</h3>
+</section></section><section id="sums-and-products" class="level2" data-number="4.2"><h2 data-number="4.2" class="anchored" data-anchor-id="sums-and-products">
+<span class="header-section-number">4.2</span> Sums and Products</h2>
+<section id="matrix-summation" class="level3" data-number="4.2.1"><h3 data-number="4.2.1" class="anchored" data-anchor-id="matrix-summation">
+<span class="header-section-number">4.2.1</span> Matrix Summation</h3>
 <p>Let <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> both be matrices of dimension <span class="math inline">\((k \times m)\)</span>. Their sum is defined componentwise: <span class="math display">\[
 {A} + {B}
 =\begin{pmatrix}
@@ -492,8 +491,8 @@ Matrix Summation
 \]</span> ’’’</p>
 </div>
 </div>
-</section><section id="scalar-matrix-multiplication" class="level3" data-number="3.2.2"><h3 data-number="3.2.2" class="anchored" data-anchor-id="scalar-matrix-multiplication">
-<span class="header-section-number">3.2.2</span> Scalar-Matrix Multiplication</h3>
+</section><section id="scalar-matrix-multiplication" class="level3" data-number="4.2.2"><h3 data-number="4.2.2" class="anchored" data-anchor-id="scalar-matrix-multiplication">
+<span class="header-section-number">4.2.2</span> Scalar-Matrix Multiplication</h3>
 <p>The product of a <span class="math inline">\((k \times m)\)</span> matrix <span class="math inline">\({A}\)</span> with a scalar <span class="math inline">\(\lambda\in\mathbb{R}\)</span> is defined componentwise: <span class="math display">\[
 \lambda {A} =
 \begin{pmatrix}
@@ -510,8 +509,8 @@ Matrix Summation
 \text{(ii)}   &amp; (\lambda+\mu){A} &amp;=&amp; \lambda{A}+\mu{A}\,     &amp;
 \end{array}
 \]</span></p>
-</section><section id="element-by-element-operations-in-r" class="level3" data-number="3.2.3"><h3 data-number="3.2.3" class="anchored" data-anchor-id="element-by-element-operations-in-r">
-<span class="header-section-number">3.2.3</span> Element-by-Element Operations in R</h3>
+</section><section id="element-by-element-operations-in-r" class="level3" data-number="4.2.3"><h3 data-number="4.2.3" class="anchored" data-anchor-id="element-by-element-operations-in-r">
+<span class="header-section-number">4.2.3</span> Element-by-Element Operations in R</h3>
 <p>Basic arithmetic operations work on an element-by-element basis in <code>R</code>:</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">A</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">1</span>,<span class="fl">3</span>,<span class="fl">0</span>,<span class="fl">5</span>,<span class="fl">2</span><span class="op">)</span>, ncol<span class="op">=</span><span class="fl">2</span><span class="op">)</span></span>
@@ -552,10 +551,10 @@ Matrix Summation
 [3,]  -15    4</code></pre>
 </div>
 </div>
-</section><section id="vector-vector-multiplication" class="level3" data-number="3.2.4"><h3 data-number="3.2.4" class="anchored" data-anchor-id="vector-vector-multiplication">
-<span class="header-section-number">3.2.4</span> Vector-Vector Multiplication</h3>
-<section id="inner-product" class="level4" data-number="3.2.4.1"><h4 data-number="3.2.4.1" class="anchored" data-anchor-id="inner-product">
-<span class="header-section-number">3.2.4.1</span> Inner Product</h4>
+</section><section id="vector-vector-multiplication" class="level3" data-number="4.2.4"><h3 data-number="4.2.4" class="anchored" data-anchor-id="vector-vector-multiplication">
+<span class="header-section-number">4.2.4</span> Vector-Vector Multiplication</h3>
+<section id="inner-product" class="level4" data-number="4.2.4.1"><h4 data-number="4.2.4.1" class="anchored" data-anchor-id="inner-product">
+<span class="header-section-number">4.2.4.1</span> Inner Product</h4>
 <p>The <strong>inner product</strong> (also known as dot product) of two vectors <span class="math inline">\({a},{b}\in\mathbb{R}^k\)</span> is <span class="math display">\[
 {a}^{\top}{b} = a_1 b_1+a_2b_2+\ldots+a_kb_k=\sum_{i=1}^k a_ib_i\in\mathbb{R}.
 \]</span></p>
@@ -574,8 +573,8 @@ a^{\top} b = 0.
 <p>The vectors <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> are called <strong>orthonormal</strong> if, in addition to <span class="math inline">\(a^{\top}b=0,\)</span> we have <span class="math display">\[
 a^{\top} a = 1\quad\text{and}\quad b^{\top} b=1.
 \]</span></p>
-</section><section id="outer-product" class="level4" data-number="3.2.4.2"><h4 data-number="3.2.4.2" class="anchored" data-anchor-id="outer-product">
-<span class="header-section-number">3.2.4.2</span> Outer Product</h4>
+</section><section id="outer-product" class="level4" data-number="4.2.4.2"><h4 data-number="4.2.4.2" class="anchored" data-anchor-id="outer-product">
+<span class="header-section-number">4.2.4.2</span> Outer Product</h4>
 <p>The outer product (also known as dyadic product) of two vectors <span class="math inline">\({x} \in \mathbb R^k\)</span> and <span class="math inline">\({y}\in\mathbb{R}^m\)</span> is <span class="math display">\[
 {x}{y}^{\top} =
 \left(\begin{matrix}
@@ -592,8 +591,8 @@ x_k y_1 &amp; x_k y_2 &amp; \ldots &amp; x_k y_m
 -4 &amp; 0 &amp; 4
 \end{matrix}\right).
 \]</span></p>
-</section><section id="vector-multiplication-in-r" class="level4" data-number="3.2.4.3"><h4 data-number="3.2.4.3" class="anchored" data-anchor-id="vector-multiplication-in-r">
-<span class="header-section-number">3.2.4.3</span> Vector Multiplication in <code>R</code>
+</section><section id="vector-multiplication-in-r" class="level4" data-number="4.2.4.3"><h4 data-number="4.2.4.3" class="anchored" data-anchor-id="vector-multiplication-in-r">
+<span class="header-section-number">4.2.4.3</span> Vector Multiplication in <code>R</code>
 </h4>
 <p>For vector multiplication in <code>R</code>, we use the operator <code>%*%</code> (recall that <code>*</code> is already reserved for element-wise multiplication). Let’s implement some multiplications.</p>
 <div class="cell" data-layout-align="center">
@@ -618,8 +617,8 @@ x_k y_1 &amp; x_k y_2 &amp; \ldots &amp; x_k y_m
 [2,]   -4    0    4</code></pre>
 </div>
 </div>
-</section></section><section id="matrix-matrix-multiplication" class="level3" data-number="3.2.5"><h3 data-number="3.2.5" class="anchored" data-anchor-id="matrix-matrix-multiplication">
-<span class="header-section-number">3.2.5</span> Matrix-Matrix Multiplication</h3>
+</section></section><section id="matrix-matrix-multiplication" class="level3" data-number="4.2.5"><h3 data-number="4.2.5" class="anchored" data-anchor-id="matrix-matrix-multiplication">
+<span class="header-section-number">4.2.5</span> Matrix-Matrix Multiplication</h3>
 <p>The <strong>matrix product</strong> of a <span class="math inline">\((k \times m)\)</span> matrix <span class="math inline">\({A}\)</span> and a <span class="math inline">\((m \times n)\)</span> matrix <span class="math inline">\({B}\)</span> is the <span class="math inline">\((k\times n)\)</span> matrix <span class="math inline">\(C = {A}{B}\)</span> with the components <span class="math display">\[
 c_{ij} = a_{i1}b_{1j}+a_{i2}b_{2j}+\ldots+a_{im}b_{mj}=\sum_{l=1}^m a_{il}b_{lj} = a_i^{\top} b_j,
 \]</span> where <span class="math inline">\(a_i = (a_{i1}, \ldots, a_{im})^{\top}\)</span> is the <span class="math inline">\(i\)</span>-th row of <span class="math inline">\(A\)</span> written as a column vector, and <span class="math inline">\(b_j = (b_{1j}, \ldots, b_{mj})^{\top}\)</span> is the <span class="math inline">\(j\)</span>-th column of <span class="math inline">\(B\)</span>. The full matrix product can be written as <span class="math display">\[
@@ -704,10 +703,10 @@ Matrix Multiplication
 \]</span></p>
 </div>
 </div>
-</section></section><section id="rank-and-inverse" class="level2" data-number="3.3"><h2 data-number="3.3" class="anchored" data-anchor-id="rank-and-inverse">
-<span class="header-section-number">3.3</span> Rank and Inverse</h2>
-<section id="linear-combination" class="level3" data-number="3.3.1"><h3 data-number="3.3.1" class="anchored" data-anchor-id="linear-combination">
-<span class="header-section-number">3.3.1</span> Linear Combination</h3>
+</section></section><section id="rank-and-inverse" class="level2" data-number="4.3"><h2 data-number="4.3" class="anchored" data-anchor-id="rank-and-inverse">
+<span class="header-section-number">4.3</span> Rank and Inverse</h2>
+<section id="linear-combination" class="level3" data-number="4.3.1"><h3 data-number="4.3.1" class="anchored" data-anchor-id="linear-combination">
+<span class="header-section-number">4.3.1</span> Linear Combination</h3>
 <p>Let <span class="math inline">\(x_1, \ldots, x_m\)</span> be column vectors of dimension <span class="math inline">\(k,\)</span> and let <span class="math inline">\(\lambda_1, \ldots, \lambda_m\)</span> be scalars. The vector <span class="math display">\[
 \lambda_1 x_1 + \lambda_2 x_2 + \ldots + \lambda_m x_m
 \]</span> is called <strong>linear combination</strong> of <span class="math inline">\(x_1, \ldots, x_m\)</span>.</p>
@@ -741,8 +740,8 @@ X \lambda = 0
 </ul>
 </div>
 </div>
-</section></section><section id="column-rank" class="level3" data-number="3.3.2"><h3 data-number="3.3.2" class="anchored" data-anchor-id="column-rank">
-<span class="header-section-number">3.3.2</span> Column Rank</h3>
+</section></section><section id="column-rank" class="level3" data-number="4.3.2"><h3 data-number="4.3.2" class="anchored" data-anchor-id="column-rank">
+<span class="header-section-number">4.3.2</span> Column Rank</h3>
 <p>The <strong>rank</strong> of a <span class="math inline">\((k \times m)\)</span> matrix <span class="math inline">\(A = \begin{pmatrix} a_1 &amp; \ldots &amp; a_m \end{pmatrix}\)</span>, written as <span class="math display">\[
 \mathop{\mathrm{rank}}(A),
 \]</span> is the number of linearly independent columns <span class="math inline">\(a_i\)</span>.</p>
@@ -811,15 +810,15 @@ B = \begin{pmatrix}
 <pre><code>[1] 2</code></pre>
 </div>
 </div>
-</section><section id="nonsingular-matrix" class="level3" data-number="3.3.3"><h3 data-number="3.3.3" class="anchored" data-anchor-id="nonsingular-matrix">
-<span class="header-section-number">3.3.3</span> Nonsingular Matrix</h3>
+</section><section id="nonsingular-matrix" class="level3" data-number="4.3.3"><h3 data-number="4.3.3" class="anchored" data-anchor-id="nonsingular-matrix">
+<span class="header-section-number">4.3.3</span> Nonsingular Matrix</h3>
 <p>A square <span class="math inline">\((k \times k)\)</span> matrix <span class="math inline">\(A\)</span> is called <strong>nonsingular</strong> if it has full rank, i.e., <span class="math display">\[
 \mathop{\mathrm{rank}}(A) = k.
 \]</span> Conversely, <span class="math inline">\(A\)</span> is called <strong>singular</strong> if it does not have full rank, i.e., <span class="math display">\[
 \mathop{\mathrm{rank}}(A) &lt; k.
 \]</span></p>
-</section><section id="determinant" class="level3" data-number="3.3.4"><h3 data-number="3.3.4" class="anchored" data-anchor-id="determinant">
-<span class="header-section-number">3.3.4</span> Determinant</h3>
+</section><section id="determinant" class="level3" data-number="4.3.4"><h3 data-number="4.3.4" class="anchored" data-anchor-id="determinant">
+<span class="header-section-number">4.3.4</span> Determinant</h3>
 <p>Consider a square <span class="math inline">\((k \times k)\)</span> matrix <span class="math inline">\(A\)</span>.</p>
 <p>The determinant <span class="math inline">\(\det(A)\)</span> is a measure of the volume of the geometric object formed by the columns of <span class="math inline">\(A\)</span></p>
 <ul>
@@ -867,8 +866,8 @@ A = \begin{pmatrix} a &amp; b \\ c &amp; d \end{pmatrix}, \quad
 <span class="math inline">\(A\)</span> is nonsingular and</li>
 <li>
 <span class="math inline">\(B\)</span> is singular.</li>
-</ul></section><section id="inverse-matrix" class="level3" data-number="3.3.5"><h3 data-number="3.3.5" class="anchored" data-anchor-id="inverse-matrix">
-<span class="header-section-number">3.3.5</span> Inverse Matrix</h3>
+</ul></section><section id="inverse-matrix" class="level3" data-number="4.3.5"><h3 data-number="4.3.5" class="anchored" data-anchor-id="inverse-matrix">
+<span class="header-section-number">4.3.5</span> Inverse Matrix</h3>
 <p>The <strong>inverse</strong> <span class="math inline">\({A}^{-1}\)</span> of a square <span class="math inline">\((k \times k)\)</span> matrix <span class="math inline">\(A\)</span> is defined by the property <span class="math display">\[{A} {A}^{-1} = {A}^{-1} {A} ={I}_k.\]</span> When multiplied from the left or the right, the inverse matrix produces the identity matrix.</p>
 <p>The <strong>inverse exists</strong> if and only if <span class="math inline">\({A}\)</span> is <strong>nonsingular</strong>, i.e., <span class="math inline">\(\det(A) \neq 0\)</span>. Therefore, a nonsingular matrix is also called <strong>invertible matrix</strong>.</p>
 <p>Note that only square matrices can be inverted.</p>
@@ -979,10 +978,10 @@ A A^{-1} = I
 </div>
 </div>
 </div>
-</section></section><section id="further-concepts" class="level2" data-number="3.4"><h2 data-number="3.4" class="anchored" data-anchor-id="further-concepts">
-<span class="header-section-number">3.4</span> Further Concepts</h2>
-<section id="trace" class="level3" data-number="3.4.1"><h3 data-number="3.4.1" class="anchored" data-anchor-id="trace">
-<span class="header-section-number">3.4.1</span> Trace</h3>
+</section></section><section id="further-concepts" class="level2" data-number="4.4"><h2 data-number="4.4" class="anchored" data-anchor-id="further-concepts">
+<span class="header-section-number">4.4</span> Further Concepts</h2>
+<section id="trace" class="level3" data-number="4.4.1"><h3 data-number="4.4.1" class="anchored" data-anchor-id="trace">
+<span class="header-section-number">4.4.1</span> Trace</h3>
 <p>The <strong>trace</strong> of a <span class="math inline">\((k \times k)\)</span> square matrix <span class="math inline">\(A\)</span> is the sum of the diagonal entries: <span class="math display">\[\mathop{\mathrm{tr}}(A) = \sum_{i=1}^k a_{ii}\]</span></p>
 <p><strong>Example:</strong> <span class="math display">\[
 A = \begin{pmatrix}
@@ -1016,8 +1015,8 @@ A = \begin{pmatrix}
 \mathop{\mathrm{tr}}(A B) = \mathop{\mathrm{tr}}(B A).
 \]</span></p>
 <p>This is often called the <strong>trace-trick</strong>.</p>
-</section><section id="idempotent-matrix" class="level3" data-number="3.4.2"><h3 data-number="3.4.2" class="anchored" data-anchor-id="idempotent-matrix">
-<span class="header-section-number">3.4.2</span> Idempotent Matrix</h3>
+</section><section id="idempotent-matrix" class="level3" data-number="4.4.2"><h3 data-number="4.4.2" class="anchored" data-anchor-id="idempotent-matrix">
+<span class="header-section-number">4.4.2</span> Idempotent Matrix</h3>
 <p>The square matrix <span class="math inline">\(A\)</span> is called <strong>idempotent</strong> if <span class="math inline">\(A A = A\)</span>. The identity matrix is idempotent: <span class="math inline">\(I_n I_n = I_n\)</span>. Another example is the matrix <span class="math display">\[
 A = \begin{pmatrix}
 4 &amp; -1 \\ 12 &amp; -3
@@ -1040,8 +1039,8 @@ A A
 = A.
 \end{align*}
 \]</span></p>
-</section><section id="definite-matrix" class="level3" data-number="3.4.3"><h3 data-number="3.4.3" class="anchored" data-anchor-id="definite-matrix">
-<span class="header-section-number">3.4.3</span> Definite Matrix</h3>
+</section><section id="definite-matrix" class="level3" data-number="4.4.3"><h3 data-number="4.4.3" class="anchored" data-anchor-id="definite-matrix">
+<span class="header-section-number">4.4.3</span> Definite Matrix</h3>
 <p>The <span class="math inline">\((k \times k)\)</span> square matrix <span class="math inline">\(A\)</span> is called <strong>positive definite</strong> if <span class="math display">\[
 c^{\top}Ac &gt; 0\quad\text{for all non-zero vectors}\quad c\in \mathbb{R}^k\quad\text{with}\quad c\neq 0.
 \]</span></p>
@@ -1078,11 +1077,11 @@ c^{\top}Ac &lt; 0\quad\text{for all non-zero vectors}\quad c\in \mathbb{R}^k\qua
 <p>The <span class="math inline">\((k \times k)\)</span> square matrix <span class="math inline">\(A\)</span> is called <strong>indefinite</strong> if there are vectors <span class="math inline">\(c,\tilde{c}\in\mathbb{R}^k\)</span> such that <span class="math display">\[
 c^{\top}Ac&lt; 0 &lt; \tilde{c}^{\top}{A\tilde{c}}.
 \]</span> In this case, the matrix <span class="math inline">\(A\)</span> is neither positive semi-definite nor negative semi-definite.</p>
-</section></section><section id="matrix-calculus" class="level2" data-number="3.5"><h2 data-number="3.5" class="anchored" data-anchor-id="matrix-calculus">
-<span class="header-section-number">3.5</span> Matrix Calculus</h2>
+</section></section><section id="matrix-calculus" class="level2" data-number="4.5"><h2 data-number="4.5" class="anchored" data-anchor-id="matrix-calculus">
+<span class="header-section-number">4.5</span> Matrix Calculus</h2>
 <p>Let <span class="math inline">\(f(\beta_1, \ldots, \beta_k) = f({\beta})\)</span> be a twice-differential real-valued function that depends on some vector <span class="math inline">\(\beta = (\beta_1, \ldots, \beta_k)^{\top}\)</span>. Examples that frequently appear in econometrics are functions of the inner product form <span class="math inline">\(f(\beta) = a^{\top} \beta\)</span>, where <span class="math inline">\(a \in \mathbb R^k\)</span>, and functions of the sandwich form <span class="math inline">\(f(\beta) = \beta^{\top} A \beta\)</span>, where <span class="math inline">\(A \in \mathbb R^{k \times k}\)</span>.</p>
-<section id="gradient" class="level3" data-number="3.5.1"><h3 data-number="3.5.1" class="anchored" data-anchor-id="gradient">
-<span class="header-section-number">3.5.1</span> Gradient</h3>
+<section id="gradient" class="level3" data-number="4.5.1"><h3 data-number="4.5.1" class="anchored" data-anchor-id="gradient">
+<span class="header-section-number">4.5.1</span> Gradient</h3>
 <p>The <strong>first derivatives vector</strong> or <strong>gradient</strong> is <span class="math display">\[
 \frac{\partial f(\beta)}{\partial{\beta}}  = \begin{pmatrix}\frac{\partial f(\beta)}{\partial \beta_1} \\ \vdots \\ \frac{\partial f(\beta)}{\partial \beta_k} \end{pmatrix}
 \]</span> If the gradient is evaluated at some particular value <span class="math inline">\(\beta = b\)</span>, we write <span class="math display">\[
@@ -1098,8 +1097,8 @@ f(\beta) = \beta^{\top} A\beta.
 (ii)&amp; \quad &amp;&amp;\frac{\partial ( \beta^{\top} A \beta)}{\partial \beta}   = (A + A^{\top}) \beta.
 \end{align*}
 \]</span></p>
-</section><section id="hessian" class="level3" data-number="3.5.2"><h3 data-number="3.5.2" class="anchored" data-anchor-id="hessian">
-<span class="header-section-number">3.5.2</span> Hessian</h3>
+</section><section id="hessian" class="level3" data-number="4.5.2"><h3 data-number="4.5.2" class="anchored" data-anchor-id="hessian">
+<span class="header-section-number">4.5.2</span> Hessian</h3>
 <p>The <strong>second derivatives matrix</strong> or <strong>Hessian</strong> is the <span class="math inline">\((k \times k)\)</span> matrix <span class="math display">\[
     \frac{\partial^2 f(\beta)}{\partial{\beta }\partial {\beta}^{\top}}
     =  \begin{pmatrix}\frac{\partial^2 f(\beta)}{\partial \beta_1 \partial \beta_1} &amp; \ldots &amp; \frac{\partial^2 f(\beta)}{\partial \beta_k \partial \beta_1} \\
@@ -1119,8 +1118,8 @@ f(\beta) = \beta^{\top} A\beta.
 <p>The Hessian of a sandwich form function <span class="math inline">\(f(\beta) = \beta^{\top} A\beta\)</span> is <span class="math display">\[
   \frac{\partial^2 ( \beta^{\top} A \beta)}{\partial \beta \partial \beta^{\top}}  = A + A^{\top}.
 \]</span></p>
-</section><section id="optimization" class="level3" data-number="3.5.3"><h3 data-number="3.5.3" class="anchored" data-anchor-id="optimization">
-<span class="header-section-number">3.5.3</span> Optimization</h3>
+</section><section id="optimization" class="level3" data-number="4.5.3"><h3 data-number="4.5.3" class="anchored" data-anchor-id="optimization">
+<span class="header-section-number">4.5.3</span> Optimization</h3>
 <p>Recall the <em>first-order</em> (necessary) and <em>second-order</em> (sufficient) conditions for an optimum (maximum or minimum) in the univariate case:</p>
 <ul>
 <li>
@@ -1139,12 +1138,12 @@ f(\beta) = \beta^{\top} A\beta.
 <ul>
 <li>“<span class="math inline">\(&gt; 0\)</span>” means positive definite, and</li>
 <li>“<span class="math inline">\(&lt; 0\)</span>” means negative definite.</li>
-</ul></section></section><section id="advanced-concepts" class="level2" data-number="3.6"><h2 data-number="3.6" class="anchored" data-anchor-id="advanced-concepts">
-<span class="header-section-number">3.6</span> Advanced Concepts</h2>
-<section id="eigendecomposition" class="level3" data-number="3.6.1"><h3 data-number="3.6.1" class="anchored" data-anchor-id="eigendecomposition">
-<span class="header-section-number">3.6.1</span> Eigendecomposition</h3>
-<section id="eigenvalues" class="level4" data-number="3.6.1.1"><h4 data-number="3.6.1.1" class="anchored" data-anchor-id="eigenvalues">
-<span class="header-section-number">3.6.1.1</span> Eigenvalues</h4>
+</ul></section></section><section id="advanced-concepts" class="level2" data-number="4.6"><h2 data-number="4.6" class="anchored" data-anchor-id="advanced-concepts">
+<span class="header-section-number">4.6</span> Advanced Concepts</h2>
+<section id="eigendecomposition" class="level3" data-number="4.6.1"><h3 data-number="4.6.1" class="anchored" data-anchor-id="eigendecomposition">
+<span class="header-section-number">4.6.1</span> Eigendecomposition</h3>
+<section id="eigenvalues" class="level4" data-number="4.6.1.1"><h4 data-number="4.6.1.1" class="anchored" data-anchor-id="eigenvalues">
+<span class="header-section-number">4.6.1.1</span> Eigenvalues</h4>
 <p>An <strong>eigenvalue</strong> <span class="math inline">\(\lambda\)</span> of a <span class="math inline">\((k \times k)\)</span> square matrix is a solution to the equation <span class="math display">\[
   \det(\lambda I_k - A) = 0.
 \]</span> The function <span class="math inline">\(f(\lambda) = \det(\lambda I_k - A)\)</span> has exactly <span class="math inline">\(k\)</span> roots so that <span class="math inline">\(\det(\lambda I_k - A) = 0\)</span> has exactly <span class="math inline">\(k\)</span> solutions. The solutions <span class="math inline">\(\lambda_1, \ldots, \lambda_k\)</span> are the <span class="math inline">\(k\)</span> eigenvalues of <span class="math inline">\(A\)</span>.</p>
@@ -1157,19 +1156,19 @@ f(\beta) = \beta^{\top} A\beta.
 <span class="math inline">\(A\)</span> is nonsingular if and only if all eigenvalues are nonzero</li>
 <li>
 <span class="math inline">\(A B\)</span> and <span class="math inline">\(B A\)</span> have the same eigenvalues.</li>
-</ol></section><section id="eigenvectors" class="level4" data-number="3.6.1.2"><h4 data-number="3.6.1.2" class="anchored" data-anchor-id="eigenvectors">
-<span class="header-section-number">3.6.1.2</span> Eigenvectors</h4>
+</ol></section><section id="eigenvectors" class="level4" data-number="4.6.1.2"><h4 data-number="4.6.1.2" class="anchored" data-anchor-id="eigenvectors">
+<span class="header-section-number">4.6.1.2</span> Eigenvectors</h4>
 <p>If <span class="math inline">\(\lambda_i\)</span> is an eigenvalue of <span class="math inline">\(A\)</span>, then <span class="math inline">\(\lambda_i I_k - A\)</span> is singular, which implies that there exists a linear combination vector <span class="math inline">\(v_i\)</span> with <span class="math inline">\((\lambda_i I_k - A) v_i = 0\)</span>. Equivalently, <span class="math display">\[
 A v_i = \lambda_i v_i,
 \]</span></p>
 <p>which can be solved by Gaussian elimination. It is convenient to normalize any solution such that <span class="math inline">\(v_i^{\top}v_i = 1\)</span>. The solutions <span class="math inline">\(v_1, \ldots, v_k\)</span> are called eigenvectors of <span class="math inline">\(A\)</span> to corresponding eigenvalues <span class="math inline">\(\lambda_1, \ldots, \lambda_k\)</span>.</p>
-</section><section id="spectral-decomposition" class="level4" data-number="3.6.1.3"><h4 data-number="3.6.1.3" class="anchored" data-anchor-id="spectral-decomposition">
-<span class="header-section-number">3.6.1.3</span> Spectral Decomposition</h4>
+</section><section id="spectral-decomposition" class="level4" data-number="4.6.1.3"><h4 data-number="4.6.1.3" class="anchored" data-anchor-id="spectral-decomposition">
+<span class="header-section-number">4.6.1.3</span> Spectral Decomposition</h4>
 <p>If <span class="math inline">\(A\)</span> is symmetric, then <span class="math inline">\(v_1, \ldots, v_k\)</span> are pairwise orthogonal (i.e., <span class="math inline">\(v_i^{\top} v_j = 0\)</span> for <span class="math inline">\(i \neq j\)</span>). Let <span class="math inline">\(V = \begin{pmatrix} v_1 &amp; \ldots &amp; v_k \end{pmatrix}\)</span> be the <span class="math inline">\((k \times k)\)</span> matrix of eigenvectors and let <span class="math inline">\(\Lambda = \mathop{\mathrm{diag}}(\lambda_1, \ldots, \lambda_k)\)</span> be the <span class="math inline">\((k \times k)\)</span> diagonal matrix with the eigenvalues on the main diagonal. Then, we can write <span class="math display">\[
   A = V \Lambda V^{\top},
 \]</span> which is called the <strong>spectral decomposition</strong> of <span class="math inline">\(A\)</span>. The matrix of eigenvalues can be written as <span class="math inline">\(\Lambda = V^{\top} A V\)</span>.</p>
-</section><section id="eigendecomposition-in-r" class="level4" data-number="3.6.1.4"><h4 data-number="3.6.1.4" class="anchored" data-anchor-id="eigendecomposition-in-r">
-<span class="header-section-number">3.6.1.4</span> Eigendecomposition in <code>R</code>
+</section><section id="eigendecomposition-in-r" class="level4" data-number="4.6.1.4"><h4 data-number="4.6.1.4" class="anchored" data-anchor-id="eigendecomposition-in-r">
+<span class="header-section-number">4.6.1.4</span> Eigendecomposition in <code>R</code>
 </h4>
 <p>The function <code><a href="https://rdrr.io/r/base/eigen.html">eigen()</a></code> computes the eigenvalues and corresponding eigenvectors.</p>
 <div class="cell" data-layout-align="center">
@@ -1194,8 +1193,8 @@ $vectors
 [3,] -0.3312839  0.8190121  0.4684764</code></pre>
 </div>
 </div>
-</section></section><section id="definiteness-property-and-eigenvalues" class="level3" data-number="3.6.2"><h3 data-number="3.6.2" class="anchored" data-anchor-id="definiteness-property-and-eigenvalues">
-<span class="header-section-number">3.6.2</span> Definiteness Property and Eigenvalues</h3>
+</section></section><section id="definiteness-property-and-eigenvalues" class="level3" data-number="4.6.2"><h3 data-number="4.6.2" class="anchored" data-anchor-id="definiteness-property-and-eigenvalues">
+<span class="header-section-number">4.6.2</span> Definiteness Property and Eigenvalues</h3>
 <p>The definiteness property of a symmetric matrix <span class="math inline">\(A\)</span> can be determined using its eigenvalues:</p>
 <ol type="i">
 <li>
@@ -1213,8 +1212,8 @@ $vectors
 <pre><code>[1] 234.827160  12.582227   3.590613</code></pre>
 </div>
 </div>
-</section><section id="cholesky-decomposition" class="level3" data-number="3.6.3"><h3 data-number="3.6.3" class="anchored" data-anchor-id="cholesky-decomposition">
-<span class="header-section-number">3.6.3</span> Cholesky Decomposition</h3>
+</section><section id="cholesky-decomposition" class="level3" data-number="4.6.3"><h3 data-number="4.6.3" class="anchored" data-anchor-id="cholesky-decomposition">
+<span class="header-section-number">4.6.3</span> Cholesky Decomposition</h3>
 <p>Any positive definite and symmetric matrix <span class="math inline">\(B\)</span> can be written as <span class="math display">\[
   B = P P^{\top},
 \]</span> where <span class="math inline">\(P\)</span> is a lower triangular matrix with strictly positive diagonal entries <span class="math inline">\(p_{jj} &gt; 0\)</span>. This representation is called <strong>Cholesky decomposition</strong>. The matrix <span class="math inline">\(P\)</span> is unique. For a <span class="math inline">\((2 \times 2)\)</span> matrix <span class="math inline">\(B\)</span> we have <span class="math display">\[
@@ -1249,8 +1248,8 @@ B = \begin{pmatrix} 1 &amp; -0.5 &amp; 0.6 \\ -0.5 &amp; 1 &amp; 0.25 \\ 0.6 &am
 [3,]    0  0.0000000 0.4864840</code></pre>
 </div>
 </div>
-</section><section id="vectorization" class="level3" data-number="3.6.4"><h3 data-number="3.6.4" class="anchored" data-anchor-id="vectorization">
-<span class="header-section-number">3.6.4</span> Vectorization</h3>
+</section><section id="vectorization" class="level3" data-number="4.6.4"><h3 data-number="4.6.4" class="anchored" data-anchor-id="vectorization">
+<span class="header-section-number">4.6.4</span> Vectorization</h3>
 <p>The <strong>vectorization operator</strong> <span class="math inline">\(\mathop{\mathrm{vec}}()\)</span> stacks the matrix entries column-wise into a large vector. The vectorized <span class="math inline">\((k \times m)\)</span> matrix <span class="math inline">\(A\)</span> is the <span class="math inline">\((km \times 1)\)</span> vector <span class="math display">\[
 \mathop{\mathrm{vec}}(A) = (a_{11}, \ldots, a_{k1}, a_{12}, \ldots, a_{k2}, \ldots, a_{1m}, \ldots, a_{km})^{\top}.
 \]</span></p>
@@ -1260,8 +1259,8 @@ B = \begin{pmatrix} 1 &amp; -0.5 &amp; 0.6 \\ -0.5 &amp; 1 &amp; 0.25 \\ 0.6 &am
 <pre><code>[1]  1  3  0  2  9 11  3  1  5</code></pre>
 </div>
 </div>
-</section><section id="kronecker-product" class="level3" data-number="3.6.5"><h3 data-number="3.6.5" class="anchored" data-anchor-id="kronecker-product">
-<span class="header-section-number">3.6.5</span> Kronecker Product</h3>
+</section><section id="kronecker-product" class="level3" data-number="4.6.5"><h3 data-number="4.6.5" class="anchored" data-anchor-id="kronecker-product">
+<span class="header-section-number">4.6.5</span> Kronecker Product</h3>
 <p>The <strong>Kronecker product</strong> <span class="math inline">\(\otimes\)</span> multiplies each element of the left-hand side matrix with the entire matrix on the right-hand side. For a <span class="math inline">\((k \times m)\)</span> matrix <span class="math inline">\(A\)</span> and a <span class="math inline">\((r \times s)\)</span> matrix <span class="math inline">\(B\)</span>, we get the <span class="math inline">\((kr\times ms)\)</span> matrix <span class="math display">\[
 A \otimes B = \begin{pmatrix} a_{11}B &amp; \ldots &amp; a_{1m}B \\ \vdots &amp; &amp; \vdots \\ a_{k1}B &amp; \ldots &amp; a_{km}B \end{pmatrix},
 \]</span> where each entry <span class="math inline">\(a_{ij} B\)</span> is a <span class="math inline">\((r \times s)\)</span> matrix.</p>
@@ -1280,8 +1279,8 @@ A \otimes B = \begin{pmatrix} a_{11}B &amp; \ldots &amp; a_{1m}B \\ \vdots &amp;
  [9,]  0.0  0.00 0.00  6.6  2.75 11.00  3.0  1.25 5.00</code></pre>
 </div>
 </div>
-</section><section id="vector-and-matrix-norm" class="level3" data-number="3.6.6"><h3 data-number="3.6.6" class="anchored" data-anchor-id="vector-and-matrix-norm">
-<span class="header-section-number">3.6.6</span> Vector and Matrix Norm</h3>
+</section><section id="vector-and-matrix-norm" class="level3" data-number="4.6.6"><h3 data-number="4.6.6" class="anchored" data-anchor-id="vector-and-matrix-norm">
+<span class="header-section-number">4.6.6</span> Vector and Matrix Norm</h3>
 <p>A norm <span class="math inline">\(\|\cdot\|\)</span> of a vector or a matrix is a measure of distance from the origin. The most commonly used norms are the Euclidean vector norm <span class="math display">\[
   \|a\| = \sqrt{a^{\top} a} = \sqrt{\sum_{i=1}^k a_i^2}
 \]</span> for <span class="math inline">\(a \in \mathbb R^k\)</span>, and the Frobenius matrix norm <span class="math display">\[
@@ -1295,15 +1294,16 @@ A \otimes B = \begin{pmatrix} a_{11}B &amp; \ldots &amp; a_{1m}B \\ \vdots &amp;
 <span class="math inline">\(\|A + B\| \leq \|A\| + \|B\|\)</span> (triangle inequality)</li>
 <li>
 <span class="math inline">\(\|A\| = 0\)</span> implies <span class="math inline">\(A = 0\)</span> (definiteness)</li>
-</ol></section></section><section id="exercises" class="level2" data-number="3.7"><h2 data-number="3.7" class="anchored" data-anchor-id="exercises">
-<span class="header-section-number">3.7</span> Exercises</h2>
-<ul>
-<li><p><a href="https://www.dropbox.com/scl/fi/zbqj9whsmd20mhbveipjh/Ch3_Exercises1.pdf?rlkey=xy9745yjiku05aex0i01tgt6j&amp;st=s47gftwg&amp;dl=0">Exercises for Chapter 3</a></p></li>
-<li><p><a href="https://www.dropbox.com/scl/fi/ep50rtkfruye004mhlev8/Ch3_Exercises_with_Solutions1.pdf?rlkey=9u23jyj6o76zhjgctt9q755xj&amp;st=6z4iq2zu&amp;dl=0">Exercises for Chapter 3 with Solutions</a></p></li>
-</ul>
+</ol>
+<!-- 
+## Exercises
 
+* [Exercises for Chapter 3](https://www.dropbox.com/scl/fi/zbqj9whsmd20mhbveipjh/Ch3_Exercises1.pdf?rlkey=xy9745yjiku05aex0i01tgt6j&st=s47gftwg&dl=0)
 
-</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+* [Exercises for Chapter 3 with Solutions](https://www.dropbox.com/scl/fi/ep50rtkfruye004mhlev8/Ch3_Exercises_with_Solutions1.pdf?rlkey=9u23jyj6o76zhjgctt9q755xj&st=6z4iq2zu&dl=0) 
+ -->
+
+</section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -1867,13 +1867,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
-      <a href="./02-Probability.html" class="pagination-link" aria-label="Probability">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Probability</span></span>
+      <a href="./04-Monte-Carlo-Simulations.html" class="pagination-link" aria-label="Estimation Theory and Monte Carlo Simulations">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Estimation Theory and Monte Carlo Simulations</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./04-Monte-Carlo-Simulations.html" class="pagination-link" aria-label="Estimation Theory and Monte Carlo Simulations">
-        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Estimation Theory and Monte Carlo Simulations</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./05-Multiple-Linear-Regression.html" class="pagination-link" aria-label="Multiple Linear Regression">
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Multiple Linear Regression</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
