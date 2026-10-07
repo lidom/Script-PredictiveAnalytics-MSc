@@ -44,6 +44,23 @@ $$
 for all $i=1,\dots,n.$ 
 
 
+::: {.callout-warning collapse="true"}
+
+# In Practice, There Is No Such Thing as *Perfectly* Normal Error Terms!
+
+Under Assumption 4$^\boldsymbol{\ast}$, statistical inference works beautifully.
+
+Unfortunately, reality is much less cooperative. Error terms are almost never normally distributed, so this assumption is essentially a convenient, but unrealistic fiction.
+
+In Chapter @sec-lsinf, we do what every good statistician should do with an unrealistic beauty standard: **we get rid of it.**
+
+<center>
+![](images/unrealistic_beauty_standards.gif)
+</center>
+:::
+
+
+
 Assumption 4$^\boldsymbol{\ast}$ together with the random sample assumption of Assumption 1, part (b), leads to Gaussian spherical errors,
 $$
 \varepsilon|X\sim\mathcal{N}_n\left(0,\sigma^2I_n\right),
@@ -70,7 +87,7 @@ $$
 :::
 ::: 
 
-::: {.proof}
+::: {.callout-note collapse="true" title="Proof"}
 This result follows from noting that 
 $$
 \begin{align*}
@@ -476,7 +493,20 @@ legend("topright", bty="n",
 
 
 
-### Test Decision using the Rejection Region  (One-Sided 1/2) 
+### Test Decision using the Rejection Region
+
+In all three versions of the test, $\beta_k$ denotes the true (unknown) parameter value and $\beta_k^{(0)}$ the null hypothetical value specified by the statistician (e.g. $\beta_k^{(0)}=0$). The significance level is $0<\alpha<1,$ and $c_{p}$ denotes the $p$-quantile of the $t$-distribution with $(n-K)$ degrees of freedom.
+
+The decision rule is always the same,
+
+* we can reject $H_0$ if $\;T_{obs} \in \mathcal{R},$
+* we cannot reject $H_0$ if $\;T_{obs} \not\in \mathcal{R},$
+
+so the three versions differ **only** in the shape of the rejection region $\mathcal{R}.$
+
+::: {.panel-tabset}
+
+#### Right-sided
 
 The right-sided version of the one-sided hypothesis is given by
 $$
@@ -486,27 +516,10 @@ $$
 & H_1: \beta_k > \beta_k^{(0)},
 \end{align*}
 $$
-where $\beta_k$ denotes the true (unknown) parameter value and $\beta_k^{(0)}$ the null hypothetical value specified by the statistician (e.g. $\beta_k^{(0)}=0$). 
 
-The rejection region is
+with rejection region
 $$
-\mathcal{R}=\;]c_{1-\alpha}, \infty[,
-$$
-where $0<\alpha<1$ denotes the significance level and $c_{1-\alpha}$ denotes the $(1-\alpha)$-quantile of the $t$-distribution with $(n-K)$ degrees of freedom. 
-
-* We can reject $H_0$ if
-$$
-\begin{align*}
-T_{obs} 
-& \in \mathcal{R} = \;]c_{1-\alpha}, \infty[
-\end{align*}
-$$
-* We cannot reject $H_0$ if
-$$
-\begin{align*}
-T_{obs} 
-&\not \in \mathcal{R} = \;]c_{1-\alpha}, \infty[
-\end{align*}
+\mathcal{R}=\;]c_{1-\alpha}, \infty[.
 $$
 
 @fig-oneSidedRight shows an example of the rejection region for the case of a significance level $\alpha=0.05$ and $n-K=12$ degrees of freedom. 
@@ -555,8 +568,7 @@ c_oneSided <- qt(p = 1-alpha, df = df)
 c_oneSided
 ```
 
-
-### Test Decision using the Rejection Region (One-Sided 2/2)
+#### Left-sided
 
 The left-sided version of the one-sided hypothesis is given by
 $$
@@ -566,28 +578,10 @@ $$
 &H_1:  \beta_k <  \beta_k^{(0)},
 \end{align*}
 $$
-where $\beta_k$ denotes the true (unknown) parameter value and $\beta_k^{(0)}$ the null hypothetical value specified by the statistician (e.g. $\beta_k^{(0)}=0$). 
 
-The rejection region is 
+with rejection region
 $$
-\mathcal{R}=\;]-\infty,c_{\alpha}[,
-$$
-where $0<\alpha<1$ denotes the significance level and $c_{\alpha}$ denotes the $\alpha$-quantile of the $t$-distribution with $(n-K)$ degrees of freedom. 
-
-
-* We can reject $H_0$ if
-$$
-\begin{align*}
-T_{obs} 
-& \in \mathcal{R} = \;]-\infty,c_{\alpha}[
-\end{align*}
-$$
-* We cannot reject $H_0$ if
-$$
-\begin{align*}
-T_{obs} 
-&\not \in \mathcal{R} = \;]-\infty,c_{\alpha}[
-\end{align*}
+\mathcal{R}=\;]-\infty,c_{\alpha}[.
 $$
 
 @fig-oneSidedLeft shows an example of the rejection region for the case of a significance level $\alpha=0.05$ and $n-K=12$ degrees of freedom. 
@@ -627,7 +621,6 @@ legend("topright", pch=c(22,22), lty=c(NA,NA), lwd=c(NA,NA), cex=1,
 par(mfrow=c(1,1))
 ```
 
-
 To find the $c_{\alpha}$ critical value we can use `R` as following:
 ```{r}
 alpha <- 0.05 # chosen significance level 
@@ -638,9 +631,7 @@ c_oneSided <- qt(p = alpha, df = df)
 c_oneSided
 ```
 
-
-
-### Test Decision using the Rejection Region (Two-Sided)
+#### Two-sided
 
 The two-sided $t$-test allows us to test
 $$
@@ -650,31 +641,10 @@ $$
 & H_1: \beta_k\ne \beta_k^{(0)},
 \end{align*}
 $$
-where $\beta_k$ denotes the true (unknown) parameter value and $\beta_k^{(0)}$ the null hypothetical value specified by the statistician (e.g. $\beta_k^{(0)}=0$). 
 
-
-The rejection region is 
+with rejection region
 $$
-\mathcal{R}=\;]-\infty,c_{\alpha/2}[\;\;\cup\;\;]c_{1-\alpha/2}, \infty[,
-$$
-where $0<\alpha<1$ denotes the significance level and $c_{\alpha/2}$ and $c_{1-\alpha/2}$ denote the $\alpha/2$- and the $(1-\alpha/2)$-quantiles of the $t$-distribution with $(n-K)$ degrees of freedom. 
-
-
-* We can reject $H_0$ if
-$$
-\begin{align*}
-T_{obs} 
-& \in \mathcal{R}%\\[2ex]
-%& \in \;]-\infty,c_{\alpha/2}[\;\;\cup\;\;]c_{1-\alpha/2}, \infty[
-\end{align*}
-$$
-* We cannot reject $H_0$ if
-$$
-\begin{align*}
-T_{obs} 
-&\not \in \mathcal{R}%\\[2ex]
-%&\not \in \;]-\infty,c_{\alpha/2}[\;\;\cup\;\;]c_{1-\alpha/2}, \infty[
-\end{align*}
+\mathcal{R}=\;]-\infty,c_{\alpha/2}[\;\;\cup\;\;]c_{1-\alpha/2}, \infty[.
 $$
 
 @fig-twoSided shows an example of the rejection region for the case of a significance level $\alpha=0.05$ and $n-K=12$ degrees of freedom. 
@@ -715,7 +685,6 @@ text(x =  q, y = .45, labels = expression(c[1-alpha/2]==2.18))
 text(x = -q, y = .45, labels = expression(c[alpha/2]==-2.18))
 ```
 
-
 To find the $c_{\alpha/2}$ and $c_{1-\alpha/2}$ critical values we can use `R` as following:
 ```{r}
 alpha <- 0.05 # chosen signficance level 
@@ -730,9 +699,30 @@ c_twoSided <- qt(p = 1-alpha/2, df = df)
 c_twoSided
 ```
 
+:::
 
 
-### Test Decision using the $p$-Value (One-Sided 1/2) {#sec-TDecRS}
+### Test Decision using the $p$-Value {#sec-TDecRS}
+
+Under the null hypothesis we know that
+$$
+T\overset{H_0}{\sim}t_{n-K},
+$$
+which is what allows us to compute the $p$-value. In all three versions the decision rule is the same,
+
+* we reject $H_0$ if $\;p_{\text{obs}} < \alpha,$
+* we cannot reject $H_0$ if $\;p_{\text{obs}} \geq \alpha,$
+
+where $0<\alpha<1$ denotes the chosen significance level. Typical choices are
+
+   * $\alpha = 0.05$
+   * $\alpha = 0.01$
+
+The three versions differ **only** in how $p_{\text{obs}}$ is computed.
+
+::: {.panel-tabset}
+
+#### Right-sided
 
 Right-sided version of the one-sided hypothesis:
 $$
@@ -742,33 +732,12 @@ $$
 \end{align*}
 $$
 
-<!-- In case of a one-sided $t$-test, we will reject the null if $T_{\text{obs}}$ is sufficiently "far away" from zero in the relevant direction of $H_1$.  -->
-
-We know that
-$$
-T\overset{H_0}{\sim}t_{n-K}.
-$$
-
-
 The $p$-value is the probability of seeing realizations of $T$ that are equal to or larger than the observed value $T_{\text{obs}}$ given that the null hypothesis is true
 $$
 p_{\text{obs}}=P(T\geq T_{\text{obs}}\;|\;H_0 \text{ is true}).
 $$
-* We reject the null hypothesis $H_0$ if
-$$
-p_{\text{obs}} < \alpha
-$$
 
-* We cannot reject the null hypothesis $H_0$ if
-$$
-p_{\text{obs}} \geq \alpha,
-$$
-where $0<\alpha<1$ denotes the chosen significance level. Typical choices are
-   * $\alpha = 0.05$
-   * $\alpha = 0.01$
-
-
-### Test Decision using the $p$-Value (One-Sided 2/2) 
+#### Left-sided
 
 Left-sided version of the one-sided hypothesis:
 $$
@@ -783,23 +752,7 @@ $$
 p_{\text{obs}}=P(T\leq T_{\text{obs}}\;|\;H_0 \text{ is true}).
 $$
 
-
-* We reject the null hypothesis $H_0$ if
-$$
-p_{\text{obs}} < \alpha
-$$
-
-* We cannot reject the null hypothesis $H_0$ if
-$$
-p_{\text{obs}} \geq \alpha,
-$$
-where $0<\alpha<1$ denotes the chosen significance level. Typical choices are
-   * $\alpha = 0.05$
-   * $\alpha = 0.01$
-
-
-
-### Test Decision using the $p$-Value (Two-Sided)
+#### Two-sided
 
 The two-sided $t$-test allows us to test
 $$
@@ -809,13 +762,6 @@ $$
 & H_1: \beta_k\ne \beta_k^{(0)}
 \end{align*}
 $$
-where $\beta_k$ denotes the true (unknown) parameter value and $\beta_k^{(0)}$ the null hypothetical value specified by the statisticaian (e.g. $\beta_k^{(0)}=0$). 
-
-We know that
-$$
-T\overset{H_0}{\sim}t_{n-K}.
-$$
-
 
 The $p$-value of the two-sided $t$-test is the probability of seeing realizations of $T$ that are equal to or more extreme than the observed value $T_{\text{obs}}$ given that the null hypothesis is true
 $$
@@ -827,19 +773,7 @@ p_{\text{obs}}
 \end{align*}
 $$
 
-* We reject the null hypothesis $H_0$ if
-$$
-p_{\text{obs}} < \alpha
-$$
-
-* We cannot reject the null hypothesis $H_0$ if
-$$
-p_{\text{obs}} \geq \alpha,
-$$
-where $0<\alpha<1$ denotes the chosen significance level. Typical choices are
-   * $\alpha = 0.05$
-   * $\alpha = 0.01$
-
+:::
 
 
 ## Confidence Intervals {#sec-CIsmallsample}
@@ -1048,35 +982,36 @@ $$
 is to collect all hypotheses which we do not care to detect by the statistical test. This way, the set of alternative hypotheses $H_1:\theta\in\Theta_1$ becomes smaller which leads to more powerful tests.  
 
 
-::: {.callout-tip icon="false"}
-# Example: Two-Sided Test with $\theta\in\mathbb{R}$
+::: {.panel-tabset}
+
+#### Example: two-sided test with $\theta\in\mathbb{R}$
+
 $$
 \begin{equation*}
 \begin{array}{ll}
 & H_0: \theta = \theta^{(0)}\\
-\text{versus}\quad 
+\text{versus}\quad
 & H_1: \theta\neq \theta^{(0)}\\
 \end{array}
 \end{equation*}
 $$
 
-Here we have a **simple** null hypothesis 
+Here we have a **simple** null hypothesis
 $$
 \Theta_0=\theta^{(0)}
-$$ 
-and a **composite** alternative hypothesis 
+$$
+and a **composite** alternative hypothesis
 $$
 \Theta_1=\mathbb{R}\setminus\theta^{(0)}.
 $$
-:::
 
-::: {.callout-tip icon="false"}
-# Example: One-Sided Test with $\theta\in\mathbb{R}$
+#### Example: one-sided test with $\theta\in\mathbb{R}$
+
 $$
 \begin{equation*}
 \begin{array}{ll}
 & H_0: \theta \geq  \theta^{(0)}\\
-\text{versus}\quad 
+\text{versus}\quad
 & H_1: \theta  < \theta^{(0)}\\
 \end{array}
 \end{equation*}
@@ -1085,14 +1020,15 @@ $$
 Here we have a **composite** null hypothesis
 $$
 \Theta_0=\;[\theta^{(0)},\infty[
-$$ 
+$$
 and a **composite** alternative hypothesis
 $$
 \Theta_1=\;]-\infty,\theta^{(0)}[.
 $$
 
-(Likewise for the other direction of the one-sided test.) 
-::: 
+(Likewise for the other direction of the one-sided test.)
+
+:::
 
 ### Decisions Errors
 
@@ -1137,6 +1073,8 @@ there's a famous sentence which goes back to @Altman_Bland_1995 :</br>
 
 
 
+::: {.panel-tabset}
+
 ### Size 
 
 The probability of a type-I-error event is called **size** of $T_n.$ 
@@ -1171,7 +1109,7 @@ Since we want to keep the probability of falsely rejecting $H_0$ small, we choos
 
 Generally, of course, the value of $\alpha$ is arbitrary and you can also choose $\alpha=0.00231.$
 
-::: {.callout-note}
+::: {.callout-note collapse="true"}
 # Exact vs Conservative vs Invalid Testing
 
 A test statistic $T_n$ is called 
@@ -1195,7 +1133,7 @@ Under Assumptions 1-4$^\ast,$ the $F$-test and the $t$-test are **exact** test s
 :::
 
 
-#### **Showing Exactness of the $F$-Test** {-}
+::: {.callout-note collapse="true" title="Showing exactness of the F-test"}
 
 $$
 \begin{equation*}
@@ -1232,9 +1170,10 @@ $$
 \end{align*}
 $$
 for all sample sizes $n>K.$
+:::
 
 
-#### **Showing Exactness of the Two-Sided $t$-Test:** {-}
+::: {.callout-note collapse="true" title="Showing exactness of the two-sided t-test"}
 
 $$
 \begin{equation*}
@@ -1273,10 +1212,11 @@ $$
 \end{align*}
 $$
 for all sample sizes $n>K.$
+:::
 
 
 
-#### **Showing Exactness of the One-Sided $t$-Test:** {-}
+::: {.callout-note collapse="true" title="Showing exactness of the one-sided t-test"}
 
 Consider, without loss of generality, the following right-side version of the one-sided hypothesis:
 
@@ -1372,6 +1312,7 @@ $$
 \mathcal{R}_{n,\alpha} = ]c_{n,1-\alpha},\infty[,
 $$
 with $c_{n,1-\alpha}$ denoting the $(1-\alpha)$-quantile of the $t$-distribution with $(n-K)$ degrees of freedom.
+:::
 
 
 <!-- 
@@ -1576,7 +1517,7 @@ for any fixed $0<\alpha<1$ and any fixed $|\theta - \theta^{(0)}|>0.$
 **Caution:** Consistency of a statistical test is an important property. However, this property implies that even small, practically irrelevant violations of $H_0$, i.e., $|\theta-\theta_0|\approx 0,$ will be detected if the sample size is sufficiently large. 
 
 
-#### **Power of the One-Sided $t$-Test** {-}
+::: {.callout-note collapse="true" title="Power of the one-sided t-test"}
 
 <!-- A type-II-error is the mistake of not rejecting the null hypothesis when in fact it should have been rejected. The probability of making a type-II-error equals one minus the probability of correctly rejecting the null hypothesis ("Power").  -->
 
@@ -1744,10 +1685,7 @@ legend(x=-4.5,y=.65, title=NULL, bty="n",
    c(expression("Null Distribution"~"N(0,1)"),"P(type-II-error)","P(type-I-error)", expression(paste("Power")))[-3], 
     fill=c(alpha("grey", 0.5), alpha("darkblue", 0.25), alpha("red", 0.25), alpha("green", 0.5))[-3], horiz=FALSE)
 ```
-
-
-
-
+:::
 
 
 ### $p$-Value {#sec-pValue}
@@ -1867,6 +1805,9 @@ F_{H_0,p}(x)
 \end{align*}
 $$
 where $F_{H_0,|T_n|}$ is invertible, since $|T_n|$ is a continuously distribued random variable. 
+
+:::
+
 
 
 
@@ -2275,12 +2216,13 @@ plot(lm_obj, which = 1)
 
 Lukily, the data set `DoctorVisits` actually has a **large sample size** of $n=$ `r nrow(DoctorVisits)` and thus there is a way out of this problem: The large sample inference framework introduced in the next chapter. 
 
+<!-- 
 ## Exercises
 
 * [Exercises for Chapter 6](https://www.dropbox.com/scl/fi/hyrokd4720da8iubigmvd/Ch6_Exercises1.pdf?rlkey=2yw1px0j7fp4criz3ol8qzbas&st=cj791hzi&dl=0)
 
 * [Exercises of Chapter 6 with Solutions](https://www.dropbox.com/scl/fi/7ml9kkam4e7j72tyh3awh/Ch6_Exercises_with_Solutions1.pdf?rlkey=7wyxelycpaf072oe2j1w0745m&st=x1ojtu8y&dl=0) 
-
+ -->
 
 
 ## References {-}

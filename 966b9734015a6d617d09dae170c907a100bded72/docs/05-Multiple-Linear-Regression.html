@@ -645,12 +645,25 @@ E(\varepsilon_i|X_i)=0 \quad\Rightarrow\quad E(\varepsilon_i)=0.
 </div>
 </div>
 </div>
-<div class="proof">
-<p><span class="proof-title"><em>Proof</em>. </span>Using the <em>Law of Total Expectations</em> (i.e., <span class="math inline">\(E[E(Z|X)]=E(Z)\)</span>) we can rewrite <span class="math inline">\(E(\varepsilon_i)\)</span> as <span class="math display">\[
+<div class="callout callout-style-default callout-note callout-titled" title="Proof">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Proof
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Using the <em>Law of Total Expectations</em> (i.e., <span class="math inline">\(E[E(Z|X)]=E(Z)\)</span>) we can rewrite <span class="math inline">\(E(\varepsilon_i)\)</span> as <span class="math display">\[
 E(\varepsilon_i)=E[E(\varepsilon_i|X_i)].
 \]</span> But the exogeneity assumption yields <span class="math display">\[
 E[E(\varepsilon_i|X_i)]=E[0]=0
 \]</span> which completes the proof. <span class="math inline">\(\square\)</span></p>
+</div>
+</div>
 </div>
 <p>Generally, two random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are said to be <strong>orthogonal</strong> if their cross moment is zero, i.e.&nbsp;if <span class="math display">\[
 E(XY)=0.
@@ -669,8 +682,19 @@ E(\varepsilon_i|X_i)=0 \quad\Rightarrow\quad E(X_{ik}\varepsilon_i)=0
 </div>
 </div>
 </div>
-<div class="proof">
-<p><span class="proof-title"><em>Proof</em>. </span><span class="math display">\[\begin{align*}
+<div class="callout callout-style-default callout-note callout-titled" title="Proof">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Proof
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math display">\[\begin{align*}
 E(X_{ik}\varepsilon_i)
 &amp;=E(E(X_{ik}\varepsilon_i|X_{ik}))\quad{\text{(By the Law of Total Expectations)}}\\
 &amp;=E(X_{ik}E(\varepsilon_i|X_{ik}))\quad{\text{(By the linearity of cond. expectations)}}
@@ -682,6 +706,8 @@ E(\varepsilon_i|X_{ik})=E(\underbrace{E(\varepsilon_i|X_i)}_{=0}|X_{ik})=E(0|X_{
 \]</span> I.e., we have that <span class="math inline">\(E(\varepsilon_i|X_{ik})=0\)</span> which allows us to conclude that <span class="math display">\[
 E(X_{ik}\varepsilon_i)=E(X_{ik}E(\varepsilon_i|X_{ik}))=E(X_{ik}0)=0
 \]</span> which completes the proof. <span class="math inline">\(\square\)</span></p>
+</div>
+</div>
 </div>
 <p>Because the mean of the error term is zero (<span class="math inline">\(E(\varepsilon_i)=0\)</span>; see <a href="#thm-a" class="quarto-xref">Theorem&nbsp;<span>5.1</span></a>), it follows that the orthogonality property, <span class="math inline">\(E(X_{ik}\varepsilon_i)=0,\)</span> is equivalent to a zero correlation property.</p>
 <div class="callout callout-style-simple callout-none no-icon">
@@ -698,14 +724,27 @@ E(\varepsilon_i|X_i)=0 \quad\Rightarrow\quad Cov(\varepsilon_i,X_{ik})&amp;=&amp
 </div>
 </div>
 </div>
-<div class="proof">
-<p><span class="proof-title"><em>Proof</em>. </span><span class="math display">\[\begin{eqnarray*}
+<div class="callout callout-style-default callout-note callout-titled" title="Proof">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Proof
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math display">\[\begin{eqnarray*}
   Cov(\varepsilon_i,X_{ik})&amp;=&amp;E(X_{ik}\varepsilon_i)-E(X_{ik})\,E(\varepsilon_i)\quad{\small\text{(Def. of Cov)}}\\[2ex]
   &amp;&amp;\text{By the mean zero result, $E(\varepsilon_i)=0,$ shown above:}\\[2ex]
   &amp;=&amp;E(X_{ik}\varepsilon_i)\\[2ex]
   &amp;&amp;\text{By the orthogonality result shown above:}\\[2ex]
   &amp;=&amp;0\quad\square
 \end{eqnarray*}\]</span></p>
+</div>
+</div>
 </div>
 <div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -1039,8 +1078,19 @@ Y^{\top}Y&amp;=&amp;(\hat Y+\hat\varepsilon)^{\top}(\hat Y+\hat\varepsilon)\nota
 </div>
 </div>
 </div>
-<div class="proof">
-<p><span class="proof-title"><em>Proof</em>. </span>From equation <span class="math inline">\(X^{\top}\hat\varepsilon=0\)</span> we have for regressions with intercept that <span class="math inline">\(\sum_{i=1}^n\hat\varepsilon_i=0\)</span>. Hence, from <span class="math inline">\(Y_i=\hat{Y}_i+\hat\varepsilon_i\)</span> it follows that <span class="math display">\[\begin{eqnarray*}
+<div class="callout callout-style-default callout-note callout-titled" title="Proof">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Proof
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>From equation <span class="math inline">\(X^{\top}\hat\varepsilon=0\)</span> we have for regressions with intercept that <span class="math inline">\(\sum_{i=1}^n\hat\varepsilon_i=0\)</span>. Hence, from <span class="math inline">\(Y_i=\hat{Y}_i+\hat\varepsilon_i\)</span> it follows that <span class="math display">\[\begin{eqnarray*}
   \frac{1}{n}\sum_{i=1}^n Y_i&amp;=&amp;\frac{1}{n}\sum_{i=1}^n \hat{Y}_i+\frac{1}{n}\sum_{i=1}^n \hat\varepsilon_i\\
   \bar{Y}&amp;=&amp;\bar{\hat{Y}}+0
 \end{eqnarray*}\]</span></p>
@@ -1051,6 +1101,8 @@ Y^{\top}Y&amp;=&amp;(\hat Y+\hat\varepsilon)^{\top}(\hat Y+\hat\varepsilon)\nota
    \sum_{i=1}^nY_i^2-n\bar{Y}^2&amp;=&amp;\sum_{i=1}^n\hat{Y}_i^2-n\bar{\hat{Y}}^2+\sum_{i=1}^n\hat\varepsilon_i^2\\
    \sum_{i=1}^n(Y_i-\bar{Y})^2&amp;=&amp;\sum_{i=1}^n(\hat{Y}_i-\bar{\hat{Y}})^2+\sum_{i=1}^n\hat\varepsilon_i^2\quad\square\\
 \end{eqnarray*}\]</span></p>
+</div>
+</div>
 </div>
 <section id="coefficients-of-determination-r2-and-overliner2" class="level4 unnumbered"><h4 class="unnumbered anchored" data-anchor-id="coefficients-of-determination-r2-and-overliner2">Coefficients of determination: <span class="math inline">\(R^2\)</span> and <span class="math inline">\(\overline{R}^2\)</span>
 </h4>
@@ -1296,8 +1348,19 @@ a^{\top}Da\geq 0
 </div>
 </div>
 </div>
-<div class="proof">
-<p><span class="proof-title"><em>Proof</em>. </span>Since <span class="math inline">\(\tilde{\beta}\)</span> is assumed to be linear in <span class="math inline">\(Y\)</span>, we can write <span class="math display">\[
+<div class="callout callout-style-default callout-note callout-titled" title="Proof">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Proof
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-15" class="callout-15-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Since <span class="math inline">\(\tilde{\beta}\)</span> is assumed to be linear in <span class="math inline">\(Y\)</span>, we can write <span class="math display">\[
 \tilde{\beta}=CY,
 \]</span> where <span class="math inline">\(C\)</span> is some <span class="math inline">\((K\times n)\)</span> matrix, which is a function of <span class="math inline">\(X\)</span> and/or nonrandom components. Adding a <span class="math inline">\((K\times n)\)</span> zero matrix <span class="math inline">\(0\)</span> yields <span class="math display">\[
 \tilde{\beta}=\Big(C\;\;\overbrace{-\left(X^{\top}X\right)^{-1}X^{\top}+\left(X^{\top}X\right)^{-1}X^{\top}\;}^{=0}\;\Big)Y.
@@ -1352,6 +1415,8 @@ a^{\top}DD^{\top}a=(D^{\top}a)^{\top}(D^{\top}a)=\tilde{a}^{\top}\tilde{a}=\sum_
 <!-- \item $(AB)^{\top}=\hat{\beta}^{\top}A^{\top}$ -->
 <!-- \item $A^{\top} = A$ $\Leftrightarrow$ $A$ is a symmetric matrix -->
 <!-- \end{itemize} -->
+</div>
+</div>
 </div>
 <!-- \paragraph*{Note.}  To reiterate: The unbiasedness of $\hat{\beta}$ did not depend on any assumptions about the distribution of $\varepsilon$,  except that $E(\varepsilon|X)=0$ which follows from our Assumption 2 together with the i.i.d. assumption in Assumption 1.  Once we imposed additionally the assumption of spherical errors $E(\varepsilon\varepsilon|X)=\sigma^{2}I_n$ we can show that $\hat{\beta}$ has the smallest variance of all linear unbiased estimators.  -->
 </section><section id="practice" class="level2" data-number="5.5"><h2 data-number="5.5" class="anchored" data-anchor-id="practice">

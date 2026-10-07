@@ -1206,10 +1206,12 @@ $$
 $$
 
 
+<!-- 
 ## Exercises
 
 * [Exercises for Chapter 2](https://www.dropbox.com/scl/fi/id6hc7q13veovkopf6xnt/Ch2_Exercises1.pdf?rlkey=fhyv5m2fjw6p9kv2strkxomun&st=jiltpae4&dl=0)
 
-* [Exercises for Chapter 2 with Solutions](https://www.dropbox.com/scl/fi/q4x4q4q996mav47sax8nf/Ch2_Exercises_with_Solutions1.pdf?rlkey=69osulookyvx96ttvj4ovo66a&st=03oydfn1&dl=0)
+* [Exercises for Chapter 2 with Solutions](https://www.dropbox.com/scl/fi/q4x4q4q996mav47sax8nf/Ch2_Exercises_with_Solutions1.pdf?rlkey=69osulookyvx96ttvj4ovo66a&st=03oydfn1&dl=0) 
+-->
 
 ## References {-}

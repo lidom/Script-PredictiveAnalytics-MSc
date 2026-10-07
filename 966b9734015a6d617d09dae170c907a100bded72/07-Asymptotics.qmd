@@ -1471,7 +1471,7 @@ stargazer(lm_obj, lm_obj,
           type = "html") # alternatively: type = "text" or type = "latex"
 ```
 
-## Exercises
+
 
 <!-- TODO: the link below was a private /preview/?session_id= URL, which only works
      in your own logged-in Dropbox session and 404s for students. Replace it with a
@@ -1479,8 +1479,10 @@ stargazer(lm_obj, lm_obj,
      with a relative Exercises/ path once the PDFs move into the repo. -->
 <!-- * [Exercises for Chapter 7](REPLACE-WITH-SHARE-LINK) -->
 
+<!-- 
+## Exercises
 
 * [Exercises of Chapter 7 with Solutions](https://www.dropbox.com/scl/fi/lukwgwqhpat56svnknh8t/Ch7_Exercises_with_Solutions1.pdf?rlkey=9i7ueeiqrlewcwo1617kvfhjr&st=mcpflw0i&dl=0) 
-
+-->
 
 # References {-}

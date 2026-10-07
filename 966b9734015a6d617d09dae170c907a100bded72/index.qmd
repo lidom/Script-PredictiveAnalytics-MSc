@@ -11,38 +11,18 @@ source("_common.R")
 suppressPackageStartupMessages(library("kableExtra"))
 suppressPackageStartupMessages(library("tidyverse"))
 
-timetable <- tibble("Day"          = c("TBA",       "TBA"),
-                    "Time (UTC+2)" = c("TBA",       "TBA"),
-                    "Lecture Hall" = c("TBA",       "TBA"))
+timetable <- tibble("Day"          = c("Thu.",       "Thu."),
+                    "Time"         = c("8:30-10:00", "12:00-13:30"),
+                    "Lecture Hall" = c("NB 301",         "GH"))
 
 timetable %>% kbl() %>%  kable_styling()
 ```
 
-::: {.callout-warning title="TODO — KU"}
-Fill in the KU lecture days, times and rooms above. The Bonn slots were
-Monday 10:15--11:45 and Wednesday 14:15--15:45 in Jur / Lecture Hall F.
-:::
-
-<!-- TODO — KU: Bonn streamed the first weeks via a uni-bonn Zoom room. Decide
-     whether KU streams at all; if so, restore this section with a KU link.
-
-#### Zoom
-
-For students not yet on campus, I'll stream the lectures via [Zoom](ADD-KU-ZOOM-LINK) during the first lecture weeks.
--->
 
 ### Lecture Material  
 
 * This online script
-
-::: {.callout-warning title="TODO — KU"}
-The eWhiteboard and `R`-scripts links pointed at the Bonn WS 25/26 Dropbox
-folder (`Metrics_eWhiteboard_2526_annotated.pdf`) and are removed. Add the KU
-equivalents once the semester folder exists:
-
-* `[eWhiteboard](ADD-KU-LINK)`
-* ``[Folder containing `R`-Scripts](ADD-KU-LINK)``
-:::
+* [eWhiteboard](https://www.dropbox.com/scl/fi/cekkrg29r1toqha35wdek/eWhiteboard_2627_annotated.pdf?rlkey=ddrcbxw5y4nlp59j8p5edvlgl&st=jaxomtsl&dl=0)
 
 ### Literature {-}
 
@@ -63,20 +43,16 @@ Further textbooks I can recommend:
 
 ### Information on the Exam {-}
 
-::: {.callout-warning title="TODO — KU"}
-Everything in this section is the **Bonn** exam format and has not been
-confirmed for KU. Check each item against the KU module description before the
-semester starts, and replace the examinations-office link below.
-:::
-
-* Written exam (60 minutes):
-   * **10** multiple-choice problems and
+* Written exam (60-90 minutes)
+<!-- 
+* **10** multiple-choice problems and
    * **2** free-text problems (each with sub-questions)
 * In the exam you are allowed to use
    * a *handwritten* cheat-sheet (**one side** of a DIN A4 page).
    * a non-programmable scientific calculator.
 * Please, do **not** use a pencil.
-* Exam dates and times are published by the examinations office (TODO — KU: add link)
+* Exam dates and times are published by the examinations office (TODO — KU: add link) 
+-->
 <!-- * There will be a **Mock Exam** in the last lecture weeks -->
 
 <!-- TODO — KU: the mock exam below linked to the Bonn WS 25/26 Dropbox

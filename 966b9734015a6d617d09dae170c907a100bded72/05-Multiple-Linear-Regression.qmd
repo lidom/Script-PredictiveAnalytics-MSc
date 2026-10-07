@@ -412,7 +412,7 @@ $$
 :::
 ::: 
 
-::: {.proof}
+::: {.callout-note collapse="true" title="Proof"}
 Using the *Law of Total Expectations* (i.e., $E[E(Z|X)]=E(Z)$) we can rewrite $E(\varepsilon_i)$ as
 $$
 E(\varepsilon_i)=E[E(\varepsilon_i|X_i)].
@@ -445,7 +445,7 @@ for all $k=1,\dots,K.$
 :::
 :::
 
-::: {.proof}
+::: {.callout-note collapse="true" title="Proof"}
 \begin{align*}
 E(X_{ik}\varepsilon_i)
 &=E(E(X_{ik}\varepsilon_i|X_{ik}))\quad{\text{(By the Law of Total Expectations)}}\\
@@ -484,7 +484,7 @@ E(\varepsilon_i|X_i)=0 \quad\Rightarrow\quad Cov(\varepsilon_i,X_{ik})&=&0\quad\
 ::: 
 
 
-::: {.proof}
+::: {.callout-note collapse="true" title="Proof"}
 \begin{eqnarray*}
   Cov(\varepsilon_i,X_{ik})&=&E(X_{ik}\varepsilon_i)-E(X_{ik})\,E(\varepsilon_i)\quad{\small\text{(Def. of Cov)}}\\[2ex]
   &&\text{By the mean zero result, $E(\varepsilon_i)=0,$ shown above:}\\[2ex]
@@ -899,7 +899,7 @@ where $\bar{Y}=\frac{1}{n}\sum_{i=1}^nY_i$ and $\bar{\hat{Y}}=\frac{1}{n}\sum_{i
 :::
 ::: 
 
-::: {.proof}
+::: {.callout-note collapse="true" title="Proof"}
 From equation $X^{\top}\hat\varepsilon=0$ we have for regressions with intercept that $\sum_{i=1}^n\hat\varepsilon_i=0$. Hence, from $Y_i=\hat{Y}_i+\hat\varepsilon_i$ it follows that
 \begin{eqnarray*}
   \frac{1}{n}\sum_{i=1}^n Y_i&=&\frac{1}{n}\sum_{i=1}^n \hat{Y}_i+\frac{1}{n}\sum_{i=1}^n \hat\varepsilon_i\\
@@ -1169,7 +1169,7 @@ for any $K$-dimensional vector $a\in\mathbb{R}^K$.
 :::
 
 
-::: {.proof}
+::: {.callout-note collapse="true" title="Proof"}
 
 Since $\tilde{\beta}$ is assumed to be linear in $Y$, we can write 
 $$

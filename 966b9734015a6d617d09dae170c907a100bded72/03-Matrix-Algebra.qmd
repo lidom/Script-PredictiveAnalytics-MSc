@@ -7,9 +7,9 @@ source("_common.R")
 
 Relevance for the exam: 
 
-* Chapters 3.1 to 3.4 
-* For Chapter 3.5 there will be a exercise question, however, for the exam "only" a general/basic understanding is sufficient
-* Chapter 3.6 is not relevant for the exam of this course, but may/will be useful in more advanced courses.
+* Mainly Chapters 3.1 to 3.4 
+* For Chapter 3.5 only a general/basic understanding is sufficient
+* Chapter 3.6 is not relevant for the exam of this course, but may be useful in more advanced courses.
 
 
 ## Basic Definitions 
@@ -1209,10 +1209,10 @@ ii) $\|A + B\| \leq \|A\| + \|B\|$
 iii) $\|A\| = 0$ implies $A = 0$
      (definiteness)
 
-
+<!-- 
 ## Exercises
 
 * [Exercises for Chapter 3](https://www.dropbox.com/scl/fi/zbqj9whsmd20mhbveipjh/Ch3_Exercises1.pdf?rlkey=xy9745yjiku05aex0i01tgt6j&st=s47gftwg&dl=0)
 
 * [Exercises for Chapter 3 with Solutions](https://www.dropbox.com/scl/fi/ep50rtkfruye004mhlev8/Ch3_Exercises_with_Solutions1.pdf?rlkey=9u23jyj6o76zhjgctt9q755xj&st=6z4iq2zu&dl=0) 
-
+ -->

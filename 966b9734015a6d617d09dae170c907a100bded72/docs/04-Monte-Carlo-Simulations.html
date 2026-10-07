@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.5.57">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>4&nbsp; Estimation Theory and Monte Carlo Simulations – Statistical Models and Inference: Foundations of Econometrics</title>
+<title>3&nbsp; Estimation Theory and Monte Carlo Simulations – Predictive Analytics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -60,8 +60,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./05-Multiple-Linear-Regression.html" rel="next">
-<link href="./03-Matrix-Algebra.html" rel="prev">
+<link href="./03-Matrix-Algebra.html" rel="next">
+<link href="./02-Probability.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -133,7 +133,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./04-Monte-Carlo-Simulations.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Estimation Theory and Monte Carlo Simulations</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./04-Monte-Carlo-Simulations.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Estimation Theory and Monte Carlo Simulations</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -144,9 +144,9 @@ window.Quarto = {
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
       <a href="./index.html" class="sidebar-logo-link">
-      <img src="./images/KU_Logo_Schwarz_RGB300_L.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none"></a>
+      <img src="./images/KU_Logo_Blau_M.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none"></a>
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Statistical Models and Inference: Foundations of Econometrics</a> 
+      <a href="./">Predictive Analytics</a> 
         <div class="sidebar-tools-main">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
@@ -179,14 +179,14 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./03-Matrix-Algebra.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Matrix Algebra</span></span></a>
+  <a href="./04-Monte-Carlo-Simulations.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Estimation Theory and Monte Carlo Simulations</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./04-Monte-Carlo-Simulations.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Estimation Theory and Monte Carlo Simulations</span></span></a>
+  <a href="./03-Matrix-Algebra.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Matrix Algebra</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -215,16 +215,16 @@ window.Quarto = {
         <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Table of contents</h2>
    
   <ul>
-<li><a href="#estimator-vs.-estimate" id="toc-estimator-vs.-estimate" class="nav-link active" data-scroll-target="#estimator-vs.-estimate"><span class="header-section-number">4.1</span> Estimator vs.&nbsp;Estimate</a></li>
-  <li><a href="#assessing-the-quality-of-estimators" id="toc-assessing-the-quality-of-estimators" class="nav-link" data-scroll-target="#assessing-the-quality-of-estimators"><span class="header-section-number">4.2</span> Assessing the Quality of Estimators</a></li>
-  <li><a href="#approximating-bias-variance-and-mse-using-mc-simulations" id="toc-approximating-bias-variance-and-mse-using-mc-simulations" class="nav-link" data-scroll-target="#approximating-bias-variance-and-mse-using-mc-simulations"><span class="header-section-number">4.3</span> Approximating Bias, Variance, and MSE using MC Simulations</a></li>
-  <li><a href="#example-sample-mean" id="toc-example-sample-mean" class="nav-link" data-scroll-target="#example-sample-mean"><span class="header-section-number">4.4</span> Example: Sample Mean</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">4.5</span> Exercises</a></li>
+<li><a href="#estimator-vs.-estimate" id="toc-estimator-vs.-estimate" class="nav-link active" data-scroll-target="#estimator-vs.-estimate"><span class="header-section-number">3.1</span> Estimator vs.&nbsp;Estimate</a></li>
+  <li><a href="#assessing-the-quality-of-estimators" id="toc-assessing-the-quality-of-estimators" class="nav-link" data-scroll-target="#assessing-the-quality-of-estimators"><span class="header-section-number">3.2</span> Assessing the Quality of Estimators</a></li>
+  <li><a href="#approximating-bias-variance-and-mse-using-mc-simulations" id="toc-approximating-bias-variance-and-mse-using-mc-simulations" class="nav-link" data-scroll-target="#approximating-bias-variance-and-mse-using-mc-simulations"><span class="header-section-number">3.3</span> Approximating Bias, Variance, and MSE using MC Simulations</a></li>
+  <li><a href="#example-sample-mean" id="toc-example-sample-mean" class="nav-link" data-scroll-target="#example-sample-mean"><span class="header-section-number">3.4</span> Example: Sample Mean</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">3.5</span> Exercises</a></li>
   </ul></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
-<h1 class="title"><span id="sec-EstimTheory" class="quarto-section-identifier"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Estimation Theory and Monte Carlo Simulations</span></span></h1>
+<h1 class="title"><span id="sec-EstimTheory" class="quarto-section-identifier"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Estimation Theory and Monte Carlo Simulations</span></span></h1>
 </div>
 
 
@@ -243,8 +243,8 @@ window.Quarto = {
 <li>You know the basic concepts of estimation theory and you can apply them to specific estimators.</li>
 <li>You know how to use a Monte Carlo simulation to check the accuracy (bias, variance, and standard error) of a given estimator</li>
 </ul>
-<section id="estimator-vs.-estimate" class="level2" data-number="4.1"><h2 data-number="4.1" class="anchored" data-anchor-id="estimator-vs.-estimate">
-<span class="header-section-number">4.1</span> Estimator vs.&nbsp;Estimate</h2>
+<section id="estimator-vs.-estimate" class="level2" data-number="3.1"><h2 data-number="3.1" class="anchored" data-anchor-id="estimator-vs.-estimate">
+<span class="header-section-number">3.1</span> Estimator vs.&nbsp;Estimate</h2>
 <p>Let’s assume that we have an iid random sample <span class="math inline">\(\{X_1,\dots,X_n\}\)</span> with <span class="math display">\[
 X_i\overset{iid}{\sim} F_X
 \]</span> for all <span class="math inline">\(i=1,\dots,n\)</span>, and let <span class="math display">\[
@@ -287,8 +287,8 @@ Note
 <p>Often we do not use a distinguishing notation, but denote both the estimator <span class="math inline">\(\hat\theta_{n}\)</span> and its realization <span class="math inline">\(\hat\theta_{n,obs}\)</span> as <span class="math inline">\(\hat\theta_{n}\)</span>. This ambiguity is often convenient since both points of views can make sense in a given context. Sometimes, also the subscript <span class="math inline">\(n\)</span> in <span class="math inline">\(\hat\theta_{n}\)</span> is dropped and one simply writes <span class="math inline">\(\hat\theta.\)</span></p>
 </div>
 </div>
-</section><section id="assessing-the-quality-of-estimators" class="level2" data-number="4.2"><h2 data-number="4.2" class="anchored" data-anchor-id="assessing-the-quality-of-estimators">
-<span class="header-section-number">4.2</span> Assessing the Quality of Estimators</h2>
+</section><section id="assessing-the-quality-of-estimators" class="level2" data-number="3.2"><h2 data-number="3.2" class="anchored" data-anchor-id="assessing-the-quality-of-estimators">
+<span class="header-section-number">3.2</span> Assessing the Quality of Estimators</h2>
 <p>Any reasonable estimator <span class="math inline">\(\hat\theta_n\)</span> should be able to approximate the (usually unknown) parameter value <span class="math inline">\(\theta\)</span>, <span class="math display">\[
 \left(\text{random quantity}\right)\quad\hat\theta_n\approx\theta\quad\left(\text{deterministic parameter}\right),
 \]</span> and the approximation should get better as the sample size increases, i.e.&nbsp;as <span class="math inline">\(n\to\infty\)</span>.</p>
@@ -313,7 +313,7 @@ To check (via MC-Simulations) the quality of an estimator, one can look at the t
 </div>
 <div class="callout-body-container">
 <div id="def-bias" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 4.1 (Bias of <span class="math inline">\(\hat\theta_n\)</span>)</strong></span> The <strong>bias</strong> of an estimator <span class="math inline">\(\hat\theta_n\)</span> is defined as</p>
+<p><span class="theorem-title"><strong>Definition 3.1 (Bias of <span class="math inline">\(\hat\theta_n\)</span>)</strong></span> The <strong>bias</strong> of an estimator <span class="math inline">\(\hat\theta_n\)</span> is defined as</p>
 <p><span class="math display">\[
 \operatorname{Bias}\left(\hat\theta_n\right) = E\left(\hat\theta_n\right) - \theta.
 \]</span></p>
@@ -337,7 +337,7 @@ To check (via MC-Simulations) the quality of an estimator, one can look at the t
 </div>
 <div class="callout-body-container">
 <div id="def-var" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 4.2 (Variance and Standard Error of <span class="math inline">\(\hat\theta_n\)</span>)</strong></span> The <strong>variance</strong> of an estimator <span class="math inline">\(\hat\theta_n\)</span> is defined equivalently to the variance of any other random variable</p>
+<p><span class="theorem-title"><strong>Definition 3.2 (Variance and Standard Error of <span class="math inline">\(\hat\theta_n\)</span>)</strong></span> The <strong>variance</strong> of an estimator <span class="math inline">\(\hat\theta_n\)</span> is defined equivalently to the variance of any other random variable</p>
 <p><span class="math display">\[
 Var\left(\hat\theta_n\right) = E\left[\left(\hat\theta_n - E(\hat\theta_n)\right)^2\right].
 \]</span> The square root of the variance (i.e.&nbsp;the standard deviation) of an estimator <span class="math inline">\(\hat\theta_n\)</span> is called <strong>standard error</strong> of <span class="math inline">\(\hat\theta_n\)</span>, <span class="math display">\[
@@ -359,7 +359,7 @@ Var\left(\hat\theta_n\right) = E\left[\left(\hat\theta_n - E(\hat\theta_n)\right
 </div>
 <div class="callout-body-container">
 <div id="def-mse" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 4.3 (Mean Squared Error of <span class="math inline">\(\hat\theta_n\)</span>)</strong></span> The <strong>mean squared error</strong> of an estimator <span class="math inline">\(\hat\theta_n\)</span> is defined as</p>
+<p><span class="theorem-title"><strong>Definition 3.3 (Mean Squared Error of <span class="math inline">\(\hat\theta_n\)</span>)</strong></span> The <strong>mean squared error</strong> of an estimator <span class="math inline">\(\hat\theta_n\)</span> is defined as</p>
 <p><span class="math display">\[
 \operatorname{MSE}\left(\hat\theta_n\right) =  E\left[\left(\hat\theta_n - \theta\right)^2\right].
 \]</span></p>
@@ -397,8 +397,8 @@ Monte Carlo (MC) Simulations
 <p>Unfortunately, it is often difficult to derive the above assessment metrics for given sample sizes <span class="math inline">\(n\)</span> and given data distributions <span class="math inline">\(F_X,\)</span> since for given <span class="math inline">\(n\)</span> we typically do not know the distribution of the estimator <span class="math inline">\(\hat\theta_n\)</span> and thus also not its bias and variance. Monte Carlo simulations allow us to solve this issue.</p>
 </div>
 </div>
-</section><section id="approximating-bias-variance-and-mse-using-mc-simulations" class="level2" data-number="4.3"><h2 data-number="4.3" class="anchored" data-anchor-id="approximating-bias-variance-and-mse-using-mc-simulations">
-<span class="header-section-number">4.3</span> Approximating Bias, Variance, and MSE using MC Simulations</h2>
+</section><section id="approximating-bias-variance-and-mse-using-mc-simulations" class="level2" data-number="3.3"><h2 data-number="3.3" class="anchored" data-anchor-id="approximating-bias-variance-and-mse-using-mc-simulations">
+<span class="header-section-number">3.3</span> Approximating Bias, Variance, and MSE using MC Simulations</h2>
 <p>Any of the the above assessment metrics requires us to compute <strong>means</strong>, i.e.&nbsp;<span class="math inline">\(E(\cdot)\)</span>, of random variables:</p>
 <ul>
 <li><p>For the <span class="math inline">\(\operatorname{Bias}\left(\hat\theta_n\right)\)</span> we need to compute <span class="math inline">\(E\left(\hat\theta_n\right)-\theta\)</span></p></li>
@@ -491,8 +491,8 @@ Var(\hat\theta_n),\text{ and }
 \]</span></p>
 </div>
 </div>
-</section><section id="example-sample-mean" class="level2" data-number="4.4"><h2 data-number="4.4" class="anchored" data-anchor-id="example-sample-mean">
-<span class="header-section-number">4.4</span> Example: Sample Mean</h2>
+</section><section id="example-sample-mean" class="level2" data-number="3.4"><h2 data-number="3.4" class="anchored" data-anchor-id="example-sample-mean">
+<span class="header-section-number">3.4</span> Example: Sample Mean</h2>
 <p>The following <code>R</code> code contains a Monte Carlo simulation with <span class="math inline">\(B = 10000\)</span> replications to approximate the bias, the variance, and the mean squared error for the sample mean <span class="math display">\[
 (\hat\theta_n=)\bar{X}_n=\frac{1}{n}\sum_{i=1}^nX_i
 \]</span> Setup:</p>
@@ -539,11 +539,11 @@ Var(\hat\theta_n),\text{ and }
 <span><span class="co">## Mean squared error of the sample mean for different sample sizes n</span></span>
 <span><span class="va">MC_MSE_n_seq</span>  <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/apply.html">apply</a></span><span class="op">(</span><span class="va">estimates_mat</span>, <span class="fl">2</span>, <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">{</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="op">(</span><span class="va">x</span> <span class="op">-</span> <span class="va">mu</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span><span class="op">}</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><a href="#tbl-mcbvmse" class="quarto-xref">Table&nbsp;<span>4.1</span></a> shows the Monte Carlo approximations for the bias, the variance, and the mean squared error of <span class="math inline">\(\bar{X}_n.\)</span></p>
+<p><a href="#tbl-mcbvmse" class="quarto-xref">Table&nbsp;<span>3.1</span></a> shows the Monte Carlo approximations for the bias, the variance, and the mean squared error of <span class="math inline">\(\bar{X}_n.\)</span></p>
 <div class="cell" data-layout-align="center">
 <div id="tbl-mcbvmse" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
 <figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-mcbvmse-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;4.1: Monte Carlo approximations for the true bias, true variance, and true mean squared error of sample mean.
+Table&nbsp;3.1: Monte Carlo approximations for the true bias, true variance, and true mean squared error of sample mean.
 </figcaption><div aria-describedby="tbl-mcbvmse-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
 <table class="table do-not-create-environment cell caption-top table-sm table-striped small" data-quarto-postprocess="true">
@@ -579,11 +579,11 @@ Table&nbsp;4.1: Monte Carlo approximations for the true bias, true variance, and
 </figure>
 </div>
 </div>
-<p>The Monte Carlo approximations in <a href="#tbl-mcbvmse" class="quarto-xref">Table&nbsp;<span>4.1</span></a> indicate that:</p>
+<p>The Monte Carlo approximations in <a href="#tbl-mcbvmse" class="quarto-xref">Table&nbsp;<span>3.1</span></a> indicate that:</p>
 <ul>
 <li><p>The bias <span class="math inline">\(\operatorname{Bias}(\bar{X}_n)\)</span> is effectively zero for all sample sizes <span class="math inline">\(n\in\{5,15,50\}\)</span></p></li>
 <li><p>The mean squared error <span class="math inline">\(\operatorname{MSE}(\bar{X}_n)\)</span> is decreasing as the sample size <span class="math inline">\(n\)</span> gets larger.</p></li>
-<li><p>The log-log plot in <a href="#fig-loglog" class="quarto-xref">Figure&nbsp;<span>4.1</span></a> suggests a convergence rate of <span class="math inline">\(-1\)</span> for <span class="math inline">\(\operatorname{MSE}(\bar{X}_n)\)</span> i.e. <span class="math display">\[
+<li><p>The log-log plot in <a href="#fig-loglog" class="quarto-xref">Figure&nbsp;<span>3.1</span></a> suggests a convergence rate of <span class="math inline">\(-1\)</span> for <span class="math inline">\(\operatorname{MSE}(\bar{X}_n)\)</span> i.e. <span class="math display">\[
 \begin{align*}
 \operatorname{MSE}(\bar{X}_n) &amp;= \texttt{Constant} \cdot n^{-1}\\[2ex]
 \Leftrightarrow\log\left(\operatorname{MSE}(\bar{X}_n)\right) &amp;= \log\left(\texttt{Constant}\right) -1 \cdot \log\left(n\right),
@@ -609,7 +609,7 @@ Table&nbsp;4.1: Monte Carlo approximations for the true bias, true variance, and
 <img src="04-Monte-Carlo-Simulations_files/figure-html/fig-loglog-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-loglog-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;4.1: Plotting the logarithm of the MSE-values against the logarithm of the sample size values <span class="math inline">\(n\)</span> allows to approximate the convergence rate of the MSE-values as the sample size increases by the slope of the graph.
+Figure&nbsp;3.1: Plotting the logarithm of the MSE-values against the logarithm of the sample size values <span class="math inline">\(n\)</span> allows to approximate the convergence rate of the MSE-values as the sample size increases by the slope of the graph.
 </figcaption></figure>
 </div>
 </div>
@@ -945,8 +945,8 @@ We can use Monte Carlo simulations to approximate the *exact* distribution of an
 * As the sample size increases, the distributions of the estimators $\bar{X}_n$ concentrate around the target parameter $\mu=10$. This feature of the estimator's distribution is summarized by the **mean squared error** (see next section) of an estimator.
 
 Thus here the quality of the estimator $\bar{X}_n$ gets better as $n$ gets large. To describe the quality of estimators more compactly, statisticians/econometricians use specific metrics like bias, variance and the mean squared error of the distribution of a estimator $\hat\theta$. -->
-</section><section id="exercises" class="level2" data-number="4.5"><h2 data-number="4.5" class="anchored" data-anchor-id="exercises">
-<span class="header-section-number">4.5</span> Exercises</h2>
+</section><section id="exercises" class="level2" data-number="3.5"><h2 data-number="3.5" class="anchored" data-anchor-id="exercises">
+<span class="header-section-number">3.5</span> Exercises</h2>
 <ul>
 <li><p><a href="https://www.dropbox.com/scl/fi/w1nj9wnpj15r53opudhns/Ch4_Exercises1.pdf?rlkey=4bk9h4rpg4mkizi46s2r11okv&amp;st=0dawfy6m&amp;dl=0">Exercises for Chapter 4</a></p></li>
 <li><p><a href="https://www.dropbox.com/scl/fi/jssefvtifo6wczxaxr250/Ch4_Exercises_with_Solutions1.pdf?rlkey=wcineb1vy4vpqxy8989qplexr&amp;st=fp5sf04v&amp;dl=0">Exercises for Chapter 4 with Solutions</a></p></li>
@@ -1517,13 +1517,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
-      <a href="./03-Matrix-Algebra.html" class="pagination-link" aria-label="Matrix Algebra">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Matrix Algebra</span></span>
+      <a href="./02-Probability.html" class="pagination-link" aria-label="Probability">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Probability</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./05-Multiple-Linear-Regression.html" class="pagination-link" aria-label="Multiple Linear Regression">
-        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Multiple Linear Regression</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./03-Matrix-Algebra.html" class="pagination-link" aria-label="Matrix Algebra">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Matrix Algebra</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

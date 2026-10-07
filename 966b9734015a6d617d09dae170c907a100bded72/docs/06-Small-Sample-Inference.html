@@ -247,12 +247,8 @@ window.Quarto = {
 <a href="#sec-testingsinglep" id="toc-sec-testingsinglep" class="nav-link" data-scroll-target="#sec-testingsinglep"><span class="header-section-number">6.3</span> <span class="math inline">\(t\)</span>-Tests: Hypothesis Tests about One Parameter</a>
   <ul class="collapse">
 <li><a href="#sec-tTestTestStat" id="toc-sec-tTestTestStat" class="nav-link" data-scroll-target="#sec-tTestTestStat"><span class="header-section-number">6.3.1</span> The Test Statistic and its Null Distribution</a></li>
-  <li><a href="#test-decision-using-the-rejection-region-one-sided-12" id="toc-test-decision-using-the-rejection-region-one-sided-12" class="nav-link" data-scroll-target="#test-decision-using-the-rejection-region-one-sided-12"><span class="header-section-number">6.3.2</span> Test Decision using the Rejection Region (One-Sided 1/2)</a></li>
-  <li><a href="#test-decision-using-the-rejection-region-one-sided-22" id="toc-test-decision-using-the-rejection-region-one-sided-22" class="nav-link" data-scroll-target="#test-decision-using-the-rejection-region-one-sided-22"><span class="header-section-number">6.3.3</span> Test Decision using the Rejection Region (One-Sided 2/2)</a></li>
-  <li><a href="#test-decision-using-the-rejection-region-two-sided" id="toc-test-decision-using-the-rejection-region-two-sided" class="nav-link" data-scroll-target="#test-decision-using-the-rejection-region-two-sided"><span class="header-section-number">6.3.4</span> Test Decision using the Rejection Region (Two-Sided)</a></li>
-  <li><a href="#sec-TDecRS" id="toc-sec-TDecRS" class="nav-link" data-scroll-target="#sec-TDecRS"><span class="header-section-number">6.3.5</span> Test Decision using the <span class="math inline">\(p\)</span>-Value (One-Sided 1/2)</a></li>
-  <li><a href="#test-decision-using-the-p-value-one-sided-22" id="toc-test-decision-using-the-p-value-one-sided-22" class="nav-link" data-scroll-target="#test-decision-using-the-p-value-one-sided-22"><span class="header-section-number">6.3.6</span> Test Decision using the <span class="math inline">\(p\)</span>-Value (One-Sided 2/2)</a></li>
-  <li><a href="#test-decision-using-the-p-value-two-sided" id="toc-test-decision-using-the-p-value-two-sided" class="nav-link" data-scroll-target="#test-decision-using-the-p-value-two-sided"><span class="header-section-number">6.3.7</span> Test Decision using the <span class="math inline">\(p\)</span>-Value (Two-Sided)</a></li>
+  <li><a href="#test-decision-using-the-rejection-region-1" id="toc-test-decision-using-the-rejection-region-1" class="nav-link" data-scroll-target="#test-decision-using-the-rejection-region-1"><span class="header-section-number">6.3.2</span> Test Decision using the Rejection Region</a></li>
+  <li><a href="#sec-TDecRS" id="toc-sec-TDecRS" class="nav-link" data-scroll-target="#sec-TDecRS"><span class="header-section-number">6.3.3</span> Test Decision using the <span class="math inline">\(p\)</span>-Value</a></li>
   </ul>
 </li>
   <li>
@@ -266,9 +262,6 @@ window.Quarto = {
   <ul class="collapse">
 <li><a href="#simple-versus-composite-hypotheses" id="toc-simple-versus-composite-hypotheses" class="nav-link" data-scroll-target="#simple-versus-composite-hypotheses"><span class="header-section-number">6.5.1</span> Simple versus Composite Hypotheses</a></li>
   <li><a href="#decisions-errors" id="toc-decisions-errors" class="nav-link" data-scroll-target="#decisions-errors"><span class="header-section-number">6.5.2</span> Decisions Errors</a></li>
-  <li><a href="#size" id="toc-size" class="nav-link" data-scroll-target="#size"><span class="header-section-number">6.5.3</span> Size</a></li>
-  <li><a href="#power" id="toc-power" class="nav-link" data-scroll-target="#power"><span class="header-section-number">6.5.4</span> Power</a></li>
-  <li><a href="#sec-pValue" id="toc-sec-pValue" class="nav-link" data-scroll-target="#sec-pValue"><span class="header-section-number">6.5.5</span> <span class="math inline">\(p\)</span>-Value</a></li>
   </ul>
 </li>
   <li>
@@ -327,6 +320,27 @@ window.Quarto = {
 <p><strong>Assumption 4<span class="math inline">\(^\boldsymbol{\ast}\)</span>: Conditional Gaussian error distribution:</strong> The error terms are Gaussian and homoskedastik, i.e., <span class="math display">\[
 \varepsilon_i|X_i\sim\mathcal{N}(0,\sigma^2)
 \]</span> for all <span class="math inline">\(i=1,\dots,n.\)</span></p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+In Practice, There Is No Such Thing as <em>Perfectly</em> Normal Error Terms!
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Under Assumption 4<span class="math inline">\(^\boldsymbol{\ast}\)</span>, statistical inference works beautifully.</p>
+<p>Unfortunately, reality is much less cooperative. Error terms are almost never normally distributed, so this assumption is essentially a convenient, but unrealistic fiction.</p>
+<p>In Chapter <a href="07-Asymptotics.html" class="quarto-xref"><span>Chapter 7</span></a>, we do what every good statistician should do with an unrealistic beauty standard: <strong>we get rid of it.</strong></p>
+<center>
+<img src="images/unrealistic_beauty_standards.gif" class="img-fluid">
+</center>
+</div>
+</div>
+</div>
 <p>Assumption 4<span class="math inline">\(^\boldsymbol{\ast}\)</span> together with the random sample assumption of Assumption 1, part (b), leads to Gaussian spherical errors, <span class="math display">\[
 \varepsilon|X\sim\mathcal{N}_n\left(0,\sigma^2I_n\right),
 \]</span> where <span class="math inline">\(\varepsilon=(\varepsilon_1,\dots,\varepsilon_n)^{\top},\)</span> and where <span class="math inline">\(\mathcal{N}_n\left(0,\sigma^2I_n\right)\)</span> denotes the <span class="math inline">\(n\)</span>-dimensional normal distribution with <span class="math inline">\((n\times 1)\)</span>-dimensional mean zero vector <span class="math inline">\(0\)</span> and <span class="math inline">\((n\times n)\)</span>-dimensional covariance matrix <span class="math inline">\(\sigma^2I_n.\)</span></p>
@@ -347,14 +361,27 @@ Var(\hat\beta_n|X)=\underset{(K\times K)}{\sigma^2(X^{\top}X)^{-1}}.
 </div>
 </div>
 </div>
-<div class="proof">
-<p><span class="proof-title"><em>Proof</em>. </span>This result follows from noting that <span class="math display">\[
+<div class="callout callout-style-default callout-note callout-titled" title="Proof">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Proof
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>This result follows from noting that <span class="math display">\[
 \begin{align*}
 \hat\beta_n
 &amp;=(X^{\top}X)^{-1}X^{\top}Y\\[2ex]
 &amp;=\beta+(X^{\top}X)^{-1}X^{\top}\varepsilon
 \end{align*}
 \]</span> and because <span class="math inline">\((X^{\top}X)^{-1}X^{\top}\varepsilon\)</span> is just a linear combination of the normally distributed error terms <span class="math inline">\(\varepsilon\)</span> which, therefore, is again normally distributed, conditionally on <span class="math inline">\(X\)</span>. Note that the specific normal distribution depends on the observed realization of <span class="math inline">\(X\)</span>.</p>
+</div>
+</div>
 </div>
 <p><strong>Remark:</strong> The subscript <span class="math inline">\(n\)</span> in <span class="math inline">\(\hat\beta_n\)</span> is here only to emphasize that the distribution of <span class="math inline">\(\hat\beta_n\)</span> depends on <span class="math inline">\(n\)</span>; we will, however, often simply write <span class="math inline">\(\hat\beta\)</span>.</p>
 </section><section id="sec-testmultp" class="level2" data-number="6.2"><h2 data-number="6.2" class="anchored" data-anchor-id="sec-testmultp">
@@ -624,34 +651,35 @@ Figure&nbsp;6.3: Graphs of the density function of the <span class="math inline"
 </div>
 </div>
 </div>
-</section><section id="test-decision-using-the-rejection-region-one-sided-12" class="level3" data-number="6.3.2"><h3 data-number="6.3.2" class="anchored" data-anchor-id="test-decision-using-the-rejection-region-one-sided-12">
-<span class="header-section-number">6.3.2</span> Test Decision using the Rejection Region (One-Sided 1/2)</h3>
+</section><section id="test-decision-using-the-rejection-region-1" class="level3" data-number="6.3.2"><h3 data-number="6.3.2" class="anchored" data-anchor-id="test-decision-using-the-rejection-region-1">
+<span class="header-section-number">6.3.2</span> Test Decision using the Rejection Region</h3>
+<p>In all three versions of the test, <span class="math inline">\(\beta_k\)</span> denotes the true (unknown) parameter value and <span class="math inline">\(\beta_k^{(0)}\)</span> the null hypothetical value specified by the statistician (e.g.&nbsp;<span class="math inline">\(\beta_k^{(0)}=0\)</span>). The significance level is <span class="math inline">\(0&lt;\alpha&lt;1,\)</span> and <span class="math inline">\(c_{p}\)</span> denotes the <span class="math inline">\(p\)</span>-quantile of the <span class="math inline">\(t\)</span>-distribution with <span class="math inline">\((n-K)\)</span> degrees of freedom.</p>
+<p>The decision rule is always the same,</p>
+<ul>
+<li>we can reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(\;T_{obs} \in \mathcal{R},\)</span>
+</li>
+<li>we cannot reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(\;T_{obs} \not\in \mathcal{R},\)</span>
+</li>
+</ul>
+<p>so the three versions differ <strong>only</strong> in the shape of the rejection region <span class="math inline">\(\mathcal{R}.\)</span></p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist">
+<li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">Right-sided</a></li>
+<li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Left-sided</a></li>
+<li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false">Two-sided</a></li>
+</ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
 <p>The right-sided version of the one-sided hypothesis is given by <span class="math display">\[
 \begin{align*}
 &amp;H_0: \beta_k \leq \beta_k^{(0)}\\
 \text{versus}\quad
 &amp; H_1: \beta_k &gt; \beta_k^{(0)},
 \end{align*}
-\]</span> where <span class="math inline">\(\beta_k\)</span> denotes the true (unknown) parameter value and <span class="math inline">\(\beta_k^{(0)}\)</span> the null hypothetical value specified by the statistician (e.g.&nbsp;<span class="math inline">\(\beta_k^{(0)}=0\)</span>).</p>
-<p>The rejection region is <span class="math display">\[
-\mathcal{R}=\;]c_{1-\alpha}, \infty[,
-\]</span> where <span class="math inline">\(0&lt;\alpha&lt;1\)</span> denotes the significance level and <span class="math inline">\(c_{1-\alpha}\)</span> denotes the <span class="math inline">\((1-\alpha)\)</span>-quantile of the <span class="math inline">\(t\)</span>-distribution with <span class="math inline">\((n-K)\)</span> degrees of freedom.</p>
-<ul>
-<li>We can reject <span class="math inline">\(H_0\)</span> if <span class="math display">\[
-\begin{align*}
-T_{obs}
-&amp; \in \mathcal{R} = \;]c_{1-\alpha}, \infty[
-\end{align*}
-\]</span>
-</li>
-<li>We cannot reject <span class="math inline">\(H_0\)</span> if <span class="math display">\[
-\begin{align*}
-T_{obs}
-&amp;\not \in \mathcal{R} = \;]c_{1-\alpha}, \infty[
-\end{align*}
-\]</span>
-</li>
-</ul>
+\]</span></p>
+<p>with rejection region <span class="math display">\[
+\mathcal{R}=\;]c_{1-\alpha}, \infty[.
+\]</span></p>
 <p><a href="#fig-oneSidedRight" class="quarto-xref">Figure&nbsp;<span>6.4</span></a> shows an example of the rejection region for the case of a significance level <span class="math inline">\(\alpha=0.05\)</span> and <span class="math inline">\(n-K=12\)</span> degrees of freedom.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
@@ -677,34 +705,18 @@ Figure&nbsp;6.4: <span class="math inline">\(t\)</span>-distribution with <span 
 <pre><code>[1] 1.782288</code></pre>
 </div>
 </div>
-</section><section id="test-decision-using-the-rejection-region-one-sided-22" class="level3" data-number="6.3.3"><h3 data-number="6.3.3" class="anchored" data-anchor-id="test-decision-using-the-rejection-region-one-sided-22">
-<span class="header-section-number">6.3.3</span> Test Decision using the Rejection Region (One-Sided 2/2)</h3>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
 <p>The left-sided version of the one-sided hypothesis is given by <span class="math display">\[
 \begin{align*}
 &amp;H_0:  \beta_k \geq \beta_k^{(0)}\\
 \text{versus}\quad
 &amp;H_1:  \beta_k &lt;  \beta_k^{(0)},
 \end{align*}
-\]</span> where <span class="math inline">\(\beta_k\)</span> denotes the true (unknown) parameter value and <span class="math inline">\(\beta_k^{(0)}\)</span> the null hypothetical value specified by the statistician (e.g.&nbsp;<span class="math inline">\(\beta_k^{(0)}=0\)</span>).</p>
-<p>The rejection region is <span class="math display">\[
-\mathcal{R}=\;]-\infty,c_{\alpha}[,
-\]</span> where <span class="math inline">\(0&lt;\alpha&lt;1\)</span> denotes the significance level and <span class="math inline">\(c_{\alpha}\)</span> denotes the <span class="math inline">\(\alpha\)</span>-quantile of the <span class="math inline">\(t\)</span>-distribution with <span class="math inline">\((n-K)\)</span> degrees of freedom.</p>
-<ul>
-<li>We can reject <span class="math inline">\(H_0\)</span> if <span class="math display">\[
-\begin{align*}
-T_{obs}
-&amp; \in \mathcal{R} = \;]-\infty,c_{\alpha}[
-\end{align*}
-\]</span>
-</li>
-<li>We cannot reject <span class="math inline">\(H_0\)</span> if <span class="math display">\[
-\begin{align*}
-T_{obs}
-&amp;\not \in \mathcal{R} = \;]-\infty,c_{\alpha}[
-\end{align*}
-\]</span>
-</li>
-</ul>
+\]</span></p>
+<p>with rejection region <span class="math display">\[
+\mathcal{R}=\;]-\infty,c_{\alpha}[.
+\]</span></p>
 <p><a href="#fig-oneSidedLeft" class="quarto-xref">Figure&nbsp;<span>6.5</span></a> shows an example of the rejection region for the case of a significance level <span class="math inline">\(\alpha=0.05\)</span> and <span class="math inline">\(n-K=12\)</span> degrees of freedom.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
@@ -730,36 +742,18 @@ Figure&nbsp;6.5: <span class="math inline">\(t\)</span>-distribution with <span 
 <pre><code>[1] -1.782288</code></pre>
 </div>
 </div>
-</section><section id="test-decision-using-the-rejection-region-two-sided" class="level3" data-number="6.3.4"><h3 data-number="6.3.4" class="anchored" data-anchor-id="test-decision-using-the-rejection-region-two-sided">
-<span class="header-section-number">6.3.4</span> Test Decision using the Rejection Region (Two-Sided)</h3>
+</div>
+<div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
 <p>The two-sided <span class="math inline">\(t\)</span>-test allows us to test <span class="math display">\[
 \begin{align*}
 &amp; H_0: \beta_k=\beta_k^{(0)}\\
 \text{versus}\quad
 &amp; H_1: \beta_k\ne \beta_k^{(0)},
 \end{align*}
-\]</span> where <span class="math inline">\(\beta_k\)</span> denotes the true (unknown) parameter value and <span class="math inline">\(\beta_k^{(0)}\)</span> the null hypothetical value specified by the statistician (e.g.&nbsp;<span class="math inline">\(\beta_k^{(0)}=0\)</span>).</p>
-<p>The rejection region is <span class="math display">\[
-\mathcal{R}=\;]-\infty,c_{\alpha/2}[\;\;\cup\;\;]c_{1-\alpha/2}, \infty[,
-\]</span> where <span class="math inline">\(0&lt;\alpha&lt;1\)</span> denotes the significance level and <span class="math inline">\(c_{\alpha/2}\)</span> and <span class="math inline">\(c_{1-\alpha/2}\)</span> denote the <span class="math inline">\(\alpha/2\)</span>- and the <span class="math inline">\((1-\alpha/2)\)</span>-quantiles of the <span class="math inline">\(t\)</span>-distribution with <span class="math inline">\((n-K)\)</span> degrees of freedom.</p>
-<ul>
-<li>We can reject <span class="math inline">\(H_0\)</span> if <span class="math display">\[
-\begin{align*}
-T_{obs}
-&amp; \in \mathcal{R}%\\[2ex]
-%&amp; \in \;]-\infty,c_{\alpha/2}[\;\;\cup\;\;]c_{1-\alpha/2}, \infty[
-\end{align*}
-\]</span>
-</li>
-<li>We cannot reject <span class="math inline">\(H_0\)</span> if <span class="math display">\[
-\begin{align*}
-T_{obs}
-&amp;\not \in \mathcal{R}%\\[2ex]
-%&amp;\not \in \;]-\infty,c_{\alpha/2}[\;\;\cup\;\;]c_{1-\alpha/2}, \infty[
-\end{align*}
-\]</span>
-</li>
-</ul>
+\]</span></p>
+<p>with rejection region <span class="math display">\[
+\mathcal{R}=\;]-\infty,c_{\alpha/2}[\;\;\cup\;\;]c_{1-\alpha/2}, \infty[.
+\]</span></p>
 <p><a href="#fig-twoSided" class="quarto-xref">Figure&nbsp;<span>6.6</span></a> shows an example of the rejection region for the case of a significance level <span class="math inline">\(\alpha=0.05\)</span> and <span class="math inline">\(n-K=12\)</span> degrees of freedom.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
@@ -792,34 +786,45 @@ Figure&nbsp;6.6: <span class="math inline">\(t\)</span>-distribution with <span 
 <pre><code>[1] 2.178813</code></pre>
 </div>
 </div>
-</section><section id="sec-TDecRS" class="level3" data-number="6.3.5"><h3 data-number="6.3.5" class="anchored" data-anchor-id="sec-TDecRS">
-<span class="header-section-number">6.3.5</span> Test Decision using the <span class="math inline">\(p\)</span>-Value (One-Sided 1/2)</h3>
+</div>
+</div>
+</div>
+</section><section id="sec-TDecRS" class="level3" data-number="6.3.3"><h3 data-number="6.3.3" class="anchored" data-anchor-id="sec-TDecRS">
+<span class="header-section-number">6.3.3</span> Test Decision using the <span class="math inline">\(p\)</span>-Value</h3>
+<p>Under the null hypothesis we know that <span class="math display">\[
+T\overset{H_0}{\sim}t_{n-K},
+\]</span> which is what allows us to compute the <span class="math inline">\(p\)</span>-value. In all three versions the decision rule is the same,</p>
+<ul>
+<li>we reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(\;p_{\text{obs}} &lt; \alpha,\)</span>
+</li>
+<li>we cannot reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(\;p_{\text{obs}} \geq \alpha,\)</span>
+</li>
+</ul>
+<p>where <span class="math inline">\(0&lt;\alpha&lt;1\)</span> denotes the chosen significance level. Typical choices are</p>
+<ul>
+<li><span class="math inline">\(\alpha = 0.05\)</span></li>
+<li><span class="math inline">\(\alpha = 0.01\)</span></li>
+</ul>
+<p>The three versions differ <strong>only</strong> in how <span class="math inline">\(p_{\text{obs}}\)</span> is computed.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist">
+<li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">Right-sided</a></li>
+<li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">Left-sided</a></li>
+<li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-3" role="tab" aria-controls="tabset-2-3" aria-selected="false">Two-sided</a></li>
+</ul>
+<div class="tab-content">
+<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
 <p>Right-sided version of the one-sided hypothesis: <span class="math display">\[
 \begin{align*}
 &amp;H_0: \beta_k \leq \beta_k^{(0)}\\
 \text{versus}\quad &amp; H_1:\beta_k &gt;    \beta_k^{(0)}\\
 \end{align*}
 \]</span></p>
-<!-- In case of a one-sided $t$-test, we will reject the null if $T_{\text{obs}}$ is sufficiently "far away" from zero in the relevant direction of $H_1$.  -->
-<p>We know that <span class="math display">\[
-T\overset{H_0}{\sim}t_{n-K}.
-\]</span></p>
 <p>The <span class="math inline">\(p\)</span>-value is the probability of seeing realizations of <span class="math inline">\(T\)</span> that are equal to or larger than the observed value <span class="math inline">\(T_{\text{obs}}\)</span> given that the null hypothesis is true <span class="math display">\[
 p_{\text{obs}}=P(T\geq T_{\text{obs}}\;|\;H_0 \text{ is true}).
-\]</span> * We reject the null hypothesis <span class="math inline">\(H_0\)</span> if <span class="math display">\[
-p_{\text{obs}} &lt; \alpha
 \]</span></p>
-<ul>
-<li>We cannot reject the null hypothesis <span class="math inline">\(H_0\)</span> if <span class="math display">\[
-p_{\text{obs}} \geq \alpha,
-\]</span> where <span class="math inline">\(0&lt;\alpha&lt;1\)</span> denotes the chosen significance level. Typical choices are
-<ul>
-<li><span class="math inline">\(\alpha = 0.05\)</span></li>
-<li><span class="math inline">\(\alpha = 0.01\)</span></li>
-</ul>
-</li>
-</ul></section><section id="test-decision-using-the-p-value-one-sided-22" class="level3" data-number="6.3.6"><h3 data-number="6.3.6" class="anchored" data-anchor-id="test-decision-using-the-p-value-one-sided-22">
-<span class="header-section-number">6.3.6</span> Test Decision using the <span class="math inline">\(p\)</span>-Value (One-Sided 2/2)</h3>
+</div>
+<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
 <p>Left-sided version of the one-sided hypothesis: <span class="math display">\[
 \begin{align*}
 &amp;H_0: \beta_k \geq \beta_k^{(0)}\\
@@ -829,30 +834,14 @@ p_{\text{obs}} \geq \alpha,
 <p>The <span class="math inline">\(p\)</span>-value is the probability of seeing realizations of <span class="math inline">\(T\)</span> that are equal to or smaller than the observed value <span class="math inline">\(T_{\text{obs}}\)</span> given that the null hypothesis is true <span class="math display">\[
 p_{\text{obs}}=P(T\leq T_{\text{obs}}\;|\;H_0 \text{ is true}).
 \]</span></p>
-<ul>
-<li><p>We reject the null hypothesis <span class="math inline">\(H_0\)</span> if <span class="math display">\[
-p_{\text{obs}} &lt; \alpha
-\]</span></p></li>
-<li>
-<p>We cannot reject the null hypothesis <span class="math inline">\(H_0\)</span> if <span class="math display">\[
-p_{\text{obs}} \geq \alpha,
-\]</span> where <span class="math inline">\(0&lt;\alpha&lt;1\)</span> denotes the chosen significance level. Typical choices are</p>
-<ul>
-<li><span class="math inline">\(\alpha = 0.05\)</span></li>
-<li><span class="math inline">\(\alpha = 0.01\)</span></li>
-</ul>
-</li>
-</ul></section><section id="test-decision-using-the-p-value-two-sided" class="level3" data-number="6.3.7"><h3 data-number="6.3.7" class="anchored" data-anchor-id="test-decision-using-the-p-value-two-sided">
-<span class="header-section-number">6.3.7</span> Test Decision using the <span class="math inline">\(p\)</span>-Value (Two-Sided)</h3>
+</div>
+<div id="tabset-2-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-3-tab">
 <p>The two-sided <span class="math inline">\(t\)</span>-test allows us to test <span class="math display">\[
 \begin{align*}
 &amp; H_0: \beta_k=\beta_k^{(0)}\\
 \text{versus}\quad
 &amp; H_1: \beta_k\ne \beta_k^{(0)}
 \end{align*}
-\]</span> where <span class="math inline">\(\beta_k\)</span> denotes the true (unknown) parameter value and <span class="math inline">\(\beta_k^{(0)}\)</span> the null hypothetical value specified by the statisticaian (e.g.&nbsp;<span class="math inline">\(\beta_k^{(0)}=0\)</span>).</p>
-<p>We know that <span class="math display">\[
-T\overset{H_0}{\sim}t_{n-K}.
 \]</span></p>
 <p>The <span class="math inline">\(p\)</span>-value of the two-sided <span class="math inline">\(t\)</span>-test is the probability of seeing realizations of <span class="math inline">\(T\)</span> that are equal to or more extreme than the observed value <span class="math inline">\(T_{\text{obs}}\)</span> given that the null hypothesis is true <span class="math display">\[
 \begin{align*}
@@ -862,20 +851,10 @@ p_{\text{obs}}
             P(T\geq T_{\text{obs}}\;|\;H_0 \text{ is true})\}
 \end{align*}
 \]</span></p>
-<ul>
-<li><p>We reject the null hypothesis <span class="math inline">\(H_0\)</span> if <span class="math display">\[
-p_{\text{obs}} &lt; \alpha
-\]</span></p></li>
-<li>
-<p>We cannot reject the null hypothesis <span class="math inline">\(H_0\)</span> if <span class="math display">\[
-p_{\text{obs}} \geq \alpha,
-\]</span> where <span class="math inline">\(0&lt;\alpha&lt;1\)</span> denotes the chosen significance level. Typical choices are</p>
-<ul>
-<li><span class="math inline">\(\alpha = 0.05\)</span></li>
-<li><span class="math inline">\(\alpha = 0.01\)</span></li>
-</ul>
-</li>
-</ul></section></section><section id="sec-CIsmallsample" class="level2" data-number="6.4"><h2 data-number="6.4" class="anchored" data-anchor-id="sec-CIsmallsample">
+</div>
+</div>
+</div>
+</section></section><section id="sec-CIsmallsample" class="level2" data-number="6.4"><h2 data-number="6.4" class="anchored" data-anchor-id="sec-CIsmallsample">
 <span class="header-section-number">6.4</span> Confidence Intervals</h2>
 <p>We define a two-sided <span class="math inline">\((1-\alpha)\cdot 100\%\)</span> percent confidence interval for the <em>deterministic</em> (unknown) true <span class="math inline">\(\beta_k\)</span> as the <strong>random interval</strong> <span class="math inline">\(\operatorname{CI}_{k,n,1-\alpha}\)</span> for which <span class="math display">\[
 P\Big(\beta_k\in\operatorname{CI}_{k,n,1-\alpha}\Big)\geq 1-\alpha.
@@ -1021,16 +1000,13 @@ H_1: \theta\in\Theta_1.
 <p>The idea of a <strong>composite null hypothesis</strong> <span class="math display">\[
 H_0:\theta\in\Theta_0
 \]</span> is to collect all hypotheses which we do not care to detect by the statistical test. This way, the set of alternative hypotheses <span class="math inline">\(H_1:\theta\in\Theta_1\)</span> becomes smaller which leads to more powerful tests.</p>
-<div class="callout callout-style-default callout-tip no-icon callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Example: Two-Sided Test with <span class="math inline">\(\theta\in\mathbb{R}\)</span>
-</div>
-</div>
-<div class="callout-body-container callout-body">
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist">
+<li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true">Example: two-sided test with <span class="math inline">\(\theta\in\mathbb{R}\)</span></a></li>
+<li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false">Example: one-sided test with <span class="math inline">\(\theta\in\mathbb{R}\)</span></a></li>
+</ul>
+<div class="tab-content">
+<div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
 <p><span class="math display">\[
 \begin{equation*}
 \begin{array}{ll}
@@ -1046,17 +1022,7 @@ Example: Two-Sided Test with <span class="math inline">\(\theta\in\mathbb{R}\)</
 \Theta_1=\mathbb{R}\setminus\theta^{(0)}.
 \]</span></p>
 </div>
-</div>
-<div class="callout callout-style-default callout-tip no-icon callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Example: One-Sided Test with <span class="math inline">\(\theta\in\mathbb{R}\)</span>
-</div>
-</div>
-<div class="callout-body-container callout-body">
+<div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
 <p><span class="math display">\[
 \begin{equation*}
 \begin{array}{ll}
@@ -1072,6 +1038,7 @@ Example: One-Sided Test with <span class="math inline">\(\theta\in\mathbb{R}\)</
 \Theta_1=\;]-\infty,\theta^{(0)}[.
 \]</span></p>
 <p>(Likewise for the other direction of the one-sided test.)</p>
+</div>
 </div>
 </div>
 </section><section id="decisions-errors" class="level3" data-number="6.5.2"><h3 data-number="6.5.2" class="anchored" data-anchor-id="decisions-errors">
@@ -1114,8 +1081,14 @@ there's a famous sentence which goes back to @Altman_Bland_1995 :</br>
 -->
 </div>
 </div>
-</section><section id="size" class="level3" data-number="6.5.3"><h3 data-number="6.5.3" class="anchored" data-anchor-id="size">
-<span class="header-section-number">6.5.3</span> Size</h3>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist">
+<li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true">Size</a></li>
+<li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false">Power</a></li>
+<li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-3" role="tab" aria-controls="tabset-4-3" aria-selected="false"><span class="math inline">\(p\)</span>-Value</a></li>
+</ul>
+<div class="tab-content">
+<div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
 <p>The probability of a type-I-error event is called <strong>size</strong> of <span class="math inline">\(T_n.\)</span></p>
 <div class="callout callout-style-simple callout-none no-icon">
 <div class="callout-body d-flex">
@@ -1149,14 +1122,16 @@ there's a famous sentence which goes back to @Altman_Bland_1995 :</br>
 </ul>
 <p>Generally, of course, the value of <span class="math inline">\(\alpha\)</span> is arbitrary and you can also choose <span class="math inline">\(\alpha=0.00231.\)</span></p>
 <div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
 Exact vs Conservative vs Invalid Testing
 </div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>A test statistic <span class="math inline">\(T_n\)</span> is called</p>
 <ul>
@@ -1178,6 +1153,7 @@ Exact vs Conservative vs Invalid Testing
 </ul>
 </div>
 </div>
+</div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1191,7 +1167,18 @@ Tip
 <p>Under Assumptions 1-4<span class="math inline">\(^\ast,\)</span> the <span class="math inline">\(F\)</span>-test and the <span class="math inline">\(t\)</span>-test are <strong>exact</strong> test statistics.</p>
 </div>
 </div>
-<section id="showing-exactness-of-the-f-test" class="level4 unnumbered"><h4 class="unnumbered anchored" data-anchor-id="showing-exactness-of-the-f-test"><strong>Showing Exactness of the <span class="math inline">\(F\)</span>-Test</strong></h4>
+<div class="callout callout-style-default callout-note callout-titled" title="Showing exactness of the F-test">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Showing exactness of the F-test
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <p><span class="math display">\[
 \begin{equation*}
 \begin{array}{lll}
@@ -1218,7 +1205,21 @@ F_n\overset{H_0}{\sim}F_{q,n-K}.
 = &amp; 1 - P\Big(F \leq c_{n,1-\alpha}\;|\;R\beta = r^{(0)}\Big)=\alpha,
 \end{align*}
 \]</span> for all sample sizes <span class="math inline">\(n&gt;K.\)</span></p>
-</section><section id="showing-exactness-of-the-two-sided-t-test" class="level4 unnumbered"><h4 class="unnumbered anchored" data-anchor-id="showing-exactness-of-the-two-sided-t-test"><strong>Showing Exactness of the Two-Sided <span class="math inline">\(t\)</span>-Test:</strong></h4>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Showing exactness of the two-sided t-test">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Showing exactness of the two-sided t-test
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <p><span class="math display">\[
 \begin{equation*}
 \begin{array}{lll}
@@ -1247,7 +1248,21 @@ T_n\overset{H_0}{\sim}t_{n-K}.
 &amp;=\frac{\alpha}{2}+\frac{\alpha}{2}=\alpha.
 \end{align*}
 \]</span> for all sample sizes <span class="math inline">\(n&gt;K.\)</span></p>
-</section><section id="showing-exactness-of-the-one-sided-t-test" class="level4 unnumbered"><h4 class="unnumbered anchored" data-anchor-id="showing-exactness-of-the-one-sided-t-test"><strong>Showing Exactness of the One-Sided <span class="math inline">\(t\)</span>-Test:</strong></h4>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Showing exactness of the one-sided t-test">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Showing exactness of the one-sided t-test
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <p>Consider, without loss of generality, the following right-side version of the one-sided hypothesis:</p>
 <p><span class="math display">\[
 \begin{equation*}
@@ -1312,6 +1327,9 @@ P(T_n\in\mathcal{R}_{n,\alpha}|\beta_k \leq \beta_k^{(0)}) \highlight{\leq}  P(T
 \]</span> for all sample sizes <span class="math inline">\(n&gt;K,\)</span> where <span class="math display">\[
 \mathcal{R}_{n,\alpha} = ]c_{n,1-\alpha},\infty[,
 \]</span> with <span class="math inline">\(c_{n,1-\alpha}\)</span> denoting the <span class="math inline">\((1-\alpha)\)</span>-quantile of the <span class="math inline">\(t\)</span>-distribution with <span class="math inline">\((n-K)\)</span> degrees of freedom.</p>
+</div>
+</div>
+</div>
 <!-- 
 ::: {.callout-tip icon="false"}
 #
@@ -1405,8 +1423,8 @@ $$
 & H_1: \beta_k >    \beta_k^{(0)}\\
 \end{align*}
 $$ -->
-</section></section><section id="power" class="level3" data-number="6.5.4"><h3 data-number="6.5.4" class="anchored" data-anchor-id="power">
-<span class="header-section-number">6.5.4</span> Power</h3>
+</div>
+<div id="tabset-4-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-2-tab">
 <div class="callout callout-style-simple callout-none no-icon">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
@@ -1476,7 +1494,18 @@ Power is a function of <span class="math inline">\(\alpha,\)</span> <span class=
 </div>
 </div>
 <p><strong>Caution:</strong> Consistency of a statistical test is an important property. However, this property implies that even small, practically irrelevant violations of <span class="math inline">\(H_0\)</span>, i.e., <span class="math inline">\(|\theta-\theta_0|\approx 0,\)</span> will be detected if the sample size is sufficiently large.</p>
-<section id="power-of-the-one-sided-t-test" class="level4 unnumbered"><h4 class="unnumbered anchored" data-anchor-id="power-of-the-one-sided-t-test"><strong>Power of the One-Sided <span class="math inline">\(t\)</span>-Test</strong></h4>
+<div class="callout callout-style-default callout-note callout-titled" title="Power of the one-sided t-test">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Power of the one-sided t-test
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-15" class="callout-15-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <!-- A type-II-error is the mistake of not rejecting the null hypothesis when in fact it should have been rejected. The probability of making a type-II-error equals one minus the probability of correctly rejecting the null hypothesis ("Power").  -->
 <!-- For instance, in the case of using the $t$-test to test the null hypothesis $H_0: \beta_k=0$ versus the one-sided alternative hypothesis $H_1:\beta_k>0$) we have that 
 \begin{align*}
@@ -1586,8 +1615,11 @@ Figure&nbsp;6.7: Probability of a type-II-error and the power for a one-sided <s
 </div>
 </div>
 </div>
-</section></section><section id="sec-pValue" class="level3" data-number="6.5.5"><h3 data-number="6.5.5" class="anchored" data-anchor-id="sec-pValue">
-<span class="header-section-number">6.5.5</span> <span class="math inline">\(p\)</span>-Value</h3>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-4-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-3-tab">
 <p>The <span class="math inline">\(p\)</span>-value of a test-statistic <span class="math inline">\(T_n\)</span> is defined as the probability of observing realizations of <span class="math inline">\(T_n\)</span> that are equal to or more extreme (in direction of the alternative) than the observed value <span class="math inline">\(T_{n,\text{obs}}\)</span> <strong>given that the null hypothesis is true.</strong></p>
 <p><span class="math inline">\(p\)</span>-value for a left-sided version of a one-sided hypothesis test: <span class="math display">\[
 p_{\text{left},\,\text{obs}} = P(T_n\leq T_{n,\text{obs}}\;|\;H_0 \text{ is true})
@@ -1673,7 +1705,11 @@ F_{H_0,p}(x)
 &amp;= x,
 \end{align*}
 \]</span> where <span class="math inline">\(F_{H_0,|T_n|}\)</span> is invertible, since <span class="math inline">\(|T_n|\)</span> is a continuously distribued random variable.</p>
-</section></section></section><section id="sec-PSSI" class="level2" data-number="6.6"><h2 data-number="6.6" class="anchored" data-anchor-id="sec-PSSI">
+</section>
+</div>
+</div>
+</div>
+</section></section><section id="sec-PSSI" class="level2" data-number="6.6"><h2 data-number="6.6" class="anchored" data-anchor-id="sec-PSSI">
 <span class="header-section-number">6.6</span> Monte Carlo Simulations</h2>
 <p>Let’s check the above exact inference results using Monte Carlo simulations. The check, of course, applies only to the considered special case and generally does not generalize to other data generating processes.</p>
 <p>First, we program a function <code>myDataGenerator()</code> which allows us to generate data from the following model, i.e., from the following fully specified data generating process: <span class="math display">\[

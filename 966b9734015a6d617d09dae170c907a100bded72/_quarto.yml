@@ -3,20 +3,20 @@ project:
   output-dir: docs
   
 book:
-  title: "Statistical Models and Inference: Foundations of Econometrics"
+  title: "Predictive Analytics"
   author: Prof. Dr. Dominik Liebl
   date: last-modified
   date-format: "[Last Updated on] MMMM DD, YYYY"
   search: true
   sidebar:
-    logo: images/KU_Logo_Schwarz_RGB300_L.png
+    logo: images/KU_Logo_Blau_M.png
     number-depth: 3
   chapters:
     - index.qmd
     - 01-Introduction-to-R.qmd
     - 02-Probability.qmd
-    - 03-Matrix-Algebra.qmd
     - 04-Monte-Carlo-Simulations.qmd
+    - 03-Matrix-Algebra.qmd
     - 05-Multiple-Linear-Regression.qmd
     - 06-Small-Sample-Inference.qmd
     - 07-Asymptotics.qmd

@@ -681,15 +681,13 @@ Thus here the quality of the estimator $\bar{X}_n$ gets better as $n$ gets large
 
 
 
-
+<!-- 
 ## Exercises
-
 
 * [Exercises for Chapter 4](https://www.dropbox.com/scl/fi/w1nj9wnpj15r53opudhns/Ch4_Exercises1.pdf?rlkey=4bk9h4rpg4mkizi46s2r11okv&st=0dawfy6m&dl=0)
 
-
 * [Exercises for Chapter 4 with Solutions](https://www.dropbox.com/scl/fi/jssefvtifo6wczxaxr250/Ch4_Exercises_with_Solutions1.pdf?rlkey=wcineb1vy4vpqxy8989qplexr&st=fp5sf04v&dl=0)
-
+-->
 
 
 
