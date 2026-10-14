@@ -5,755 +5,231 @@ source("_common.R")
 
 # Large Sample Inference {#sec-lsinf}
 
-The content of this chapter is very much inspired by Chapter 2 of the textbook of @Hayashi2000. 
+The asymptotic results for the OLS estimator in this chapter follow Chapter 2 of @Hayashi2000.
 
-## Tools for Asymptotic Statistics
+@sec-ssinf gave us *exact* finite-sample inference ($t$-tests, $F$-tests, confidence intervals) for $\hat\beta,$ but only under Assumption 4$^\ast$ of @sec-ssinf:
 
-Basically every modern econometric method is justified using the toolbox of **asymptotic statistics**. The following core concepts from asymptotic statistics will allow us to drop the restrictive normality assumption of @sec-ssinf and to introduce robust standard errors:   
+* errors $\varepsilon_i$ are **normally distributed**, and
+* errors are **spherical** (homoskedastic and uncorrelated).
 
-* Concepts on stochastic convergence
-* Continuous mapping theorem
-* Slutsky's theorem
-* Law of large numbers
-* Central limit theorems 
-* Cramér-Wold device
+Real data rarely satisfies either requirement exactly.
 
+For a sufficiently **large** sample size $n$, we can drop *both* requirements and still do (approximately) valid inference about $\beta$. This chapter shows why, and how.
 
-### Modes of Convergence
+## Why Large Samples Help
 
-In the following we will discuss the four most important convergence concepts for sequences of random variables 
-$$
-\{Z_n\}:=(Z_1,Z_2,\dots,Z_n),
-$$ 
-where 
-$$
-Z_i,\quad i=1,\dots,n,
-$$
-is a uni-variate or multivariate random variable. 
+Two classical results from probability theory do essentially all of the work:
 
-Non-random quantities (scalars, vectors or matrices) will be denoted by Greek letters such as $\alpha$. 
-
-
-<!-- Sequences of random vectors (or matrices) will be denoted by $\{\mathbf{z}_n\}$.  -->
-
-<!-- % Vector-Convergence if and only if element-wise converegence:  -->
-<!-- %https://www.statlect.com/asymptotic-theory/mean-square-convergence#:~:text=The%20concept%20of%20mean%2Dsquare,difference%20is%20on%20average%20small. -->
-
-### Four Important Modes of Convergence {-}
-
-Probably the most often used mode of convergence is **convergence in probability**. It states that a stochastic sequence $\{Z_n\}$ concentrates around its limit $\alpha$ such that deviations $|Z_n-\epsilon|$ larger than some small $\epsilon >0$ occur eventually (as $n\to\infty$) with probability zero. 
-
-In order to show that some stochastic sequence converges in probability to its limit, one typically uses a *(weak) law of large numbers*.
-
-::: {.callout icon=false}
-#
-::: {#def-conv_prop}
-## Convergence in Probability 
-
-</br>
-
-A sequence of univariate real valued random variables $\{Z_n\}$ **converges in probability** to a deterministic $\alpha\in\mathbb{R}$ if for any (arbitrarily small) $\varepsilon>0$
-$$
-\begin{align*}
-  \lim_{n\to\infty} P\left(|Z_n-\alpha|<\epsilon\right)&=1\\
-  \Leftrightarrow\quad \lim_{n\to\infty} P\left(|Z_n-\alpha|>\epsilon\right)&=0.
-\end{align*}
-$$
-We write: 
-$$
-\operatorname{plim}_{n\to\infty}Z_n=\alpha
-$$ 
-or more shortly 
-$$
-Z_n\to_{p}\alpha,\quad\text{as}\quad n\to\infty.
-$$
-
-**Note:** 
-
-1. Convergence in probability of a sequence of random vectors or matrices $\{Z_n\}$ to a deterministic vector or matrix $\alpha$ requires **element-wise** convergence in probability.
-2. The above definition can also be stated for random limits; i.e., for $\alpha$ being a random variable. 
-:::
-:::
-
-A stricter mode of convergence is **almost sure convergence**. Almost sure convergence is (usually) rather hard to derive, since the probability is about an event concerning an infinite sequence. Fortunately, however, there are established *strong laws of large numbers* that we can use to argue that some stochastic sequence converges almost surely to its limit. 
-
-Every sequence that converges almost surely, also converges in probability. 
-
-::: {.callout icon=false}
-#
-::: {#def-conv_as}
-## Almost Sure Convergence 
-
-</br>
-
-A sequence of univariate real valued random variables $\{Z_n\}$ **converges almost surely** to a deterministic $\alpha\in\mathbb{R}$ if
-\begin{eqnarray*}
-P\left(\lim_{n\to\infty}Z_n=\alpha\right)=1.
-\end{eqnarray*}
-We write:
-$$
-Z_n\to_{as}\alpha,\quad\text{as}\quad n\to\infty.
-$$
-
-**Note:** 
-
-1. Almost sure convergence of a sequence of random vectors (or matrices) $\{Z_n\}$ to a deterministic vector (or matrix) $\alpha$ requires **element-wise** almost sure convergence. 
-2. The above definition can also be stated for random limits; i.e., for $\alpha$ being a random variable.
-:::
-:::
-
-**Convergence in mean square** is typically the most intuitive mode of convergence. If a stochastic sequence $\{Z_n\}$ converges to a certain limit $\alpha,$ then 
-
-1. the **mean** of the stochastic sequence $E(Z_n)$ must converge to the limit $\alpha,$ and 
-2. the **variance** of the stochastic sequence $E(Z_n)$ must converge to zero. 
-
-Convergence in mean square is typically easy to show. 
-
-
-::: {.callout icon=false}
-#
-::: {#def-conv_ms}
-## Convergence in Mean Square 
-
-</br>
-
-A sequence of univariate real valued random variables $\{z_n\}$ **converges in mean square** (or **in quadratic mean**) to a deterministic $\alpha\in\mathbb{R}$ if
-$$
-\begin{align*}
-  \lim_{n\to\infty}E\left((Z_n-\alpha)^2\right)&=0.
-\end{align*}
-$$
-We write: 
-$$
-Z_n\to_{ms}\alpha,\quad\text{as}\quad n\to\infty.
-$$
-
-**Note:** 
-
-1. Mean square convergence of a sequence of random vectors (or matrices) $\{Z_n\}$ to a deterministic vector (or matrix) $\alpha$ requires *element-wise* mean square convergence. 
-2. The above definition can also be stated for random limits; i.e., for $\alpha$ being a random variable.
-:::
-:::
-
-
-
-<!-- **Convergence to a Random Variable:**The above presented definitions of convergence can be also applied to limits that are random variables. We say that a sequence of random vectors $\{\mathbf{z}_n\}$ converges to a random vector $\mathbf{z}$ and write $\mathbf{z}_n\to_{p}\mathbf{z}$ if the sequence $\{\mathbf{z}_n-\mathbf{z}\}$ converges to $\mathbf{0}$. Similarly, for $\mathbf{z}_n\to_{as}\mathbf{z}$ and $\mathbf{z}_n\to_{ms}\mathbf{z}$.  -->
-
-
-**Convergence in distribution** is the weakest and at the same time most important mode of convergence. 
-
-
-::: {.callout icon=false}
-#
-::: {#def-conv_distr}
-## Convergence in Distribution 
-
-* Let $F_n$ denote the cumulative distribution function (cdf) of the univariate real valued random variable $Z_n\in\mathbb{R},$ and 
-* let $F$ denote the cdf of the univariate real valued random variable $Z\in\mathbb{R}.$ 
-
-A sequence of univariate real valued random variables $\{Z_n\}$ **converges in distribution** to a the univariate real valued random variable $Z$ if 
-$$
-\begin{align*}
-  \lim_{n\to\infty}F_n(x)=F(x)
-\end{align*}
-$$
-for all $x\in\mathbb{R}$ at which $F(x)$ is continuous. 
-
-We write: 
-$$
-Z_n\to_{d}Z,\quad\text{as}\quad n\to\infty
-$$
-We call $F$ the **asymptotic (or limit) distribution** of $Z_n$. 
-:::
-:::
-
-Remarks on @def-conv_distr:
-
-1. Often you will see statements like 
-$$
-Z_n\to_{d} \mathcal{N}(0,1)
-$$ 
-or 
-$$
-Z_n\overset{a}{\sim}\mathcal{N}(0,1),
-$$ 
-which should be read as 
-$$
-\lim_{n\to\infty}F_n(x) = \Phi(x)\quad\text{for all}\quad x\in\mathbb{R},
-$$ 
-where $\Phi$ denotes the  distribution function of the standard normal distribution. 
-2. A stochastic sequence $\{Z_n\}$ can also convergence in distribution to a **constant** $\alpha$. In this case $\alpha$ is treated as a **degenerated random variable** with cdf 
-$$
-F_\alpha(x)=\left\{
-  \begin{matrix}
-  0&\text{if}\;\;x   <\alpha\\ 
-  1&\text{if}\;\;x\geq\alpha.
-  \end{matrix}\right.
-$$
-
-
-By contrast to all other modes of convergence, @def-conv_distr only addresses the univariate case $(Z_n\in\mathbb{R}).$ The reason for this is that @def-conv_distr cannot simply applied element-wise since this would ignore the possible dependencies between the different uni-variate random variables elements of a random vector. 
-
-To handle **multivariate convergence in distribution**, we need the following theorem known as the **Cramér-Wold device**. 
-
-::: {.callout icon=false}
-#
-::: {#thm-CramerWold}
-## Cramér-Wold 
-
-</br>
-
-Let $Z_n\in\mathbb{R}^K$ and $Z\in\mathbb{R}^K$ be $(K\times 1)$-dimensional random vectors, then
-$$
-Z_n\to_{d} Z\quad\text{if and only if}\quad\lambda^{\top}Z_n\to_{d}\lambda^{\top}Z
-$$ 
-for any $\lambda\in\mathbb{R}^K$. 
-:::
-:::
-
-A proof of @thm-CramerWold can be found, e.g., in @Billingsley2008 (p. 383). 
-
-The Cramér-Wold theorem (@thm-CramerWold) is needed since element-wise convergence in distribution generally does not imply convergence of the *joint* distribution of $Z_n$ to the *joint* distribution of $Z$; except, if all elements in the random vectors $Z_n$ and $Z$ are independent from each other.
-
-
-<!-- **Remark:**Note that convergence in distribution, as the name suggests, only involves the distributions of the random variables. Thus, the random variables need not even be defined on the same probability space (that is, they need not be defined for the same random experiment), and indeed we don't even need the random variables at all. (But all this is just thought provoking \dots typically, we'll only consider cases with a common probability space.) -->
-
-### Relations among Modes of Convergence {-}
-
-::: {.callout icon=false}
-#
-::: {#lem-Relations}
-## Relations among Modes of Convergence
-
-</br>
-
-The following relationships hold:
-
-(i) Mean square convergence implies convergence in probability:
-$$
-Z_n\to_{ms}\alpha\quad \Rightarrow\quad Z_n\to_{p}\alpha
-$$
-(ii) Almost sure convergence implies convergence in probability:
-$$
-Z_n\to_{as}\alpha\quad \Rightarrow\quad Z_n\to_{p}\alpha
-$$ 
-(iii) Convergence in distribution to a constant is equivalent to convergence in probability to the same constant:
-$$
-Z_n\to_{d}\alpha\quad \Leftrightarrow\quad Z_n\to_{p}\alpha
-$$ 
-:::
-:::
-
-Proofs of the result in @lem-Relations can be found, e.g., here: [https://www.statlect.com/asymptotic-theory/relations-among-modes-of-convergence](https://www.statlect.com/asymptotic-theory/relations-among-modes-of-convergence)
-
-
-### Continuous Mapping Theorem (CMT)
-
-::: {.callout icon=false}
-#
-::: {#thm-Preserv}
-## Preservation of Convergence for Continuous Transformations (or "Continuous Mapping Theorem (CMT)")
-
-</br>
-
-Let $\{Z_n\}$ denote a stochastic sequence of univariate (or multivariate) random variables and let $f$ denote a *continuous* function that does not depended on $n$. Then
-$$
-\begin{align*}
-Z_n\to_{p}  \alpha \quad & \Rightarrow\quad f(Z_n)\to_{p} f(\alpha)\\[2ex]
-Z_n\to_{as} \alpha \quad & \Rightarrow\quad f(Z_n)\to_{as} f(\alpha)\\[2ex]
-Z_n\to_{d}  \alpha \quad & \Rightarrow\quad f(Z_n)\to_{d} f(\alpha)
-\end{align*}
-$$
-:::
-:::
-
-Proofs of @thm-Preserv can be found, e.g., in @Vaart2000 (see Theorem 2.3)  or here: [https://www.statlect.com/asymptotic-theory/continuous-mapping-theorem](https://www.statlect.com/asymptotic-theory/continuous-mapping-theorem)
-
-**Note:** The CMT does *not* hold for m.s.-convergence except for the case where $f$ is a linear function.  
-
-**Examples:** As a consequence of the CMT (@thm-Preserv) we have that the usual arithmetic operations preserve convergence in probability (and equivalently for almost sure convergence and convergence in distribution): 
-
-- If $X_n\to_{p} \beta$ and $Y_n\to_{p} \gamma,$ then 
-$$
-X_n+Y_n\to_{p} \beta+\gamma
-$$
-
-- If $X_n\to_{p} \beta$ and $Y_n\to_{p} \gamma,$ then 
-$$
-X_n\cdot Y_n\to_{p} \beta\cdot\gamma
-$$
-
-- If $X_n\to_{p} \beta$ and $Y_n\to_{p} \gamma,$ then 
-$$
-X_n/Y_n\to_{p} \beta/\gamma,
-$$ 
-provided that $\gamma\neq 0$
-
-- If $\frac{1}{n}\sum_{i=1}^nX_iX_i^{\top}=\frac{1}{n}X_n^{\top}X_n\to_{p} \Sigma_{X^{\top}X},$ then 
-$$
-\left(\frac{1}{n}X_n^{\top}X_n\right)^{-1}\to_{p} \Sigma_{X^{\top}X}^{-1},
-$$ 
-provided $\Sigma_{X^{\top}X}$ is a nonsingular/invertible matrix.
-
-<!-- 
-The first statement above is immediately seen by setting $\mathbf{z}_n=\left(x_n, y_n\right)'$, $\boldsymbol\alpha=\left(\beta, \gamma\right)'$, and $\mathbf{a}(\boldsymbol\alpha)=(1,1)\boldsymbol\alpha$, similarly for all others.  
--->
-
-
-### Slutsky's Theorem
-
-**Slutsky's Theorem** is a collection of results concerned with combinations of 
-
-* convergence in probability and 
-* convergence in distribution. 
-
-These results are particularly important for the derivation of the asymptotic distribution of estimators.  
-
-::: {.callout icon=false}
-#
-::: {#thm-Slutsky}
-## Slutsky's Theorem
-
-</br>
-
-Let $X_n$ and $Y_n$ denote sequences of random scalars or vectors and let $A_n$ denote a sequences of random matrices. Moreover, $\alpha$ and $A$ are deterministic limits of appropriate dimensions and $X$ is a *random* limit of appropriate dimension. 
-
-* If $X_n\to_{d} X\quad$ and $\quad Y_n\to_{p} \alpha,\quad$  then 
-$$
-X_n+Y_n\to_{d} X + \alpha.
-$$
-
-* If $X_n\to_{d} X\quad$ and $\quad Y_n\to_{p} 0,\quad$ then 
-$$
-X_n^{\top}Y_n\to_{p} 0.
-$$
-
-
-* If $X_n\to_{d} X\quad$ and $\quad A_n\to_{p} A,\quad$ then 
-$$
-A_n X_n\to_{d} AX.
-$$ 
-
-Above, we assume that $X_n,$ $Y_n,$ and $A_n$ are "conformable" (i.e., the matrix- and vector-dimensions fit to each other). 
-:::
-:::
-
-Proofs of @thm-Slutsky can be found, e.g., in @Vaart2000 (see Theorem 2.8) or here: [https://www.statlect.com/asymptotic-theory/Slutsky-theorem](https://www.statlect.com/asymptotic-theory/Slutsky-theorem)
-
-
-**Remark:** Sometimes, only the first two points in @thm-Slutsky are called "Slutsky's theorem."
-
-
-::: {.callout icon=false}
-#
-::: {#exm-Slutsky}
-## Most important special case of @thm-Slutsky
-
-</br>
-
-
-Let $\{X_n\}$ be a sequence of real valued $(K\times 1)$-dimensional random vectors such that 
-$$
-X_n\to_{d}\mathcal{N}_K(0,\Sigma)\quad\text{as}\quad n\to\infty,
-$$ 
-and let $\{A_n\}$ be a sequence of real valued $(L\times K)$-dimensional random matrices (or vectors if $L=1$) such that 
-$$
-A_n\to_{p} A \quad\text{as}\quad n\to\infty,
-$$
-where $A$ is a $(L\times K)$-dimensional deterministic matrix. Then, by @thm-Slutsky, $\{A_nX_n\}$ converges in distribution to an $L$-dimensional normal distribution,
-$$
-A_nX_n\to_{d}\mathcal{N}_L(0,A\Sigma A^{\top}).
-$$
-:::
-:::
-
-### Law of Large Numbers and Central Limit Theorems
-
-So far, we discussed the definitions of the four most important convergence modes, their relations among each other, and basic theorems about functionals of stochastic sequences (CMT and Slutsky). Though, we still lack of tools that allow us to actually show that a stochastic sequence convergences (in some of the discussed modes) to some limit.
-
-In the following we consider the stochastic sequences 
-$$
-\bar{Z}_1,\bar{Z}_2,\dots,\bar{Z}_n,\quad\text{as}\quad n \to\infty, 
-$$ 
-of sample means 
-$$
-\bar{Z}_n:=n^{-1}\sum_{i=1}^nZ_i,
-$$ 
-where $Z_i$, $i=1,\dots,n$, are (scalar, vector, or matrix-valued) *random variables*. 
-
-**Remember:** The sample mean $\bar{Z}_n$ is an estimator of the deterministic population mean $\mu.$ 
-
-Weak Law of Large Numbers (WLLNs), Strong LLNs (SLLNs), and Central Limit Theorems (CLTs) tell us conditions under which arithmetic means 
-$$
-\bar{Z}_n=n^{-1}\sum_{i=1}^nZ_i
-$$ 
-converge in probability, almost surely, and in distribution, respectively: 
-
-* Weak LLN: $\bar{Z}_n \to_{p}\mu$
-
-* Strong LLN: $\bar{Z}_n\to_{as}\mu$
-
-* CLT: $\sqrt{n}(\bar{Z}_n-\mu)\to_{d}\mathcal{N}(0,\sigma^2)$
-
-In the following we introduce the most well-known versions of a WLLN, SLLN, and a CLT.
-
-::: {.callout icon=false}
-#
-::: {#thm-WLLN1}
-## Weak LLN (by Chebychev)
-
-</br>
-
-If 
-
-* $\lim_{n\to\infty} E(\bar{Z}_n)=\mu$ and 
-* $\lim_{n\to\infty}Var(\bar{Z}_n)=0,$ 
-then 
-$$
-\bar{Z}_n\to_{p}\mu.
-$$
-:::
-:::
-
-A proof of @thm-WLLN1 can be found, for instance, here: [https://www.statlect.com/asymptotic-theory/law-of-large-numbers](https://www.statlect.com/asymptotic-theory/law-of-large-numbers)
-
+* The **Law of Large Numbers (LLN)**: sample means stabilize around their population mean as $n$ grows.
+* The **Central Limit Theorem (CLT)**: suitably scaled sample means become approximately normally distributed as $n$ grows -- regardless of how the underlying data are distributed.
 
 ::: {.callout icon=false}
 #
 ::: {#thm-SLLN1}
-## Strong LLN (by Kolmogorov)
+## Law of Large Numbers (by Kolmogorov)
 
-</br>
 
-If $\{Z_i\}$ is an 
 
-* iid sequence with 
-* $E(Z_i)=\mu,$ 
-then 
+If $Z_1,\dots,Z_n$ is an i.i.d. sequence with $E(Z_i)=\mu$, then the sample mean
 $$
-\bar{Z}_n\to_{as}\mu.
+\bar{Z}_n:=\frac{1}{n}\sum_{i=1}^nZ_i
 $$
+gets arbitrarily close to $\mu$ as $n\to\infty$. We write
+$$
+\bar{Z}_n\to_{p}\mu,\quad\text{as}\quad n\to\infty,
+$$
+read "$\bar{Z}_n$ converges in probability to $\mu$."
 :::
 :::
 
-A proof of @thm-SLLN1 can be found, e.g., in *Linear Statistical Inference and Its Applications*, Rao (1973), pp. 112-114. 
+@fig-LLN illustrates what "converges in probability" means: pick any corridor $\mu\pm\epsilon$ around the limit using some (small) $\epsilon>0.$ For small $n$, many paths of $\bar{Z}_n$ lie outside it. As $n$ grows, the probability that $\bar{Z}_n$ lies outside the corridor shrinks to zero, i.e. $P\left(|\bar{Z}_n-\mu|>\epsilon\right)\to 0$ as $n\to\infty$, and this holds for every $\epsilon>0,$ no matter how small.
 
-<!-- 
-> **Interactive visualization of the Law of Large Numbers:** [http://shiny.webpopix.org/sia/LLN/](http://shiny.webpopix.org/sia/LLN/) 
--->
+```{r}
+#| label: fig-LLN
+#| echo: false
+#| fig-width: 8
+#| fig-height: 5
+#| fig-retina: 1
+#| fig-keep: all
+#| animation-hook: gifski
+#| interval: 0.15
+#| fig-cap: "Law of Large Numbers: running sample means $\\bar{Z}_n$ of 30 independent sequences of fair-die rolls, $E(Z_i)=\\mu=3.5$. As $n$ grows, the paths settle into the corridor $\\mu\\pm\\varepsilon$ (green lines) and stay there; the dots mark each path's current value (green: inside, red: outside the corridor)."
+set.seed(321)
 
+## Z_i: rolls of a fair die, i.e. mu = E(Z_i) = 3.5
+mu    <- 3.5
+eps   <- 0.25
+M     <- 30                                   # number of sample-mean paths
+n_max <- 1000
+Z     <- matrix(sample(1:6, n_max * M, replace = TRUE), nrow = n_max)
+Zbar  <- apply(Z, 2, cumsum) / (1:n_max)      # running sample means
 
-**Note:** The WLLN and the SLLN for **random vectors** follow from applying the the theorem separately for each element of the random vectors.
+## animation frames: sample sizes on a log grid, then pause on n = n_max
+n_grid <- unique(round(10^seq(0, log10(n_max), length.out = 40)))
+n_hold <- 12
+
+## solid colours only: GIFs have no partial transparency
+col_path <- "steelblue"
+col_in   <- "forestgreen"
+col_out  <- "red"
+
+for(f in seq_len(length(n_grid) + n_hold)){
+  n      <- n_grid[min(f, length(n_grid))]
+  hold   <- f > length(n_grid)
+  inside <- abs(Zbar[n, ] - mu) <= eps
+  plot(NA, xlim = c(1, n_max), ylim = c(1, 6), log = "x", las = 1,
+       xlab = "Sample size n (log scale)", ylab = "",
+       main = bquote("Sample means" ~ bar(Z)[n] ~ "of" ~ .(M) ~
+                     "independent samples (here: die rolls)"))
+  matlines(1:n, Zbar[1:n, , drop = FALSE], lty = 1, lwd = 1.2, col = col_path)
+  abline(h = mu, lty = 2, lwd = 1.5, col = par("fg"))
+  abline(h = mu + c(-eps, eps), lwd = 2.5, col = col_in)
+  points(rep(n, M), Zbar[n, ], pch = 19, cex = 1.2,
+         col = ifelse(inside, col_in, col_out))
+  legend("topright", bty = "n", text.col = par("fg"),
+         legend = c(bquote(mu == .(mu)),
+                    bquote("Corridor" ~ mu %+-% epsilon ~ "with" ~ epsilon == .(eps)),
+                    bquote("n =" ~ .(n) * ":" ~ .(sum(inside)) ~ "of" ~ .(M) ~
+                           "paths inside the corridor")),
+         lty = c(2, 1, NA), lwd = c(1.5, 2.5, NA),
+         col = c(par("fg"), col_in, NA))
+  if(hold){
+    text(n_max, 1.4, adj = 1, cex = 1.2, col = par("fg"),
+         labels = bquote(P(abs(bar(Z)[n] - mu) > epsilon) %->% 0 ~ "as" ~ n %->% infinity))
+    ## invisible, frame-specific point: knitr would otherwise merge the
+    ## identical pause frames into one
+    points(1, 1, col = NA, cex = f)
+  }
+}
+```
 
 ::: {.callout icon=false}
 #
 ::: {#thm-CLT1}
-## CLT (Lindeberg-Levy)
+## Central Limit Theorem (Lindeberg-Lévy)
 
-</br>
 
-If $\{Z_i\}$ is 
-
-* an iid sequence with  
-* $E(Z_i)=\mu$ for all $i=1,\dots,n$ and 
-* $Var(Z_i)=\sigma^2$ for all $i=1,\dots,n,$ 
-
-then
+If $Z_1,\dots,Z_n$ is an i.i.d. sequence with $E(Z_i)=\mu$ and $Var(Z_i)=\sigma^2$, then the **distribution** of the appropriately centered and scaled sample mean
 $$
-\sqrt{n}(\bar{Z}_n-\mu)\to_{d} \mathcal{N}(0,\sigma^2),\quad\text{as}\quad n\to\infty
+\sqrt{n}\big(\bar{Z}_n-\mu\big)
 $$
+gets arbitrarily close to a normal distribution; i.e.
+$$
+\sqrt{n}(\bar{Z}_n-\mu)\to_{d} \mathcal{N}(0,\sigma^2),\quad\text{as}\quad n\to\infty.
+$$
+That is, for large $n$, the (appropriately scaled) sample mean is **approximately normally distributed** -- no matter what distribution the $Z_i$ themselves have.
 :::
 :::
-
-A proof of @thm-CLT1 can be found, e.g., in @Vaart2000 (see Theorem 2.17).
 
 <!-- 
-> **Interactive visualization of the CLT:** [https://tuomonieminen.shinyapps.io/CLTdemo/](https://tuomonieminen.shinyapps.io/CLTdemo/)
- -->
-
-Using the Cramér-Wold device (@thm-CramerWold), the Lindeberg-Levy CLT (@thm-CLT1) can also be applied to $K$-dimensional estimators 
-$$
-\bar{Z}_n \in\mathbb{R}^K.
-$$
-
-To show that 
-$$
-\sqrt{n}(\bar{Z}_n-\mu)\to_d\mathcal{N}_K(0,\Sigma)
-$$ 
-converges to the **multivariate**, $K$-dimensional, normal distribution $\mathcal{N}_K(0,\Sigma)$ as $n\to\infty$, we need to check whether **for any**  $\lambda\in\mathbb{R}^K$: 
-
-(a) **i.i.d.:** The **uni**variate stochastic sequence $\{\lambda^{\top}Z_i\}$ **is i.i.d.** with
-(b) **Mean:** $E(\lambda^{\top}Z_i)=\lambda^{\top}\mu$ for all $i=1,\dots,n,$ where $E(Z_i)=\mu\in\mathbb{R}^K$ denotes the $K$ dimensional mean vector, and 
-(c) **Variance:** $Var(\lambda^{\top}Z_i)=\lambda^{\top}\Sigma\lambda$ for all $i=1,\dots,n,$ where $Var(Z_i)=\Sigma$ denotes the $(K\times K)$ dimensional variance-covariance matrix. 
- 
-
-These points are fulfilled if the multivariate stochastic sequence $\{Z_i\}$ is an i.i.d. sequence with $E(Z_i)=\mu$ and $Var(Z_i)=\Sigma.$
-
 ::: {.callout-tip}
-The LLNs and the CLT are stated with respect to sequences of sample means $\{\bar{Z}_n\}$; i.e., the simplest estimators you probably can think of. We will see, however, that this is all we need in order to analyze also more complicated estimators such as the OLS estimator.
-:::
+A full treatment of stochastic convergence -- the different modes of convergence (in probability, almost surely, in mean square, in distribution), the Continuous Mapping Theorem, Slutsky's theorem, the Cramér-Wold device, and more general LLN/CLT variants (e.g., for heterogeneously distributed or weakly dependent data) -- is kept in the archived, theory-heavy version of this chapter, `07-Asymptotics_OLD.qmd`, in the repository.
+::: 
+-->
 
+Together, the LLN and CLT give us everything we need to show that $\hat\beta_n$ is:
 
+1. **consistent**: $\hat\beta_n$ gets arbitrarily close to $\beta$ as $n\to\infty$, and
+2. **asymptotically normal**: $\sqrt{n}(\hat\beta_n-\beta)$ is approximately normal for large $n$,
 
-### Estimators: Sequences of Random Variables
-
-The concepts introduced above readily apply to univariate or multivariate ($K$-dimensional) estimators 
-$$
-\hat\theta_n\equiv\hat\theta((X_1,Y_1),\dots,(X_n,Y_n))
-$$ 
-which are functions of the random sample with sample size $n.$
-
-An increasing sample size 
-$$
-n\to\infty
-$$ 
-makes an **estimator** 
-$$
-\{\hat\theta_n\}
-$$ 
-nothing but a **sequence of random variables** converging (hopefully) to the correct limit; namely, to the parameter value $\theta$ we aim to estimate. 
-
-
-If an estimator $\hat\theta_n$ converges in probability to its limit $\theta$, we call the estimator **weakly consistent** or simply **consistent**. If it converges almost surely to $\theta,$ we call the estimator **strongly consistent**. 
-
-<!-- **Note:**Under the asymptotic perspective ($n\to\infty$) it's not necessary anymore to condition on $X$ since as $n\to\infty$ the stochastic influence of $X$ on  vanishes  -->
-
-::: {.callout icon=false}
-#
-::: {#def-WConsist}
-## (Weak) Consistency 
-
-</br>
-
-We say that an estimator $\hat\theta_n$ is *(weakly) consistent for $\theta$* if 
-$$
-\hat\theta_n\to_{p}\theta,\quad\text{as}\quad n\to\infty.
-$$
-:::
-:::
-
-::: {.callout icon=false}
-#
-::: {#def-SConsist}
-## Strong Consistency 
-
-</br>
-
-We say that an estimator $\hat\theta_n$ is *strongly consistent for $\theta$* if 
-$$
-\hat\theta_n\to_{as}\theta,\quad\text{as}\quad n\to\infty.
-$$
-:::
-:::
-
-A necessary requirement for weak and strong consistency is that the estimator is **asymptotically unbiased**. 
-
-::: {.callout icon=false}
-#
-::: {#def-ABias}
-## Asymptotic Bias
-
-</br>
-
-The asymptotic bias of an estimator $\hat\theta_n$ of some  parameter $\theta$ is defined as
-$$
-\begin{align*}
-\operatorname{ABias}(\hat\theta_n,\theta)
-&=\lim_{n\to\infty}\operatorname{Bias}(\hat\theta_n,\theta)\\
-&=\lim_{n\to\infty}E(\hat\theta_n)-\theta.
-\end{align*}
-$$
-If 
-$$
-\operatorname{ABias}(\hat\theta_n,\theta)=0,
-$$ 
-then $\hat\theta_n$ is called an **asymptotically unbiased**.
-:::
-:::
-
-
-::: {.callout icon=false}
-#
-::: {#def-ANorm}
-## Asymptotic Normality, Asymptotic Variance, $\sqrt{n}$-Consistent 
-
-</br>
-
-An estimator $\hat\theta_n$ is called **asymptotically normal** if
-$$
-\sqrt{n}(\hat\theta_n-\theta)\to_{d} \mathcal{N}(0,\operatorname{AVar}(\hat\theta_n)),\quad\text{as}\quad n\to\infty,
-$$
-where 
-$$
-\begin{align}
-\operatorname{AVar}(\hat\theta_n)
-%\sigma^2 
-& = \lim_{n\to\infty}Var(\sqrt{n}(\hat\theta_n-\theta))\\
-& = \lim_{n\to\infty}n Var(\hat\theta_n-\theta)\\
-& = \lim_{n\to\infty}n Var(\hat\theta_n)\\
-\end{align}
-$$ 
-is called the **asymptotic variance** of $\hat\theta_n.$ 
-
-Due to the $\sqrt{n}$-scaling, $\theta_n$ is called **$\sqrt{n}$-consistent**. 
-:::
-:::
-
-
-::: {.callout icon=false}
-#
-::: {#def-MSE}
-## Mean Squared Error (MSE)
-$$
-\operatorname{MSE}(\hat\theta_n) = E\left((\hat\theta_n - \theta)^2\right)
-$$ 
-is called the **mean squared error (MSE)** of the estimator $\hat\theta_n.$  
-:::
-:::
-
-
-
-::: {.callout-tip}
-If we can show that the MSE of $\hat\theta_n$ converges to zero,
-$$
-\operatorname{MSE}(\hat\theta_n) \to 0,\quad n\to\infty,
-$$ 
-then we have shown that $\hat\theta_n$ converges to $\theta$ in the mean square sense 
-$$
-\hat\theta_n  \to_{ms} \theta,\quad n\to\infty,
-$$ 
-which implies that $\hat\theta_n$ is weakly consistent, i.e.
-$$
-\hat\theta_n \to_{p} \theta,\quad n\to\infty.
-$$ 
-:::
-
-
-As already discussed in @sec-EstimTheory, the MSE of $\hat\theta_n$ can be decomposed into the squared bias of $\hat\theta_n$ and the variance of $\hat\theta_n:$
-$$
-\begin{align*}
-\operatorname{MSE}(\hat\theta_n)
-&=E\Big[(\hat\theta_n-\theta)^2\Big]\\[2ex]
-&=E\Big[\Big(\overbrace{E(\hat\theta_n) - E(\hat\theta_n)}^{=0} + \hat\theta_n-\theta\Big)^2\Big]\\[2ex]
-&=E\left[\left((E(\hat\theta_n) -\theta) + (\hat\theta_n - E(\hat\theta_n))\right)^2\right]\\[2ex]
-&=E\Big[\left(E(\hat\theta_n) -\theta\right)^2 + \left(\hat\theta_n - E(\hat\theta_n)\right)^2\\[2ex] 
-&\quad +2\left(E(\hat\theta_n) -\theta\right)\left(\hat\theta_n - E(\hat\theta_n)\right)\Big]\\[2ex]
-&=\left(E(\hat\theta_n) -\theta\right)^2 + E\Big[\left(\hat\theta_n - E(\hat\theta_n)\right)^2\Big]\\[2ex] 
-&\quad +2\left(E(\hat\theta_n) -\theta\right)\overbrace{\Big(E(\hat\theta_n) - E(\hat\theta_n)\Big)}^{=0}\\[2ex]
-%&=\left(E(\hat\theta_n)-\theta\right)^2 + Var(\hat\theta_n)\\
-&=\left(\operatorname{Bias}(\hat\theta_n)\right)^2 + Var(\hat\theta_n).
-\end{align*}
-$$ 
-Thus, to show that an estimator $\hat\theta_n$ converges in the mean square sense to $\theta,$ we need to show that: 
-
-1. The estimator is asymptotically unbiased  
-\begin{align*}
-\operatorname{Bias}(\hat\theta_n)&\to 0,\quad n\to\infty\\
-\Leftrightarrow\quad E(\hat\theta_n)&\to \theta,\quad n\to\infty
-\end{align*}
-2. The variance of the estimator converges to zero
-$$
-Var(\hat\theta_n)\to 0,\quad n\to\infty.
-$$ 
-
+*without* requiring that the error terms $\varepsilon_i$ themselves are normally distributed.
 
 ## Asymptotics under the Classic Regression Model
 
-Given the above introduced machinery, we can now proof that the two OLS estimators 
+Two OLS estimators:
 $$
 \hat\beta_n=(X^{\top}X)^{-1}X^{\top}Y
+\qquad\text{and}\qquad
+s^2_{ub,n}=\frac{1}{n-K}\sum_{i=1}^n\hat\epsilon_i^2.
 $$
-and 
+
+* Both are **consistent**.
+* $\hat\beta_n$ is **asymptotically normal**.
+
+$\Rightarrow$ We can drop the normality and spherical-errors assumption (Assumption 4$^\ast$ of @sec-ssinf) -- and still use our inference tools ($t$-tests, $F$-tests) from @sec-ssinf, as long as $n$ is "large."
+
+**Notation:** split $\hat\beta_n$ into its building blocks.
 $$
-s^2_{ub,n}=\frac{1}{n-K}\sum_{i=1}^n\hat\epsilon_i^2
-$$ 
-are both consistent, and that $\hat\beta_n$ is asymptotically normal distributed.
-
-<!-- applied to the classic regression model (defined by Assumptions 1-4 in @sec-MLR are both consistent, and that $\hat\beta_n$ is asymptotically normal distributed.  -->
-
-Using asymptotic statistics, allows us to drop the unrealistic normality and spherical errors assumption (Assumption 4$^\ast$) of @sec-ssinf, but still use our inference tools ($t$-tests, $F$-tests) from @sec-ssinf; as long as the sample size $n$ is "large." 
-
-<!-- However, before we can formally state the asymptotic properties, we, first, need to adjust our "data generating process"assumption (Assumption 1) such that we can apply Kolmogorov's strong LLN and Lindeberg-Levy's CLT. Second, we need to adjust the rank assumption (Assumption 3), such that the full column rank of $X$ is guaranteed for the limiting case as $n\to\infty$, too. Assumptions 2 and 4 from @sec-MLR are assumed to hold (and do not need to be changed).  -->
-
-<!-- **Assumption 1$^\ast$: Data Generating Process (for Asymptotics)** Assumption 1 of @sec-MLR applies, but *additionally* we assume that $(\varepsilon_i, X_i)\in\mathbb{R}^{K+1}$ (or equivalently $(Y_i,X_i)\in\mathbb{R}^{K+1}$) is jointly i.i.d. for all $i=1,\dots,n$, with existing and finite second moments for $X_i$ and fourth moments for $\varepsilon_i$.
-
-
-**Note 1:** The fourth moment of $\varepsilon_i$ is actually only needed for @thm-Consistency_s1; for the rest two moments are sufficient.
-
-
-**Note 2:** The above adjustment of Assumption 1 is far less restrictive than assuming that the error-terms $\varepsilon_i$ are i.i.d. normally distributed and independent from $X_i$ (as it's necessary for small sample inference in @sec-ssinf).  -->
-
-For the following, it will be useful to introduce some notation that allows us to consider the different parts of the OLS estimator $\hat\beta_n$ separately.  
-$$
-\begin{align*}
-\hat\beta_n 
+\begin{aligned}
+\hat\beta_n
 &=\left(X^{\top}X\right)^{-1}X^{\top}Y\\[2ex]
+&\text{expanding by $\frac{1}{n}\colon$}\\[2ex]
 &=\left(\frac{1}{n}X^{\top}X\right)^{-1}\frac{1}{n} X^{\top}Y\\[2ex]
-&=\;\;\;\;S_{X^{\top}X}^{-1}\;\;\;\;\frac{1}{n} X^{\top}Y,
-\end{align*}
+&\text{using $Y=X\beta+\varepsilon\colon$}\\[2ex]
+&=\left(\frac{1}{n}X^{\top}X\right)^{-1}\frac{1}{n} X^{\top}(X\beta + \varepsilon)\\[2ex]
+&\text{multiplying out:}\\[2ex]
+&=\underbrace{\left(\frac{1}{n}X^{\top}X\right)^{-1}\frac{1}{n} X^{\top}X}_{=I_K}\;\;\beta + \left(\frac{1}{n}X^{\top}X\right)^{-1}\frac{1}{n} X^{\top}\varepsilon\\[2ex]
+&=\beta + \underbrace{\left(\frac{1}{n}X^{\top}X\right)^{-1}}_{=S_{X^{\top}X}^{-1}}\;\;\;\;\frac{1}{n} X^{\top}\varepsilon\\[2ex]
+&=\beta + \;\;\;\;\;\;S_{X^{\top}X}^{-1}\;\;\;\;\;\;\;\;\;\;\;\frac{1}{n}\sum_{i=1}^n X_i\varepsilon
+\end{aligned}
 $$
-where 
-$$
+with
 \begin{align*}
-\underset{(K\times K)}{S_{X^{\top}X}} 
-&=\frac{1}{n}X^{\top}X\\[2ex]
-&=\frac{1}{n}\sum_{i=1}^nX_iX_i^{\top},
+\underset{(K\times K)}{S_{X^{\top}X}} &:= \frac{1}{n}X^{\top}X = \frac{1}{n}\sum_{i=1}^nX_iX_i^{\top}\\[2ex]
+\frac{1}{n} X^{\top}\varepsilon &= \frac{1}{n}\sum_{i=1}^n X_i\varepsilon.
 \end{align*}
-$$
-and where the mean of the $(K\times K)$ matrix $S_{X^{\top}X}$ will be denoted as
-$$
-\begin{align*}
-\Sigma_{X^{\top}X}
-&=E\left(S_{X^{\top}X}\right)\\[2ex]
-&=E\left(\frac{1}{n}X^{\top}X\right)\\[2ex]
-&=E\left(\frac{1}{n}\sum_{i=1}^nX_iX_i^{\top}\right)\\[2ex]
-&=\frac{n}{n}E\left(X_iX_i^{\top}\right)\\[2ex]
-&=E\left(X_iX_i^{\top}\right).
-\end{align*}
-$$
-For the below results, we need to restate the full rank assumption (Assumption 3 of @sec-MLR) with respect to $\Sigma_{X^{\top}X}.$
 
-**Assumption 3$^\ast$: (Population) Rank Condition** </br>
-The $(K\times K)$ matrix 
+
+The mean of the $(K\times 1)$ vector $X_{i} \varepsilon_i$ is given by
+\begin{align*}
+E\left(X_{i} \varepsilon_i\right)
+&=E\left(E\left(X_{i} \varepsilon_i\mid X\right)\right)\\[2ex]
+&=E\left(X_i \;E\left(\varepsilon_i\mid X\right)\right)\\[2ex]
+&=E\left(X_i\;\underbrace{E\left(\varepsilon_i\mid X\right)}_{=0}\right)\\[2ex]
+&=E\left(X_i\;0\;\right) = E(0) = \underset{(K\times 1)}{0}.
+\end{align*}
+
+Thus, by the LLN, $\frac{1}{n} X^{\top}\varepsilon = \frac{1}{n}\sum_{i=1}^n X_{i} \varepsilon_i$ converges (in probability) to a $(K\times 1)$ zero vector $0,$
+$$
+\frac{1}{n} X^{\top}\varepsilon = \frac{1}{n}\sum_{i=1}^n X_{i} \varepsilon_i \to_p 0 \quad\text{as}\quad n\to\infty.
+$$
+
+
+Let denote the mean of the $(K\times K)$ matrix $X_iX_i^\top$ by
+$$
+E\left(X_iX_i^\top\right) =: \Sigma_{X^{\top}X}. 
+$$
+
+Thus, by the LLN, $S_{X^{\top}X}=\frac{1}{n}\sum_{i=1}^nX_iX_i^{\top}$ converges (in probability) to its population limit $E\left(X_iX_i^{\top}\right)=\Sigma_{X^{\top}X},$
+$$
+S_{X^{\top}X}= \frac{1}{n}\sum_{i=1}^nX_iX_i^{\top} \to_p E\left(X_iX_i^{\top}\right)=\Sigma_{X^{\top}X} \quad\text{as}\quad n\to\infty.
+$$
+
+Eventually, we need to invert the population limit quantity $\Sigma_{X^{\top}X}.$ Therefore, we have to restate the full-rank assumption (Assumption 3 of @sec-MLR) for $\Sigma_{X^{\top}X}\colon$
+
+
+
+**Assumption 3$^\ast$: (Population) Rank Condition**
+
+The $(K\times K)$ matrix
 $$
 \Sigma_{X^{\top}X}=E(S_{X^{\top}X})
 $$
-<!-- $$ -->
-<!-- n^{-1}X^{\top}X=S_{X^{\top}X}\to_{p}\Sigma_{X^{\top}X}\quad\text{as}\quad n\to\infty -->
-<!-- $$ -->
-has full rank $K$. I.e., $\Sigma_{X^{\top}X}$ is nonsingular and invertible. 
-<!-- (Note, this assumption does not assume that $S_{X^{\top}X}\to_{p}\Sigma_{X^{\top}X}$, but if this convergence hold, it assumes that the limiting matrix is of full rank $K$.) -->
-
-<!-- **Note:**The crucial part of Assumption 3$^\ast$ is that the limit matrix has full rank $K$. The convergence in probability statement ($S_{X^{\top}X}\to_{p}\Sigma_{X^{\top}X}$) follows already from Assumption 1$^\ast$.   -->
-
-<!-- **Note:** Assumption 3$^\ast$ implies the existence and finiteness of the first two moments of $X_i$ (even without Assumption 1$^\ast$). -->
+has full rank $K$. I.e., $\Sigma_{X^{\top}X}$ is nonsingular and invertible.
 
 
+#### **Showing Consistency of $\widehat{\beta}_n$** {-}
 
-<!-- % Under the Assumptions 1$^\ast$, 2, 3$^\ast$, and 4, we can show the following results. -->
-
-
- <!-- 1$^\ast$ and 3$^\ast$  -->
-
-
-
-::: {.callout icon=false}
-#
-::: {#thm-Sxx1}
-## Consistency of $S_{X^{\top}X}^{-1}$ 
-
-Under Assumptions 1, 2, 3$^\ast$, and 4, and under the assumption that $X_i$ has finite second moments, 
-we have that
+Now, we have everything to argue that $\widehat{\beta}_n$ is consistent for $\beta;$ i.e. that 
 $$
-S_{X^{\top}X}^{-1} = \left(\frac{1}{n}X^{\top}X\right)^{-1}\quad\to_{p}\quad\Sigma_{X^{\top}X}^{-1},\quad\text{as}\quad n\to\infty.
+\widehat{\beta}_n\to_{p}\beta\quad\text{as}\quad n\to\infty
 $$
-:::
-:::
+as stated below in @thm-bconsistent1. 
 
-The proof of @thm-Sxx1 is done in the lecture. 
+By the LLN, $\frac{1}{n} X^{\top}\varepsilon = \frac{1}{n}\sum_{i=1}^n X_{i} \varepsilon_i$ is consistent for the $(K\times 1)$ zero vector $0\colon$
+$$
+\frac{1}{n} X^{\top}\varepsilon = \frac{1}{n}\sum_{i=1}^n X_{i} \varepsilon_i\to_{p} \underset{(K\times 1)}{0} \quad\text{as}\quad n\to\infty.
+$$
 
+By the LLN, $S_{X^{\top}X}$ is consistent for $(K\times K)$ matrix $\Sigma_{X^{\top}X}$:
+$$
+S_{X^{\top}X}\to_{p}\underset{(K\times K)}{\Sigma_{X^{\top}X}}\quad\text{as}\quad n\to\infty.
+$$
+By another result, the **Continuous Mapping Theorem**, we may take the inverse and the product of these limits, so that, as $n\to\infty,$
+$$
+\widehat{\beta}_n=\beta + S_{X^{\top}X}^{-1}\;\;\frac{1}{n}\sum_{i=1}^n X_i\varepsilon_i \to_p \beta + \Sigma_{X^{\top}X}^{-1}0=\beta.
+$$
 
-<!-- Under Assumption 1$^\ast$, 2 and 3$^\ast$ we have that -->
 
 ::: {.callout icon=false}
 #
@@ -767,291 +243,246 @@ $$
 :::
 :::
 
-The proof of @thm-bconsistent1 is done in the lecture.
-
-
-<!-- **Note:** In @thm-bconsistent1 it would suffice to assume that $\varepsilon_i$ has only a finite *first* moment, but since we need also a finite second moment for the error term in the following theorems, we may also require two moments in @thm-bconsistent1.   -->
-
-
-Moreover, we can show that the appropriately scaled OLS estimator is asymptotically normal distributed. The following theorem is stated for the simpler homoskedastic case, the heteroskedastic case is presented in @sec-CaseHetero.
+The appropriately scaled OLS estimator is also **asymptotically normal**. We state this first for the homoskedastic case; the heteroskedastic case follows in @sec-CaseHetero.
 
 ::: {.callout icon=false}
 #
 ::: {#thm-OLSnormality1}
 ## Asymptotic Normality of $\hat{\beta}$ (Homoskedastic Case)
-Under Assumption 1, 2, 3$^\ast$, and 4, and under the assumption that $X_i$ and $\varepsilon_i$ have finite second moments, and under the simplifying assumption of spherical errors 
+Under Assumption 1, 2, 3$^\ast$, and 4, and under the assumption that $X_i$ and $\varepsilon_i$ have finite second moments, and under the simplifying assumption of spherical errors
 $$
 Var(\varepsilon|X)=\sigma^2I_n,
-$$ 
+$$
 we have that
 $$
 \sqrt{n}(\hat\beta_n-\beta)\to_{d} \mathcal{N}_K\left(0,\sigma^2 \Sigma^{-1}_{X^{\top}X}\right),\quad\text{as}\quad n\to\infty,
 $$
-where 
+where
 $$
-\begin{align*}
-\sigma^2 \Sigma^{-1}_{X^{\top}X} 
+\begin{aligned}
+\sigma^2 \Sigma^{-1}_{X^{\top}X}
 & = \lim_{n\to\infty} Var\left(\sqrt{n}(\hat\beta_n-\beta)\right)\\[2ex]
 & = \lim_{n\to\infty} n Var\left(\hat\beta_n\right)\\[2ex]
 & = \operatorname{AVar}(\hat\beta_n)
-\end{align*}
+\end{aligned}
 $$
-is the asymptotic variance of $\hat\beta_n.$ 
+is the asymptotic variance of $\hat\beta_n.$
 :::
-::: 
+:::
 
-The proof of @thm-OLSnormality1 is done in the lecture. 
-
-
-@thm-OLSnormality1 implies that for spherical errors and for largish sample sizes $n,$ the OLS estimator $\beta_n$ is **approximately** normal distributed, i.e.
+By @thm-OLSnormality1, for spherical errors and largish $n$:
 $$
-\begin{align*}
+\begin{aligned}
 \sqrt{n}(\hat\beta_n-\beta)&\overset{a}{\sim}\mathcal{N}_K\left(0,\sigma^2 \Sigma^{-1}_{X^{\top}X}\right)\\[2ex]
-\Rightarrow\qquad\hat\beta_n &\overset{a}{\sim}\mathcal{N}_K\left(\beta, n^{-1}\sigma^2 \Sigma^{-1}_{X^{\top}X}\right),
-\end{align*}
+\Rightarrow\qquad\hat\beta_n &\overset{a}{\sim}\mathcal{N}_K\left(\beta, n^{-1}\sigma^2 \Sigma^{-1}_{X^{\top}X}\right).
+\end{aligned}
 $$
-where the approximation error becomes arbitrarily small as $n\to\infty.$
+The approximation error vanishes as $n\to\infty.$
 
-
-Usually, we do not know the asymptotic variance 
-$$
-\operatorname{AVar}(\hat\beta_n) = \sigma^2\Sigma_{X^{\top}X}^{-1},
-$$ 
-and thus have to plug-in the (consistent) estimator  
+We don't know $\operatorname{AVar}(\hat\beta_n) = \sigma^2\Sigma_{X^{\top}X}^{-1}$ -- plug in the consistent estimator
 $$
 \widehat{\operatorname{AVar}}(\hat\beta_n) = s_{ub}^2 S_{X^{\top}X}^{-1}.
 $$
-
->  **Note:** Consistency of $S_{X^{\top}X}^{-1}$ is provided by @thm-Sxx1 and consistency of $s_{ub}^2$ is provided by @thm-Consistency_s1.
-
-
-
-::: {.callout icon=false}
-#
-::: {#thm-Consistency_s1}
-## Consistency of $s^2_{UB}$
-
-Under the assumptions of @thm-OLSnormality1, but with the additional requirement that $\varepsilon_i$ has finite fourth moments, we have that
-$$
-s_{ub}^2\to_{p}\sigma^2,\quad\text{as}\quad n\to\infty.
-$$
-:::
-:::
-
-The proof of @thm-Consistency_s1 is skipped, but a detailed proof can be found here: [https://www.statlect.com/fundamentals-of-statistics/OLS-estimator-properties](https://www.statlect.com/fundamentals-of-statistics/OLS-estimator-properties)
-
+(Both $S_{X^{\top}X}^{-1}$ and $s_{ub}^2$ are consistent, by the LLN.)
 
 ### The Case of Heteroskedasticity {#sec-CaseHetero}
 
-@thm-OLSnormality1 can also be stated (and proofed) for conditionally heteroskedastic error terms. In this case, $\beta_n$ is for large sample sizes $n$ **approximately** normal distributed, 
+An asymptotic (large $n$) normality result as in @thm-OLSnormality1 can also be derived for conditionally **heteroskedastic** error terms. For largish $n\colon$
 $$
-\begin{align*}
+\begin{aligned}
 \sqrt{n}(\hat\beta_n-\beta)\overset{a}{\sim}\mathcal{N}_K\left(0,\Sigma_{X^{\top}X}^{-1}E(\varepsilon^2_iX_iX_i^{\top})\Sigma_{X^{\top}X}^{-1}\right)\\[2ex]
-\Rightarrow\qquad\hat\beta_n\overset{a}{\sim}\mathcal{N}_K\left(\beta,n^{-1}\Sigma_{X^{\top}X}^{-1}E(\varepsilon^2_iX_iX_i^{\top})\Sigma_{X^{\top}X}^{-1}\right),
-\end{align*}
+\Rightarrow\qquad\hat\beta_n\overset{a}{\sim}\mathcal{N}_K\left(\beta,n^{-1}\Sigma_{X^{\top}X}^{-1}E(\varepsilon^2_iX_iX_i^{\top})\Sigma_{X^{\top}X}^{-1}\right).
+\end{aligned}
 $${#eq-OLSnormality1Rob}
-where the approximation error becomes arbitrarily small as $n\to\infty.$
+The approximation error vanishes as $n\to\infty.$
 
+**Key takeaway:**
 
-
-
-The asymptotic variance (under heteroskedasticity)
+* Valid inference **without** assuming homoskedasticity.
+* We only need a good estimator of the "sandwiched" middle term $E(\varepsilon^2_iX_iX_i^{\top})$ in
 $$
-\begin{align*}
-\operatorname{AVar}(\hat\beta_n) 
-& = \lim_{n\to\infty}Var(\sqrt{n}(\hat\beta_n-\beta))\\[2ex]
-& =\underbrace{\Sigma_{X^{\top}X}^{-1}E(\varepsilon_i^2X_iX_i^{\top})\Sigma_{X^{\top}X}^{-1}}_{(K\times K)}
-\end{align*}
-$$ 
-is, of course, usually unknown and needs to be estimated from the data by some consistent estimator such that 
+\Sigma_{X^{\top}X}^{-1}E(\varepsilon^2_iX_iX_i^{\top})\Sigma_{X^{\top}X}^{-1}.
 $$
-S_{X^{\top}X}^{-1}\widehat{E}(\varepsilon^2_iX_iX_i^{\top})S^{-1}_{X^{\top}X}\to_{p} \Sigma_{X^{\top}X}^{-1}E(\varepsilon^2_iX_iX_i^{\top})\Sigma_{X^{\top}X}^{-1}
-$$
-as $n\to\infty.$ 
+* That estimator is the subject of the rest of this chapter.
 
-The estimator 
-$$
-\widehat{E}(\varepsilon^2_iX_iX_i^{\top})
-$$ 
-is here a placeholder for one of the existing **Heteroskedasticity Consistent (HC)** estimators of $E(\varepsilon^2X_iX_i^{\top})$:
+## Robust Standard Errors
 
-HC-Type  | Formular
+We need a consistent estimator of
+$$
+E(\varepsilon^2_iX_iX_i^{\top}).
+$$
+The following **Heteroskedasticity Consistent (HC)** estimators are commonly used:
+
+HC-Type  | Formula
 ------|------------
 HC0   |$\widehat{E}(\varepsilon^2_iX_iX_i^{\top})=\frac{1}{n}\sum_{i=1}^n\hat\varepsilon_i^2X_iX_i^{\top}$
 HC1   | $\widehat{E}(\varepsilon^2_iX_iX_i^{\top})=\frac{1}{n}\sum_{i=1}^n\frac{n}{n-K}\hat\varepsilon_i^2X_iX_i^{\top}$
 HC2   | $\widehat{E}(\varepsilon^2_iX_iX_i^{\top})=\frac{1}{n}\sum_{i=1}^n\frac{\hat{\varepsilon}_{i}^{2}}{1-h_{i}}X_iX_i^{\top}$
 HC3   | $\widehat{E}(\varepsilon^2_iX_iX_i^{\top})=\frac{1}{n}\sum_{i=1}^n\frac{\hat{\varepsilon}_{i}^{2}}{\left(1-h_{i}\right)^{2}}X_iX_i^{\top}$
-HC4    | $\widehat{E}(\varepsilon^2_iX_iX_i^{\top})=\frac{1}{n}\sum_{i=1}^n\frac{\hat{\varepsilon}_{i}^{2}}{\left(1-h_{i}\right)^{\delta_{i}}}X_iX_i^{\top}$
+HC4    | $\widehat{E}(\varepsilon^2_iX_iX_i^{\top})=\frac{1}{n}\sum_{i=1}^n\frac{\hat{\varepsilon}_{i}^{2}}{\left(1-h_{i}\right)^{\delta_{i}}}X_iX_i^{\top}$ with $\delta_i=\min\{4,,h_i/\bar h\}$
 
-HC3 is the most often used HC-estimator. 
-
-
+**HC3** is the most commonly used HC-estimator.
 
 ::: {.callout-tip}
-The statistic $h_i:=[P_X]_{ii}$ is called the **leverage statistic** of $X_i,$ where 
+The **leverage statistic** of $X_i$: $h_i:=[P_X]_{ii}$.
 
-* $1/n\leq h_i\leq 1$ and 
-* $\bar{h}=n^{-1}\sum_{i=1}^nh_i=K/n$. 
+* $1/n\leq h_i\leq 1$
+* average leverage: $\bar{h}=n^{-1}\sum_{i=1}^nh_i=K/n$
 
-Observations $X_i$ with leverage statistics $h_i$ that greatly exceed the average leverage value $K/n$ are referred to as "high leverage" observations. High leverage observations $X_i$ are observations that are far away from all other observations $X_j$, $i\neq j=1,\dots,n.$ 
-
-High leverage observations $X_i$ have the potential to distort the estimation results, $\hat\beta_n$. Indeed, a high leverage observation $X_i$ will have an distorting effect on the estimation results if the absolute value of the corresponding residual $|\hat{\varepsilon}_i|$ is unusually large---such observations are called **influential outliers**. Such observations increase the estimation uncertainty. 
-
-General idea of the HC2-HC4 estimators is to increase the estimated variance in order to account for the effects of influential outliers. The residuals $\hat\varepsilon_i$ belonging to $X_i$ values that have a large leverage $h_i$ receive a higher weight and thus increase the value of $\widehat{E}(\varepsilon^2_iX_iX_i^{\top}).$ This strategy takes into account increased estimation uncertainties due to single influential outliers. <!-- (Too small variance estimates lead to false inference, too large variance estimates lead to conservative inference.) -->
+* **High leverage**: $h_i\gg K/n$ -- $X_i$ sits far from the other $X_j$'s.
+* **Influential outlier**: high leverage *and* large $|\hat\varepsilon_i|$ -- distorts $\hat\beta_n$.
+* HC2--HC4 upweight residuals at high-leverage points to compensate.
 :::
 
-The estimator HC0 was suggested in the econometrics literature by @White1980 and is justified by asymptotic ($n\to\infty$) arguments. The estimators HC1, HC2 and HC3 were suggested by @MacKinnon_White_1985 to improve the finite sample performance of HC0. Using an extensive Monte Carlo simulation study comparing HC0-HC3, @Long_Ervin_2000 concludes that HC3 provides the best overall performance in finite samples. @Cribari_2004 suggested the estimator HC4 to further improve the performance in finite sample behavior, especially in the presence of influential observations (large $h_i$ values).
+* **HC0:** @White1980; justified asymptotically.
+* **HC1--HC3:** @MacKinnon_White_1985; improved finite-sample performance.
+* **HC3:** best overall finite-sample performance (@Long_Ervin_2000).
+* **HC4:** @Cribari_2004; further improvement under influential observations.
 
+> **R:** `sandwich::vcovHC(lm_obj, type = "HC3")`.
 
->  **Note:** Besides **Heteroskedasticity Consistent (HC)** estimators, there are also **Heteroskedasticity and Autocorrelation Consistent (HAC)** estimators, as well as estimators that consider clustered covariances. An `R` package that provides H(A)C estimators is `sandwich`. For clustered covariances, the `clubSandwich` package can be used.
+::: {.callout-note}
+Besides **Heteroskedasticity Consistent (HC)** estimators, there are also
 
+* ***H*eteroskedasticity and *A*utocorrelation *C*onsistent (HAC)** estimators, as well as estimators that consider
+* **clustered error covariances.**
 
-### Robust Inference 
+An `R` package that provides H(A)C estimators is `sandwich`.
 
-<!-- From our asymptotic results under the classic regression model (Assumptions 1$^\ast$, 2, 3$^\ast$, and 4) we get the following results important for testing statistical hypothesis.  -->
+For clustered covariances, the `clubSandwich` package can be used.
+:::
+
+### Robust Inference
 
 #### Robust Hypothesis Testing: Multiple Parameters
 
-Let us reconsider the following system of $q$-many null hypotheses:
+System of $q$ null hypotheses:
 $$
-\begin{align*}
+\begin{aligned}
 H_0: \underset{(q\times K)}{R}\underset{(K\times 1)}{\beta}  = \underset{(q\times 1)}{r^{(0)}}\\
-H_1: \underset{(q\times K)}{R}\underset{(K\times 1)}{\beta}  \neq \underset{(q\times 1)}{r^{(0)}}\\
-\end{align*}
+H_1: \underset{(q\times K)}{R}\underset{(K\times 1)}{\beta}  \neq \underset{(q\times 1)}{r^{(0)}}
+\end{aligned}
 $$
-where the $(q \times K)$ matrix $R$ and the $q$-vector $r=(r_{1},\dots,r_{q})^{\top}$ are chosen by the statistician to specify her/his null hypothesis about the unknown true parameter vector $\beta$. To make sure that there are no redundant equations, it is required that $\operatorname{rank}(R)=q$.
 
-By contrast to the multiple parameter tests for small samples (see @sec-testmultp), we can work here with a **heteroskedasticity robust** test statistic which is applicable for heteroskedastic error terms:
+* $R$ ($q\times K$) and $r^{(0)}$ ($q\times 1$) are chosen by the statistician.
+* Require $\operatorname{rank}(R)=q$ (no redundant equations).
+
+Unlike the small-sample test (@sec-testmultp), this version is **heteroskedasticity robust**:
 $$
-\begin{align*}
-W&=n(R\hat\beta_n - r^{(0)})^{\top}[R\,S_{X^{\top}X}^{-1}\widehat{E}(\varepsilon^2_iX_iX_i^{\top})S^{-1}_{X^{\top}X}\,R^{\top}]^{-1}(R\hat\beta_n-r^{(0)})\\[2ex] 
-W&\overset{H_0}{\to}_d\chi^2(q), \quad\text{as}\quad n\to\infty. 
-\end{align*}
+\begin{aligned}
+W&=n(R\hat\beta_n - r^{(0)})^{\top}[R\,S_{X^{\top}X}^{-1}\widehat{E}(\varepsilon^2_iX_iX_i^{\top})S^{-1}_{X^{\top}X}\,R^{\top}]^{-1}(R\hat\beta_n-r^{(0)})\\[2ex]
+W&\overset{H_0}{\to}_d\chi^2(q), \quad\text{as}\quad n\to\infty.
+\end{aligned}
 $${#eq-Ftestasymp}
-The price to pay is that the distribution of the test statistic under the null hypothesis is only valid asymptotically; i.e. for large $n$. That is, the critical values taken from the asymptotic distribution will be useful only for "largish" samples sizes. 
 
-> In case of **homoskedastic error** terms, one can substitute 
-> $$
-> S_{X^{\top}X}^{-1}\widehat{E}(\varepsilon^2_iX_iX_i^{\top})S^{-1}_{X^{\top}X}
-> $$ 
-> by 
-> $$
-> s_{ub}^2S_{X^{\top}X}^{-1}.
-> $$ 
-
-::: {.callout-tip}
-# Finite-sample correction 
-In order to improve the finite-sample performance of this test, one usually uses the $F_{q,n-K}$ distribution with $q$ and $n-K$ degrees of freedoms instead of the $\chi^2(q)$ distribution. 
-
-Asymptotically ($n\to\infty$), $F_{q,n-K}$ is equivalent to $\chi^2(q)$. However, for any finite sample size $n$ (i.e., the practically relevant case) $F_{q,n-K}$ leads to larger critical values which helps to account for the estimation errors in $S_{X^{\top}X}^{-1}\widehat{E}(\varepsilon^2_iX_iX_i^{\top})S^{-1}_{X^{\top}X}$ (or in $s_{ub}^2S_{X^{\top}X}^{-1}$) which are otherwise neglected by the pure asymptotic perspective. 
-::: 
-
-#### Robust Hypothesis Testing: Single Parameters
-
-Let us reconsider the case of hypotheses about only one parameter $\beta_k,$ with $k=1,\dots,K$
+* Valid only **asymptotically:** use for "largish" $n.$
+* In case of homoskedastic errors: substitute 
 $$
-\begin{equation*}
-\begin{array}{ll}
-H_0: & \beta_k=\beta_k^{(0)}\\
-H_1: & \beta_k\ne \beta_k^{(0)}\\
-\end{array}
-\end{equation*}
-$$
-Selecting the $k$th diagonal element of the test-statistic in @eq-Ftestasymp and taking the square root yields 
-$$
-\begin{align*}
-T&=\frac{\sqrt{n}\left(\hat{\beta}_k-\beta_k^{(0)}\right)}{\sqrt{\left[S_{X^{\top}X}^{-1}\widehat{E}(\varepsilon^2_iX_iX_i^{\top})S^{-1}_{X^{\top}X}\right]_{(k,k)}}}
-\end{align*}
-$$
-where
-$$
-\begin{align*}
-T&\overset{H_0}{\to}_d\mathcal{N}(0,1),\quad\text{as}\quad n\to\infty,
-\end{align*}
-$$
-and where 
-$$
-\left[S_{X^{\top}X}^{-1}\widehat{E}(\varepsilon^2_iX_iX_i^{\top})S^{-1}_{X^{\top}X}\right]_{(k,k)}
+S_{X^{\top}X}^{-1}\widehat{E}(\varepsilon^2_iX_iX_i^{\top})S^{-1}_{X^{\top}X}
 $$ 
-denotes the element in the $k$th row and $k$th column of the $K\times K$ matrix $S_{X^{\top}X}^{-1}\widehat{E}(\varepsilon^2_iX_iX_i^{\top})S^{-1}_{X^{\top}X}.$ This $t$-test statistic allows for **heteroskedastic** error terms. 
-
-> In case of homoskedastic error terms, one can substitute 
-> $$
-> [S_{X^{\top}X}^{-1}\widehat{E}(\varepsilon^2_iX_iX_i^{\top})S^{-1}_{X^{\top}X}]_{(k,k)}
-> $$ 
-> by 
-> $$
-> s_{ub}^2[S_{X^{\top}X}^{-1}]_{(k,k)}
-> $$ 
-where $[S_{X^{\top}X}^{-1}]_{(k,k)}$ denotes the element in the $k$th row and $k$th column of the $K\times K$ matrix $S_{X^{\top}X}^{-1}.$
+by 
+$$
+s_{ub}^2S_{X^{\top}X}^{-1}
+$$
 
 ::: {.callout-tip}
 # Finite-sample correction
-In order to improve the finite-sample performance of this $t$ test, one usually uses the $t_{(n-K)}$ distribution with $n-K$ degrees of freedoms instead of the $\mathcal{N}(0,1)$ distribution. 
+Instead of $W$ statistic and the $\chi^2(q)$ distribution use the $\frac{W}{q}$ statistic and the $F_{q,n-K}$ distribution for inference.
 
-Asymptotically ($n\to\infty$), $t_{(n-K)}$ is equivalent to $\mathcal{N}(0,1)$. However, for finite sample sizes $n$ (i.e., the practically relevant case) $t_{n-K}$ leads to larger critical values which helps to account for the estimation errors in $[S_{X^{\top}X}^{-1}\widehat{E}(\varepsilon^2_iX_iX_i^{\top})S^{-1}_{X^{\top}X}]_{(k,k)}$ (or in $s_{ub}^2[S_{X^{\top}X}^{-1}]_{(k,k)}$) which are otherwise neglected by the pure asymptotic perspective. 
+* Asymptotically ($n\to\infty$): $F_{q,n-K}$ and $\frac{1}{q}\chi^2(q)$ agree.
+* For finite $n$: using $\frac{W}{q}$ and $F_{q,n-K}$ gives more conservative test decisions compensating for the estimation error in $S_{X^{\top}X}^{-1}\widehat{E}(\varepsilon^2_iX_iX_i^{\top})S^{-1}_{X^{\top}X}$ (or $s_{ub}^2S_{X^{\top}X}^{-1}$).
 :::
 
+#### Robust Hypothesis Testing: Single Parameters
+
+Hypotheses about a single parameter $\beta_k,$ $k=1,\dots,K$:
+$$
+\begin{array}{ll}
+H_0: & \beta_k=\beta_k^{(0)}\\
+H_1: & \beta_k\ne \beta_k^{(0)}
+\end{array}
+$$
+
+Select the $k$th diagonal element of @eq-Ftestasymp and take the square root:
+$$
+T=\frac{\sqrt{n}\left(\hat{\beta}_k-\beta_k^{(0)}\right)}{\sqrt{\left[S_{X^{\top}X}^{-1}\widehat{E}(\varepsilon^2_iX_iX_i^{\top})S^{-1}_{X^{\top}X}\right]_{(k,k)}}}
+\qquad\qquad
+T\overset{H_0}{\to}_d\mathcal{N}(0,1),\quad\text{as}\quad n\to\infty.
+$$
+
+* $\left[S_{X^{\top}X}^{-1}\widehat{E}(\varepsilon^2_iX_iX_i^{\top})S^{-1}_{X^{\top}X}\right]_{(k,k)}$: the $(k,k)$ element of that $K\times K$ matrix.
+* This $t$-test statistic allows for **heteroskedastic** error terms.
+* Homoskedastic errors: substitute by $s_{ub}^2[S_{X^{\top}X}^{-1}]_{(k,k)}$.
+
+::: {.callout-tip}
+# Finite-sample correction
+Use the $t_{(n-K)}$ distribution ($n-K$ degrees of freedom) instead of $\mathcal{N}(0,1)$.
+
+* Asymptotically ($n\to\infty$): $t_{(n-K)}$ and $\mathcal{N}(0,1)$ agree.
+* For finite $n$: $t_{(n-K)}$ gives larger critical values -- compensates for the estimation error in $[S_{X^{\top}X}^{-1}\widehat{E}(\varepsilon^2_iX_iX_i^{\top})S^{-1}_{X^{\top}X}]_{(k,k)}$ (or $s_{ub}^2[S_{X^{\top}X}^{-1}]_{(k,k)}$).
+:::
 
 #### Robust Confidence Intervals
 
-Following the derivations in Chapter @sec-CIsmallsample, but using the expression for the robust standard errors, we get the following heteroskedasticity robust (random) $(1-\alpha)\cdot 100\%$ confidence interval 
+Following @sec-CIsmallsample, but with robust standard errors, the heteroskedasticity robust $(1-\alpha)\cdot 100\%$ confidence interval is:
 $$
 \operatorname{CI}^{\text{rob}}_{k,n,1-\alpha}=
-\left[\hat\beta_k\pm t_{1-\alpha/2,n-K}\sqrt{n^{-1}[S_{X^{\top}X}^{-1}\widehat{E}(\varepsilon^2_iX_iX_i^{\top})S^{-1}_{X^{\top}X}]_{(k,k)}}\right].
+\left[\hat\beta_k\pm t_{1-\alpha/2,n-K}\sqrt{n^{-1}\left[S_{X^{\top}X}^{-1}\widehat{E}(\varepsilon^2_iX_iX_i^{\top})S^{-1}_{X^{\top}X}\right]_{(k,k)}}\right].
 $$
-Here, the coverage probability is an asymptotic coverage probability with 
+The coverage probability is *asymptotic*:
 $$
 P(\beta_k\in\operatorname{CI}^{\text{rob}}_{k,n,1-\alpha})\to 1-\alpha\quad\text{as}\quad n\to\infty.
 $$
 
-
 ## Monte Carlo Simulations {#sec-MCLS}
 
-Let's apply the above asymptotic inference methods using `R`. As in Chapter @sec-PSSI we, first, program a function `myDataGenerator()` which allows us to generate data from the following model, i.e., from the following fully specified data generating process:
+Data generating process:
 $$
-\begin{align*}
+\begin{aligned}
 Y_i &=\beta_1+\beta_2X_{i2}+\beta_3X_{i3}+\varepsilon_i,\qquad i=1,\dots,n\\
 \beta &=(\beta_1,\beta_2,\beta_3)^{\top}=(2,3,4)^{\top}\\
 X_{i2}&\sim U[-4,4]\\
 X_{i3}&\sim U[-5,5]\\
 \varepsilon_i|X_i&\sim U[-0.5 |X_{i2}|, 0.5 |X_{i2}|],
-\end{align*}
+\end{aligned}
 $$
-where $(Y_i,X_i)$ is assumed i.i.d. across $i=1,\dots,n$ with $X_{i2}$ and $X_{i3}$ being independent of each other. 
+with $(Y_i,X_i)$ i.i.d. across $i=1,\dots,n$, and $X_{i2}$, $X_{i3}$ independent of each other.
 
-By contrast to our simulations in Chapter @sec-PSSI, we consider here a **non-Gaussian** and **heteroskedastic** error term
+Unlike @sec-PSSI, the error term here is **non-Gaussian** and **heteroskedastic**:
 $$
 Var(\varepsilon_i|X_i)=\frac{1}{12}X_{i2}^2.
-$$ 
+$$
 
+::: {.callout-tip}
+# Unconditional variance (law of total variance)
+$$
+\begin{aligned}
+Var(\varepsilon_i)
+&=E(Var(\varepsilon_i|X_i))+Var(E(\varepsilon_i|X_i))\\
+&=E\left(\frac{1}{12}X_{i2}^2\right)+0\\
+&=\frac{1}{12}\;Var\left(X_{i2}\right)\quad\text{(since $E(X_{i2})=0$)}\\
+&=\frac{1}{12}\left(\frac{1}{12}(4-(-4))^2\right)=\frac{4}{9}.
+\end{aligned}
+$$
+(Using the variance formula for uniform random variables.)
+:::
 
-> As a side note: The unconditional variance follows by the law of total variance and is given by 
-> \begin{align*}
-> Var(\varepsilon_i)
-> &=E(Var(\varepsilon_i|X_i))+Var(E(\varepsilon_i|X_i))\\
-> &=E\left(\frac{1}{12}X_{i2}^2\right)+0\\
-> &=\frac{1}{12}\;E\left(X_{i2}^2\right)\\
-> &=\frac{1}{12}\;Var\left(X_{i2}\right)\quad\text{(since $E(X_{i2}=0)$)}\\
-> &=\frac{1}{12}\left(\frac{1}{12}(4-(-4))^2\right)=\frac{4}{9},
-> \end{align*}
-> where the last steps follows from applying the variance formula for uniform random variables. 
-The following `R`-function `myDataGenerator()` allows us to generate data from the above described data generating processes:
+`R`-function to generate data from this DGP:
 ```{r}
 ## Function to generate artificial data
 myDataGenerator <- function(n, beta){
   ##
-  X   <- cbind(rep(1, n), 
-                 runif(n, -4, 4), 
+  X   <- cbind(rep(1, n),
+                 runif(n, -4, 4),
                  runif(n, -5, 5))
   ##
-  eps  <- runif(n, min = - 0.5 * abs(X[,2]), 
+  eps  <- runif(n, min = - 0.5 * abs(X[,2]),
                    max = + 0.5 * abs(X[,2]))
   Y    <- X %*% beta + eps
   ##
-  data <- data.frame("Y"   = Y, 
-                     "X_1" = X[,1], 
-                     "X_2" = X[,2], 
+  data <- data.frame("Y"   = Y,
+                     "X_1" = X[,1],
+                     "X_2" = X[,2],
                      "X_3" = X[,3])
   ##
   return(data)
@@ -1059,9 +490,9 @@ myDataGenerator <- function(n, beta){
 ```
 
 
-### Check: Distribution of $\hat\beta_n$ 
+### Check: Distribution of $\hat\beta_n$
 
-The above data generating process fulfills our regulatory assumptions of this chapter. So, by theory, the estimators $\hat\beta_k$ should be normal distributed for sufficiently large sample sizes $n$. 
+This DGP satisfies our chapter's assumptions. By theory, $\hat\beta_k$ should be approximately normal for large $n$:
 $$
 \sqrt{n}\left(\hat\beta_{n,k}-\beta_k\right)\to_d\mathcal{N}\left(0,\left[\Sigma_{X^{\top}X}^{-1}E(\varepsilon^2_iX_iX_i^{\top})\Sigma_{X^{\top}X}^{-1}\right]_{(k,k)}\right)
 $$
@@ -1077,49 +508,23 @@ moment_fun(m=4, a=-4,b=4)
 fractional((1/12)*(256/5))
 ```
 
-For our above specified data generating process, we can derive all (usually unknown) population quantities: 
+For this DGP, all population quantities are known:
 
-- From the assumed distributions of $X_{i2}$ and $X_{i3}$ we have that:
+* From the distributions of $X_{i2}$, $X_{i3}$:
 $$
-\begin{align*}
-\Sigma_{X^{\top}X}
-&=E(S_{X^{\top}X})\\[2ex]
-&=E(X_iX_i^{\top})\\[2ex]
-&=\left(\begin{matrix}1&0&0\\0&E(X_{i2}^2)&0\\0&0&E(X_{i3}^2)\end{matrix}\right)\\[2ex]
-&=\left(\begin{matrix}1&0&0\\0&\frac{16}{3}&0\\0&0&\frac{25}{3}\end{matrix}\right)
-\end{align*}
+\Sigma_{X^{\top}X}=E(X_iX_i^{\top})=\left(\begin{matrix}1&0&0\\0&\frac{16}{3}&0\\0&0&\frac{25}{3}\end{matrix}\right).
 $$
-The above result follows from observing that $E(X^2)=Var(X)$ if $X$ has mean zero, and that the variance of uniform $U[a,b]$ distributed random variables is given by $\frac{1}{12}(b-a)^2$.
+(Using $E(X^2)=Var(X)$ for mean-zero $X$, and $Var(U[a,b])=\frac{1}{12}(b-a)^2$.)
 
-- Moreover, 
+* And:
 $$
-\begin{align*}
-E(\varepsilon^2_iX_iX_i^{\top}) 
-& =E(X_iX_i^{\top}E(\varepsilon^2_i|X_i))\\[2ex]
-& =E\left(X_iX_i^{\top}\left(\frac{1}{12}X_{i2}^2\right)\right)
-\end{align*}
-$$ 
-such that
+E(\varepsilon^2_iX_iX_i^{\top})=E\left(X_iX_i^{\top}\left(\frac{1}{12}X_{i2}^2\right)\right)=\left(\begin{matrix}\frac{4}{9}&0&0\\0&\frac{64}{15}&0\\0&0&\frac{100}{27}\end{matrix}\right).
 $$
-\begin{align*}
-E(\varepsilon^2_iX_iX_i^{\top})
-&=\left(\begin{matrix}E\left(\frac{1}{12}X_{i2}^2\right)&0&0\\[2ex]
-                   0&E\left(X_{i2}^2\cdot\frac{1}{12}X_{i2}^2\right)&0\\0&0&E\left(X_{i3}^2\cdot\frac{1}{12}X_{i2}^2\right)
-      \end{matrix}\right)\\[2ex]
-&=\left(\begin{matrix}\frac{1}{12}E\left(X_{i2}^2\right)&0&0\\
-       0&\frac{1}{12}E\left(X_{i2}^4\right)&0\\0&0&\frac{1}{12}E\left(X_{i2}^2\right)\,E\left(X_{i3}^2\right)
-\end{matrix}\right)\\[2ex]      
-&=\left(\begin{matrix}\frac{1}{12}\frac{16}{3}&0&0\\
-                      0&\frac{1}{12}\frac{256}{5}&0\\
-                      0&0&\frac{1}{12}\frac{16}{3}\frac{25}{3}\end{matrix}\right)\\[2ex]
-&=\left(\begin{matrix}\frac{4}{9}&0&0\\0&\frac{64}{15}&0\\0&0&\frac{100}{27}\end{matrix}\right)
-\end{align*}
-$$
-The above result follow from observing that for $X\sim U[a,b]$ one has $E(X^k)=\frac{b^{k+1}-a^{k+1}}{(k+1)(b-a)}$, $k=1,2,\dots$; see, for instance, [Wikipedia](https://en.wikipedia.org/wiki/Continuous_uniform_distribution).
+(Using $E(X^k)=\frac{b^{k+1}-a^{k+1}}{(k+1)(b-a)}$ for $X\sim U[a,b]$; see [Wikipedia](https://en.wikipedia.org/wiki/Continuous_uniform_distribution).)
 
-So, for instance, for $\hat{\beta}_2$ we have the following theoretical large sample distribution:
+For $\hat{\beta}_2$, the theoretical large-sample distribution:
 $$
-\begin{align}
+\begin{aligned}
 \hat\beta_{n,2}\overset{a}{\sim}&\mathcal{N}\left(\beta_2, \;\frac{1}{n}\;\left[\left(\begin{matrix}1&0&0\\0&\frac{16}{3}&0\\0&0&\frac{25}{3}\end{matrix}\right)^{-1}\left(\begin{matrix}\frac{4}{9}&0&0\\0&\frac{64}{15}&0\\0&0&\frac{100}{27}\end{matrix}\right)\left(\begin{matrix}1&0&0\\0&\frac{16}{3}&0\\0&0&\frac{25}{3}\end{matrix}\right)^{-1}\right]_{22}\right)\\[2ex]
 \hat\beta_{n,2}\overset{a}{\sim}&\mathcal{N}\left(\beta_2, \;\frac{1}{n}\;\left[
   \left(
@@ -1129,31 +534,38 @@ $$
   0&0&0.053
   \end{matrix}\right)\right]_{22}\right)\\[2ex]
 \hat\beta_{n,2}\overset{a}{\sim}&\mathcal{N}\left(\beta_2, \;\frac{1}{n}\;0.15\right)
-\end{align}
+\end{aligned}
 $$
-Let's use a Monte Carlo simulation to check how well the theoretical large sample ($n\to\infty$) distribution of $\hat\beta_2$ works as an approximative distribution for a practical largish sample size of $n=100$.
+**Monte Carlo check:** does the asymptotic distribution of $\hat\beta_2$ already work well at $n=100$?
+
+
+First, we check the Monte Carlo approximated finite sample $(n=100)$ mean and variance of $\widehat{\beta}_{n,2}$ using 5000 simulated realizations and compare them with the true (usually unknown) large sample population mean and variance 
+
+* $E(\widehat{\beta}_{n,2})=\beta_2=3$
+* $\operatorname{Var}(\widehat{\beta}_{n,2}\mid X)=\frac{1}{n}0.15$
+
 ```{r}
 set.seed(123)
 n           <- 100      # a largish sample size
 beta_true   <- c(2,3,4) # true data vector
 
-## Mean and variance of the true asymptotic 
+## Mean and variance of the true asymptotic
 ## normal distribution of beta_hat_2:
 # true mean
-beta_true_2     <- beta_true[2] 
+beta_true_2     <- beta_true[2]
 # true variance
 var_true_beta_2 <- 0.15 / n
 
-## Let's generate 5000 realizations from beta_hat_2, and check 
-## whether their distribution is close to the true normal 
+## Let's generate 5000 realizations from beta_hat_2, and check
+## whether their distribution is close to the true normal
 ## distribution.
-## (We don't condition on X since the theoretical limit 
+## (We don't condition on X since the theoretical limit
 ## distribution is unconditional on X)
 rep        <- 5000 # MC replications
 beta_hat_2 <- rep(NA, times=rep)
 ##
 for(r in 1:rep){
-    MC_data <- myDataGenerator(n    = n, 
+    MC_data <- myDataGenerator(n    = n,
                                beta = beta_true)
     lm_obj        <- lm(Y ~ X_2 + X_3, data = MC_data)
     beta_hat_2[r] <- coef(lm_obj)[2]
@@ -1163,67 +575,71 @@ for(r in 1:rep){
 ## True beta_2 versus average of beta_hat_2 estimates
 c(beta_true_2, round(mean(beta_hat_2), 4))
 ```
-Good! As expected, the average of the `5000` simulated realizations of $\hat\beta_2$ is basically equal to the theoretical true mean $E(\hat\beta_2)=\beta_2=3$ which indicates a bias of zero. 
+**Good!** The Monte Carlo approximated finite sample mean of $\widehat{\beta}_{n,2}$ effectively equals the theoretical large sample mean $E(\widehat{\beta}_{n,2})=3$.
 
 ```{r}
-## True variance of beta_hat_2 versus 
+## True variance of beta_hat_2 versus
 ## empirical variance of beta_hat_2 estimates
 c(round(var_true_beta_2, 5), round(var(beta_hat_2), 5))
 ```
-Great! The variance of the `5000` simulated realizations of $\hat\beta_2$ is basically equal to the theoretical true variance $Var(\hat\beta_{n,2})=0.15/n=0.0015$. 
+**Great!** The Monte Carlo approximated finite sample variance effectively equals the theoretical large sample variance 
+$\operatorname{Var}(\widehat\beta_{n,2}\mid X)=0.15/n=0.0015.$
+
+That is, for $n=100,$ the first two moments (mean and variance) of the finite-sample distribution of $\widehat\beta_{n,2}$ match those of the theoretical asymptotic (large sample) distribution of $\widehat\beta_{n,2}.$
+
+But the first two moments are only two (albeit important) features of a distribution. Next, we check whether the total finite sample $(n=100)$ density of $\widehat\beta_{n,2}$ matches the theoretical asymptotic (large sample) density of $\widehat\beta_{n,2}.$
 
 
 ```{r, fig.align="center", echo=TRUE, fig.width = 8, fig.height = 5, out.width = "1\\textwidth"}
-## True normal distribution of beta_hat_2 versus 
+## True normal distribution of beta_hat_2 versus
 ## empirical density of beta_hat_2 estimates
 library("scales")
-curve(expr = dnorm(x, 
-                   mean = beta_true_2, 
-                   sd   = sqrt(var_true_beta_2)), 
-      xlab = "", 
-      ylab = "", 
-      col  = gray(.2), lwd=3, lty=1, 
+curve(expr = dnorm(x,
+                   mean = beta_true_2,
+                   sd   = sqrt(var_true_beta_2)),
+      xlab = "",
+      ylab = "",
+      col  = gray(.2), lwd=3, lty=1,
       xlim = range(beta_hat_2),
       ylim = c(0,14.1),main=paste0("n=",n))
 
-lines(density(beta_hat_2, 
-              bw = bw.SJ(beta_hat_2)), 
+lines(density(beta_hat_2,
+              bw = bw.SJ(beta_hat_2)),
       col = alpha("blue",.5), lwd = 3)
 
-legend("topleft", lty=c(1,1), lwd = c(3,3), 
-     col=c(gray(.2), alpha("blue",.5)), bty="n", 
-     legend= 
+legend("topleft", lty=c(1,1), lwd = c(3,3),
+     col=c(gray(.2), alpha("blue",.5)), bty="n",
+     legend=
      c(expression(
-       "Theoretical (Asymptotic) Gaussian Density of"~hat(beta)[2]), 
+       "Theoretical (Asymptotic) Gaussian Density of"~hat(beta)[2]),
       expression(
        "Empirical Density Estimation based on MC realizations from"~hat(beta)[2])))
 ```
-Great! The nonparametric density estimation (estimated via `density()`) computed from the `5000` simulated realizations of $\hat\beta_2$ is indicating that $\hat\beta_2$ is really normally distributed as described by our theoretical results. 
+**Great!** For $n=100,$ the Monte Carlo approximated finite sample density of $\widehat\beta_{n,2}$ matches the theoretical asymptotic normal density of $\widehat\beta_{n,2}$ really very well. 
 
-
-However, is the asymptotic distribution of $\hat\beta_2$ also usable for (very) small samples like $n=5$? Let's check that:
+**Does this also work for small $n$, e.g. $n=5$?**
 ```{r}
 set.seed(123)
 n           <- 5       # a small sample size
 beta_true   <- c(2,3,4) # true data vector
 
-## Mean and variance of the true asymptotic 
+## Mean and variance of the true asymptotic
 ## normal distribution of beta_hat_2:
 # true mean
-beta_true_2     <- beta_true[2] 
+beta_true_2     <- beta_true[2]
 # true variance
 var_true_beta_2 <- 0.15 / n
 
-## Let's generate 5000 realizations from beta_hat_2, and check 
-## whether their distribution is close to the true normal 
+## Let's generate 5000 realizations from beta_hat_2, and check
+## whether their distribution is close to the true normal
 ## distribution.
-## (We don't condition on X since the theoretical limit 
+## (We don't condition on X since the theoretical limit
 ## distribution is unconditional on X)
 rep        <- 5000 # MC replications
 beta_hat_2 <- rep(NA, times=rep)
 ##
 for(r in 1:rep){
-    MC_data <- myDataGenerator(n    = n, 
+    MC_data <- myDataGenerator(n    = n,
                                beta = beta_true)
     lm_obj        <- lm(Y ~ X_2 + X_3, data = MC_data)
     beta_hat_2[r] <- coef(lm_obj)[2]
@@ -1233,83 +649,92 @@ for(r in 1:rep){
 ## True beta_2 versus average of beta_hat_2 estimates
 c(beta_true_2, round(mean(beta_hat_2), 4))
 ```
-OK, at least on average the `5000` simulated realizations of $\hat\beta_2$ are basically equal to the true mean $E(\hat\beta_2)=\beta_2=3$. 
+**OK:** The Monte Carlo approximated finite-sample $(n=5)$ mean sill effectively equals the theoretical large-sample mean of $\widehat{\beta}_{n,2}.$
 
 ```{r}
-## True variance of beta_hat_2 versus 
+## True variance of beta_hat_2 versus
 ## empirical variance of beta_hat_2 estimates
 c(round(var_true_beta_2, 4), round(var(beta_hat_2), 4))
 ```
-Ouch! The theoretical variance $Var(\hat\beta_2)=0.15/n=0.03$ is about 50% smaller than the actual (small sample) variance of $\hat\beta_2$ approximated by the empirical variance of the `5000` simulated realizations of $\hat\beta_2$. That is, **we cannot simply use a large sample result in small samples**. 
+**Ouch!** The Monte Carlo approximated finite-sample $(n=5)$ variance is about 50% smaller than the theoretical large-sample variance of $\widehat{\beta}_{n,2}.$
 
-Reason: In small samples, the Law of Large Numbers has not kicked in yet; therefore, we cannot neglect the variability in the sample statistic $S_{X^{\top}X}^{-1}.$ 
+$\Rightarrow$ **Large-sample results don't simply carry over to small samples.**
 
-This issue can also seen when comparing the theoretical large sample distribution of $\hat\beta_2$ with an estimate of the actual finite-sample distribution of $\hat\beta_2.$
+* Reason: the LLN hasn't kicked in yet; the variability in $S_{X^{\top}X}^{-1}$ is not negligible.
+
+This issue, is also visible when comparing the Monte Carlo approximated finite-sample $(n=5)$ density of $\widehat\beta_{n,2}$ against the theoretical large-sample density of $\widehat\beta_{n,2}.$
 
 ```{r, fig.align="center", echo=TRUE, fig.width = 8, fig.height = 5, out.width = "1\\textwidth"}
-## True normal distribution of beta_hat_2 versus 
+## True normal distribution of beta_hat_2 versus
 ## empirical density of beta_hat_2 estimates
 library("scales")
-curve(expr = dnorm(x, 
-                   mean = beta_true_2, 
-                   sd   = sqrt(var_true_beta_2)), 
-      xlab = "", 
-      ylab = "", 
-      col  = gray(.2), lwd = 3, lty = 1, 
-      xlim = c(2,4), 
+curve(expr = dnorm(x,
+                   mean = beta_true_2,
+                   sd   = sqrt(var_true_beta_2)),
+      xlab = "",
+      ylab = "",
+      col  = gray(.2), lwd = 3, lty = 1,
+      xlim = c(2,4),
       ylim = c(0,3), main=paste0("n=",n))
 
-lines(density(beta_hat_2, 
-              bw = bw.SJ(beta_hat_2)), 
+lines(density(beta_hat_2,
+              bw = bw.SJ(beta_hat_2)),
       col = alpha("blue",.5), lwd = 3)
 
-## Legend      
-legend("topleft", lty=c(1,1), lwd=c(3,3), 
-       col=c(gray(.2), alpha("blue",.5)), bty="n", 
-       legend= 
+## Legend
+legend("topleft", lty=c(1,1), lwd=c(3,3),
+       col=c(gray(.2), alpha("blue",.5)), bty="n",
+       legend=
 c(expression(
-  "Theoretical (Asymptotic) Gaussian Density of"~hat(beta)[2]), 
+  "Theoretical (Asymptotic) Gaussian Density of"~hat(beta)[2]),
   expression(
   "Empirical Density Estimation based on MC realizations from"~
-  hat(beta)[2])))      
+  hat(beta)[2])))
 ```
-Not good. The actual finite-sample distribution has substantially fatter tails. That is, if we would use the quantiles of the asymptotic distribution, we would falsely reject the null-hypothesis too often (probability of type I errors would be larger than the significance level).  
+**Not good:** For $n=5,$ the Monte Carlo approximated finite-sample density of $\widehat\beta_{n,2}$ has substantially fatter tails than the theoretical large sample distribution of $\widehat\beta_{n,2}.$ 
 
-Fortunately, asymptotics are usually kicking in relatively fast; here,  things become much more reliable already for $n\geq 15$. 
+$\Rightarrow$ using the quantiles of the large sample distribution would lead to **over-rejections**; i.e. 
+$$
+\text{Type I error rate} >\alpha
+$$ 
+leading to invalid statistical inference. 
+
+**Fortunately:** asymptotics kick in fast here. When you play with the code, you'll see that the large sample distribution effectively matches the actual finite-sample distribution for sample sizes $n\geq 15.$
 
 
 
-### Check: Testing Multiple Parameters 
 
-In the following, we do inference about multiple parameters. We test the (here correct) null hypothesis 
+### Check: Testing Multiple Parameters
+
+Test the (here correct) null hypothesis:
 \begin{align*}
 H_0:\;&\beta_2=3\quad\text{and}\quad\beta_3=4\\
 \text{versus}\quad H_1:\;&\beta_2\neq 3\quad\text{and/or}\quad\beta_3\neq 4.
 \end{align*}
-Or equivalently
+Equivalently:
 \begin{align*}
 H_0:\;&R\beta -r^{(0)} = 0 \\
 H_1:\;&R\beta -r^{(0)} \neq 0,
 \end{align*}
-where 
+with
 $$
 R=\left(
 \begin{matrix}
 0&1&0\\
 0&0&1\\
-\end{matrix}\right)\quad\text{ and }\quad 
-r^{(0)}=\left(\begin{matrix}3\\5\\\end{matrix}\right).
+\end{matrix}\right)\quad\text{ and }\quad
+r^{(0)}=\left(\begin{matrix}3\\4\\\end{matrix}\right).
 $$
-The following `R` code can be used to test this hypothesis. Note that we use HC3 robust variance estimation `sandwich::vcovHC(lm_obj, type="HC3")` to take into account that the error terms are heteroskedastic. 
+`R` code for this test, using HC3 robust variance `sandwich::vcovHC(lm_obj, type="HC3")`:
 ```{r}
-suppressMessages(library("car")) # for linearHyothesis()
+suppressMessages(library("car")) # for linearHypothesis()
 # ?linearHypothesis
 library("sandwich") # for vcovHC(), robust variance estimations
 
 set.seed(1009)
 
 ## Generate data
-MC_data <- myDataGenerator(n    = 100, 
+MC_data <- myDataGenerator(n    = 100,
                            beta = beta_true)
 
 ## Estimate the linear regression model parameters
@@ -1318,51 +743,51 @@ lm_obj <- lm(Y ~ X_2 + X_3, data = MC_data)
 vcovHC3_mat <- sandwich::vcovHC(lm_obj, type="HC3")
 
 ## Option 1:
-# car::linearHypothesis(model = lm_obj, 
-#                       hypothesis.matrix = c("X_2=3", "X_3=4"), 
+# car::linearHypothesis(model = lm_obj,
+#                       hypothesis.matrix = c("X_2=3", "X_3=4"),
 #                       vcov = vcovHC3_mat)
 
 ## Option 2:
 R <- rbind(c(0,1,0),
            c(0,0,1))
-car::linearHypothesis(model = lm_obj, 
-                      hypothesis.matrix = R, 
+car::linearHypothesis(model = lm_obj,
+                      hypothesis.matrix = R,
                       rhs  = c(3,4),
                       vcov = vcovHC3_mat)
 ```
-The large $p$-value does not allow us to reject the null-hypothesis at any of the usual significance levels. This is good, since we test here a correct null-hypothesis and rejecting it would mean to do a false rejection (type I error, false positive). 
+The $p$-value is larger than any typical significance level $\alpha.$ So, we cannot reject $H_0.$  That's good news, since $H_0$ is correct here (rejecting it would be a type I error).
 
-On average, however, there will be some false rejections of the null-hypothesis, but this type I error rate needs to be samler or equal to $\alpha$. 
+On average, over many resamplings, some false rejections will occur, but the rate of those Type I errors must stay $\leq\alpha.$ The following code chunck checks whether the Monte Carlo approximated finite sample $(n=100)$ probability of a Type I error remains bounded from above by the chosen nominal $\alpha=0.05$ level. 
 
 ```{r}
 set.seed(1110)
 
-B        <- 10000 
+B        <- 10000
 p_values <- numeric(B)
 
-for(r in 1:B){ 
+for(r in 1:B){
   MC_data     <- myDataGenerator(n    = 100, beta = beta_true)
   lm_obj      <- lm(Y ~ X_2 + X_3, data = MC_data)
   vcovHC3_mat <- sandwich::vcovHC(lm_obj, type="HC3")
-  Ftest       <- car::linearHypothesis(model = lm_obj, 
-                        hypothesis.matrix = c("X_2=3", "X_3=4"), 
+  Ftest       <- car::linearHypothesis(model = lm_obj,
+                        hypothesis.matrix = c("X_2=3", "X_3=4"),
                         vcov = vcovHC3_mat)
-  p_values[r] <- Ftest$'Pr(>F)'[2]                      
+  p_values[r] <- Ftest$'Pr(>F)'[2]
 }
-## Nominal type I error rate 
-alpha <- 0.05 
+## Nominal type I error rate
+alpha <- 0.05
 ## Empirical type I error rate
 length(p_values[p_values < alpha])/B
 ```
 
-This is more or less ok, but you see that the upper bound is not so strict here as it was in the small sample inference case in @sec-PSSI. A larger sample size $n\geq 100$ would improve this simulation result. 
+**Good!** The Monte Carlo approximated finite sample $(n=100)$ probability of a Type I error effectively equals the chosen nominal $\alpha=0.05$ level. 
 
 ### Check: Testing Single Parameters
 
-Next, we do inference about a single parameter. We test 
+Test a single parameter:
 \begin{align*}
-H_0:&\beta_3=5\\
-\text{versus}\quad H_1:&\beta_3\neq 5.
+H_0:&\beta_3=4\\
+\text{versus}\quad H_1:&\beta_3\neq 4.
 \end{align*}
 ```{r}
 # Load libraries
@@ -1370,7 +795,7 @@ suppressMessages(library("lmtest"))  # for coeftest()
 
 ## Generate data
 n <- 100
-MC_data <- myDataGenerator(n    = n, 
+MC_data <- myDataGenerator(n    = n,
                            beta = beta_true)
 
 ## Estimate the linear regression model parameters
@@ -1389,44 +814,46 @@ t_test_stat <- (beta_3_hat - beta_3_H0)/SE_rob
 ## p-value
 K <- length(coef(lm_obj))
 ##
-p_value <- 2 * min(   pt(q = t_test_stat, df = n - K), 
+p_value <- 2 * min(   pt(q = t_test_stat, df = n - K),
                    1- pt(q = t_test_stat, df = n - K))
 p_value
 ```
-Agian, the large $p$-value does not allow us to reject the (here true) null-hypothesis at any of the usual significance levels. Let us check the empirical type I error rate. 
+**Again:** The $p$-value is larger than any typical significance level $\alpha.$ So, we cannot reject $H_0.$  That's good news, since $H_0$ is correct here (rejecting it would be a type I error).
+
+
+Let's check the Monte Carlo approximated finite sample probability of a type I error:
 
 
 ```{r}
 set.seed(1009)
 n        <- 100
-B        <- 10000 
+B        <- 10000
 p_values <- numeric(B)
 
-for(r in 1:B){ 
+for(r in 1:B){
   MC_data     <- myDataGenerator(n = n, beta = beta_true)
   lm_obj      <- lm(Y ~ X_2 + X_3, data = MC_data)
   SE_rob      <- sqrt(vcovHC(lm_obj, type = "HC3")[3,3])
   beta_3_hat  <- coef(lm_obj)[3]
   ## robust t-test statistic
   t_test_stat <- (beta_3_hat - beta_3_H0)/SE_rob
-  p_values[r] <- 2 * min(   pt(q = t_test_stat, df = n - length(beta_true)), 
+  p_values[r] <- 2 * min(   pt(q = t_test_stat, df = n - length(beta_true)),
                          1- pt(q = t_test_stat, df = n - length(beta_true)))
 }
-## Nominal type I error rate 
-alpha <- 0.05 
+## Nominal type I error rate
+alpha <- 0.05
 ## Empirical type I error rate
 length(p_values[p_values < alpha])/B
 ```
 
-Good! The empirical type I error rate is bounded from above by the nominal type I error rate $\alpha$. 
-
+**Good!** The empirical type I error rate effectively equals the nominal $\alpha=0.05$ level. 
 
 ## Real Data Example {#sec-RDLSInf}
 
-In the following, we revisit the read data study from @sec-RDSSInf. Now, we have the tools to allow for heteroskedastic and non-Gaussian errors.  
+We revisit the data example from @sec-RDSSInf, but now allow for heteroskedastic, non-Gaussian errors.
 
 ```{r}
-## The AER package contains a lot of datasets 
+## The AER package contains a lot of datasets
 suppressPackageStartupMessages(library(AER))
 
 ## Attach the DoctorVisits data to make it usable
@@ -1435,19 +862,21 @@ data("DoctorVisits")
 lm_obj <- lm(visits ~ gender + age + income, data = DoctorVisits)
 ```
 
-The above `R` codes re-estimate the following regression model
+Regression model:
 $$
-Y_i = \beta_1 + \beta_{gender} X_{gender,i} 
+Y_i = \beta_1 + \beta_{gender} X_{gender,i}
               + \beta_{age} X_{age,i}
-              + \beta_{income} X_{income,i} + \varepsilon_i,
+              + \beta_{income} X_{income,i} + \varepsilon_i, \qquad i=1,\dots,n
 $$
-where $i=1,\dots,n$ and
 
-* $X_{gender,i}=1$ if the $i$th subject is a woman and $X_{gender,i}=0$ if the $i$th subject is a man
-* $X_{age,i}$ is the age of subject $i$ measured in years divided by $100$
-* $X_{income,i}$ is the annual income of subject $i$ in tens of thousands of dollars
+* $X_{gender,i}=1$ if subject $i$ is a woman, $0$ if a man
+* $X_{age,i}$: age of subject $i$, in years $/100$
+* $X_{income,i}$: annual income of subject $i$, in tens of thousands of dollars
 
-Now, to do heteroskedasticity consistent robust inference, one can use the `vcocHV()` frunction from the `R` package `sandwich` together with the `coeftest()` function from the `R` package `lmtest`. 
+Heteroskedasticity-robust inference: 
+
+* `sandwich::vcovHC()` HC3 robust variance estimation
+* `lmtest::coeftest()` Coefficient/inference table
 
 ```{r, echo = TRUE, eval = TRUE}
 ## No robust standard errors:
@@ -1456,7 +885,7 @@ coeftest(lm_obj)
 coeftest(lm_obj, vcov = vcovHC(lm_obj, type = "HC3"))
 ```
 
-You can do this also using the `R` package `stargazer` which gives you (almost) puplication ready regression output tables. The following `R` code produced two regression outputs---one without and one with robust standard errors:
+Alternative: `stargazer`, for (almost) publication-ready tables, with and without robust SEs:
 ```{r, echo=TRUE, eval=TRUE, results='asis'}
 suppressPackageStartupMessages(library("stargazer"))
 
@@ -1465,11 +894,14 @@ cov_beta_HC3   <- vcovHC(lm_obj, type = "HC3")
 robust_HC3_se  <- sqrt(diag(cov_beta_HC3))
 
 # Stargazer output (with and without RSE)
-stargazer(lm_obj, lm_obj, 
+stargazer(lm_obj, lm_obj,
           se   = list(NULL, robust_HC3_se),
           column.labels = c("", "Robust SE"),
           type = "html") # alternatively: type = "text" or type = "latex"
 ```
+
+* `DoctorVisits` is a single cross-section $\Rightarrow$ HC-type SEs are appropriate.
+* For time series or panel data: swap in `vcovHAC()` or `vcovCL()` -- same `coeftest(lm_obj, vcov = ...)` pattern.
 
 
 
@@ -1479,10 +911,10 @@ stargazer(lm_obj, lm_obj,
      with a relative Exercises/ path once the PDFs move into the repo. -->
 <!-- * [Exercises for Chapter 7](REPLACE-WITH-SHARE-LINK) -->
 
-<!-- 
+<!--
 ## Exercises
 
-* [Exercises of Chapter 7 with Solutions](https://www.dropbox.com/scl/fi/lukwgwqhpat56svnknh8t/Ch7_Exercises_with_Solutions1.pdf?rlkey=9i7ueeiqrlewcwo1617kvfhjr&st=mcpflw0i&dl=0) 
+* [Exercises of Chapter 7 with Solutions](https://www.dropbox.com/scl/fi/lukwgwqhpat56svnknh8t/Ch7_Exercises_with_Solutions1.pdf?rlkey=9i7ueeiqrlewcwo1617kvfhjr&st=mcpflw0i&dl=0)
 -->
 
 # References {-}

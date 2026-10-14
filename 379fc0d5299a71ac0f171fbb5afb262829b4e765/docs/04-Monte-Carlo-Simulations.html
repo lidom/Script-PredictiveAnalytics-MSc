@@ -404,7 +404,7 @@ Monte Carlo (MC) Simulations
 <li><p>For the <span class="math inline">\(Var\left(\hat\theta_n\right)\)</span> we need to compute <span class="math inline">\(E\left[\left(\hat\theta_n - E(\hat\theta_n)\right)^2\right]\)</span>.</p></li>
 <li><p>For the <span class="math inline">\(\operatorname{MSE}\left(\hat\theta_n\right)\)</span> we need to compute <span class="math inline">\(E\left[\left(\hat\theta_n - \theta\right)^2\right]\)</span>.</p></li>
 </ul>
-<p>We can use a Monte Carlo (MC) simulation to approximate these means by <strong>sample means</strong> using the <strong>law of large numbers</strong> which states that a sample mean over iid random variables is able to approximate the population mean of these random variables as the number of random variables to average over gets large (see <a href="07-Asymptotics.html#thm-SLLN1" class="quarto-xref">Theorem&nbsp;<span>7.5</span></a> in <a href="07-Asymptotics.html" class="quarto-xref"><span>Chapter 7</span></a>).</p>
+<p>We can use a Monte Carlo (MC) simulation to approximate these means by <strong>sample means</strong> using the <strong>law of large numbers</strong> which states that a sample mean over iid random variables is able to approximate the population mean of these random variables as the number of random variables to average over gets large (see <a href="07-Asymptotics.html#thm-SLLN1" class="quarto-xref">Theorem&nbsp;<span>7.1</span></a> in <a href="07-Asymptotics.html" class="quarto-xref"><span>Chapter 7</span></a>).</p>
 <p>The core part of a MC-simulation generates a large number of <span class="math inline">\(B\)</span> (e.g.&nbsp;<span class="math inline">\(B=10,000\)</span>) many realizations of <span class="math inline">\(\hat{\theta}_n\)</span> for</p>
 <ul>
 <li>a given sample size <span class="math inline">\(n\)</span> and</li>
@@ -469,7 +469,7 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>By the law of large numbers (see <a href="07-Asymptotics.html#thm-SLLN1" class="quarto-xref">Theorem&nbsp;<span>7.5</span></a> in <a href="07-Asymptotics.html" class="quarto-xref"><span>Chapter 7</span></a>) these approximations get arbitrarily precise as <span class="math inline">\(B \to \infty,\)</span> i.e. <span class="math display">\[
+<p>By the law of large numbers (see <a href="07-Asymptotics.html#thm-SLLN1" class="quarto-xref">Theorem&nbsp;<span>7.1</span></a> in <a href="07-Asymptotics.html" class="quarto-xref"><span>Chapter 7</span></a>) these approximations get arbitrarily precise as <span class="math inline">\(B \to \infty,\)</span> i.e. <span class="math display">\[
 \begin{align*}
 \widehat{\operatorname{Bias}}_{MC}\left(\hat\theta_n\right)&amp;\to_p
 \operatorname{Bias}\left(\hat\theta_n\right)\quad\text{as}\quad B\to\infty\\[2ex]
