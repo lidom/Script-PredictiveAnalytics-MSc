@@ -205,7 +205,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./03-Matrix-Algebra.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Matrix Algebra</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Interlude: Matrix Algebra</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -281,16 +281,58 @@ window.Quarto = {
 <section id="sample-spaces-and-elementary-events" class="level3" data-number="2.1.1"><h3 data-number="2.1.1" class="anchored" data-anchor-id="sample-spaces-and-elementary-events">
 <span class="header-section-number">2.1.1</span> Sample Spaces and (Elementary) Events</h3>
 <p>The <strong>sample space</strong> <span class="math inline">\(\Omega,\)</span> is the set of possible outcomes of an experiment. Points <span class="math inline">\(\omega\)</span> in <span class="math inline">\(\Omega\)</span> are called <strong>sample outcomes</strong> or <strong>realizations</strong> or <strong>elementary events</strong>. <strong>Events</strong> are subsets of <span class="math inline">\(\Omega\)</span>.</p>
-<p><strong>Example:</strong> If we toss a coin twice then <span class="math inline">\(\Omega=\{H H, H T, T H, T T\}.\)</span> The event that the first toss is heads is <span class="math inline">\(A=\{H H, H T\}.\)</span></p>
-<p><strong>Example:</strong> Let <span class="math inline">\(\omega\)</span> be the outcome of a measurement of some physical quantity, for example, temperature. Then <span class="math inline">\(\Omega=\mathbb{R}=(-\infty, \infty).\)</span> The event that the measurement is larger than 10 but less than or equal to 23 is <span class="math inline">\(A=(10,23].\)</span></p>
-<p><strong>Example:</strong> If we toss a coin forever then the sample space is the infinite set <span class="math inline">\(\Omega=\left\{\omega=\left(\omega_{1}, \omega_{2}, \omega_{3}, \ldots,\right)|\omega_{i} \in\{H, T\}\right\}\)</span> Let <span class="math inline">\(A\)</span> be the event that the first head appears on the third toss. Then <span class="math inline">\(A=\left\{\left(\omega_{1}, \omega_{2}, \omega_{3}, \ldots,\right)| \omega_{1}=T, \omega_{2}=T, \omega_{3}=H, \omega_{i} \in\{H, T\} \text { for } i&gt;3\right\}.\)</span></p>
-<p>Given an event <span class="math inline">\(A,\)</span> let <span class="math inline">\(A^{c}=\{\omega \in \Omega | \omega \notin A\}\)</span> denote the <strong>complement</strong> of <span class="math inline">\(A\)</span>. Informally, <span class="math inline">\(A^{c}\)</span> can be read as “not <span class="math inline">\(A\)</span>.” The complement of <span class="math inline">\(\Omega\)</span> is the empty set <span class="math inline">\(\emptyset\)</span>. The <strong>union</strong> of events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> is defined as <span class="math display">\[
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Example: Two Coin Tosses
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If we toss a coin twice then <span class="math inline">\(\Omega=\{H H, H T, T H, T T\}.\)</span> The event that the first toss is heads is <span class="math inline">\(A=\{H H, H T\}.\)</span></p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Example: <span class="math inline">\(\Omega=\mathbb{R}\)</span>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Let <span class="math inline">\(\omega\)</span> be the outcome of a measurement of some physical quantity, for example, temperature. Then <span class="math inline">\(\Omega=\mathbb{R}=(-\infty, \infty).\)</span> The event that the measurement is larger than 10 but less than or equal to 23 is <span class="math inline">\(A=(10,23].\)</span></p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Example: Tossing a Coin Infinitely Often
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If we toss a coin forever then the sample space is the infinite set <span class="math inline">\(\Omega=\left\{\omega=\left(\omega_{1}, \omega_{2}, \omega_{3}, \ldots,\right)|\omega_{i} \in\{H, T\}\right\}\)</span> Let <span class="math inline">\(A\)</span> be the event that the first head appears on the third toss. Then <span class="math inline">\(A=\left\{\left(\omega_{1}, \omega_{2}, \omega_{3}, \ldots,\right)| \omega_{1}=T, \omega_{2}=T, \omega_{3}=H, \omega_{i} \in\{H, T\} \text { for } i&gt;3\right\}.\)</span></p>
+</div>
+</div>
+<p><strong>Complement:</strong> Given an event <span class="math inline">\(A,\)</span> let <span class="math inline">\(A^{c}=\{\omega \in \Omega | \omega \notin A\}\)</span> denote the <strong>complement</strong> of <span class="math inline">\(A\)</span>. Informally, <span class="math inline">\(A^{c}\)</span> can be read as “not <span class="math inline">\(A\)</span>.” The complement of <span class="math inline">\(\Omega\)</span> is the empty set <span class="math inline">\(\emptyset\)</span>.</p>
+<p><strong>Union:</strong> The <strong>union</strong> of events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> is defined as <span class="math display">\[
 A\cup B=\{\omega \in \Omega|\omega\in A\text{ or }\omega \in B\text{ or }\omega\in\text{ both}\}
 \]</span> which can be thought of as “<span class="math inline">\(A\)</span> or <span class="math inline">\(B\)</span>.” If <span class="math inline">\(A_{1}, A_{2}, \ldots\)</span> is a sequence of sets then <span class="math display">\[
 \bigcup_{i=1}^{\infty} A_{i}=\left\{\omega \in \Omega | \omega \in A_{i} \text { for at least one i }\right\}.
-\]</span> The <strong>intersection</strong> of <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> is defined as <span class="math display">\[
+\]</span></p>
+<p><strong>Intersection:</strong> The <strong>intersection</strong> of <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> is defined as <span class="math display">\[
 A \cap B=\{\omega \in \Omega | \omega \in A\text{ and }\omega \in B\}
-\]</span> which reads as “<span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>.” Often <span class="math inline">\(A \cap B\)</span> is also written shortly as <span class="math inline">\(AB\)</span> or as <span class="math inline">\(A,B.\)</span></p>
+\]</span> which reads as</p>
+<ul>
+<li>“<span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>” or</li>
+<li>“intersection of <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>”</li>
+</ul>
 <p>If <span class="math inline">\(A_{1}, A_{2}, \ldots\)</span> is a sequence of sets then <span class="math display">\[
 \bigcap_{i=1}^{\infty} A_{i}=\left\{\omega \in \Omega | \omega \in A_{i} \text { for all i }\right\}.
 \]</span></p>
@@ -304,7 +346,7 @@ A      &amp; \text { event (subset of } \Omega) \\
 |A|    &amp; \text { number of points in } A \text { (if } A \text { is finite) }\\
 A^{c}  &amp; \text { complement of } A (\operatorname{not} A)\\
 A \cup B &amp;\text{ union }(A\text{ or }B)\\
-A \cap B &amp;\text{ intersection }(A \text { and } B);\text{ short notations: }AB\text{ or }A,B\\
+A \cap B &amp;\text{ intersection }(A \text { and } B);\text{ short notation: }A,B\\
 A \subset B &amp;\text{ set inclusion }(A \text{ is a subset of or equal to }B)\\
 \emptyset   &amp;\text{ null event (always false)}\\
 \Omega      &amp;\text{ true event (always true)}
@@ -366,34 +408,37 @@ Sigma-Algebra
 </ul>
 <p>A less obvious property is given in the following: For any events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> we have that,</p>
 <p><span class="math display">\[
-P(A \cup B)=P(A)+P(B)-P(A B).
+P(A \cup B)=P(A)+P(B)-P(A\cap B).
 \]</span></p>
-<p><strong>Example:</strong> Two consecutive coin tosses. Let <span class="math inline">\(H_{1}\)</span> be the event that heads occurs on toss 1 and let <span class="math inline">\(H_{2}\)</span> be the event that heads occurs on toss 2. Likewise for <span class="math inline">\(T_1\)</span> and <span class="math inline">\(T_2.\)</span> Let us consider “fair” coins, i.e., all outcomes are equally likely. Then<br><!-- $$
-P\left(\{H_{1},H_2\}\right)=P\left(H_{1}\right)+P\left(H_{2}\right)=\frac{1}{2}+\frac{1}{2}=1
-$$
-$$
-P\left(\{T_{1},T_2\}\right)=P\left(T_{1}\right)+P\left(T_{2}\right)=\frac{1}{2}+\frac{1}{2}=1
-$$ --><!-- $$
-P\left(H_{1}\right)=P\left(H_{2}\right)=P\left(T_{1}\right)=P\left(T_{2}\right)=1 / 2
-=P\left(\left\{H_{1}, T_{2}\right\}\right)+P\left(\left\{T_{1}, H_{2}\right\}\right)+P\left(\left\{T_{1}, T_{2}\right\}\right)
-$$  --><!-- and --><span class="math display">\[
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercise: Two Consecutive Coin Tosses
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Let <span class="math inline">\(H_{1}\)</span> be the event that heads occurs on toss 1 and let <span class="math inline">\(H_{2}\)</span> be the event that heads occurs on toss 2. Likewise for <span class="math inline">\(T_1\)</span> and <span class="math inline">\(T_2.\)</span> The coin is a <strong>“fair coin”</strong>, i.e., <strong>all outcomes are equally likely,</strong> <span class="math display">\[
+P(H_1)=P(H_2)=P(T_1)=P(T_2)=\frac{1}{2}.
+\]</span> Moreover, you can assume that the first and the second toss are independent of each other, such that <span class="math display">\[
 \begin{align*}
-%&amp;P\left(\left\{H_{1}, H_{2}\right\} \cup
-%        \left\{H_{1}, T_{2}\right\} \cup
-%        \left\{T_{1}, H_{2}\right\} \cup
-%        \left\{T_{1}, T_{2}\right\}\right)\\[2ex]
-&amp;P\left(\left\{H_{1}, H_{2}\right\}\right)+
-  P\left(\left\{H_{1}, T_{2}\right\}\right)+
-  P\left(\left\{T_{1}, H_{2}\right\}\right)+
-  P\left(\left\{T_{1}, T_{2}\right\}\right)=\\[2ex]
-&amp;=\frac{1}{4}+\frac{1}{4}+\frac{1}{4}+\frac{1}{4}=1.               
+&amp;P\left(H_{1}\cap H_{2}\right)=
+P\left(H_{1}\cap T_{2}\right)=
+P\left(T_{1}\cap H_{2}\right)=
+P\left(T_{1}\cap T_{2}\right)=\frac{1}{4}%\\[2ex]
+%&amp;=\frac{1}{4}+\frac{1}{4}+\frac{1}{4}+\frac{1}{4}=1.               
 \end{align*}
-\]</span> Therefore,<br><span class="math display">\[
+\]</span> <strong>Problem:</strong> What is the Probability that head occurs on toss 1 or toss 2?</p>
+<p><strong>Solution:</strong> <span class="math display">\[
 \begin{align*}
-P\left(H_{1} \cup H_{2}\right)&amp;=P\left(H_{1}\right)+P\left(H_{2}\right)-P\left(H_{1} H_{2}\right)\\[2ex]
+P\left(H_{1} \cup H_{2}\right)&amp;=P\left(H_{1}\right)+P\left(H_{2}\right)-P\left(H_{1}\cap H_{2}\right)\\[2ex]
 &amp;=\frac{1}{2}+\frac{1}{2}-\frac{1}{4}=\frac{3}{4}.
 \end{align*}
 \]</span></p>
+</div>
+</div>
 <section id="probabilities-as-relative-frequencies" class="level4 unnumbered"><h4 class="unnumbered anchored" data-anchor-id="probabilities-as-relative-frequencies">Probabilities as relative frequencies</h4>
 <p>One can interpret <span class="math inline">\(P(A)\)</span> in terms of <strong>frequencies</strong>. That is, <span class="math inline">\(P(A)\)</span> is the (infinitely) long run proportion of times that <span class="math inline">\(A\)</span> is true in repetitions. For example, if we say that the probability of heads is <span class="math inline">\(1 / 2\)</span>, i.e <span class="math inline">\(P(H)=1/2\)</span> we mean that if we flip the coin many times then the proportion of times we get heads tends to <span class="math inline">\(1 / 2\)</span> as the number of tosses increases. An infinitely long, unpredictable sequence of tosses whose limiting proportion tends to a constant is an idealization, much like the idea of a straight line in geometry.</p>
 <p>The following <code>R</code> codes approximates the probability <span class="math inline">\(P(H)=1/2\)</span> using 5, 50 and 5,000 many (pseudo) random coin flips:</p>
@@ -425,33 +470,76 @@ P\left(H_{1} \cup H_{2}\right)&amp;=P\left(H_{1}\right)+P\left(H_{2}\right)-P\le
 <span class="header-section-number">2.1.3</span> Independent Events</h3>
 <p>If we flip a fair coin twice, then the probability of two heads is <span class="math inline">\(\frac{1}{2} \times \frac{1}{2}\)</span>. We multiply the probabilities because we regard the two tosses as independent. Two events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are called <strong>independent</strong> if</p>
 <p><span class="math display">\[
-P(A B)=P(A) P(B).
+P(A\cap B)=P(A) P(B).
 \]</span></p>
-<p>Or more generally, a whole set of events <span class="math inline">\(\{A_i|i\in I\}\)</span> is independent if</p>
+<p>Or more generally, the events <span class="math inline">\(A_1,A_s,\dots,A_n\)</span> are independent of each other if</p>
 <p><span class="math display">\[
-P\left(\bigcap_{i \in J} A_{i}\right)=\prod_{i \in J}P\left(A_{i}\right)
-\]</span> for every finite subset <span class="math inline">\(J\)</span> of <span class="math inline">\(I\)</span>, where <span class="math inline">\(I\)</span> denotes the not necessarily finite index set <span class="math inline">\((\)</span>e.g.&nbsp;<span class="math inline">\(I=\{1,2,\dots\}).\)</span></p>
+P\left(\bigcap_{i\in\mathcal{I}} A_{i}\right)=\prod_{i\in\mathcal{I}} P\left(A_{i}\right)
+\]</span> for every finite subset <span class="math inline">\(\in\mathcal{I}\subset\{1,2,\dots,n\}\)</span> of <span class="math inline">\(\{1,2,\dots,n\}.\)</span></p>
 <p>Independence can arise in two distinct ways. Sometimes, we <strong>explicitly assume</strong> that two events are independent. For example, in tossing a coin twice, we usually assume the tosses are independent which reflects the fact that the coin has no memory of the first toss.</p>
-<p>In other instances, we <strong>derive</strong> independence by verifying that the definition of independence <span class="math inline">\(P(A B)=P(A)P(B)\)</span> holds. For example, in tossing a fair die <em>once</em>, let <span class="math inline">\(A=\{2,4,6\}\)</span> be the event of observing an even number and let <span class="math inline">\(B=\{1,2,3,4\}\)</span> be the event of observing no <span class="math inline">\(5\)</span> and no <span class="math inline">\(6\)</span>. Then, <span class="math inline">\(A \cap B=\{2,4\}\)</span> is the event of observing either a <span class="math inline">\(2\)</span> or a <span class="math inline">\(4\)</span>. Are the events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> independent?<br><span class="math display">\[
-P(A B)=\frac{2}{6}=P(A)P(B)=\frac{1}{2}\cdot \frac{2}{3}
-\]</span> and so <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are independent. In this case, we didn’t assume that <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are independent it just turned out that they were.</p>
-<p><strong>Cautionary Note:</strong> Suppose that <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are <strong>disjoint events</strong>, i.e.&nbsp; <span class="math display">\[
-AB=\emptyset,
-\]</span> each with positive probability, i.e., <span class="math inline">\(P(A)&gt;0\)</span> and <span class="math inline">\(P(B)&gt;0.\)</span> Can they be independent? No! This follows since</p>
+<p>In other instances, we <strong>derive</strong> independence by verifying that the definition of independence <span class="math inline">\(P(A\cap B)=P(A)P(B)\)</span> holds.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercise: Deriving Independence
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In tossing a fair die <em>once</em>, let <span class="math display">\[
+A=\{2,4,6\}
+\]</span> be the event of observing an <strong>even number</strong> and let <span class="math display">\[
+B=\{1,2,3,4\}
+\]</span> be the event of observing no <span class="math inline">\(5\)</span> and no <span class="math inline">\(6\)</span>.</p>
+<p>Then, <span class="math display">\[
+A \cap B=\{2,4\}
+\]</span> is the event of observing either a <span class="math inline">\(2\)</span> or a <span class="math inline">\(4\)</span>.</p>
+<p><strong>Problem:</strong> Are the events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> independent?</p>
+<p><strong>Solution:</strong> <span class="math display">\[
+P(A\cap B)=\frac{2}{6}=P(A)P(B)=\frac{1}{2}\cdot \frac{2}{3}
+\]</span> and so <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are independent.</p>
+<p><strong>Note:</strong> In this case, we didn’t assume that <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are independent it just turned out that they were.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Example: Cautionary Note on Independence and Disjoint Events
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Suppose that <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are <strong>disjoint events</strong>, i.e.&nbsp; <span class="math display">\[
+A\cap B=\emptyset,
+\]</span> each with positive probability, i.e., <span class="math inline">\(P(A)&gt;0\)</span> and <span class="math inline">\(P(B)&gt;0.\)</span></p>
+<ul>
+<li>
+<strong>Question:</strong> Can they be independent?<br>
+</li>
+<li>
+<strong>Answer:</strong> No! 🤯</li>
+</ul>
+<p>This follows since</p>
 <p><span class="math display">\[
-P(A B)=P(\emptyset)=0\neq \underbrace{P(A)}_{&gt;0}\;\underbrace{P(B)}_{&gt;0}&gt;0.
+P(A\cap B)=P(\emptyset)=0\neq \underbrace{P(A)}_{&gt;0}\;\underbrace{P(B)}_{&gt;0}&gt;0.
 \]</span></p>
 <p>Generally, there is no way to judge (in-)dependence by looking at the sets in a Venn diagram.</p>
+</div>
+</div>
 <p><strong>Summary:</strong> Independent Events</p>
 <ol type="1">
 <li>
-<span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are independent if <span class="math inline">\(P(A B)=P(A) P(B)\)</span>.</li>
+<span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are independent if <span class="math inline">\(P(A\cap B)=P(A) P(B)\)</span>.</li>
 <li>Independence is sometimes assumed and sometimes derived.</li>
 <li>Disjoint events with strictly positive probabilities are <em>not</em> independent.</li>
 </ol></section><section id="conditional-probability" class="level3" data-number="2.1.4"><h3 data-number="2.1.4" class="anchored" data-anchor-id="conditional-probability">
 <span class="header-section-number">2.1.4</span> Conditional Probability</h3>
 <p>If <span class="math inline">\(P(B)&gt;0\)</span> then the <strong>conditional probability</strong> of <span class="math inline">\(A\)</span> given <span class="math inline">\(B\)</span> is <span class="math display">\[
-P(A \mid B)=\frac{P(A B)}{P(B)}.
+P(A \mid B)=\frac{P(A\cap B)}{P(B)}.
 \]</span> Think of <span class="math inline">\(P(A \mid B)\)</span> as the fraction of times <span class="math inline">\(A\)</span> occurs among those in which <span class="math inline">\(B\)</span> occurs. Here are some facts about conditional probabilities:</p>
 <ul>
 <li>The rules of probability apply to events on the left of the bar “<span class="math inline">\(\mid\)</span>”. That is, for any fixed <span class="math inline">\(B\)</span> such that <span class="math inline">\(P(B)&gt;0,\)</span> <span class="math inline">\(P(\cdot \mid B)\)</span> is a probability, i.e., it satisfies the three axioms of probability:
@@ -506,21 +594,21 @@ P(D \mid+)
 <p>The lesson here is that you need to compute the answer numerically. Don’t trust your intuition.</p>
 <section id="independence-via-conditional-probabilities" class="level4 unnumbered"><h4 class="unnumbered anchored" data-anchor-id="independence-via-conditional-probabilities">Independence via Conditional Probabilities</h4>
 <p>If <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are <strong>independent events</strong> then <span class="math display">\[
-P(A \mid B)=\frac{P(A B)}{P(B)}=\frac{P(A) P(B)}{P(B)}=P(A)
+P(A \mid B)=\frac{P(A\cap B)}{P(B)}=\frac{P(A) P(B)}{P(B)}=P(A)
 \]</span> So another <strong>interpretation of independence</strong> is that knowing <span class="math inline">\(B\)</span> doesn’t change the probability of <span class="math inline">\(A\)</span>.</p>
 <p>From the definition of conditional probability we can write <span class="math display">\[
-P(A B)=P(A \mid B) P(B)
+P(A\cap B)=P(A \mid B) P(B)
 \]</span> and also <span class="math display">\[
-P(A B)=P(B \mid A) P(A).
-\]</span> Often, these formulas give us a convenient way to compute <span class="math inline">\(P(A B)\)</span> when <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are not independent.</p>
+P(A\cap B)=P(B \mid A) P(A).
+\]</span> Often, these formulas give us a convenient way to compute <span class="math inline">\(P(A\cap B)\)</span> when <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are not independent.</p>
 <p><strong>Example:</strong> Draw two cards from a deck, without replacement. Let <span class="math inline">\(A\)</span> be the event that the first draw is Ace of Clubs and let <span class="math inline">\(B\)</span> be the event that the second draw is Queen of Diamonds. Then <span class="math display">\[\begin{align*}
-P(A B)
+P(A\cap B)
 &amp;=P(A) \;\;P(B \mid A)\\[2ex]
 &amp;=(1 / 52)\; (1 / 51)
 \end{align*}\]</span></p>
 <p><strong>Summary:</strong> Conditional Probability</p>
 <ol type="1">
-<li>If <span class="math inline">\(P(B)&gt;0\)</span> then <span class="math inline">\(P(A \mid B)=P(A B)/P(B)\)</span>
+<li>If <span class="math inline">\(P(B)&gt;0\)</span> then <span class="math inline">\(P(A \mid B)=P(A\cap B)/P(B)\)</span>
 </li>
 <li>
 <span class="math inline">\(P(\cdot \mid B)\)</span> satisfies the axioms of probability, for fixed <span class="math inline">\(B\)</span>. In general, <span class="math inline">\(P(A \mid \cdot)\)</span> does not satisfy the axioms of probability, for fixed <span class="math inline">\(A\)</span>.</li>

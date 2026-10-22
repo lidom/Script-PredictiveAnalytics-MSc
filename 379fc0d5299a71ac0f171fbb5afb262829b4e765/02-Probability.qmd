@@ -16,18 +16,26 @@ Probability is the mathematical language for quantifying uncertainty. We can app
 The **sample space** $\Omega,$ is the set of possible outcomes of an experiment. Points $\omega$ in $\Omega$ are called **sample outcomes** or **realizations** or **elementary events**. **Events** are subsets of $\Omega$. 
 
 
+::: {.callout-note}
+## Example: Two Coin Tosses 
+If we toss a coin twice then $\Omega=\{H H, H T, T H, T T\}.$ The event that the first toss is heads is $A=\{H H, H T\}.$
+:::
 
-**Example:** If we toss a coin twice then $\Omega=\{H H, H T, T H, T T\}.$ The event that the first toss is heads is $A=\{H H, H T\}.$
+::: {.callout-note}
+## Example: $\Omega=\mathbb{R}$ 
+Let $\omega$ be the outcome of a measurement of some physical quantity, for example, temperature. Then $\Omega=\mathbb{R}=(-\infty, \infty).$ The event that the measurement is larger than 10 but less than or equal to 23 is $A=(10,23].$
+:::
 
-
-**Example:** Let $\omega$ be the outcome of a measurement of some physical quantity, for example, temperature. Then $\Omega=\mathbb{R}=(-\infty, \infty).$ The event that the measurement is larger than 10 but less than or equal to 23 is $A=(10,23].$
-
-
-**Example:**  If we toss a coin forever then the sample space is the infinite set $\Omega=\left\{\omega=\left(\omega_{1}, \omega_{2}, \omega_{3}, \ldots,\right)|\omega_{i} \in\{H, T\}\right\}$ Let $A$ be the event that the first head appears on the third toss. Then
+::: {.callout-note}
+## Example: Tossing a Coin Infinitely Often 
+If we toss a coin forever then the sample space is the infinite set $\Omega=\left\{\omega=\left(\omega_{1}, \omega_{2}, \omega_{3}, \ldots,\right)|\omega_{i} \in\{H, T\}\right\}$ Let $A$ be the event that the first head appears on the third toss. Then
 $A=\left\{\left(\omega_{1}, \omega_{2}, \omega_{3}, \ldots,\right)| \omega_{1}=T, \omega_{2}=T, \omega_{3}=H, \omega_{i} \in\{H, T\} \text { for } i>3\right\}.$
+:::
+
+**Complement:** Given an event $A,$ let $A^{c}=\{\omega \in \Omega | \omega \notin A\}$ denote the **complement** of $A$.  Informally, $A^{c}$ can be read as "not $A$." The complement of $\Omega$ is the empty set $\emptyset$. 
 
 
-Given an event $A,$ let $A^{c}=\{\omega \in \Omega | \omega \notin A\}$ denote the **complement** of $A$.  Informally, $A^{c}$ can be read as "not $A$." The complement of $\Omega$ is the empty set $\emptyset$. The **union** of events $A$ and $B$ is defined as 
+**Union:** The **union** of events $A$ and $B$ is defined as 
 $$
 A\cup B=\{\omega \in \Omega|\omega\in A\text{ or }\omega \in B\text{ or }\omega\in\text{ both}\}
 $$ 
@@ -35,11 +43,17 @@ which can be thought of as "$A$ or $B$."  If $A_{1}, A_{2}, \ldots$ is a sequenc
 $$
 \bigcup_{i=1}^{\infty} A_{i}=\left\{\omega \in \Omega | \omega \in A_{i} \text { for at least one i }\right\}.
 $$
+
+
+**Intersection:**
 The **intersection** of $A$ and $B$ is defined as 
 $$
 A \cap B=\{\omega \in \Omega | \omega \in A\text{ and }\omega \in B\}
 $$ 
-which reads as "$A$ and $B$." Often $A \cap B$ is also written shortly as $AB$ or as $A,B.$  
+which reads as 
+
+* "$A$ and $B$" or 
+* "intersection of $A$ and $B$"  
 
 If $A_{1}, A_{2}, \ldots$ is a sequence of sets then
 $$
@@ -59,7 +73,7 @@ A      & \text { event (subset of } \Omega) \\
 |A|    & \text { number of points in } A \text { (if } A \text { is finite) }\\
 A^{c}  & \text { complement of } A (\operatorname{not} A)\\
 A \cup B &\text{ union }(A\text{ or }B)\\
-A \cap B &\text{ intersection }(A \text { and } B);\text{ short notations: }AB\text{ or }A,B\\
+A \cap B &\text{ intersection }(A \text { and } B);\text{ short notation: }A,B\\
 A \subset B &\text{ set inclusion }(A \text{ is a subset of or equal to }B)\\
 \emptyset   &\text{ null event (always false)}\\
 \Omega      &\text{ true event (always true)}
@@ -122,42 +136,36 @@ One can derive many properties of $P$ from the three axioms. Here are a few:
 A less obvious property is given in the following: For any events $A$ and $B$ we have that, 
 
 $$
-P(A \cup B)=P(A)+P(B)-P(A B).
+P(A \cup B)=P(A)+P(B)-P(A\cap B).
 $$
 
-**Example:** Two consecutive coin tosses. Let $H_{1}$ be the event that heads occurs on toss 1 and let $H_{2}$ be the event that heads occurs on toss 2. Likewise for $T_1$ and $T_2.$ Let us consider "fair" coins, i.e., all outcomes are equally likely. Then  
-<!-- $$
-P\left(\{H_{1},H_2\}\right)=P\left(H_{1}\right)+P\left(H_{2}\right)=\frac{1}{2}+\frac{1}{2}=1
+::: {.callout-note}
+
+## Exercise: Two Consecutive Coin Tosses
+Let $H_{1}$ be the event that heads occurs on toss 1 and let $H_{2}$ be the event that heads occurs on toss 2. Likewise for $T_1$ and $T_2.$ The coin is a **"fair coin"**, i.e., **all outcomes are equally likely,** 
 $$
+P(H_1)=P(H_2)=P(T_1)=P(T_2)=\frac{1}{2}.
 $$
-P\left(\{T_{1},T_2\}\right)=P\left(T_{1}\right)+P\left(T_{2}\right)=\frac{1}{2}+\frac{1}{2}=1
-$$ -->
-<!-- $$
-P\left(H_{1}\right)=P\left(H_{2}\right)=P\left(T_{1}\right)=P\left(T_{2}\right)=1 / 2
-=P\left(\left\{H_{1}, T_{2}\right\}\right)+P\left(\left\{T_{1}, H_{2}\right\}\right)+P\left(\left\{T_{1}, T_{2}\right\}\right)
-$$  -->
-<!-- and -->
+Moreover, you can assume that the first and the second toss are independent of each other, such that
 $$
 \begin{align*}
-%&P\left(\left\{H_{1}, H_{2}\right\} \cup
-%        \left\{H_{1}, T_{2}\right\} \cup
-%        \left\{T_{1}, H_{2}\right\} \cup
-%        \left\{T_{1}, T_{2}\right\}\right)\\[2ex]
-&P\left(\left\{H_{1}, H_{2}\right\}\right)+
-  P\left(\left\{H_{1}, T_{2}\right\}\right)+
-  P\left(\left\{T_{1}, H_{2}\right\}\right)+
-  P\left(\left\{T_{1}, T_{2}\right\}\right)=\\[2ex]
-&=\frac{1}{4}+\frac{1}{4}+\frac{1}{4}+\frac{1}{4}=1.               
+&P\left(H_{1}\cap H_{2}\right)=
+ P\left(H_{1}\cap T_{2}\right)=
+ P\left(T_{1}\cap H_{2}\right)=
+ P\left(T_{1}\cap T_{2}\right)=\frac{1}{4}%\\[2ex]
+%&=\frac{1}{4}+\frac{1}{4}+\frac{1}{4}+\frac{1}{4}=1.               
 \end{align*}
 $$ 
-Therefore,  
+**Problem:** What is the Probability that head occurs on toss 1 or toss 2?
+
+**Solution:**
 $$
 \begin{align*}
-P\left(H_{1} \cup H_{2}\right)&=P\left(H_{1}\right)+P\left(H_{2}\right)-P\left(H_{1} H_{2}\right)\\[2ex]
+P\left(H_{1} \cup H_{2}\right)&=P\left(H_{1}\right)+P\left(H_{2}\right)-P\left(H_{1}\cap H_{2}\right)\\[2ex]
 &=\frac{1}{2}+\frac{1}{2}-\frac{1}{4}=\frac{3}{4}.
 \end{align*}
 $$
-
+:::
 
 #### Probabilities as relative frequencies {-}
 
@@ -189,45 +197,79 @@ length(results[results=="H"])/5000
 If we flip a fair coin twice, then the probability of two heads is $\frac{1}{2} \times \frac{1}{2}$.  We multiply the probabilities because we regard the two tosses as independent.  Two events $A$ and $B$ are called **independent** if 
 
 $$
-P(A B)=P(A) P(B).
+P(A\cap B)=P(A) P(B).
 $$
 
-Or more generally, a whole set of events $\{A_i|i\in I\}$ is independent if 
+Or more generally, the events $A_1,A_s,\dots,A_n$ are independent of each other if 
 
 $$
-P\left(\bigcap_{i \in J} A_{i}\right)=\prod_{i \in J}P\left(A_{i}\right)
+P\left(\bigcap_{i\in\mathcal{I}} A_{i}\right)=\prod_{i\in\mathcal{I}} P\left(A_{i}\right)
 $$
-for every finite subset $J$ of $I$, where $I$ denotes the not necessarily finite index set $($e.g. $I=\{1,2,\dots\}).$
+for every finite subset $\in\mathcal{I}\subset\{1,2,\dots,n\}$ of $\{1,2,\dots,n\}.$
 
  
 
 Independence can arise in two distinct ways. Sometimes, we **explicitly assume** that two events are independent. For example, in tossing a coin twice, we usually assume the tosses are independent which reflects the fact that the coin has no memory of the first toss.
 
-In other instances, we **derive** independence by verifying that the definition of independence $P(A B)=P(A)P(B)$ holds. For example, in tossing a fair die *once*, let $A=\{2,4,6\}$ be the event of observing an even number and let $B=\{1,2,3,4\}$ be the event of observing no $5$ and no $6$. Then, 
-$A \cap B=\{2,4\}$ is the event of observing either a $2$ or a $4$. Are the events $A$ and $B$ independent?  
+In other instances, we **derive** independence by verifying that the definition of independence $P(A\cap B)=P(A)P(B)$ holds. 
+
+
+::: {.callout-note}
+## Exercise: Deriving Independence
+In tossing a fair die *once*, let 
 $$
-P(A B)=\frac{2}{6}=P(A)P(B)=\frac{1}{2}\cdot \frac{2}{3}
+A=\{2,4,6\}
 $$ 
-and so $A$ and $B$ are independent. In this case, we didn't assume that $A$ and $B$ are independent it just turned out that they were. 
-
-
-**Cautionary Note:** Suppose that $A$ and $B$ are **disjoint events**, i.e. 
+be the event of observing an **even number** and let 
 $$
-AB=\emptyset,
+B=\{1,2,3,4\}
 $$ 
-each with positive probability, i.e., $P(A)>0$ and $P(B)>0.$  Can they be independent?  No!  This follows since 
+be the event of observing no $5$ and no $6$. 
+
+Then, 
+$$
+A \cap B=\{2,4\}
+$$ 
+is the event of observing either a $2$ or a $4$. 
+
+**Problem:** Are the events $A$ and $B$ independent? 
+
+**Solution:**
+$$
+P(A\cap B)=\frac{2}{6}=P(A)P(B)=\frac{1}{2}\cdot \frac{2}{3}
+$$ 
+and so $A$ and $B$ are independent. 
+
+**Note:** In this case, we didn't assume that $A$ and $B$ are independent it just turned out that they were. 
+:::
+
+
+::: {.callout-note}
+
+## Example: Cautionary Note on Independence and Disjoint Events
+
+Suppose that $A$ and $B$ are **disjoint events**, i.e. 
+$$
+A\cap B=\emptyset,
+$$ 
+each with positive probability, i.e., $P(A)>0$ and $P(B)>0.$  
+
+* **Question:** Can they be independent?  
+* **Answer:** No! 🤯 
+
+This follows since 
 
 $$
-P(A B)=P(\emptyset)=0\neq \underbrace{P(A)}_{>0}\;\underbrace{P(B)}_{>0}>0.
+P(A\cap B)=P(\emptyset)=0\neq \underbrace{P(A)}_{>0}\;\underbrace{P(B)}_{>0}>0.
 $$
 
 Generally, there is no way to judge (in-)dependence by looking at the sets in a Venn diagram.
-
+:::
 
 **Summary:** Independent Events
 
 
-1. $A$ and $B$ are independent if $P(A B)=P(A) P(B)$.
+1. $A$ and $B$ are independent if $P(A\cap B)=P(A) P(B)$.
 2. Independence is sometimes assumed and sometimes derived.
 3. Disjoint events with strictly positive probabilities are *not* independent.
 
@@ -237,7 +279,7 @@ Generally, there is no way to judge (in-)dependence by looking at the sets in a 
 
 If $P(B)>0$ then the **conditional probability** of $A$ given $B$ is
 $$
-P(A \mid B)=\frac{P(A B)}{P(B)}.
+P(A \mid B)=\frac{P(A\cap B)}{P(B)}.
 $$
 Think of $P(A \mid B)$ as the fraction of times $A$ occurs among those in which $B$ occurs. Here are some facts about conditional probabilities: 
 
@@ -302,26 +344,26 @@ The lesson here is that you need to compute the answer numerically. Don't trust 
 
 If $A$ and $B$ are **independent events** then
 $$
-P(A \mid B)=\frac{P(A B)}{P(B)}=\frac{P(A) P(B)}{P(B)}=P(A)
+P(A \mid B)=\frac{P(A\cap B)}{P(B)}=\frac{P(A) P(B)}{P(B)}=P(A)
 $$
 So another **interpretation of independence** is that knowing $B$ doesn't change the probability of $A$.
 
 
 From the definition of conditional probability we can write 
 $$
-P(A B)=P(A \mid B) P(B)
+P(A\cap B)=P(A \mid B) P(B)
 $$ 
 and also
 $$
-P(A B)=P(B \mid A) P(A).
+P(A\cap B)=P(B \mid A) P(A).
 $$ 
-Often, these formulas give us a convenient way to compute $P(A B)$ when $A$ and $B$ are not independent. 
+Often, these formulas give us a convenient way to compute $P(A\cap B)$ when $A$ and $B$ are not independent. 
 
 
 
 **Example:** Draw two cards from a deck, without replacement. Let $A$ be the event that the first draw is Ace of Clubs and let $B$ be the event that the second draw is Queen of Diamonds. Then 
 \begin{align*}
-P(A B) 
+P(A\cap B) 
 &=P(A) \;\;P(B \mid A)\\[2ex]
 &=(1 / 52)\; (1 / 51)
 \end{align*}
@@ -330,7 +372,7 @@ P(A B)
 
 **Summary:** Conditional Probability
     
-  1. If $P(B)>0$ then $P(A \mid B)=P(A B)/P(B)$
+  1. If $P(B)>0$ then $P(A \mid B)=P(A\cap B)/P(B)$
   2. $P(\cdot \mid B)$ satisfies the axioms of probability, for fixed $B$.  In general, $P(A \mid \cdot)$ does not satisfy the axioms of probability, for fixed $A$.
   3. In general, $P(A \mid B) \neq P(B \mid A)$.
   4. $A$ and $B$ are independent if and only if $P(A \mid B)=P(A)$.
