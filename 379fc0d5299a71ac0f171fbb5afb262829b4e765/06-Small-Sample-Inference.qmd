@@ -1983,7 +1983,7 @@ In fact, if we would increase the number of Monte Carlo repetitions, the empiric
 
 Next, we check how well the $F$ test detects certain **violations of the null hypothesis**. We do this by using the same data generating process, but by testing the following <span style="color:#FF0000">incorrect</span> null hypothesis:
 \begin{align*}
-H_0:\;&{\color{red}\beta_2=4}\quad\text{and}\quad\beta_3=4\\
+H_0:\;&{\color{red}{\beta_2=4}}\quad\text{and}\quad\beta_3=4\\
 H_1:\;&\beta_2\neq 4\quad\text{and/or}\quad\beta_3\neq 4
 \end{align*}
 ```{r}

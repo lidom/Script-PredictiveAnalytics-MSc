@@ -5,7 +5,14 @@ source("_common.R")
 
 # Probability {#ReviewStats}
 
-The content of this chapter follows closely (often verbatim) the fantastic book by @Wasserman2004. 
+::: {.hidden}
+$$
+%% Independence symbol (double perp):
+\newcommand{\independent}{\mathrel{\perp\!\!\!\perp}}
+$$
+:::
+
+Parts of this chapter follow the excellent book by @Wasserman2004.
 
 ## Basics in Probability Theory
 
@@ -13,54 +20,49 @@ Probability is the mathematical language for quantifying uncertainty. We can app
 
 
 ### Sample Spaces and (Elementary) Events
-The **sample space** $\Omega,$ is the set of possible outcomes of an experiment. Points $\omega$ in $\Omega$ are called **sample outcomes** or **realizations** or **elementary events**. **Events** are subsets of $\Omega$. 
+The **sample space** $\Omega$ is the set of possible outcomes of an experiment. Points $\omega$ in $\Omega$ are called **sample outcomes**, **realizations**, or **elementary events**. **Events** are subsets of $\Omega$.
 
 
 ::: {.callout-note}
-## Example: Two Coin Tosses 
-If we toss a coin twice then $\Omega=\{H H, H T, T H, T T\}.$ The event that the first toss is heads is $A=\{H H, H T\}.$
+## Example: Two Coin Tosses
+If we toss a coin twice, then $\Omega=\{H H, H T, T H, T T\}.$ The event that the first toss is heads is $A=\{H H, H T\}.$
 :::
 
 ::: {.callout-note}
-## Example: $\Omega=\mathbb{R}$ 
+## Example: $\Omega=\mathbb{R}$
 Let $\omega$ be the outcome of a measurement of some physical quantity, for example, temperature. Then $\Omega=\mathbb{R}=(-\infty, \infty).$ The event that the measurement is larger than 10 but less than or equal to 23 is $A=(10,23].$
 :::
 
 ::: {.callout-note}
-## Example: Tossing a Coin Infinitely Often 
-If we toss a coin forever then the sample space is the infinite set $\Omega=\left\{\omega=\left(\omega_{1}, \omega_{2}, \omega_{3}, \ldots,\right)|\omega_{i} \in\{H, T\}\right\}$ Let $A$ be the event that the first head appears on the third toss. Then
-$A=\left\{\left(\omega_{1}, \omega_{2}, \omega_{3}, \ldots,\right)| \omega_{1}=T, \omega_{2}=T, \omega_{3}=H, \omega_{i} \in\{H, T\} \text { for } i>3\right\}.$
+## Example: Tossing a Coin Infinitely Often
+If we toss a coin forever, then the sample space is the infinite set $\Omega=\left\{\omega=\left(\omega_{1}, \omega_{2}, \omega_{3}, \ldots\right)|\omega_{i} \in\{H, T\}\right\}$. Let $A$ be the event that the first head appears on the third toss. Then
+$A=\left\{\left(\omega_{1}, \omega_{2}, \omega_{3}, \ldots\right)| \omega_{1}=T, \omega_{2}=T, \omega_{3}=H, \omega_{i} \in\{H, T\} \text { for } i>3\right\}.$
 :::
 
-**Complement:** Given an event $A,$ let $A^{c}=\{\omega \in \Omega | \omega \notin A\}$ denote the **complement** of $A$.  Informally, $A^{c}$ can be read as "not $A$." The complement of $\Omega$ is the empty set $\emptyset$. 
+**Complement:** Given an event $A,$ let $A^{c}=\{\omega \in \Omega | \omega \notin A\}$ denote the **complement** of $A$. Informally, $A^{c}$ can be read as "not $A$." The complement of $\Omega$ is the empty set $\emptyset$.
 
 
-**Union:** The **union** of events $A$ and $B$ is defined as 
+**Union:** The **union** of events $A$ and $B$ is defined as
 $$
 A\cup B=\{\omega \in \Omega|\omega\in A\text{ or }\omega \in B\text{ or }\omega\in\text{ both}\}
-$$ 
-which can be thought of as "$A$ or $B$."  If $A_{1}, A_{2}, \ldots$ is a sequence of sets then
 $$
-\bigcup_{i=1}^{\infty} A_{i}=\left\{\omega \in \Omega | \omega \in A_{i} \text { for at least one i }\right\}.
+which can be read as "$A$ or $B$." If $A_{1}, A_{2}, \ldots$ is a sequence of sets, then
+$$
+\bigcup_{i=1}^{\infty} A_{i}=\left\{\omega \in \Omega | \omega \in A_{i} \text{ for at least one } i\right\}.
 $$
 
 
 **Intersection:**
-The **intersection** of $A$ and $B$ is defined as 
+The **intersection** of $A$ and $B$ is defined as
 $$
 A \cap B=\{\omega \in \Omega | \omega \in A\text{ and }\omega \in B\}
-$$ 
-which reads as 
-
-* "$A$ and $B$" or 
-* "intersection of $A$ and $B$"  
-
-If $A_{1}, A_{2}, \ldots$ is a sequence of sets then
 $$
-\bigcap_{i=1}^{\infty} A_{i}=\left\{\omega \in \Omega | \omega \in A_{i} \text { for all i }\right\}.
+which can be read as "$A$ and $B$." If $A_{1}, A_{2}, \ldots$ is a sequence of sets, then
+$$
+\bigcap_{i=1}^{\infty} A_{i}=\left\{\omega \in \Omega | \omega \in A_{i} \text{ for all } i\right\}.
 $$
 
-If every element of $A$ is also contained in $B$ we write $A \subset B$ or, equivalently, $B \supset A$.  If $A$ is a finite set, let $|A|$ denote the number of elements in $A .$ We say that $A_{1}, A_{2}, \ldots$ are **disjoint** or **mutually exclusive** if $A_{i} \cap A_{j}=\emptyset$ whenever $i \neq j$. For example, $A_{1}=[0,1), A_{2}=[1,2), A_{3}=[2,3), \ldots$ are disjoint. A **partition** of $\Omega$ is a sequence of disjoint sets $A_{1}, A_{2}, \ldots$ such that $\bigcup_{i=1}^{\infty} A_{i}=\Omega$.
+If every element of $A$ is also contained in $B$, we write $A \subset B$ or, equivalently, $B \supset A$. If $A$ is a finite set, let $|A|$ denote the number of elements in $A$. We say that $A_{1}, A_{2}, \ldots$ are **disjoint** or **mutually exclusive** if $A_{i} \cap A_{j}=\emptyset$ whenever $i \neq j$. For example, $A_{1}=[0,1), A_{2}=[1,2), A_{3}=[2,3), \ldots$ are disjoint. A **partition** of $\Omega$ is a sequence of disjoint sets $A_{1}, A_{2}, \ldots$ such that $\bigcup_{i=1}^{\infty} A_{i}=\Omega$.
 
 **Summary:** Sample space and events
 
@@ -81,7 +83,7 @@ A \subset B &\text{ set inclusion }(A \text{ is a subset of or equal to }B)\\
 $$
 
 
-  
+
 
 <!-- Given an event $A,$ define the indicator function of $A$ by -->
 <!-- $$ -->
@@ -100,41 +102,43 @@ $$
 
 ###  Probability
 
-We want to assign a real number $P(A)$ to every event $A,$ called the **probability** of $A .$ We also call $P$ a **probability distribution** or a **probability measure**.  To qualify as a probability, $P$ has to satisfy three axioms. That is, a function $P$ that assigns a real number $P(A)\in[0,1]$ to each event $A$ is a **probability distribution** or a **probability measure** if it satisfies the following three axioms:
+We want to assign a real number $P(A)$ to every event $A$, called the **probability** of $A$. A function $P$ that assigns a real number $P(A)$ to each event $A$ is called a **probability distribution** or a **probability measure** if it satisfies the following three axioms:
 
-- **Axiom 1:** $P(A) \geq 0$ for every $A$ 
-- **Axiom 2:** $P(\Omega)=1$
-- **Axiom 3:** If $A_{1}, A_{2}, \ldots$ are disjoint then
-
+::: {.spaced-list}
+- **Axiom 1:** $P(A) \geq 0$ for every $A$.
+- **Axiom 2:** $P(\Omega)=1$.
+- **Axiom 3:** If $A_{1}, A_{2}, \ldots$ are disjoint, then
 $$
 P\left(\bigcup_{i=1}^{\infty} A_{i}\right)=\sum_{i=1}^{\infty} P\left(A_{i}\right).
 $$
+:::
 
-::: {.callout-note}
+::: {.callout-tip collapse="true"}
+## 🤓 Nerd's Box: Sigma-Algebra
 
-## Sigma-Algebra 
 
-It is not always possible to assign a probability to *every* event $A$ if the sample space is large. For instance, in the case of 
+It is not always possible to assign a probability to *every* event $A$ if the sample space is large. For instance, in the case of
 $$
 \Omega=\mathbb{R}
-$$ 
-strange things can happen. There are pathological sets (e.g. Vitali sets) that simply break down the mathematics since they are non-measurable (i.e. we cannot assign probabilities to them).  Therefore, in cases like $\Omega=\mathbb{R}$, we assign probabilities to a *limited* class of sets called a **$\sigma$-field** or **$\sigma$-algebra**. 
+$$
+strange things can happen. There are pathological sets (e.g., Vitali sets) that break down the mathematics, since they are non-measurable (i.e., we cannot assign probabilities to them). Therefore, in cases like $\Omega=\mathbb{R}$, we assign probabilities to a *limited* class of sets called a **$\sigma$-field** or **$\sigma$-algebra**.
 
-For $\Omega=\mathbb{R}$, the canonical **$\sigma$-algebra** is the **Borel $\sigma$-algebra**. The Borel $\sigma$-algebra on $\mathbb{R}$ is generated by the collection of **all open subsets of $\mathbb{R}$**. 
+For $\Omega=\mathbb{R}$, the canonical **$\sigma$-algebra** is the **Borel $\sigma$-algebra**. The Borel $\sigma$-algebra on $\mathbb{R}$ is generated by the collection of **all open subsets of $\mathbb{R}$**.
 
-In this course, we use the Borel $\sigma$-algebra and fortunately we do not have to bother with it any further. It's there lurking in the background making things work for us. 
-::: 
+In this course, we always use the Borel $\sigma$-algebra. Fortunately, we do not have to bother with it any further; it lurks in the background and makes things work for us.
+:::
 
-One can derive many properties of $P$ from the three axioms. Here are a few: 
+Many properties of $P$ can be derived from the three axioms. Here are a few:
 
+::: {.spaced-list}
 * $P(\emptyset)=0$
 * $A \subset B\Rightarrow P(A) \leq P(B)$
 * $0 \leq P(A) \leq 1$
 * $P\left(A^{c}\right)=1-P(A)$
 * $A \cap B=\emptyset \Rightarrow P(A \cup B)=P(A)+P(B)$
+:::
 
-A less obvious property is given in the following: For any events $A$ and $B$ we have that, 
-
+A less obvious property is that, for any events $A$ and $B$,
 $$
 P(A \cup B)=P(A)+P(B)-P(A\cap B).
 $$
@@ -142,7 +146,7 @@ $$
 ::: {.callout-note}
 
 ## Exercise: Two Consecutive Coin Tosses
-Let $H_{1}$ be the event that heads occurs on toss 1 and let $H_{2}$ be the event that heads occurs on toss 2. Likewise for $T_1$ and $T_2.$ The coin is a **"fair coin"**, i.e., **all outcomes are equally likely,** 
+Let $H_{1}$ be the event that heads occurs on toss 1 and let $H_{2}$ be the event that heads occurs on toss 2. Likewise for $T_1$ and $T_2.$ The coin is a **"fair coin"**, i.e., **all outcomes are equally likely,**
 $$
 P(H_1)=P(H_2)=P(T_1)=P(T_2)=\frac{1}{2}.
 $$
@@ -153,10 +157,10 @@ $$
  P\left(H_{1}\cap T_{2}\right)=
  P\left(T_{1}\cap H_{2}\right)=
  P\left(T_{1}\cap T_{2}\right)=\frac{1}{4}%\\[2ex]
-%&=\frac{1}{4}+\frac{1}{4}+\frac{1}{4}+\frac{1}{4}=1.               
+%&=\frac{1}{4}+\frac{1}{4}+\frac{1}{4}+\frac{1}{4}=1.
 \end{align*}
-$$ 
-**Problem:** What is the Probability that head occurs on toss 1 or toss 2?
+$$
+**Problem:** What is the probability that heads occurs on toss 1 or on toss 2?
 
 **Solution:**
 $$
@@ -167,12 +171,12 @@ P\left(H_{1} \cup H_{2}\right)&=P\left(H_{1}\right)+P\left(H_{2}\right)-P\left(H
 $$
 :::
 
-#### Probabilities as relative frequencies {-}
+#### **Probabilities as Relative Frequencies** {-}
 
-One can interpret $P(A)$ in terms of **frequencies**. That is, $P(A)$ is the (infinitely) long run proportion of times that $A$ is true in repetitions. For example, if we say that the probability of heads is $1 / 2$, i.e $P(H)=1/2$ we mean that if we flip the coin many times then the proportion of times we get heads tends to $1 / 2$ as the number of tosses increases.  An infinitely long, unpredictable sequence of tosses whose limiting proportion tends to a constant is an idealization, much like the idea of a straight line in geometry. 
+One can interpret $P(A)$ in terms of **frequencies**. That is, $P(A)$ is the (infinitely) long-run proportion of times that $A$ is true in repeated experiments. For example, if we say that the probability of heads is $1/2$, i.e., $P(H)=1/2$, we mean that if we flip the coin many times, then the proportion of heads tends to $1/2$ as the number of tosses increases. An infinitely long, unpredictable sequence of tosses whose limiting proportion tends to a constant is an idealization, much like the idea of a straight line in geometry.
 
 
-The following `R` codes approximates the probability $P(H)=1/2$ using 5, 50 and 5,000 many (pseudo) random coin flips:
+The following `R` code approximates the probability $P(H)=1/2$ using 5, 50, and 5,000 (pseudo-)random coin flips:
 ```{r}
 set.seed(869)
 ## 5 (fair) coin-flips:
@@ -194,550 +198,1274 @@ length(results[results=="H"])/5000
 
 ### Independent Events
 
-If we flip a fair coin twice, then the probability of two heads is $\frac{1}{2} \times \frac{1}{2}$.  We multiply the probabilities because we regard the two tosses as independent.  Two events $A$ and $B$ are called **independent** if 
+If we flip a fair coin twice, then the probability of two heads is $\frac{1}{2} \times \frac{1}{2}$. We multiply the probabilities because we regard the two tosses as independent. Two events $A$ and $B$ are called **independent** if
 
 $$
 P(A\cap B)=P(A) P(B).
 $$
 
-Or more generally, the events $A_1,A_s,\dots,A_n$ are independent of each other if 
+More generally, the events $A_1,A_2,\dots,A_n$ are (mutually) independent if
 
 $$
 P\left(\bigcap_{i\in\mathcal{I}} A_{i}\right)=\prod_{i\in\mathcal{I}} P\left(A_{i}\right)
 $$
-for every finite subset $\in\mathcal{I}\subset\{1,2,\dots,n\}$ of $\{1,2,\dots,n\}.$
+for every subset $\mathcal{I}\subseteq\{1,2,\dots,n\}.$
 
- 
 
-Independence can arise in two distinct ways. Sometimes, we **explicitly assume** that two events are independent. For example, in tossing a coin twice, we usually assume the tosses are independent which reflects the fact that the coin has no memory of the first toss.
 
-In other instances, we **derive** independence by verifying that the definition of independence $P(A\cap B)=P(A)P(B)$ holds. 
+Independence can arise in two distinct ways. Sometimes, we **explicitly assume** that two events are independent. For example, in tossing a coin twice, we usually assume that the tosses are independent, which reflects the fact that the coin has no memory of the first toss.
+
+In other instances, we **derive** independence by verifying that the definition of independence $P(A\cap B)=P(A)P(B)$ holds.
 
 
 ::: {.callout-note}
 ## Exercise: Deriving Independence
-In tossing a fair die *once*, let 
+In tossing a fair die *once*, let
 $$
 A=\{2,4,6\}
-$$ 
-be the event of observing an **even number** and let 
+$$
+be the event of observing an **even number** and let
 $$
 B=\{1,2,3,4\}
-$$ 
-be the event of observing no $5$ and no $6$. 
+$$
+be the event of observing no $5$ and no $6$.
 
-Then, 
+Then,
 $$
 A \cap B=\{2,4\}
-$$ 
-is the event of observing either a $2$ or a $4$. 
+$$
+is the event of observing either a $2$ or a $4$.
 
-**Problem:** Are the events $A$ and $B$ independent? 
+**Problem:** Are the events $A$ and $B$ independent?
 
 **Solution:**
 $$
 P(A\cap B)=\frac{2}{6}=P(A)P(B)=\frac{1}{2}\cdot \frac{2}{3}
-$$ 
-and so $A$ and $B$ are independent. 
+$$
+and so $A$ and $B$ are independent.
 
-**Note:** In this case, we didn't assume that $A$ and $B$ are independent it just turned out that they were. 
+**Note:** In this case, we did not assume that $A$ and $B$ are independent; it just turned out that they are.
 :::
 
 
 ::: {.callout-note}
 
-## Example: Cautionary Note on Independence and Disjoint Events
+## Exercise: Independence vs. Disjoint Events
 
-Suppose that $A$ and $B$ are **disjoint events**, i.e. 
+Suppose that $A$ and $B$ are **disjoint events**, i.e.,
 $$
 A\cap B=\emptyset,
-$$ 
-each with positive probability, i.e., $P(A)>0$ and $P(B)>0.$  
-
-* **Question:** Can they be independent?  
-* **Answer:** No! 🤯 
-
-This follows since 
-
 $$
-P(A\cap B)=P(\emptyset)=0\neq \underbrace{P(A)}_{>0}\;\underbrace{P(B)}_{>0}>0.
+and that both have strictly positive probabilities, i.e., $P(A)>0$ and $P(B)>0.$
+
+**Problem:** Can the events $A$ and $B$ be independent?
+
+**Solution:** No. Checking the definition of independence, we find that
+$$
+P(A\cap B)=P(\emptyset)=0<\underbrace{P(A)}_{>0}\;\underbrace{P(B)}_{>0},
+$$
+and thus $P(A\cap B)\neq P(A)P(B).$
+
+**Answer:** Disjoint events with strictly positive probabilities are *never* independent.
+
+**Example:** In tossing a fair die *once*, let
+$$
+A=\{1,2\}
+$$
+be the event of observing a $1$ or a $2$ and let
+$$
+B=\{5,6\}
+$$
+be the event of observing a $5$ or a $6$.
+
+Then $A\cap B=\emptyset,$ although $P(A)=\frac{1}{3}>0$ and $P(B)=\frac{1}{3}>0.$ Thus,
+$$
+P(A\cap B)=P(\emptyset)=0\neq \frac{1}{9}=\underbrace{P(A)}_{=\frac{1}{3}}\;\underbrace{P(B)}_{=\frac{1}{3}}.
 $$
 
-Generally, there is no way to judge (in-)dependence by looking at the sets in a Venn diagram.
+**Intuition:** Disjoint events are strongly *dependent*: knowing that $A$ has occurred tells us that $B$ cannot have occurred too.
 :::
 
 **Summary:** Independent Events
 
 
+::: {.spaced-list}
 1. $A$ and $B$ are independent if $P(A\cap B)=P(A) P(B)$.
 2. Independence is sometimes assumed and sometimes derived.
 3. Disjoint events with strictly positive probabilities are *not* independent.
+:::
 
 
 
 ### Conditional Probability
 
-If $P(B)>0$ then the **conditional probability** of $A$ given $B$ is
+If $P(B)>0$, then the **conditional probability** of $A$ given $B$ is
 $$
 P(A \mid B)=\frac{P(A\cap B)}{P(B)}.
 $$
-Think of $P(A \mid B)$ as the fraction of times $A$ occurs among those in which $B$ occurs. Here are some facts about conditional probabilities: 
+Think of $P(A \mid B)$ as the fraction of times $A$ occurs among those in which $B$ occurs. Here are some facts about conditional probabilities:
 
-* The rules of probability apply to events on the left of the bar "$\mid$". That is, for any fixed $B$ such that $P(B)>0,$ $P(\cdot \mid B)$ is a probability, i.e., it satisfies the three axioms of probability: 
-   * $P(A \mid B) \geq 0$ 
-   * $P(\Omega \mid B)=1$ 
-   * If $A_{1}, A_{2}, \ldots$ are disjoint then $P\left(\bigcup_{i=1}^{\infty} A_{i} \mid B\right)=\sum_{i=1}^{\infty} P\left(A_{i} \mid B\right).$
-* But it's generally **not true** that $P(A \mid B \cup C)=P(A \mid B)+P(A \mid C).$ 
+::: {.spaced-list}
+* The rules of probability apply to events on the left of the bar "$\mid$". That is, for any fixed $B$ such that $P(B)>0$, $P(\cdot \mid B)$ is a probability, i.e., it satisfies the three axioms of probability:
+   * $P(A \mid B) \geq 0$
+   * $P(\Omega \mid B)=1$
+   * If $A_{1}, A_{2}, \ldots$ are disjoint, then $P\left(\bigcup_{i=1}^{\infty} A_{i} \mid B\right)=\sum_{i=1}^{\infty} P\left(A_{i} \mid B\right)$.
+* However, it is generally **not true** that $P(A \mid B \cup C)=P(A \mid B)+P(A \mid C)$.
+:::
 
-In general it is also not the case that $P(A \mid B)=P(B \mid A)$. People get this confused all the time. For example, the probability of spots given you have measles is 1 but the probability that you have measles given that you have spots is not $1 .$ In this case, the difference between $P(A \mid B)$ and $P(B \mid A)$ is obvious but there are cases where it is less obvious. This mistake is made often enough in legal cases that it is sometimes called the **"prosecutor's fallacy"**.
+
+**Prosecutor's Fallacy:**
+
+In general, it is also not true that
+$$
+P(A \mid B)=P(B \mid A).
+$$
+People get this confused all the time.
 
 
-**Example:** A medical test for a disease $D$ has outcomes $+$ and $-.$ The probabilities are:
+For example, the probability of spots given you have measles is 1 but the probability that you have measles given that you have spots is not $1$. In this case, the difference between $P(A \mid B)$ and $P(B \mid A)$ is obvious, but in other cases it is less obvious. This mistake is made often enough in legal cases that it is therefore sometimes called the **"prosecutor's fallacy"**.
+
+::: {.callout-note}
+## Example: Medical Tests
+
+A medical test for a disease $D$ has outcomes $+$ and $-.$ The probabilities are:
 
 $$
-\begin{array}{c|cc|c} 
+\begin{array}{c|cc|c}
 & D & D^{c} \\
 \hline
-+ & .0081 & .0900 &  .0981\\
-- & .0009 & .9010 &  .9019\\
++ & P(+\cap D)=0.0081 & P(+\cap D^c)=0.0900 &  P(+)=0.0981\\
+- & P(-\cap D)=0.0009 & P(-\cap D^c)=0.9010 &  P(-)=0.9019\\
 \hline
-  & .0090 & .9910 &  1
+  & P(D)=0.0090 & P(D^c)=0.9910 &  1
 \end{array}
 $$
-From the definition of conditional probability, we have: 
+From the definition of conditional probability, we have:
 
+::: {.spaced-list}
 - Sensitivity of the test:
-$$
 \begin{align*}
-P(+\mid D) 
+P(+\mid D)
 & = \frac{P(+\cap D)}{P(D)}\\[2ex]
-& = \frac{0.0081}{(0.0081+0.0009)}=0.9
-\end{align*} 
-- Specificity of the test: 
+& = \frac{0.0081}{(0.0081+0.0009)}=0.9=90\%
+\end{align*}
+
+- Specificity of the test:
 \begin{align*}
 P(-\mid D^{c})
 & = \frac{P(-\cap D^{c})}{P(D^{c})}\\[2ex]
-& = \frac{0.9010}{(0.9010+0.0900)}\approx 0.9
+& = \frac{0.9010}{(0.9010+0.0900)}\approx 0.9=90\%
 \end{align*}
-$$
+:::
 
-Apparently, the test is fairly accurate: 
 
-* Sick people yield a positive test result 90 percent of the time. 
-* Healthy people yield a negative test result about 90 percent of the time. 
+At first sight, the test seems fairly accurate:
 
-Now, suppose you go for a test and get a positive result. What is the probability you have the disease? Most people answer $0.90=90\%$. However, this conclusion is a fallacy ("prosecutor's fallacy") and not correct.
+::: {.spaced-list}
+* Sick people yield a positive test result 90 percent of the time.
+* Healthy people yield a negative test result about 90 percent of the time.
+:::
 
-The correct answer is 
+Now, suppose you go for a test and get a positive result. What is the probability you have the disease?
+
+▶️ Most people answer $0.90=90\%.$
+
+However, this conclusion is wrong (**prosecutor's fallacy**).
+
+The correct answer is
 $$
 \begin{align*}
 P(D \mid+)
 & = \frac{P(+\cap D)}{P(+)}\\[2ex]
-& = \frac{0.0081}{(0.0081+0.0900)}=0.08 = 8\%.
-\end{align*} 
+& = \frac{0.0081}{(0.0081+0.0900)}\approx 0.08 = 8\%.
+\end{align*}
 $$
 
-The lesson here is that you need to compute the answer numerically. Don't trust your intuition.
+The lesson here is that you need to compute the answer numerically. **Don't trust your intuition.**
+:::
+
 
 
 #### Independence via Conditional Probabilities {-}
 
-If $A$ and $B$ are **independent events** then
+If $A$ and $B$ are **independent events**, then
 $$
-P(A \mid B)=\frac{P(A\cap B)}{P(B)}=\frac{P(A) P(B)}{P(B)}=P(A)
+P(A \mid B)=\frac{P(A\cap B)}{P(B)}=\frac{P(A) P(B)}{P(B)}=P(A).
 $$
-So another **interpretation of independence** is that knowing $B$ doesn't change the probability of $A$.
+Thus, another **interpretation of independence** is that knowing $B$ does not change the probability of $A$.
 
 
-From the definition of conditional probability we can write 
+From the definition of conditional probability, we can write
 $$
 P(A\cap B)=P(A \mid B) P(B)
-$$ 
+$$
 and also
 $$
 P(A\cap B)=P(B \mid A) P(A).
-$$ 
-Often, these formulas give us a convenient way to compute $P(A\cap B)$ when $A$ and $B$ are not independent. 
+$$
+Often, these formulas give us a convenient way to compute $P(A\cap B)$ when $A$ and $B$ are not independent.
 
 
+::: {.callout-note}
+## Exercise: Drawing Cards Without Replacement
 
-**Example:** Draw two cards from a deck, without replacement. Let $A$ be the event that the first draw is Ace of Clubs and let $B$ be the event that the second draw is Queen of Diamonds. Then 
+Draw two cards from a standard deck of $52$ cards *without* replacement.
+
+**Problem:** What is the probability of drawing
+
+::: {.spaced-list}
+* the *Ace of Clubs* 🃑 in the **first** draw, and
+* the *Queen of Diamonds* 🃍 in the **second** draw?
+:::
+
+**Solution:** Let
+
+::: {.spaced-list}
+* $A$ be the event that the **first draw** is the Ace of Clubs 🃑, and
+* $B$ be the event that the **second draw** is the Queen of Diamonds 🃍.
+:::
+
+We want to compute
+$$
+P(A \cap B).
+$$
+
+::: {.spaced-list}
+* The probability of drawing the Ace of Clubs 🃑 in the first draw is
+$$
+P(A)=\frac{1}{52}.
+$$
+
+* Given that the Ace of Clubs 🃑 was drawn first and not replaced, $51$ cards remain, one of which is the Queen of Diamonds 🃍. So, the probability of drawing the Queen of Diamonds 🃍 in the second draw is
+$$
+P(B\mid A)=\frac{1}{51}.
+$$
+:::
+
+Rearranging the definition of conditional probability gives
 \begin{align*}
-P(A\cap B) 
-&=P(A) \;\;P(B \mid A)\\[2ex]
-&=(1 / 52)\; (1 / 51)
+P(B \mid A) & = \frac{P(A\cap B)}{P(A)}\\[2ex]
+\Leftrightarrow\quad
+P(A\cap B)
+&= P(A)\;\cdot\;P(B \mid A)\\[2ex]
+&=\frac{1}{52}\cdot\frac{1}{51}=\frac{1}{2652}\approx 0.00038.
 \end{align*}
-
+:::
 
 
 **Summary:** Conditional Probability
-    
-  1. If $P(B)>0$ then $P(A \mid B)=P(A\cap B)/P(B)$
-  2. $P(\cdot \mid B)$ satisfies the axioms of probability, for fixed $B$.  In general, $P(A \mid \cdot)$ does not satisfy the axioms of probability, for fixed $A$.
-  3. In general, $P(A \mid B) \neq P(B \mid A)$.
-  4. $A$ and $B$ are independent if and only if $P(A \mid B)=P(A)$.
+
+::: {.spaced-list}
+1. If $P(B)>0$, then $P(A \mid B)=P(A\cap B)/P(B)$.
+2. For fixed $B$, $P(\cdot \mid B)$ satisfies the axioms of probability. In general, for fixed $A$, $P(A \mid \cdot)$ does not satisfy the axioms of probability.
+3. In general, $P(A \mid B) \neq P(B \mid A)$.
+4. If $P(B)>0$, then $A$ and $B$ are independent if and only if $P(A \mid B)=P(A)$.
+:::
 
 
 ## Random Variables
 
-Statistics and econometrics are concerned with data. How do we link sample spaces, events and probabilities to data? The link is provided by the concept of a **random variable**. A real-valued **random variable** is a mapping $X: \Omega \rightarrow \mathbb{R}$ that assigns a real number $X(\omega)\in\mathbb{R}$ to each outcome $\omega$.
+Statistics and econometrics are concerned with data. How do we link sample spaces, events and probabilities to data? The link is provided by the concept of a **random variable**. A real-valued **random variable** is a mapping $X: \Omega \rightarrow \mathbb{R}$ that assigns a real number $X(\omega)\in\mathbb{R}$ to each outcome $\omega\in\Omega$.
 
 
-At a certain point in most statistics/econometrics courses, the sample space, $\Omega$, is rarely mentioned and we work directly with random variables.  But you should keep in mind that the sample space is really there, lurking in the background.
+After a certain point, most statistics and econometrics courses rarely mention the sample space $\Omega$ and work directly with random variables. But you should keep in mind that the sample space is really there, lurking in the background.
 
 
-**Example:** Flip a coin ten times. Let $X(\omega)$ be the number of heads in the sequence $\omega.$ For example, if $\omega=\text{HHTHHTHHTT}$ then $X(\omega)=6$. 
+::: {.callout-note}
+## Example: Number of Heads in Ten Coin Flips
+
+Flip a coin ten times. Let $X(\omega)$ be the number of heads in the sequence $\omega.$ For example, if
+$$
+\omega=\text{HHTHHTHHTT},
+$$
+then $X(\omega)=6.$
+:::
 
 
-**Example:** Let $\Omega=\left\{(x, y)|x^{2}+y^{2} \leq 1\right\}$ be the unit disc. Consider drawing a point "at random" from $\Omega$.  A typical outcome is then of the form $\omega=(x, y) .$ Some examples of random variables are $X(\omega)=x, Y(\omega)=y, Z(\omega)=x+y, W(\omega)=\sqrt{x^{2}+y^{2}}$. 
+::: {.callout-note}
+## Example: Drawing a Point from the Unit Disc
+
+Let
+$$
+\Omega=\left\{(x, y)\in\mathbb{R}^2 \mid x^{2}+y^{2} \leq 1\right\}
+$$
+be the unit disc, and consider drawing a point "at random" from $\Omega$. A typical outcome is then of the form $\omega=(x, y).$ Some examples of random variables are
+
+::: {.spaced-list}
+* $X(\omega)=x$ (the horizontal coordinate),
+* $Y(\omega)=y$ (the vertical coordinate),
+* $Z(\omega)=x+y,$ and
+* $W(\omega)=\sqrt{x^{2}+y^{2}}$ (the distance from the origin).
+:::
+:::
 
 
-Given a real-valued random variable $X\in\mathbb{R}$ and a subset $A$ of the real line ($A\subset\mathbb{R}$), define $X^{-1}(A)=\{\omega \in \Omega|X(\omega) \in A\}$. This allows us to link the probabilities on the random variable $X$, i.e. the probabilities we are usually working with, to the underlying probabilities on the events, i.e. the probabilities lurking in the background. 
+::: {.callout-note}
+## Example: Number of Heads in Two Coin Flips
 
+Flip a fair coin twice and let $X$ be the number of heads. Then,
+\begin{align*}
+P_X(X=0)&=P(\{TT\})=\frac{1}{4},\\[1ex]
+P_X(X=1)&=P(\{HT, TH\})=\frac{1}{2},\\[1ex]
+P_X(X=2)&=P(\{HH\})=\frac{1}{4}.
+\end{align*}
+The outcomes $\omega$ with their probabilities $P(\{\omega\})$ and values $X(\omega)$ (left table), and the resulting distribution $P_X$ of the random variable $X$ (right table), can be summarized as follows:
 
-**Example:** Flip a coin twice and let $X$ be the number of heads. Then, $P_X(X=0)=P(\{T T\})=1 / 4$, $P_X(X=1)=P(\{H T, T H\})=1 / 2$ and $P_X(X=2)=P(\{H H\})=1 / 4$. Thus, the events and their associated probability distribution, $P$, and the random variable $X$ and its distribution, $P_X$, can be summarized as follows:
+:::: {layout-ncol=2}
 
-
-
-$\omega$     | $P(\{\omega\})$ | $X(\omega)$ 
+$\omega$     | $P(\{\omega\})$ | $X(\omega)$
 -------------|-----------------|-------------
-$T T$        | $1 / 4$         | 0 
-$T H$        | $1 / 4$         | 1 
-$H T$        | $1 / 4$         | 1 
-$H H$        | $1 / 4$         | 2
+$TT$         | $1/4$           | $0$
+$TH$         | $1/4$           | $1$
+$HT$         | $1/4$           | $1$
+$HH$         | $1/4$           | $2$
 
+$x$   | $P_X(X=x)$
+------|------------
+$0$   | $1/4$
+$1$   | $1/2$
+$2$   | $1/4$
 
-$x$ | $P_X(X=x)$
-----|------------
-0   | $1 / 4$
-1   | $1 / 2$
-2   | $1 / 4$
+::::
+:::
+
 
 <!-- Try generalizing this to $n$ flips. -->
-Here, $P_{X}$ is not the same probability function as $P$, because $P$ maps from the sample space events, $\omega$, to $[0,1],$ while $P_X$ maps from the random-variable events, $X(\omega),$ to $[0,1].$  We will typically forget about the sample space $\Omega$ and just think of the random variable as an experiment with real-valued (possible multivariate) outcomes. We will therefore write $P\left(X=x_{k}\right)$ instead of $P_{X}\left(X=x_{k}\right)$ to simplify the notation.
+Here, $P_{X}$ is not the same probability function as $P$: $P$ assigns probabilities to events in the sample space $\Omega$ (here, sets of outcomes such as $\{HT, TH\}$), while $P_X$ assigns probabilities to sets of values of $X$ (here, subsets of $\{0,1,2\}$). In the following, we typically ignore the sample space $\Omega$ and simply think of the random variable as an experiment with real-valued (possibly multivariate) outcomes. Therefore, we write $P\left(X=x_{k}\right)$ instead of $P_{X}\left(X=x_{k}\right)$ to simplify the notation.
 
 
-### Univariate Distribution and Probability Functions  
+::: {.callout-tip collapse="true"}
+## 🤓 Nerd's Box: Linking $P_X$ to $P$
+
+Given a real-valued random variable $X:\Omega\rightarrow\mathbb{R}$ and a subset $A\subseteq\mathbb{R}$ of the real line, define the **pre-image**
+$$
+X^{-1}(A)=\{\omega \in \Omega \mid X(\omega) \in A\}.
+$$
+This allows us to link the probabilities of the random variable $X$, i.e., the probabilities we usually work with, to the probabilities of the underlying events, i.e., the probabilities lurking in the background:
+$$
+P_X(X\in A)=P\left(X^{-1}(A)\right).
+$$
+:::
+
+
+
+### Univariate Distribution and Probability Functions
 
 #### Cumulative Distribution Function {#sec-Defcdf}
 
 The **cumulative distribution function (cdf)**
-$$F_{X}: \mathbb{R} \rightarrow [0,1]$$ 
+$$
+F_{X}: \mathbb{R} \rightarrow [0,1]
+$$
 of a real-valued random variable $X\in\mathbb{R}$ is defined by
 $$
-F_{X}(x)=\mathbb{P}(X \leq x).
+F_{X}(x)=P(X \leq x).
 $$
 
 
-You might wonder why we bother to define the cdf. The reason is that it effectively contains all the information
-about the random variable. Indeed, let $X\in\mathbb{R}$ have cdf $F$ and let $Y\in\mathbb{R}$ have cdf $G$.  If $F(x)=G(x)$ for all $x\in\mathbb{R}$ then $P(X \in A)=P(Y \in A)$ for all $A\subset\mathbb{R}$. In order to denote that two random variables, here $X$ and $Y$, have the same distribution, one can write shortly $X\overset{d}{=}Y$. 
+You might wonder why we bother to define the cdf. The reason is that it effectively contains **all the information about the random variable.**
+
+Indeed, let $X\in\mathbb{R}$ have cdf $F$ and let $Y\in\mathbb{R}$ have cdf $G$. If $F(x)=G(x)$ for all $x\in\mathbb{R},$ then $P(X \in A)=P(Y \in A)$ for all (Borel) sets $A\subseteq\mathbb{R}$. To denote that two random variables $X$ and $Y$ have the same distribution, we write $X\overset{d}{=}Y$.
 
 
-<!-- 
-**Caution:** Equality in distribution, $X\overset{d}{=}Y$, does generally **not** mean equality in realizations, that is $X\overset{d}{=}Y \not\Rightarrow X(\omega)=Y(\omega)$ for all $\omega\in\Omega$.  
+<!--
+**Caution:** Equality in distribution, $X\overset{d}{=}Y$, does generally **not** mean equality in realizations, that is $X\overset{d}{=}Y \not\Rightarrow X(\omega)=Y(\omega)$ for all $\omega\in\Omega$.
 -->
 
 
-**The defining properties of a cdf:** A function $F$ mapping the real line to $[0,1]$, short $F:\mathbb{R}\to[0,1],$ is called a cdf for some probability measure $P$ if and only if it satisfies the following three properties:
+**The defining properties of a cdf:** A function $F:\mathbb{R}\to[0,1]$ is the cdf of some probability measure $P$ if and only if it satisfies the following three properties:
 
-  1. $F$ is non-decreasing i.e. $x_{1}<x_{2}$ implies that $F\left(x_{1}\right) \leq F\left(x_{2}\right)$.
-  
-  2. $F$ is normalized: $\lim_{x\rightarrow-\infty} F(x)=0$ and $\lim_{x \rightarrow \infty} F(x)=1$
-  
-  3. $F$ is right-continuous, i. e. $F(x)=F\left(x^{+}\right)$ for all $x$, where 
+::: {.spaced-list}
+  1. $F$ is non-decreasing, i.e., $x_{1}<x_{2}$ implies that $F\left(x_{1}\right) \leq F\left(x_{2}\right)$.
+
+  2. $F$ is normalized, i.e., $\lim_{x\rightarrow-\infty} F(x)=0$ and $\lim_{x \rightarrow \infty} F(x)=1$.
+
+  3. $F$ is right-continuous, i.e., $F(x)=F\left(x^{+}\right)$ for all $x$, where
   $$
-  F\left(x^{+}\right)=\lim_{y\to x, y>x} F(y).
+  F\left(x^{+}\right)=\lim_{y\to x,\, y>x} F(y).
   $$
+:::
 
 
+::: {.callout-note}
+## Example: cdf of a Discrete Random Variable (Car Sales)
 
-Alternatively to cumulative distribution functions one can use **probability (mass) functions** in order to describe the probability law of **discrete** random variables and **density functions** in order to describe the probability law of **continuous** random variables. 
+A small car dealership sells $X\in\{0,1,2,3\}$ cars per day with the following probabilities:
+
+$x$        | $0$   | $1$   | $2$   | $3$
+-----------|-------|-------|-------|------
+$P(X=x)$   | $0.2$ | $0.4$ | $0.3$ | $0.1$
+
+The cdf $F_X(x)=P(X\leq x)$ adds up these probabilities for all values less than or equal to $x$:
+$$
+F_X(x)=\left\{\begin{array}{ll}
+0   & \text{for } x<0 \\
+0.2 & \text{for } 0\leq x<1 \\
+0.6 & \text{for } 1\leq x<2 \\
+0.9 & \text{for } 2\leq x<3 \\
+1   & \text{for } x\geq 3.
+\end{array}\right.
+$$
+For instance, the probability that the dealership sells at most one car on a given day is $F_X(1)=0.6,$ and the probability that it sells more than two cars is $1-F_X(2)=0.1.$
+
+```{r, fig.align="center", echo=FALSE, fig.width=6, fig.height=4.5}
+par(family="serif")
+x  <- 0:3                       # possible values
+p  <- c(0.2, 0.4, 0.3, 0.1)     # P(X = x)
+Fx <- cumsum(p)                 # F_X(x)
+F_left <- c(0, Fx[-length(Fx)]) # F_X just before each jump
+
+plot(NA, xlim = c(-1, 4), ylim = c(0, 1),
+     xlab = "x (number of cars sold per day)", ylab = expression(F[X](x)),
+     main = "cdf of the Daily Number of Car Sales", las = 1)
+# flat pieces of the step function
+segments(x0 = c(-1, x), y0 = c(0, Fx), x1 = c(x, 4), y1 = c(0, Fx),
+         lwd = 2, col = "darkblue")
+# jumps
+segments(x0 = x, y0 = F_left, x1 = x, y1 = Fx, lty = 3, col = "darkgray")
+points(x, F_left, pch = 21, bg = "white", col = "darkblue")  # open:   not attained
+points(x, Fx,     pch = 19,               col = "darkblue")  # filled: attained
+# jump heights equal the probabilities P(X = x)
+text(x, (F_left + Fx)/2, labels = paste0("P(X=", x, ")=", p),
+     pos = 4, cex = 0.8, col = "darkred")
+```
+
+The cdf of a discrete random variable is a **step function**. It jumps at each possible value $x$ of $X$, and the height of each jump equals the probability $P(X=x)$. The filled dots show that $F_X$ is right-continuous (property 3).
+:::
+
+
+::: {.callout-note}
+## Example: cdf of a Continuous Random Variable (Customer Arrivals)
+
+Let $X\in[0,\infty)$ be the waiting time (in minutes) until the next customer enters a shop. A common model for such waiting times is the exponential distribution, here with an average waiting time of $5$ minutes. Its cdf is
+$$
+F_X(x)=\left\{\begin{array}{ll}
+0 & \text{for } x<0 \\
+1-e^{-x/5} & \text{for } x\geq 0.
+\end{array}\right.
+$$
+For instance, the probability that the next customer arrives within $5$ minutes is
+\begin{align*}
+P(X\leq 5)
+&=F_X(5)\\[2ex]
+&=1-e^{-1}\approx 0.63.
+\end{align*}
+
+And the probability that the shop assistant has to wait more than $10$ minutes is
+\begin{align*}
+P(X > 10)
+&= 1 - P(X \leq 10)\\[2ex]
+&= 1-F_X(10)\\[2ex]
+&= e^{-2}\approx 0.14.
+\end{align*}
+
+```{r, fig.align="center", echo=FALSE, fig.width=6, fig.height=4.5}
+par(family="serif")
+F_X <- function(x) ifelse(x < 0, 0, 1 - exp(-x/5))
+
+curve(F_X(x), from = -3, to = 25, n = 501, lwd = 2, col = "darkblue",
+      ylim = c(0, 1), las = 1,
+      xlab = "x (waiting time in minutes)", ylab = expression(F[X](x)),
+      main = "cdf of the Waiting Time Until the Next Customer")
+# mark P(X <= 5) = F_X(5)
+segments(x0 = 5,  y0 = 0,       x1 = 5, y1 = F_X(5), lty = 2, col = "darkred")
+segments(x0 = -3, y0 = F_X(5),  x1 = 5, y1 = F_X(5), lty = 2, col = "darkred")
+points(5, F_X(5), pch = 19, col = "darkred")
+text(5, F_X(5), labels = expression(F[X](5) %~~% 0.63), pos = 4, col = "darkred")
+```
+
+The cdf of a continuous random variable has **no jumps**, since $P(X=x)=0$ for every single value $x$. Instead, the cdf increases *continuously* as $x$ increases.
+:::
+
+
+As an alternative to cdfs, we can use
+
+::: {.spaced-list}
+* **probability (mass) functions** to describe the distribution of **discrete** random variables, and
+* **density functions** to describe the distribution of **continuous** random variables.
+:::
 
 
 #### Probability Functions for Discrete Random Variables
 
-A random variable $X$ is *discrete* if it takes only countably many values 
+A random variable $X$ is *discrete* if it takes only **countably** many values
 $$
-X\in\{x_{1}, x_{2}, \ldots\}.
-$$ 
-For instance, $X\in\{1,2,3\}$ or $X\in\{2,4,6,\dots\}$ or $X\in\mathbb{Z}$ or $X\in\mathbb{Q}$. 
+X\in\{x_{1}, x_{2}, \ldots,x_{m}\},
+$$
+where $m$ can also be infinite, $m=\infty$, i.e., $X\in\{x_{1}, x_{2}, \ldots\}$. For instance:
 
-We define the **probability function** or **probability mass function (pmf)** for $X$ by
+::: {.spaced-list}
+* $X\in\{1,2,3\}$
+* $X\in\{2,4,6,8,10\}$
+* $X\in\mathbb{N}=\{0,1,2,3,\dots\}$
+:::
+
+
+We define the **probability function** or **probability mass function (pmf)** of $X$ by
 $$
-f_{X}(x)=\mathbb{P}(X=x)\quad\text{for all}\quad x\in\{x_1,x_2,\dots\}
+f_{X}(x)=P(X=x)\quad\text{for all}\quad x\in\{x_1,x_2,\dots,x_m\}.
 $$
 
+Properties:
+
+::: {.spaced-list}
+* Non-negative:
+$$
+f_{X}(x)\geq 0\quad\text{for all}\quad x\in\{x_1,x_2,\dots,x_m\}
+$$
+
+* Normalized:
+$$
+\sum_{\ell = 1}^m f_{X}(x_\ell)=1
+$$
+:::
+
+::: {.callout-note}
+## Example: pmf of a Discrete Random Variable (Car Sales)
+
+Consider again the daily number of cars $X\in\{0,1,2,3\}$ sold by the small car dealership. Its pmf is
+$$
+f_X(x)=P(X=x)=\left\{\begin{array}{ll}
+0.2 & \text{for } x=0 \\
+0.4 & \text{for } x=1 \\
+0.3 & \text{for } x=2 \\
+0.1 & \text{for } x=3 \\
+0   & \text{otherwise.}
+\end{array}\right.
+$$
+The pmf values are non-negative and sum to one, $0.2+0.4+0.3+0.1=1$. For instance, the most likely outcome is selling exactly one car, $f_X(1)=0.4$.
+
+```{r, fig.align="center", echo=FALSE, fig.width=6, fig.height=4.5}
+par(family="serif")
+x <- 0:3                    # possible values
+p <- c(0.2, 0.4, 0.3, 0.1)  # f_X(x) = P(X = x)
+
+plot(x, p, type = "h", lwd = 3, col = "darkblue",
+     xlim = c(-1, 4), ylim = c(0, 0.5), las = 1,
+     xlab = "x (number of cars sold per day)", ylab = expression(f[X](x)),
+     main = "pmf of the Daily Number of Car Sales")
+points(x, p, pch = 19, col = "darkblue")
+text(x, p, labels = p, pos = 3, cex = 0.8, col = "darkred")
+```
+
+The pmf and the cdf contain the same information. The cdf is obtained by summing up the pmf,
+$$
+F_X(x)=\sum_{x_k\leq x} f_X(x_k),
+$$
+e.g., $F_X(1)=f_X(0)+f_X(1)=0.2+0.4=0.6$. Conversely, the pmf values are the jump heights of the cdf (see the cdf plot above).
+:::
 
 
 #### Density Functions for Continuous Random Variables
 
-A random variable $X$ is *continuous* if there exists a function $f_{X}$ such that 
+A random variable $X$ is *continuous* if there exists a function $f_{X}$ such that
 
-- $f_{X}(x)\geq 0\quad$ for all $\quad x$
-- $\int_{-\infty}^{\infty}f_{X}(x)dx=1 \quad$ and 
-- $\mathbb{P}(a<X<b)=\int_{a}^{b} f_{X}(x) dx\quad$ for every $\quad a\leq b$.
+::: {.spaced-list}
+- $f_{X}(x)\geq 0\;$ for all $x\in\mathbb{R}$,
+- $\int_{-\infty}^{\infty}f_{X}(x)\,dx=1,\;$ and
+- $P(a<X<b)=\int_{a}^{b} f_{X}(x)\,dx\;$ for all $a\leq b$.
+:::
 
-The function $f_{X}$ is called the **probability density function (pdf)** or short **density function**. 
+The function $f_{X}$ is called the **probability density function (pdf)**, or simply the **density function**.
 
 
-For density functions, we have that
+Moreover,
 $$
-F_{X}(x)=\int_{-\infty}^{x} f_{X}(t) dt\quad\text{and}\quad f_{X}(x)=F_{X}^{\prime}(x)
+F_{X}(x)=\int_{-\infty}^{x} f_{X}(t)\,dt
+$$
+and that
+$$
+f_{X}(x)=F_{X}^{\prime}(x)
 $$
 at all points $x$ at which $F_{X}$ is differentiable.
 
+::: {.callout-note}
+## Example: pdf of a Continuous Random Variable (Customer Arrivals)
 
-### Multivariate Distribution and Probability Functions 
+Consider again the waiting time $X\in[0,\infty)$ (in minutes) until the next customer enters the shop, with cdf $F_X(x)=1-e^{-x/5}$ for $x\geq 0$. Differentiating the cdf gives the density function
+$$
+f_X(x)=F_X^{\prime}(x)=\left\{\begin{array}{ll}
+0 & \text{for } x<0 \\
+\frac{1}{5}\,e^{-x/5} & \text{for } x\geq 0.
+\end{array}\right.
+$$
+(At $x=0,$ the cdf has a kink and is not differentiable; the value of a density at a single point does not matter, since it does not change any integral.)
 
-A $d$-dimensional random vector is a column-vector $X=(X_1,\dots,X_d)^\prime$, where each element is a univariate random variable. 
+Probabilities are now **areas under the density**. For instance, the probability that the next customer arrives within $5$ minutes is
+\begin{align*}
+P(X\leq 5)
+&=\int_{0}^{5}\frac{1}{5}\,e^{-x/5}\,dx\\[2ex]
+&=\Big[-e^{-x/5}\Big]_{0}^{5}\\[2ex]
+&=-e^{-5/5} -\left(-e^{-0/5}\right)\\[2ex]
+&=-e^{-1} - (-1) \\[2ex]
+&=1-e^{-1}\approx 0.63,
+\end{align*}
+which is exactly $F_X(5)$ from the cdf example above.
+
+```{r, fig.align="center", echo=FALSE, fig.width=6, fig.height=4.5}
+par(family="serif")
+f_X <- function(x) ifelse(x < 0, 0, exp(-x/5)/5)
+
+curve(f_X(x), from = -3, to = 25, n = 501, lwd = 2, col = "darkblue",
+      ylim = c(0, 0.25), las = 1,
+      xlab = "x (waiting time in minutes)", ylab = expression(f[X](x)),
+      main = "pdf of the Waiting Time Until the Next Customer")
+# shade the area P(X <= 5)
+x_s <- seq(0, 5, length.out = 200)
+polygon(c(0, x_s, 5), c(0, f_X(x_s), 0),
+        col = adjustcolor("darkred", alpha.f = 0.3), border = NA)
+curve(f_X(x), from = -3, to = 25, n = 501, lwd = 2, col = "darkblue", add = TRUE)
+arrows(x0 = 9, y0 = 0.13, x1 = 3, y1 = 0.07, length = 0.08, col = "darkred")
+text(9, 0.13, labels = expression(P(X <= 5) %~~% 0.63), pos = 4, col = "darkred")
+```
+
+Note that $f_X(x)$ is **not** a probability:
+$$
+P(X=x)=0
+$$
+for every single value $x$. Only *areas* under $f_X$ are probabilities.
+:::
 
 
-#### Multidimensional Distribution Function 
+**Note:** Density values can be larger than one. In the plot above, we have $f_X(x)\leq 0.2$ because we measure the waiting time in minutes. If we measured the same waiting time in hours instead, the average waiting time would be $5/60=1/12$ hours, and the density would be $f_X(x)=12\,e^{-12x}$ for $x\geq 0,$ with value $12=f_X(0)$ at $x=0.$
 
 
-The **multivariate distribution function** $F$ is given by
+
+### Multivariate Distribution and Probability Functions
+
+A $d$-dimensional random vector is a column vector
+$$
+X=
+\begin{pmatrix}
+X_1\\\vdots\\ X_d
+\end{pmatrix}
+$$
+whose elements $X_j\in\mathbb{R}$, $j=1,\dots,d$, are univariate random variables.
+
+
+#### Joint Distribution Function
+
+
+The **joint (or multivariate) distribution function** $F$ of $X$ is given by
 $$
 F(a_1,\dots,a_d)=P(X_1\le a_1,\dots,X_d\le a_d).
 $$
 
-```{r, fig.align="center"}
-## Install the package if not installed yet
-# install.packages("mnormt")
-
-library(mnormt)
-
-x1     <- seq(-5, 5, 0.25) 
-x2     <- seq(-5, 5, 0.25)
-mu     <- c(0, 0)
-sigma  <- matrix(c(2, -1, -1, 2), nrow = 2)
-f      <- function(x_1, x_2) pmnorm(cbind(x_1, x_2), mu, sigma)
-f_x1x2 <- outer(x1, x2, f)
-
-persp(x = x1, y = x2, z = f_x1x2, theta = -30, phi = 25, 
-      shade = 0.75, col = "blue", expand = 0.5, r = 2, 
-      ltheta = 25, ticktype = "detailed", 
-      xlab = "x\u2081", ylab = "x\u2082", zlab = "")
-```
-
-
-
-#### Multidimensional Probability Mass Function 
-
-**Discrete random vectors:** $X$ takes only countably many (i.e. discrete) values 
-$$
-X\in\{x_1, x_2,\dots\} 
-$$
-with 
-$$
-x_i=\left(\begin{matrix}x_{i1}\\\vdots \\ x_{id}\end{matrix}\right)\in\mathbb{R}^d
-$$
-for $i=1,2,\dots$
-
-**Multidimensional probability mass function** 
-
-$$
-f_{X}(x)=\mathbb{P}(X=x)\quad\text{for all}\quad x\in\{x_1,x_2,\dots\}
-$$
-
-<!-- 
-$p(\mathbf{x}_i)=P(X=\mathbf{x}_i)$ for $i=1,2,\dots$. That is, 
-\begin{align*}
-P(X\in [a_1,b_1]\times\dots\times [a_d,b_d])=
-\sum_{\mathbf{x}_i\in [a_1,b_1]\times\dots\times [a_d,b_d]}p(\mathbf{x}_i).
-\end{align*} 
--->
-
-
-
-#### Multidimensional Density Function 
-
-
-**Continuous random vectors:** $X$ takes values in $\mathbb{R}^d$ 
-
-$$
-X=\left(\begin{matrix}X_{1}\\ X_{2}\\ \vdots \\ X_{d}\end{matrix}\right)\in\mathbb{R}^d
-$$
-
-and has a **multidimensional density function** $f(x_1,\dots,x_d)$. That is, 
-$$
-\begin{align*}
-&P(X\in [a_1,b_1]\times\dots\times [a_d,b_d])=\\[2ex]
-=&\int\limits_{a_d}^{b_d}\dots \int\limits _{a_1}^{b_1}f(x_1,\dots,x_d)dx_1\dots dx_d.
-\end{align*}
-$$
-
-Properties of **multivariate density** functions: 
-
-- $\displaystyle f(x_1,\dots,x_d)\geq 0$\par
-- $\displaystyle \int_{-\infty}^{\infty}\dots \int_{-\infty}^{\infty}f(x_1,\dots,x_d)dx_1\dots dx_d=1$
-
-
-
-```{r, fig.align="center"}
-## Load the package
-library(mnormt)
-
-x1     <- seq(-5, 5, 0.25) 
-x2     <- seq(-5, 5, 0.25)
-mu     <- c(0, 0)
-sigma  <- matrix(c(2, -1, -1, 2), nrow = 2)
-f      <- function(x_1, x_2) dmnorm(cbind(x_1, x_2), mu, sigma)
-f_x1x2 <- outer(x1, x2, f)
-
-persp(x = x1, y = x2, z = f_x1x2, theta = -30, phi = 25, 
-      shade = 0.75, col = "blue", expand = 0.5, r = 2, 
-      ltheta = 25, ticktype = "detailed", 
-      xlab = "x\u2081", ylab = "x\u2082", zlab = "")
-```
-
-
-In the following we focus only on continuous random vectors, but the discrete cases are treated analogously.
-
-
-#### Marginal Distribution Functions and Marginal Density Functions 
+::: {.callout-note}
+## Example: Joint Distribution Function of a Bivariate Normal Distribution
 
 Let
+$$
+X=
+\begin{pmatrix}
+X_1\\ X_2
+\end{pmatrix}\sim\mathcal{N}_2\left(\mu,\Sigma\right)
+$$
+be a bivariate $(d=2)$ normal random vector with mean vector
+$$
+\mu=E(X)
+=\begin{pmatrix}
+\mu_1\\ \mu_2
+\end{pmatrix}
+=\begin{pmatrix}
+E(X_1)\\ E(X_2)
+\end{pmatrix}
+=\begin{pmatrix}
+2\\ 1
+\end{pmatrix}
+$$
+and variance-covariance matrix
+$$
+\Sigma = \operatorname{Var}(X)
+=\begin{pmatrix}\operatorname{Var}(X_1)&\operatorname{Cov}(X_1,X_2)\\\operatorname{Cov}(X_1,X_2)&\operatorname{Var}(X_2)\end{pmatrix}
+=\begin{pmatrix}1&0.8\\0.8&1\end{pmatrix};
+$$
+see also @sec-NormalDistr. This bivariate normal distribution serves as our **running example** for the rest of this chapter.
+
+Its joint distribution function
+$$
+F(x_1,x_2)=P(X_1\leq x_1, X_2\leq x_2)
+$$
+can be visualized in two ways:
+
+::: {.spaced-list}
+* **Perspective plot** (left): The joint distribution function is shown as a surface above the $(x_1,x_2)$-plane. It increases from $0$ (for small values of $x_1$ and $x_2$) to $1$ (for large values of $x_1$ and $x_2$).
+* **Contour plot** (right): The surface is viewed from above. The contour lines connect all points $(x_1,x_2)$ with the same value of $F(x_1,x_2)$, just like the contour lines on a hiking map.
+:::
+
+For instance, the probability that neither random variable exceeds its mean is
+$$
+F(2,1)=P(X_1\leq 2, X_2\leq 1)\approx 0.40.
+$$
+That is, $F(2,1)\approx 0.40$ is the *height* of the distribution function surface at the point $(2,1)$. This height equals the probability that $X$ falls into the shaded lower-left region $\{x_1\leq 2,\ x_2\leq 1\}$ in the contour plot.
+
+```{r, echo=FALSE, fig.width=5, fig.height=5}
+#| layout-ncol: 2
+library("mnormt")
+library("scales")
+
+mu    <- c(2, 1)
+Sigma <- matrix(c(1, .8, .8, 1), nrow = 2)
+
+# perspective plot
+par(mar = c(1, 1, 1, 1), family = "serif")
+x1_p <- seq(-1, 5, 0.2)
+x2_p <- seq(-2, 4, 0.2)
+F_p  <- outer(x1_p, x2_p, function(a, b) pmnorm(cbind(a, b), mu, Sigma))
+persp(x = x1_p, y = x2_p, z = F_p, theta = -30, phi = 25,
+      shade = 0.75, col = "blue", expand = 0.5, r = 2,
+      ltheta = 25, ticktype = "detailed",
+      xlab = "x₁", ylab = "x₂", zlab = "")
+
+# contour plot
+par(lwd = 2, mgp = c(2.2, 0.7, 0), las = 1, mar = c(4, 4, 1, 1), family = "serif")
+x1 <- seq(-1, 5, length.out = 60)
+x2 <- seq(-2, 4, length.out = 60)
+F_c <- outer(x1, x2, function(a, b) pmnorm(cbind(a, b), mu, Sigma))
+plot(NA, xlim = c(-1, 5), ylim = c(-2, 4), xaxs = "i", yaxs = "i", axes = FALSE,
+     xlab = expression(x[1]), ylab = expression(x[2]))
+# shaded area {x1 <= 2, x2 <= 1} with probability F(2, 1)
+rect(-1, -2, mu[1], mu[2], col = alpha("darkred", 0.15), border = NA)
+contour(x1, x2, F_c, levels = seq(0.1, 0.9, by = 0.2), col = "darkblue",
+        lwd = 1, labcex = 0.8, add = TRUE)
+segments(mu[1], -2, mu[1], mu[2], lty = 2, lwd = 1.2, col = "darkred")
+segments(-1, mu[2], mu[1], mu[2], lty = 2, lwd = 1.2, col = "darkred")
+points(mu[1], mu[2], pch = 19, col = "darkred")
+text(0.5, -1, labels = expression(F(2, 1) %~~% "0.40"), col = "darkred")
+axis(1, at = -1:5, lwd.ticks = 1)
+axis(2, at = -2:4, lwd.ticks = 1)
+```
+
+<!--
+Let's keep this for an exercise:
+**What if $X_1$ and $X_2$ were independent?** For a normal distribution, the mean is also the median. Thus,
+\begin{align*}
+P(X_1\leq 2)&=0.5\\[2ex]
+P(X_2\leq 1)&=0.5.
+\end{align*}
+If $X_1$ and $X_2$ were independent (same means and variances, but $\operatorname{Cov}(X_1,X_2)=0$), the joint probability would simply be the product of these two probabilities,
+$$
+F(2,1)=P(X_1\leq 2, X_2\leq 1)=P(X_1\leq 2)\cdot P(X_2\leq 1)=0.5\cdot 0.5=0.25.
+$$
+In our running example, however,
+$$
+F(2,1)\approx 0.40>0.25.
+$$
+The positive covariance $\operatorname{Cov}(X_1,X_2)=0.8$ makes it more likely that small values of $X_1$ occur together with small values of $X_2$. Independent random variables are discussed in more detail below.
+-->
+:::
+
+
+
+#### Joint Probability Mass Function
+
+**Discrete random vectors:** Let the $d$-dimensional random (column) vector
+$$
+X=
+\begin{pmatrix}
+X_1\\\vdots\\ X_d
+\end{pmatrix}
+$$
+collect $d$ **discrete** univariate random variables $X_1,\dots,X_d$.
+
+The discrete random vector $X$ takes countably many different $d$-dimensional values $x_1,x_2,\dots,x_m$, where, again, $m=\infty$ is allowed:
+$$
+X=
+\begin{pmatrix}
+X_1\\\vdots\\ X_d
+\end{pmatrix}
+\in
+\left\{
+\smash[b]{\underbrace{\begin{pmatrix}
+x_{11}\\\vdots\\ x_{d1}
+\end{pmatrix}}_{=x_1}},\;
+\smash[b]{\underbrace{\begin{pmatrix}
+x_{12}\\\vdots\\ x_{d2}
+\end{pmatrix}}_{=x_2}},\;
+\dots,\;
+\smash[b]{\underbrace{\begin{pmatrix}
+x_{1m}\\\vdots\\ x_{dm}
+\end{pmatrix}}_{=x_m}}
+\right\}
+\vphantom{\underbrace{\begin{pmatrix}
+x_{11}\\\vdots\\ x_{d1}
+\end{pmatrix}}_{=x_1}}.
+$$
+
+
+::: {.callout-note}
+## Example: $X$ with $d=2$ and $m=4$
+For instance, if $d=2$,
+$$
+X=\begin{pmatrix}X_1 \\ X_2\end{pmatrix},
+$$
+and both $X_1$ and $X_2$ take values in $\{0,1\}$, then $X$ can take the $m=4$ different values
+$$
+x_1=\begin{pmatrix}0\\0\end{pmatrix},\quad
+x_2=\begin{pmatrix}1\\0\end{pmatrix},\quad
+x_3=\begin{pmatrix}0\\1\end{pmatrix},\quad
+x_4=\begin{pmatrix}1\\1\end{pmatrix}.
+$$
+
+
+<!-- Each of the two values $0$ and $1$ of $X_1$ appears twice in the list of the first components,
+$$
+\{x_{11},x_{12},x_{13},x_{14}\}=\{0,1,0,1\},
+$$
+and likewise for $X_2$. In general, if each of the $d$ components takes two values, $X$ can take up to $2^d$ different values.
+-->
+:::
+
+The **joint (or multivariate) probability mass function** of $X$ is
+$$
+f_{X}(x)=P(X=x)\quad\text{for all}\quad x\in\{x_1,x_2,\dots,x_m\}.
+$$
+
+
+Properties:
+
+::: {.spaced-list}
+* Non-negative:
+$$
+f_{X}(x)\geq 0\quad\text{for all}\quad x\in\{x_1,x_2,\dots,x_m\}
+$$
+
+* Normalized:
+$$
+\sum_{\ell = 1}^m f_{X}(x_\ell)=1
+$$
+:::
+
+
+
+::: {.callout-note}
+## Example: Two-Dimensional pmf (Car Sales and Staffing)
+
+Consider again the small car dealership. Let
+
+::: {.spaced-list}
+* $X_1\in\{0,1,2,3\}$ be the number of cars sold per day, and
+* $X_2\in\{1,2\}$ be the number of sales consultants on duty that day.
+:::
+
+The random vector
+$$
+X=\begin{pmatrix}X_1\\ X_2\end{pmatrix}
+$$
+can take $4\cdot 2=8$ different values. Its two-dimensional pmf
+$$
+f_X(x_1,x_2)=P(X_1=x_1,X_2=x_2)
+$$
+is given by the following table:
+
+| $f_X(x_1,x_2)$ | $x_1=0$ | $x_1=1$ | $x_1=2$ | $x_1=3$ |
+|----------------|:-------:|:-------:|:-------:|:-------:|
+| $x_2=1$        | $0.15$  | $0.25$  | $0.10$  | $0.00$  |
+| $x_2=2$        | $0.05$  | $0.15$  | $0.20$  | $0.10$  |
+
+::: {.spaced-list}
+* All entries are non-negative and they sum to one.
+
+* Days with two consultants tend to come with more sales. For instance, the probability of selling **at least two cars** on a day with **two consultants** is
+$$
+P(X_1\geq 2, X_2=2)=f_X(2,2)+f_X(3,2)=0.20+0.10=0.30.
+$$
+:::
+
+```{r, fig.align="center", echo=FALSE, fig.width=6, fig.height=5}
+par(family="serif", mar = c(3, 1, 2, 1), xpd = NA)
+x1  <- 0:3                                     # cars sold
+x2  <- 1:2                                     # consultants on duty
+pmf <- rbind(c(0.15, 0.25, 0.10, 0.00),        # x2 = 1
+             c(0.05, 0.15, 0.20, 0.10))        # x2 = 2
+
+# empty 3D frame (axes drawn by hand to get integer ticks)
+pm <- persp(x = c(-0.5, 3.5), y = c(0.5, 2.5), z = matrix(0, 2, 2),
+            zlim = c(0, 0.3), theta = -15, phi = 35, expand = 0.9, r = 4,
+            border = NA, box = FALSE, main = "Two-Dimensional pmf")
+# ground grid: one line for each possible value of x1 and x2
+for (i in x1) lines(trans3d(c(i, i), c(0.5, 2.5), 0, pm), col = "gray80")
+for (j in x2) lines(trans3d(c(-0.5, 3.5), c(j, j), 0, pm), col = "gray80")
+# axes and tick labels
+lines(trans3d(c(-0.5, 3.5), 0.5, 0, pm), col = "gray40")
+lines(trans3d(3.5, c(0.5, 2.5), 0, pm), col = "gray40")
+lines(trans3d(-0.5, 2.5, c(0, 0.3), pm), col = "gray40")
+text(trans3d(x1, 0.3, 0, pm), labels = x1, cex = 0.9)
+text(trans3d(3.75, x2, 0, pm), labels = x2, cex = 0.9)
+text(trans3d(-0.5, 2.5, c(0, 0.1, 0.2, 0.3), pm),
+     labels = c(0, 0.1, 0.2, 0.3), pos = 2, cex = 0.9)
+text(trans3d(1.5, -0.1, 0, pm), labels = "x\u2081 (cars sold)")
+text(trans3d(4.1, 1.5, 0, pm), labels = "x\u2082 (consultants)", pos = 4)
+text(trans3d(-0.5, 2.5, 0.34, pm), labels = expression(f[X](x[1], x[2])))
+# one stem per possible value (x1, x2); back row (x2 = 2) first
+for (j in rev(seq_along(x2))) {
+  for (i in seq_along(x1)) {
+    bottom <- trans3d(x1[i], x2[j], 0,         pm)
+    top    <- trans3d(x1[i], x2[j], pmf[j, i], pm)
+    points(bottom, pch = 20, col = "gray50")
+    segments(bottom$x, bottom$y, top$x, top$y, lwd = 5,
+             col = c("darkorange", "darkblue")[j])
+    points(top, pch = 19, col = c("darkorange", "darkblue")[j])
+    text(top, labels = format(pmf[j, i], nsmall = 2), pos = 3, cex = 0.8,
+         col = "darkred")
+  }
+}
+legend("right", legend = c("x\u2082 = 1", "x\u2082 = 2"), bty = "n",
+       col = c("darkorange", "darkblue"), lwd = 5)
+```
+
+**Outlook:** Summing the pmf over all values of $X_2$ for given values of $X_1$ yields the pmf of $X_1$ alone. For instance,
+\begin{align*}
+P(X_1=0)
+&=P(X_1=0,X_2=1)+P(X_1=0,X_2=2)\\[2ex]
+&=f_X(0,1)+f_X(0,2)\\[2ex]
+&=0.15+0.05=0.20,\\[4ex]
+P(X_1=1)
+&=P(X_1=1,X_2=1)+P(X_1=1,X_2=2)\\[2ex]
+&=f_X(1,1)+f_X(1,2)\\[2ex]
+&=0.25+0.15=0.40,
+\end{align*}
+and likewise for $P(X_1=2)$ and $P(X_1=3)$.
+
+These are exactly the pmf values from the one-dimensional car sales example above. Such ***marginal* distributions** are discussed below.
+:::
+
+
+#### Joint Density Function
+
+
+**Continuous random vectors:** $X$ takes values in $\mathbb{R}^d$
 
 $$
 X=\left(\begin{matrix}X_{1}\\ X_{2}\\ \vdots \\ X_{d}\end{matrix}\right)\in\mathbb{R}^d
 $$
 
-Each random element, $X_j$, with $j=1,\dots,d$, of the random vector $X$ has its own **marginal distribution** $F_j$. This is just the univariate distribution of $X_j$ when ignoring all other random variables in $X$. Formally we have:
+and has a **joint (or multivariate) density function** $f(x_1,\dots,x_d)$, i.e.,
+\begin{align*}
+&P(X\in [a_1,b_1]\times\dots\times [a_d,b_d])\\[2ex]
+&=\int_{a_d}^{b_d}\dots \int_{a_1}^{b_1}f(x_1,\dots,x_d)\,dx_1\dots dx_d.
+\end{align*}
 
-- **Marginal distribution function:** $F_j(x)=P(X_j\leq x)$
-- **Marginal density function:** $f_j$, for instance, for $j=1$:
+Properties of **joint density** functions:
 
+::: {.spaced-list}
+- Non-negative:
 $$
-f_1({\color{blue}x_1})=\int_{-\infty}^{\infty}\dots \int_{-\infty}^{\infty}f({\color{blue}x_1},x_2\dots,
-x_d)dx_2\dots  dx_d
+f(x_1,\dots,x_d)\geq 0\quad\text{for all}\quad (x_1,\dots,x_d)^{\top}\in\mathbb{R}^d
+$$
+- Normalized:
+$$
+\int_{-\infty}^{\infty}\dots \int_{-\infty}^{\infty}f(x_1,\dots,x_d)\,dx_1\dots dx_d=1.
+$$
+:::
+
+::: {.callout-note}
+## Example: Joint Density of a Bivariate Normal Distribution
+
+Consider again our running example, the bivariate $(d=2)$ normal random vector from above,
+$$
+X=\begin{pmatrix}X_1\\ X_2\end{pmatrix}\sim\mathcal{N}_2\left(\mu,\Sigma\right)
+\quad\text{with}\quad
+\mu=\begin{pmatrix}2\\ 1\end{pmatrix}
+\quad\text{and}\quad
+\Sigma=\begin{pmatrix}
+1   & 0.8\\
+0.8 & 1
+\end{pmatrix}.
+$$
+Its joint density function $f(x_1,x_2)$ can be visualized in two ways:
+
+::: {.spaced-list}
+* **Perspective plot** (left): The joint density is shown as a surface above the $(x_1,x_2)$-plane. Probabilities are volumes under this surface.
+* **Contour plot** (right): The surface is viewed from above. The contour lines connect all points $(x_1,x_2)$ with the same density value, just like the contour lines on a hiking map. Darker areas indicate larger density values.
+:::
+
+```{r, echo=FALSE, fig.width=5, fig.height=5}
+#| layout-ncol: 2
+library("mnormt")
+library("scales")
+
+mu    <- c(2, 1)
+Sigma <- matrix(c(1, .8, .8, 1), nrow = 2)
+
+# perspective plot
+par(mar = c(1, 1, 1, 1), family = "serif")
+x1_p <- seq(-1, 5, 0.2)
+x2_p <- seq(-2, 4, 0.2)
+z_p  <- outer(x1_p, x2_p, function(a, b) dmnorm(cbind(a, b), mu, Sigma))
+persp(x = x1_p, y = x2_p, z = z_p, theta = -30, phi = 25,
+      shade = 0.75, col = "blue", expand = 0.5, r = 2,
+      ltheta = 25, ticktype = "detailed",
+      xlab = "x₁", ylab = "x₂", zlab = "")
+
+# contour plot
+par(lwd = 2, mgp = c(2.2, 0.7, 0), las = 1, mar = c(4, 4, 1, 1), family = "serif")
+x1 <- seq(-1, 5, length.out = 60)
+x2 <- seq(-2, 4, length.out = 60)
+z  <- outer(x1, x2, function(a, b) dmnorm(cbind(a, b), mu, Sigma))
+image(x1, x2, z, col = gray(seq(1, .2, len = 10)), useRaster = TRUE,
+      xlab = expression(x[1]), ylab = expression(x[2]), axes = FALSE,
+      xlim = c(-1, 5), ylim = c(-2, 4), xaxs = "i", yaxs = "i")
+contour(x1, x2, z, col = alpha("darkblue", 0.5), drawlabels = FALSE,
+        nlevels = 5, lwd = 1, add = TRUE)
+axis(1, at = -1:5, lwd.ticks = 1)
+axis(2, at = -2:4, lwd.ticks = 1)
+```
+
+Both plots show that the joint density is centered at the mean vector $\mu=(2,1)^{\top}$. Since $\operatorname{Cov}(X_1,X_2)=0.8>0$, the density is stretched along a line with positive slope: large values of $X_1$ tend to occur together with large values of $X_2$, and small values with small values. In the following examples, we use the contour plot to visualize this joint density.
+:::
+
+
+
+::: {.callout-note}
+## Example: Two-Dimensional pdf (Customer Arrivals and Service Times)
+
+Consider again the shop from the one-dimensional pdf example. Let
+
+::: {.spaced-list}
+* $X_1\geq 0$ be the waiting time (in minutes) until the next customer enters the shop, and
+* $X_2\geq 0$ be the time (in minutes) the shop assistant needs to serve this customer.
+:::
+
+Suppose that the random vector
+$$
+X=\begin{pmatrix}X_1\\ X_2\end{pmatrix}
+$$
+has the following two-dimensional $(d=2)$ density function with
+
+::: {.spaced-list}
+* an average waiting time of $5$ minutes, and
+* an average service time of $2$ minutes:
+:::
+
+\begin{align*}
+f_X(x_1,x_2)=\left\{\begin{array}{ll}
+\frac{1}{5}\,e^{-x_1/5}\cdot\frac{1}{2}\,e^{-x_2/2} & \text{for } x_1\geq 0 \text{ and } x_2\geq 0\\[1ex]
+0 & \text{otherwise.}
+\end{array}\right.
+\end{align*}
+
+
+The density is non-negative and it integrates to one:
+\begin{align*}
+&\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}f_X(x_1,x_2)\,dx_1\,dx_2\\[2ex]
+&=\int_{0}^{\infty}\int_{0}^{\infty}\frac{1}{5}\,e^{-x_1/5}\cdot\frac{1}{2}\,e^{-x_2/2}\,dx_1\,dx_2\\[2ex]
+&=\left(\int_{0}^{\infty}\frac{1}{5}\,e^{-x_1/5}\,dx_1\right)\cdot\left(\int_{0}^{\infty}\frac{1}{2}\,e^{-x_2/2}\,dx_2\right)\\[2ex]
+&=1\cdot 1=1.
+\end{align*}
+
+Probabilities are now **volumes under the density surface**. For instance, the probability that the next customer arrives within $5$ minutes *and* is served within $2$ minutes is
+\begin{align*}
+P(X_1\leq 5, X_2\leq 2)
+&=\int_{0}^{2}\int_{0}^{5}\frac{1}{5}\,e^{-x_1/5}\cdot\frac{1}{2}\,e^{-x_2/2}\,dx_1\,dx_2\\[2ex]
+&=\left(\int_{0}^{5}\frac{1}{5}\,e^{-x_1/5}\,dx_1\right)\cdot\left(\int_{0}^{2}\frac{1}{2}\,e^{-x_2/2}\,dx_2\right)\\[2ex]
+&=\Big[-e^{-x_1/5}\Big]_{0}^{5}\cdot\Big[-e^{-x_2/2}\Big]_{0}^{2}\\[2ex]
+&=\left(1-e^{-1}\right)\cdot\left(1-e^{-1}\right)\\[2ex]
+&\approx 0.63\cdot 0.63\approx 0.40.
+\end{align*}
+
+The following plot shows the density surface. The red part of the surface lies above the rectangle $[0,5]\times[0,2]$; the volume below it equals
+$$
+P(X_1\leq 5, X_2\leq 2)\approx 0.40.
 $$
 
+```{r, fig.align="center", echo=FALSE, fig.width=6, fig.height=5}
+par(family="serif", mar = c(1, 1, 2, 1))
+f_X <- function(x1, x2) ifelse(x1 >= 0 & x2 >= 0,
+                               exp(-x1/5)/5 * exp(-x2/2)/2, 0)
+x1 <- seq(0, 15, length.out = 31)
+x2 <- seq(0,  6, length.out = 25)
+z  <- outer(x1, x2, f_X)
+
+# facet colors: red above the rectangle [0,5] x [0,2], blue elsewhere
+mid1  <- (x1[-1] + x1[-length(x1)])/2
+mid2  <- (x2[-1] + x2[-length(x2)])/2
+inside <- outer(mid1 <= 5, mid2 <= 2, "&")
+cols  <- ifelse(inside, "darkred", "lightblue")
+
+persp(x = x1, y = x2, z = z, theta = 135, phi = 30,
+      col = cols, border = "gray40", lwd = 0.3,
+      expand = 0.6, r = 3, ticktype = "detailed", nticks = 5,
+      xlab = "x₁ (waiting time)", ylab = "x₂ (service time)", zlab = "",
+      main = "Two-Dimensional pdf")
+```
+
+**Outlook:** In this example, the bivariate density is simply the *product* of the one-dimensional densities of the waiting time and the service time,
+$$
+f_X(x_1,x_2)=f_1(x_1)\cdot f_2(x_2).
+$$
+This means that $X_1$ and $X_2$ are assumed to be *independent* here, which is reasonable in this example. See the section on independent random variables below.
+:::
+
+
+In the following, we focus on continuous random vectors; the discrete case is treated analogously, with sums instead of integrals.
+
+
+#### Marginal Distribution Functions and Marginal Density Functions
+
+Let
+$$
+X=\left(\begin{matrix}X_{1}\\ X_{2}\\ \vdots \\ X_{d}\end{matrix}\right)\in\mathbb{R}^d.
+$$
+Each element $X_j,$ $j=1,\dots,d,$ of the random vector $X$ has its own **marginal distribution** $F_j$. This is simply the univariate distribution of $X_j$ when ignoring all other random variables in $X$. Formally:
+
+::: {.spaced-list}
+- **Marginal distribution function:** $F_j(x)=P(X_j\leq x)$.
+- **Marginal density function:** $f_j$; for instance, for $j=1$:
+$$
+f_1({\color{blue}{x_1}})=\int_{-\infty}^{\infty}\dots \int_{-\infty}^{\infty}f({\color{blue}{x_1}},x_2,\dots,
+x_d)\,dx_2\dots dx_d.
+$$
+:::
+
+::: {.callout-note}
+## Example: Marginal Densities of a Bivariate Normal Distribution
+
+Consider again our running example, the bivariate $(d=2)$ normal random vector
+$$
+X=\begin{pmatrix}X_1\\ X_2\end{pmatrix}\sim\mathcal{N}_2\left(\mu,\Sigma\right)
+\quad\text{with}\quad
+\mu=\begin{pmatrix}2\\ 1\end{pmatrix}
+\quad\text{and}\quad
+\Sigma=\begin{pmatrix}
+1   & 0.8\\
+0.8 & 1
+\end{pmatrix}.
+$$
+
+The following plot shows the joint density $f(x_1,x_2)$ together with its two marginal densities
+\begin{align*}
+f_1(x_1)&=\int_{-\infty}^{\infty} f(x_1,x_2)\,dx_2\\[2ex]
+f_2(x_2)&=\int_{-\infty}^{\infty} f(x_1,x_2)\,dx_1
+\end{align*}
 
 ```{r, fig.align="center", echo=FALSE, fig.width=5, fig.height=5}
+library("mnormt")
 library("scales")
-par(lwd=2,mgp=c(1,1,0), family="serif")
-# Modified to extract diagonal.
-bivariate.normal <- function(x, mu, Sigma) 
-  exp(-.5 * diag(t(x-mu) %*% solve(Sigma) %*% (x-mu))) / sqrt(2 * pi * det(Sigma))
+par(lwd=2, mgp=c(2.2,0.7,0), las=1, family="serif")
 
-mu    <- c(0,0)
-Sigma <- matrix(c(1,.8,.8,1), nrow=2)
+mu    <- c(2, 1)
+Sigma <- matrix(c(1, .8, .8, 1), nrow = 2)
 
-x1 <- seq(-3, 3, length.out=50)
-x2 <- seq(-3, 3, length.out=50)
+x1 <- seq(-1, 5, length.out = 60)   # horizontal axis
+x2 <- seq(-2, 4, length.out = 60)   # vertical axis
+z  <- outer(x1, x2, function(a, b) dmnorm(cbind(a, b), mu, Sigma))
 
-# plot(1:10,axes=FALSE, frame.plot=TRUE, lwd=1)
+# joint density
+image(x1, x2, z, col = gray(seq(1, .2, len = 10)), useRaster = TRUE,
+      xlab = expression(x[1]), ylab = expression(x[2]), axes = FALSE,
+      xlim = c(-1, 5), ylim = c(-2, 4), xaxs = "i", yaxs = "i")
+contour(x1, x2, z, col = alpha("darkblue", 0.5), drawlabels = FALSE,
+        nlevels = 5, lwd = 1, add = TRUE)
+axis(1, at = -1:5, lwd.ticks = 1)
+axis(2, at = -2:4, lwd.ticks = 1)
 
-# z can now be calculated much easier.
-z     <- bivariate.normal(t(expand.grid(x1,x2)),mu,Sigma)
-dim(z)<-c(length(x1),length(x2))
-contour(x1, x2, z, col="#4545FF", drawlabels=FALSE, nlevels=5,
-        xlab=expression(x[2]), ylab=expression(x[1]),  lwd=1,xlim=c(-3,4),ylim=range(x2),frame.plot=FALSE,axes=FALSE,xaxs = "i", yaxs = "i")
-image(x1, x2, z, col=gray(seq(1,.2,len=10)), add=TRUE)
-contour(x1, x2, z, col=alpha("darkblue", 0.5), drawlabels=FALSE, nlevels=5, add=TRUE)
-#box(lwd=.5)
-axis(1,at = -3:3, labels=FALSE,lwd.ticks=1)
-axis(2,labels=FALSE,lwd.ticks=1)
+# marginal densities along the axes (scaled by 2 for visibility)
+lines(x1, min(x2) + 2 * dnorm(x1, mu[1], sqrt(Sigma[1,1])), lwd = 1.5, col = "darkorange")
+lines(min(x1) + 2 * dnorm(x2, mu[2], sqrt(Sigma[2,2])), x2, lwd = 1.5, col = "darkred")
 
-# Marginal probability distribution: http://mpdc.mae.cornell.edu/Courses/MAE714/biv-normal.pdf
-# Please check this, I'm not sure it is correct.
-marginal.x1<-function(x)  exp((-(x-mu[1])^2)/2*(Sigma[1,2]^2)) / (Sigma[1,2]*sqrt(2*pi))
-marginal.x2<-function(x)  exp((-(x-mu[1])^2)/2*(Sigma[2,1]^2)) / (Sigma[2,1]*sqrt(2*pi))
-
-# Left side solid
-x.s  <- seq(from=min(x1),to=max(x1),by=0.1)
-vals<-marginal.x2(x.s)
-lines(vals-abs(min(x1)),x.s,lty=1,lwd=1, col="darkred")
-
-# Bottom side solid
-vals<-marginal.x1(x.s)
-lines(x.s,vals-abs(min(x2)),lty=1,lwd=1, col="darkorange")
-legend("topleft", col=c("darkred","darkorange"), lty=1, legend = c(expression(f[1]),expression(f[2])), bty="n",
-       title = "Marginal Densities")
-legend("topright", col=c("darkblue"), lty=1, legend = expression(f(x[1],x[2])), bty="n",
-       title = "Joint Density")
+legend("topleft", col = c("darkorange", "darkred"), lwd = 1.5, bty = "n",
+       legend = c(expression(f[1](x[1])), expression(f[2](x[2]))),
+       title = "Marginal Densities", cex = 0.85)
+legend("bottomright", col = alpha("darkblue", 0.5), lwd = 1, bty = "n",
+       legend = expression(f(x[1], x[2])), title = "Joint Density", cex = 0.85)
 ```
+:::
 
 
 
 #### Conditional Density Function {#sec-condDistr}
 
-Often, we are interested in the **conditional distribution** of $X_j$ given certain values of all other random variables 
-
+Often, we are interested in the **conditional distribution** of $X_j$ given fixed values of all other random variables,
 $$
 X_1=x_1,\ldots, X_{j-1}=x_{j-1}, X_{j+1}=x_{j+1},\ldots,X_d=x_d.
 $$
-That is, the distribution of $X_j$ when fixing the values of  
-$$
-X_1=x_1,\ldots, X_{j-1}=x_{j-1}, X_{j+1}=x_{j+1},\ldots, X_d=x_d.
-$$  
+That is, the distribution of $X_j$ when the values of all other random variables are held fixed.
 
 
-An important tool is here the **conditional density** of, for instance, $X_1$ given $X_2=x_2,\ldots,X_d=x_d$:
+An important tool here is the **conditional density**. For instance, the conditional density of $X_1$ given $X_2=x_2,\ldots,X_d=x_d$ is
 $$
 f(x_1\mid x_2,\ldots,x_d)=\frac{f(x_1,x_2,\ldots,x_d)}{f_{X_{2},\ldots,X_{d}}(x_2,\ldots,x_d)},
 $$
-where $f_{X_{2},\ldots,X_{d}}$ denotes the joint density of $X_2,\ldots,X_d$.
+where $f_{X_{2},\ldots,X_{d}}$ denotes the joint density of $X_2,\ldots,X_d,$ and where we assume that $f_{X_{2},\ldots,X_{d}}(x_2,\ldots,x_d)>0$.
 
+::: {.callout-note}
+## Example: Conditional Density of a Bivariate $(d=2)$ Normal Distribution
 
+Consider again our running example, the bivariate $(d=2)$ normal random vector
+$$
+X=\begin{pmatrix}X_1\\ X_2\end{pmatrix}\sim\mathcal{N}_2\left(\mu,\Sigma\right)
+\quad\text{with}\quad
+\mu=\begin{pmatrix}2\\ 1\end{pmatrix}
+\quad\text{and}\quad
+\Sigma=\begin{pmatrix}
+1   & 0.8\\
+0.8 & 1
+\end{pmatrix}.
+$$
+
+The conditional density of $X_1$ given $X_2=2$ is the joint density divided by the marginal density of $X_2$, both evaluated at $x_2=2$:
+$$
+f(x_1\mid x_2=2)=\frac{f(x_1,2)}{f_2(2)}.
+$$
+For the bivariate normal distribution, this conditional density is again a normal density. Here,
+$$
+X_1\mid X_2=2\;\sim\;\mathcal{N}\left(2.8,\;0.36\right),
+$$
+where
+\begin{align*}
+E(X_1\mid X_2=2)                 &=2.8\\[2ex]
+\operatorname{Var}(X_1\mid X_2=2)&=0.36.
+\end{align*}
+
+The following plot shows the conditional density $f(x_1\mid x_2=2)$ (dashed green) together with the marginal densities (gray).
 ```{r, fig.align="center", echo=FALSE, fig.width=5, fig.height=5}
-par(lwd=2,mgp=c(1,1,0), family="serif")
-# Modified to extract diagonal.
-bivariate.normal <- function(x, mu, Sigma) 
-  exp(-.5 * diag(t(x-mu) %*% solve(Sigma) %*% (x-mu))) / sqrt(2 * pi * det(Sigma))
+library("mnormt")
+library("scales")
+par(lwd=2, mgp=c(2.2,0.7,0), las=1, family="serif")
 
-mu    <- c(0,0)
-Sigma <- matrix(c(1,.8,.8,1), nrow=2)
+mu    <- c(2, 1)
+Sigma <- matrix(c(1, .8, .8, 1), nrow = 2)
+x2_0  <- 2                          # conditioning value X_2 = 2
 
-x1 <- seq(-3, 3, length.out=50)
-x2 <- seq(-3, 3, length.out=50)
+x1 <- seq(-1, 5, length.out = 60)   # horizontal axis
+x2 <- seq(-2, 4, length.out = 60)   # vertical axis
+z  <- outer(x1, x2, function(a, b) dmnorm(cbind(a, b), mu, Sigma))
 
-# plot(1:10,axes=FALSE, frame.plot=TRUE, lwd=1)
+# joint density
+image(x1, x2, z, col = gray(seq(1, .2, len = 10)), useRaster = TRUE,
+      xlab = expression(x[1]), ylab = expression(x[2]), axes = FALSE,
+      xlim = c(-1, 5), ylim = c(-2, 4), xaxs = "i", yaxs = "i")
+contour(x1, x2, z, col = alpha("darkblue", 0.5), drawlabels = FALSE,
+        nlevels = 5, lwd = 1, add = TRUE)
+axis(1, at = -1:5, lwd.ticks = 1)
+axis(2, at = -2:4, lwd.ticks = 1)
 
-# z can now be calculated much easier.
-# z     <- bivariate.normal(t(expand.grid(x1,x2)),mu,Sigma)
-# dim(z)<-c(length(x1),length(x2))
-# contour(x1, x2, z, col="#4545FF", drawlabels=FALSE, nlevels=5,
-#         xlab=expression(X[1]), ylab=expression(X[2]),  lwd=1,xlim=c(-3,4),ylim=range(x2),frame.plot=FALSE,axes=FALSE,xaxs = "i", yaxs = "i")
+# condition X_2 = 2
+abline(h = x2_0, lty = 2, lwd = 1.1)
+text(4.9, x2_0 + 0.1, labels = expression(x[2]==2), adj = c(1, 0))
 
+# marginal densities in gray (scaled by 2 for visibility)
+lines(x1, min(x2) + 2 * dnorm(x1, mu[1], sqrt(Sigma[1,1])), lwd = 1, col = gray(.5, .5))
+lines(min(x1) + 2 * dnorm(x2, mu[2], sqrt(Sigma[2,2])), x2, lwd = 1, col = gray(.5, .5))
 
-z     <- bivariate.normal(t(expand.grid(x1,x2)),mu,Sigma)
-dim(z)<-c(length(x1),length(x2))
-contour(x1, x2, z, col="#4545FF", drawlabels=FALSE, nlevels=5,
-        xlab=expression(x[2]), ylab=expression(x[1]),  lwd=1,xlim=c(-3,4),ylim=range(x2),frame.plot=FALSE,axes=FALSE,xaxs = "i", yaxs = "i")
-image(x1, x2, z, col=gray(seq(1,.2,len=10)), add=TRUE)
-contour(x1, x2, z, col=alpha("darkblue", 0.5), drawlabels=FALSE, nlevels=5, add=TRUE)
+# conditional density f(x1 | x2 = 2) = f(x1, 2) / f_2(2)
+cond <- dmnorm(cbind(x1, x2_0), mu, Sigma) / dnorm(x2_0, mu[2], sqrt(Sigma[2,2]))
+lines(x1, min(x2) + 2 * cond, lty = 2, lwd = 1.5, col = "darkgreen")
 
-#box(lwd=.5)
-axis(1,labels=FALSE,lwd.ticks=1)
-axis(2,labels=FALSE,lwd.ticks=1)
-abline(v=.7, col=1, lwd=1.1, lty=2)
-text(2, -2, labels=expression(x[2]==0.7))
-
-# Dotted
-f    <- function(x1,x2) bivariate.normal(t(cbind(x1,x2)),mu,Sigma)
-x.s  <- seq(from=min(x1),to=max(x1),by=0.1)
-vals <- f(x1=0.7,x2=x.s)
-lines(vals-abs(min(x1)),x.s,lty=2,lwd=1.2, col="darkgreen")
-
-
-marginal.x1<-function(x) exp((-(x-mu[1])^2)/2*(Sigma[1,2]^2)) / (Sigma[1,2]*sqrt(2*pi))
-marginal.x2<-function(x) exp((-(x-mu[1])^2)/2*(Sigma[2,1]^2)) / (Sigma[2,1]*sqrt(2*pi))
-
-# Left side solid
-vals<-marginal.x2(x.s)
-lines(vals-abs(min(x1)),x.s,lty=1,lwd=1, col=gray(.5, 0.5))
- 
-# Bottom side solid
-vals<-marginal.x1(x.s)
-lines(x.s,vals-abs(min(x2)),lty=1,lwd=1, col=gray(.5, 0.5))
-
-# legend("topright", col=c("darkred","darkorange"), lty=1, legend = c(expression(f[1]),expression(f[2])), bty="n",
-#        title = "Marginal Densities")
-legend("topleft", col="darkgreen", lty=2.1, lwd=.98, 
-legend = expression(f(x[1]~ "|" ~ X[2]==0.7)), bty="n",
-       title = "Conditional Density")
+legend("topleft", col = "darkgreen", lty = 2, lwd = 1.5, bty = "n",
+       legend = expression(f(x[1] ~ "|" ~ x[2]==2)),
+       title = "Conditional Density", cex = 0.85)
 ```
+
+**Interpretation:** Since $X_1$ and $X_2$ are positively correlated, knowing that $X_2=2$ also tells us something about the random variable $X_1$.
+
+Because $X_2=2$ lies above its mean $E(X_2)=1$, the distribution of $X_1$ shifts towards larger values: its mean increases from $E(X_1)=2$ to $E(X_1\mid X_2=2)=2.8$.
+
+Moreover, knowing that $X_2=2$ reduces the uncertainty about $X_1$: its variance shrinks from $\operatorname{Var}(X_1)=1$ to $\operatorname{Var}(X_1\mid X_2=2)=0.36$.
+
+Therefore, compared to the marginal density $f_1(x_1)$, the conditional density $f(x_1\mid x_2=2)$ is shifted to the right, and it is narrower and taller.
+:::
 
 
 ### Means and Moments
@@ -746,135 +1474,537 @@ legend = expression(f(x[1]~ "|" ~ X[2]==0.7)), bty="n",
 
 The **unconditional mean** of $X_1$ is given by
 $$
-E(X_1)= \int x f_{X_1}(x)dx.
+E(X_1)= \int x f_{X_1}(x)\,dx.
 $$
-The unconditional mean of a random vector $X=(X_1,\dots,X_d)'$ is given by the vector of element-wise means
+The unconditional mean of a random vector
 $$
-E(X)=(E(X_1),\dots,E(X_d))'.
+X=
+\begin{pmatrix}
+X_1\\ \vdots \\ X_d
+\end{pmatrix}
 $$
+is given by the vector of element-wise means,
+$$
+E(X)=
+\begin{pmatrix}
+E(X_1)\\ \vdots\\ E(X_d)
+\end{pmatrix}.
+$$
+
+::: {.callout-note}
+## Example: Unconditional Means of a Bivariate Normal Distribution
+
+Consider again our running example, the bivariate $(d=2)$ normal random vector
+$$
+X=\begin{pmatrix}X_1\\ X_2\end{pmatrix}\sim\mathcal{N}_2\left(\mu,\Sigma\right)
+\quad\text{with}\quad
+\mu=\begin{pmatrix}2\\ 1\end{pmatrix}
+\quad\text{and}\quad
+\Sigma=\begin{pmatrix}
+1   & 0.8\\
+0.8 & 1
+\end{pmatrix}.
+$$
+
+The marginal distributions are $X_1\sim\mathcal{N}(2,1)$ and $X_2\sim\mathcal{N}(1,1)$. Thus, the unconditional means are
+\begin{align*}
+E(X_1)&=\int_{-\infty}^{\infty} x_1\, f_1(x_1)\,dx_1=2\\[2ex]
+E(X_2)&=\int_{-\infty}^{\infty} x_2\, f_2(x_2)\,dx_2=1,
+\end{align*}
+and the unconditional mean of the random vector $X$ is
+$$
+E(X)=
+\begin{pmatrix}
+E(X_1)\\ E(X_2)
+\end{pmatrix}
+=
+\begin{pmatrix}
+2\\ 1
+\end{pmatrix}.
+$$
+
+The following plot shows the joint density $f(x_1,x_2)$ together with its two marginal densities. The unconditional means $E(X_1)$ and $E(X_2)$ are the centers of the marginal densities, and the mean vector $E(X)$ (red dot) is the center of the joint density.
+
+```{r, fig.align="center", echo=FALSE, fig.width=5, fig.height=5}
+library("mnormt")
+library("scales")
+par(lwd=2, mgp=c(2.2,0.7,0), las=1, family="serif")
+
+mu    <- c(2, 1)
+Sigma <- matrix(c(1, .8, .8, 1), nrow = 2)
+
+x1 <- seq(-1, 5, length.out = 60)   # horizontal axis
+x2 <- seq(-2, 4, length.out = 60)   # vertical axis
+z  <- outer(x1, x2, function(a, b) dmnorm(cbind(a, b), mu, Sigma))
+
+# joint density
+image(x1, x2, z, col = gray(seq(1, .2, len = 10)), useRaster = TRUE,
+      xlab = expression(x[1]), ylab = expression(x[2]), axes = FALSE,
+      xlim = c(-1, 5), ylim = c(-2, 4), xaxs = "i", yaxs = "i")
+contour(x1, x2, z, col = alpha("darkblue", 0.5), drawlabels = FALSE,
+        nlevels = 5, lwd = 1, add = TRUE)
+axis(1, at = -1:5, lwd.ticks = 1)
+axis(2, at = -2:4, lwd.ticks = 1)
+
+# marginal densities along the axes (scaled by 2 for visibility)
+lines(x1, min(x2) + 2 * dnorm(x1, mu[1], 1), lwd = 1.5, col = "darkorange")
+lines(min(x1) + 2 * dnorm(x2, mu[2], 1), x2, lwd = 1.5, col = "darkred")
+
+# means
+segments(mu[1], min(x2), mu[1], mu[2], lty = 2, lwd = 1.2, col = "darkorange")
+segments(min(x1), mu[2], mu[1], mu[2], lty = 2, lwd = 1.2, col = "darkred")
+points(mu[1], mu[2], pch = 19, cex = 1.4, col = "red")
+text(mu[1], mu[2], labels = expression(E(X)), pos = 4, col = "red")
+text(mu[1], min(x2) + 2 * dnorm(0), labels = expression(E(X[1])==2),
+     pos = 4, offset = 0.4, col = "darkorange", cex = 0.85)
+text(min(x1) + 2 * dnorm(0), mu[2], labels = expression(E(X[2])==1),
+     pos = 3, offset = 0.4, col = "darkred", cex = 0.85)
+
+legend("topleft", col = c("darkorange", "darkred"), lwd = 1.5, bty = "n",
+       legend = c(expression(f[1](x[1])), expression(f[2](x[2]))),
+       title = "Marginal Densities", cex = 0.85)
+```
+:::
 
 
 
 #### Means of Transformed Random Variables and Moments
 
 
-The **mean of a transformed random variable** $r(X)$ is given by 
+The **mean of a transformed random variable** $r(X)$ is given by
 $$
-E(r(X))=\int r(x) f_{X}(x)dx.
+E(r(X))=\int r(x) f_{X}(x)\,dx.
 $$
-Typical transformations are, for instance
+Typical transformations are, for instance,
 
-- centering $r(x)=x-E(X)$,
-- centering and scaling $r(x)=(x-E(X))/\sqrt{Var(X)}$, 
-- or $r(x)=(x - E(X))^2$, 
+::: {.spaced-list}
+- centering: $r(x)=x-E(X)$,
+- centering and scaling: $r(x)=(x-E(X))/\sqrt{\operatorname{Var}(X)}$,
+- squared deviations: $r(x)=(x - E(X))^2$,
+:::
 
-where the latter transformation leads to the **second central moment**, i.e. the variance of $X$, $Var(X)=\int (x - E(X))^2 f_{X}(x)dx$.
-
-
-
-* The $k$th, $k>0$, moment is given by 
+where the latter transformation leads to the **second central moment**, i.e., the variance of $X$,
 $$
-\mu_{k}=\mathrm{E}\left[X^{k}\right]=\int_{-\infty}^{+\infty}x^{k} f_X(x)d x.
+\operatorname{Var}(X)=\int (x - E(X))^2 f_{X}(x)\,dx.
 $$
 
-* The $k$th, $k>1$, central moment is given by 
+
+::: {.spaced-list}
+* The $k$th moment, $k=1,2,\dots$, is given by
 $$
-\mu^c_{k}=\mathrm{E}\left[(X-\mathrm{E}[X])^{k}\right]=\int_{-\infty}^{+\infty}(x-\mu)^{k} f_X(x)d x,
+\mu_{k}=E\left(X^{k}\right)=\int_{-\infty}^{+\infty}x^{k} f_X(x)\,d x.
 $$
-where $\mu=E(X)$. 
 
-
-**Note:** Moments determine the tail of a distribution (but not much else); see @LB2000. Roughly: The more moments a distribution has the faster converge the tails to zero. Distributions with compact supports (e.g. the uniform distribution $\mathcal{U}[a,b]$) have infinitely many moments. The Normal distribution has also infinitely many moments, even though this distribution has not a compact support; see @sec-NormalDistr. 
-
-
-
-
-
-
-#### Conditional Means 
-
-Of central importance in **regression analysis** is the **conditional mean**.  The conditional mean of $X_1$ for given values  $X_2=x_2,\ldots,X_d=x_d$:
+* The $k$th central moment, $k=2,3,\dots$, is given by
 $$
+\mu^c_{k}=E\left((X-\mu)^{k}\right)=\int_{-\infty}^{+\infty}(x-\mu)^{k} f_X(x)\,d x,
+$$
+where $\mu=E(X)$.
+:::
+
+Of course, these moments are only defined if the respective integrals exist, i.e., if $E(|X|^k)<\infty$.
+
+
+**Note:** As the title of @LB2000 puts it, "moments determine the tail of a distribution (but not much else)". Roughly: the more moments a distribution has, the faster its tails decay to zero. Distributions with compact support (e.g., the uniform distribution $\mathcal{U}(a,b)$) have moments of all orders. The normal distribution also has moments of all orders, even though it does not have compact support; see @sec-NormalDistr.
+
+
+
+
+
+
+#### Conditional Means ➡️ Regression Functions
+
+The **conditional mean** of $X_1$ given $X_2=x_2,\ldots,X_d=x_d$ is
 \begin{align*}
-  m(x_2,\dots,x_d):&=E(X_1|X_2=x_2,\ldots,X_d=x_d)\\
-                   &= \int x_1 f(x_1\mid x_2,\ldots,x_d)dx_1,
-\end{align*}                  
+  m(x_2,\dots,x_d):&=E(X_1\mid X_2=x_2,\ldots,X_d=x_d)\\[2ex]
+                   &= \int x_1 f(x_1\mid x_2,\ldots,x_d)\,dx_1.
+\end{align*}
+The function $m$ is called the **regression function**. It is the central object of **regression analysis**, which we discuss in the following chapters.
+
+
+::: {.callout-note}
+## Example: Conditional Mean Function of a Bivariate Normal Distribution
+
+Consider again our running example, the bivariate $(d=2)$ normal random vector
 $$
-where $m(x_2,\dots,x_d)$ denotes the **regression function**. 
-
-
-
-#### Law of Total Expectation 
-
-As long as we do not fix the values of the conditioning variables, $X_2,\dots,X_d$, they are random variables.  Consequently, the conditional mean is generally itself a random variable 
+X=\begin{pmatrix}X_1\\ X_2\end{pmatrix}\sim\mathcal{N}_2\left(\mu,\Sigma\right)
+\quad\text{with}\quad
+\mu=\begin{pmatrix}2\\ 1\end{pmatrix}
+\quad\text{and}\quad
+\Sigma=\begin{pmatrix}
+1   & 0.8\\
+0.8 & 1
+\end{pmatrix}.
 $$
-E(X_1|X_2,\ldots,X_d)=\int x_1 f(x_1\mid X_2,\ldots,X_d)dx_1 
+
+For the bivariate normal distribution, the conditional mean of $X_1$ given $X_2=x_2$ is a linear function of $x_2$:
+\begin{align*}
+m(x_2)
+&=E(X_1\mid X_2=x_2)\\[2ex]
+&=E(X_1)+\frac{\operatorname{Cov}(X_1,X_2)}{\operatorname{Var}(X_2)}\,\big(x_2-E(X_2)\big)\\[2ex]
+&=2+\frac{0.8}{1}\,(x_2-1)\\[2ex]
+&=1.2+0.8\,x_2.
+\end{align*}
+Thus, the regression function $m$ is a straight line with intercept $1.2$ and slope $0.8$. For instance,
+\begin{align*}
+m(0)&=1.2+0.8\cdot 0=1.2\\[2ex]
+m(1)&=1.2+0.8\cdot 1=2.0\\[2ex]
+m(2)&=1.2+0.8\cdot 2=2.8\\[2ex]
+m(3)&=1.2+0.8\cdot 3=3.6.
+\end{align*}
+The value $m(2)=2.8$ is the conditional mean $E(X_1\mid X_2=2)$ from the conditional density example above.
+
+The left plot shows the conditional densities $f(x_1\mid x_2)$ for $x_2=0,1,2,3$ (green). Each conditional density is centered at its conditional mean $m(x_2)$ (red dots). The red line connects all conditional means; this is the regression function $m$. The dashed blue line is the main axis of the contour ellipses. The right plot shows the same regression function in the usual way, with $x_2$ on the horizontal axis.
+
+```{r, echo=FALSE, fig.width=5, fig.height=5}
+#| layout-ncol: 2
+library("mnormt")
+library("scales")
+par(lwd=2, mgp=c(2.2,0.7,0), las=1, family="serif")
+
+mu    <- c(2, 1)
+Sigma <- matrix(c(1, .8, .8, 1), nrow = 2)
+m_fun <- function(x2) mu[1] + Sigma[1,2] / Sigma[2,2] * (x2 - mu[2])
+sd_c  <- sqrt(Sigma[1,1] - Sigma[1,2]^2 / Sigma[2,2])   # conditional sd = 0.6
+x2_0  <- 0:3                                            # conditioning values
+
+x1 <- seq(-1, 5, length.out = 60)   # horizontal axis
+x2 <- seq(-2, 4, length.out = 60)   # vertical axis
+z  <- outer(x1, x2, function(a, b) dmnorm(cbind(a, b), mu, Sigma))
+
+## Left plot: conditional densities and regression line
+image(x1, x2, z, col = gray(seq(1, .2, len = 10)), useRaster = TRUE,
+      xlab = expression(x[1]), ylab = expression(x[2]), axes = FALSE,
+      xlim = c(-1, 5), ylim = c(-2, 4), xaxs = "i", yaxs = "i")
+contour(x1, x2, z, col = alpha("darkblue", 0.5), drawlabels = FALSE,
+        nlevels = 5, lwd = 1, add = TRUE)
+axis(1, at = -1:5, lwd.ticks = 1)
+axis(2, at = -2:4, lwd.ticks = 1)
+
+# conditional densities f(x1 | x2) on top of the lines X_2 = x2 (scaled by 0.8)
+xx <- seq(-1, 5, length.out = 300)
+for (v in x2_0) {
+  abline(h = v, lty = 3, lwd = 1)
+  lines(xx, v + 0.8 * dnorm(xx, m_fun(v), sd_c), lwd = 1.5, col = "darkgreen")
+}
+
+# regression function: x1 = m(x2)
+# main axis of the contour ellipses (slope 1, since Var(X_1) = Var(X_2))
+abline(a = mu[2] - mu[1], b = 1, lty = 2, lwd = 1.2, col = "darkblue")
+
+lines(m_fun(x2), x2, lwd = 2, col = "red")
+points(m_fun(x2_0), x2_0, pch = 19, col = "red")
+
+legend("bottomright", col = c("darkgreen", "red", "darkblue"), lwd = c(1.5, 2, 1.2),
+       lty = c(1, 1, 2), bty = "n",
+       legend = c(expression(f(x[1] ~ "|" ~ x[2])), expression(m(x[2])), "main axis"),
+       cex = 0.85, bg = "white")
+
+## Right plot: regression function with x2 on the horizontal axis
+plot(x2, m_fun(x2), type = "l", lwd = 2, col = "red", axes = FALSE,
+     xlab = expression(x[2]), ylab = expression(m(x[2])==E(X[1] ~ "|" ~ X[2]==x[2])),
+     xlim = c(-2, 4), ylim = c(-1, 5), xaxs = "i", yaxs = "i")
+axis(1, at = -2:4, lwd.ticks = 1)
+axis(2, at = -1:5, lwd.ticks = 1)
+segments(x2_0, -1, x2_0, m_fun(x2_0), lty = 3, lwd = 1)
+segments(-2, m_fun(x2_0), x2_0, m_fun(x2_0), lty = 3, lwd = 1)
+points(x2_0, m_fun(x2_0), pch = 19, col = "red")
+text(x2_0, m_fun(x2_0), labels = format(m_fun(x2_0), nsmall = 1),
+     pos = 4, col = "red", cex = 0.85)
+text(3.9, 0, labels = expression(m(x[2])==1.2+0.8~x[2]), adj = c(1, 0), col = "red")
+```
+
+**Interpretation:** Since $X_1$ and $X_2$ are positively correlated, larger values of $X_2$ come with larger conditional means of $X_1$. Each additional unit of $x_2$ increases the conditional mean of $X_1$ by $0.8$ units. Note that only the location of the conditional density changes with $x_2$; its variance is always $\operatorname{Var}(X_1\mid X_2=x_2)=0.36$.
+
+
+
+**Note:** The regression line is *not* the main axis of the contour ellipses (dashed blue line). The regression line goes through the conditional means
 $$
-due to the randomness in $X_2,\ldots,X_d$. 
-
-
-The **Law of Total Expectation** or **Law of Iterated Expectation** states that 
+m(x_2)=E(X_1\mid X_2=x_2),
 $$
-E\big(E(X_1|X_2,\ldots,X_d)\big)=E(X_1).
-$$ 
+i.e., through the centers of the conditional distributions of $X_1$ along each horizontal line at height $x_2$.
 
-To show this result, we, first compute the conditional mean of $X_1$ given $X_2,\dots,X_d$, and then mean with respect to $X_2,\dots,X_d.$
+In our example, the main axis of the contour ellipses moves one-to-one: one unit up in $x_2$ means one unit to the right in $x_1$. The conditional mean $m(x_2)$, however, moves only $0.8$ units to the right per unit of $x_2$. Therefore, the regression line is steeper than the main axis in the left plot.
+:::
+
+
+
+#### Law of Total Expectation $=$ Law of Iterated Expectations
+
+As long as we do not fix the values of the conditioning variables $X_2,\dots,X_d$, they are random variables. Consequently, the conditional mean
+$$
+E(X_1\mid X_2,\ldots,X_d)=\int x_1 f(x_1\mid X_2,\ldots,X_d)\,dx_1
+$$
+is generally itself a **random variable**, due to the randomness in $X_2,\ldots,X_d$.
+
+
+::: {.callout icon=false}
+#
+::: {#thm-LawTotalExpectation}
+## Law of Total Expectation
+
+The **Law of Total Expectation**, also called the **Law of Iterated Expectations**, states that
+$$
+E\big(E(X_1\mid X_2,\ldots,X_d)\big)=E(X_1).
+$$
+:::
+:::
+
+::: {.callout-tip collapse="true"}
+## 🤓 Nerd's Box: Proof of the Law of Total Expectation
+
+To show this result, we first compute the conditional mean of $X_1$ given $X_2,\dots,X_d$, and then take the mean with respect to $X_2,\dots,X_d$:
 <!-- Note that $f(x_1\mid X_2,\ldots,X_d)$ is just a transformation of the random variables $X_2,\dots,X_d$. So we can easily compute the unconditional mean $E(X_1)$ by taking the mean of $E(X_1|X_2,\ldots,X_d)$ as following,  -->
-$$
 \begin{align*}
-&E\big({\color{RedViolet}E(X_1|X_2,\ldots,X_d)}\big)=\\
-&=\int\dots\int\;{\color{RedViolet}\int x_1 f(x_1\mid x_2,\ldots,x_d)dx_1}\;f_{X_2,\dots,X_d}(x_2,\ldots,x_d)dx_2\dots dx_d\\
-&=\int x_1 \left({\color{blue}\int\dots\int f(x_1,x_2,\ldots,x_d)dx_2\dots dx_d}\right)dx_1\\
-&=\int x_1 {\color{blue}f_{X_1}(x_1)}dx_1\\
-&=E(X_1).
+&E\big({\color{purple}{E(X_1\mid X_2,\ldots,X_d)}}\big)\\[2ex]
+&\text{Applying the inner mean ${\color{purple}{E\Big(\dots\Big)}}$ operation:}\\[2ex]
+&={\color{darkgreen}{E\Big(}}\;{\color{purple}{\int x_1 f(x_1\mid X_2,\ldots,X_d)\,dx_1}}\;{\color{darkgreen}{\Big)}}\\[2ex]
+&\text{Applying the outer mean ${\color{darkgreen}{E\Big(\dots\Big)}}$ operation:}\\[2ex]
+&={\color{darkgreen}{\int\dots\int}}\;\int x_1 f(x_1\mid {\color{darkgreen}{x_2,\ldots,x_d}})\,dx_1\;{\color{darkgreen}{f_{X_2,\dots,X_d}(x_2,\ldots,x_d)\,dx_2\dots dx_d}}\\[2ex]
+&\text{Using that (by the definition of the conditional density):}\\[2ex]
+&{\color{gray}{f(x_1\mid x_2,\ldots,x_d)\,f_{X_2,\dots,X_d}(x_2,\ldots,x_d)=f(x_1,x_2,\ldots,x_d)}}\\[2ex]
+&=\int\dots\int x_1 f(x_1,x_2,\ldots,x_d)\,dx_1\,dx_2\dots dx_d\\[2ex]
+&\text{Rearranging terms:}\\[2ex]
+&=\int x_1 \left({\color{blue}{\int\dots\int f(x_1,x_2,\ldots,x_d)\,dx_2\dots dx_d}}\right)dx_1\\[2ex]
+&\text{Integrating out $x_2,\dots,x_d$ yields the marginal density $f_{X_1}\colon$}\\[2ex]
+&=\int x_1 {\color{blue}{f_{X_1}(x_1)}}\,dx_1\\[2ex]
+&=E(X_1)
 \end{align*}
+:::
+
+
+
+### Independent Random Variables
+
+**Two random variables:** Two random variables $Y$ and $X$ are **independent**, written
+$$
+Y \independent X,
+$$
+if their joint distribution function equals the product of their marginal distribution functions,
+$$
+F_{Y,X}(y,x)=F_Y(y)\cdot F_X(x)\quad\text{for all}\quad y,x\in\mathbb{R}.
+$$
+Equivalently, $Y$ and $X$ are independent if their joint pmf (discrete case) or joint density function (continuous case) equals the product of their marginal pmfs or densities,
+$$
+f_{Y,X}(y,x)=f_Y(y)\cdot f_X(x)\quad\text{for all}\quad y,x\in\mathbb{R}.
 $$
 
-
-
-### Independent Random Variables 
-
-Random variables $X_1,\dots,X_d$ are mutually **independent** if for all $x=(x_1,\dots,x_d)^\prime$ it is true that
+Independence can also be characterized using the **conditional density:** $Y$ and $X$ are independent *if and only if* the marginal density of $X$ equals the conditional density of $X$ given $Y=y$,
 $$
-\begin{align*}
-  F(x_1,\dots,x_d)&=F_1(x_1)\cdot F_2(x_2)\cdot\ldots\cdot F_d(x_d)\\
-  f(x_1,\dots,x_d)&=f_1(x_1)\cdot f_2(x_2)\cdot\ldots\cdot f_d(x_d)
-\end{align*}
+f_X(x)=f_{X|Y}(x\mid y)
 $$
+for all $x\in\mathbb{R}$ and all $y\in\mathbb{R}$ with $f_Y(y)>0$. That is, knowing the value of $Y$ does not change the distribution of $X$.
 
-The following holds true:
+> Of course, the same holds with the roles of $X$ and $Y$ interchanged: $X$ and $Y$ are independent *if and only if* $f_Y(y)=f_{Y|X}(y\mid x)$ for all $y\in\mathbb{R}$ and all $x$ with $f_X(x)>0.$
 
-- Two real-valued random variables $X$ and $Y$ are independent from each other *if and only if* the marginal density of $X$ equals the conditional density of $X$ given $Y=y$ for all $y\in\mathbb{R}$,
+**More than two random variables:** The random variables $X_1,\dots,X_n$ are mutually **independent** if their joint distribution function equals the product of their marginal distribution functions,
 $$
-f_X(x)=f_{X|Y}(x\mid y)\quad \text{ for all } y\in\mathbb{R}.
+F(x_1,\dots,x_n)=F_1(x_1)\cdot F_2(x_2)\cdot\ldots\cdot F_n(x_n),
 $$
-Of course, the same statement applies to the marginal density of $Y$ given $X=x$ for all $x\in\mathbb{R}$. That is, $X$ and $Y$ are two independent real-valued random variables *if and only if* 
-$f_Y(y)=f_{Y|X}(y\mid x)$ for all $x\in\mathbb{R}.$
-- If a real-valued random variable $X$ is independent from a real-valued random variable $Y$, then the conditional mean of $X$ given $Y=y$ equals the unconditional mean of $X$ for all $y\in\mathbb{R}$ 
+for all $(x_1,\dots,x_n)^{\top}\in\mathbb{R}^n,$ or, equivalently, if their joint pmf or joint density function equals the product of their marginal pmfs or densities,
+$$
+f(x_1,\dots,x_n)=f_1(x_1)\cdot f_2(x_2)\cdot\ldots\cdot f_n(x_n)
+$$
+for all $(x_1,\dots,x_n)^{\top}\in\mathbb{R}^n.$
+
+#### **Independence Implies Mean Independence (but Not Vice Versa)** {-}
+
+If $X$ and $Y$ are independent, then the conditional mean of $X$ given $Y=y$ equals the unconditional mean of $X$,
+$$
+E(X\mid Y=y)=E(X)\quad\text{for all } y,
+$$
+and, likewise, the conditional mean of $Y$ given $X=x$ equals the unconditional mean of $Y$,
+$$
+E(Y\mid X=x)=E(Y)\quad\text{for all } x.
+$$
+If 
 $$
 E(X\mid Y=y)=E(X)
+$$ 
+for all $y$, we say that $X$ is **mean independent** of $Y.$
+
+
+::: {.callout-caution}
+## 🚨 Caution: The Converse Is Not True
+
+If the conditional mean equals the unconditional mean,
 $$
-and likewise
+E(X\mid Y=y)=E(X)\quad\text{for all } y,
 $$
-E(Y\mid X=x)=E(Y)
+then this does **not** imply that $X$ and $Y$ are independent. (Likewise for $E(Y\mid X=x)=E(Y)$ for all $x$.)
+
+It only means that $Y$ has no effect on the **mean** of $X$. However, $Y$ may still affect other properties of the distribution of $X$, for instance, its **variance**.
+
+**Example:** 
+
+* Let $Y\in\{1,2\}$ and 
+* let $X\mid Y=y\sim\mathcal{N}(0,y^2)$. 
+
+Then
 $$
-for all $x\in\mathbb{R}$. 
+E(X\mid Y=y)=0=E(X)\quad\text{for all } y,
+$$
+but $X$ and $Y$ are not independent, since
+$$
+\operatorname{Var}(X\mid Y=1)=1\neq 4=\operatorname{Var}(X\mid Y=2).
+$$
+:::
 
 
-**Note:** The properties that $E(X\mid Y=y)=E(X)$ for all $y\in\mathbb{R}$ or that $E(Y\mid X=x)=E(Y)$ for all $x\in\mathbb{R}$, do **not** imply that $Y$ and $X$ are independent. It only means that $Y$ has no effect on the mean of $X$, but it may have, for instance, an effect on the variance of $X$. 
 
 
 
+### Random Samples
+
+By convention, the sample size is denoted by $n$; for instance, $n=526$ for a survey dataset with responses from $526$ individuals.
 
 
-### Random Samples 
+::: {.callout icon=false}
+#
+::: {#def-RandomSample}
+## Random Sample
 
-Tradition dictates that the sample size is denoted by the natural number $n\in\{1,2,\dots\}$. A collection of random variables $(X_{1}, \ldots, X_{n})$ is called a **random sample** if its random variables are **i.i.d. (independent and identically distributed)**, i.e., if
+A collection of random variables
+$$
+\{X_{1}, \ldots, X_{n}\}
+$$
+is called a **random sample** if its random variables are **i.i.d. (independent and identically distributed)**, i.e., if
 
-1. $X_{1}, \ldots, X_{n}$ are all **independent** from each other and 
-2. $X_{1}, \ldots, X_{n}$ have **identical** marginal distributions, i.e., $X_i\sim F_X$ for all $i=1,\dots,n$. 
+::: {.spaced-list}
+1. $X_{1}, \ldots, X_{n}$ are mutually **independent**, and
+2. $X_{1}, \ldots, X_{n}$ have **identical** marginal distributions, i.e., $X_i\sim F_X$ for all $i=1,\dots,n$.
+:::
+:::
+:::
 
-In micro-econometrics, random samples are the default sampling scheme. That is, we consider the collected data as a realization of an underlying random sample. 
+
+We regard the collected data as an **obs**erved realization
+$$
+\{X_{1,\operatorname{obs}}, \ldots, X_{n,\operatorname{obs}}\}
+$$
+of an underlying random sample
+$$
+\{X_{1}, \ldots, X_{n}\}.
+$$
+
+
+::: {.callout-note}
+## Example: Univariate Random Sample
+
+A shop randomly selects $n=10$ customers and records how much each of them spends (in Euro). Suppose the shop observes the following data:
+
+```{r, echo=FALSE}
+set.seed(1)
+n_rs    <- 10
+mu_rs   <- 50
+sd_rs   <- 10
+R_rs    <- 20                                       # number of realizations
+X_rs    <- matrix(rnorm(n_rs * R_rs, mu_rs, sd_rs), nrow = n_rs)
+x_obs   <- round(X_rs[, 1], 1)                      # the "observed" data
+```
+
+$$
+\{X_{1,\operatorname{obs}}, \ldots, X_{10,\operatorname{obs}}\}
+=\{`r paste(format(x_obs, nsmall = 1), collapse = ",\\ ")`\}.
+$$
+
+We assume that these data are an observed realization of an **i.i.d. random sample**
+$$
+\{X_{1}, \ldots, X_{10}\},
+$$
+where the random variable $X_i$ models the spending of customer $i$. That is,
+
+::: {.spaced-list}
+1. $X_{1}, \ldots, X_{10}$ are mutually **independent** (the spending of customer $i$ does not affect the spending of customer $j\neq i$), and
+2. $X_{1}, \ldots, X_{10}$ have **identical** marginal distributions, i.e., $X_i\sim F_X$ for all $i=1,\dots,10$.
+:::
+
+Typically, however, we do **not know** the underlying distribution $F_X$. In fact, this is the whole point: we want to use the observed data
+$$
+\{X_{1,\operatorname{obs}}, \ldots, X_{10,\operatorname{obs}}\}
+$$
+to **learn** (i.e., to **estimate**) certain aspects of the unknown distribution $F_X$, for instance, the mean spending $\mu=E(X_i)$ of the shop's customers.
+
+Note that the observed data are just **one possible realization** of the **random** sample
+$$
+\{X_{1}, \ldots, X_{10}\}.
+$$
+If the shop had selected ten other customers, it would have observed different numbers. The random variables $X_1,\dots,X_{10}$ describe all the data we **could** have observed; the observed data are the one realization we *happened* to observe.
+
+The following animation shows the observed data (first frame) together with further possible realizations of the same random sample.
+
+::: {.spaced-list}
+* The dashed line shows the true (usually unknown) mean $\mu=E(X_i)=50$.
+
+* The solid line shows the estimate of $\mu$ computed from the respective realization, i.e., the average of its ten data points,
+\begin{align*}
+\hat\mu
+&= \frac{1}{n}\left(X_1+X_2+\dots+X_n\right)\\[2ex]
+&= \frac{1}{n}\sum_{i=1}^n X_i.
+\end{align*}
+:::
+
+```{r}
+#| echo: false
+#| fig-width: 7
+#| fig-height: 4.5
+#| fig-retina: 1
+#| fig-keep: all
+#| animation-hook: gifski
+#| interval: 1
+for(r in seq_len(R_rs)){
+  col_r <- if(r == 1) "darkred" else "steelblue"
+  par(lwd = 2, mgp = c(2.2, 0.7, 0), las = 1, family = "serif", mar = c(4, 4, 3, 1))
+  plot(NA, xlim = c(0.5, n_rs + 0.5), ylim = c(15, 85), axes = FALSE,
+       xlab = "Customer i", ylab = "Spending (in Euro)",
+       main = if(r == 1) "Observed data: one realization of the random sample"
+              else paste0("Another possible realization (", r, " of ", R_rs, ")"))
+  axis(1, at = 1:n_rs, lwd.ticks = 1)
+  axis(2, at = seq(20, 80, by = 10), lwd.ticks = 1)
+  # unknown mean and average of the realized data
+  abline(h = mu_rs, lty = 2, lwd = 1.5)
+  segments(0.5, mean(X_rs[, r]), n_rs + 0.5, mean(X_rs[, r]), lwd = 1.5, col = col_r)
+  points(1:n_rs, X_rs[, r], pch = 19, cex = 2.5, col = col_r)
+  legend("topleft", bty = "n", lty = c(2, 1), lwd = 1.5, col = c(par("fg"), col_r),
+         legend = c(expression("unknown mean" ~ mu),
+                    bquote("estimate" ~ hat(mu) == .(format(round(mean(X_rs[, r]), 1), nsmall = 1)))),
+         cex = 0.9)
+}
+```
+
+The data points jump around from realization to realization, and so does their average
+$$
+\hat\mu = \frac{1}{n}\sum_{i=1}^n X_i.
+$$
+However, the averages always stay close to the unknown mean $\mu$. This is why the observed data allow us to learn about the unknown distribution $F_X$. How to do this well is the topic of **estimation**, which we discuss in the following chapters.
+:::
+
+::: {.callout-tip}
+## 🤓 Nerd's Box: Estimator vs. Estimate
+
+Strictly speaking, we need to distinguish between an estimator and an estimate:
+
+::: {.spaced-list}
+* The **estimator**
+$$
+\hat\mu=\frac{1}{n}\sum_{i=1}^n X_i
+$$
+is a function of the random variables $X_1,\dots,X_n$ and is, therefore, itself a **random variable**. It describes all the values of the average that we *could* have observed.
+
+* The **estimate**
+$$
+\hat\mu_{\operatorname{obs}}=\frac{1}{n}\sum_{i=1}^n X_{i,\operatorname{obs}}
+$$
+is the value of the estimator computed from the observed data $\{X_{1,\operatorname{obs}}, \ldots, X_{n,\operatorname{obs}}\}$. It is a fixed **number**; in the shop example, $\hat\mu_{\operatorname{obs}}=`r format(round(mean(X_rs[, 1]), 1), nsmall = 1)`$.
+:::
+
+Each frame of the animation above shows one realization of the estimator $\hat\mu$. That is, the estimate $\hat\mu_{\operatorname{obs}}$ is just one possible realization of the random estimator $\hat\mu$.
+:::
+
+The i.i.d. random sample is the simplest sampling scheme, and it serves as the default sampling scheme in many fields, such as economics and business administration.
+
+However, whether an i.i.d. random sample is a realistic assumption depends on the specific application. For instance, in time-series applications (e.g., forecasting stock market returns), the independence assumption is usually unrealistic.
+
 
 
 ### Some Important Discrete Random Variables
@@ -891,9 +2021,9 @@ In micro-econometrics, random samples are the default sampling scheme. That is, 
 <!-- The probability function is $f(x)=1$ for $x=a$ and $0$ otherwise. -->
 
 
-#### The Discrete Uniform Distribution 
+#### The Discrete Uniform Distribution
 
-Let $k>1$ be a given integer. Suppose that $X$ has probability mass function given by
+Let $k>1$ be a given integer. Suppose that $X$ has the probability mass function
 $$
 f(x)=\left\{\begin{array}{ll}
 1 / k & \text { for } x=1, \ldots, k \\
@@ -911,15 +2041,15 @@ sample(x = 1:k, size = 1, replace = TRUE)
 ```
 
 
-#### The Bernoulli Distribution 
+#### The Bernoulli Distribution
 
-Let $X$ represent a possibly unfair coin flip.  Then $P(X=1)=p$ and $P(X=0)=1-p$ for some $p \in[0,1]$.  We say that $X$ has a Bernoulli distribution written $X\sim\operatorname{Bernoulli }(p)$.  The probability function is $f(x)=p^{x}(1-p)^{1-x}$ for $x \in\{0,1\}$
+Let $X$ represent a possibly unfair coin flip. Then $P(X=1)=p$ and $P(X=0)=1-p$ for some $p \in[0,1]$. We say that $X$ has a Bernoulli distribution, written $X\sim\operatorname{Bernoulli}(p)$. The probability mass function is $f(x)=p^{x}(1-p)^{1-x}$ for $x \in\{0,1\}$ (and $f(x)=0$ otherwise).
 
 ```{r}
 set.seed(51)
 ## Set the parameter p
 p <- 0.25
-## Draw n realization from the discrete uniform distribution
+## Draw n realizations from the Bernoulli distribution
 n <- 5
 sample(x = c(0,1), size = n, prob = c(1-p, p), replace=TRUE)
 
@@ -931,7 +2061,7 @@ rbinom(n = n, size = 1, prob = p)
 
 #### The Binomial Distribution
 
-Suppose we have a coin which falls heads with probability $p$ for some $p\in[0,1]$. Flip the coin $n$ times and let $X$ be the number of heads (or successes). Assume that the tosses are independent. Let $f(x)=P(X=x)$ be the mass function. It can be shown that
+Suppose we have a coin that lands heads with probability $p$ for some $p\in[0,1]$. Flip the coin $n$ times, and let $X$ be the number of heads (or successes). Assume that the tosses are independent. Let $f(x)=P(X=x)$ be the probability mass function. It can be shown that
 $$
 f(x)=\left\{
 \begin{array}{ll}
@@ -942,14 +2072,12 @@ x
 0 & \text { otherwise. }
 \end{array}\right.
 $$
-A random variable with this probability mas function is called a **binomial random variable** and we write $X \sim \operatorname{Binomial}(n, p)$.  
+A random variable with this probability mass function is called a **binomial random variable**, and we write $X \sim \operatorname{Binomial}(n, p)$.
 
-If 
-$X_{1} \sim$ Binomial $\left(n_1, p\right)$ and 
-$X_{2} \sim$ Binomial $\left(n_2, p\right)$ and if 
-$X_1$ and $X_2$ 
-are independent, then 
-$X_{1}+X_{2} \sim \operatorname{Binomial}\left(n_1 + n_2, p\right).$
+If $X_{1} \sim \operatorname{Binomial}\left(n_1, p\right)$ and $X_{2} \sim \operatorname{Binomial}\left(n_2, p\right)$ are independent, then
+$$
+X_{1}+X_{2} \sim \operatorname{Binomial}\left(n_1 + n_2, p\right).
+$$
 
 
 ```{r}
@@ -958,7 +2086,7 @@ set.seed(51)
 size <-   10 # number of trials
 p    <- 0.25 # prob of success
 
-## Draw n realization from the binomial distribution:
+## Draw n realizations from the binomial distribution:
 n <- 5
 rbinom(n = n, size = size, prob = p)
 ```
@@ -966,13 +2094,13 @@ rbinom(n = n, size = size, prob = p)
 
 ### Some Important Continuous Random Variables
 
-#### The Uniform Distribution 
+#### The Uniform Distribution
 
 $X$ has a $\operatorname{Uniform}(a, b)$ distribution, written $X\sim \mathcal{U}(a, b),$ if
 $$
 f(x)=\left\{\begin{array}{ll}
 \frac{1}{b-a} & \text { for } x \in[a, b] \\
-0 & \text { otherwise }
+0 & \text { otherwise, }
 \end{array}\right.
 $$
 where $a<b$. The distribution function is
@@ -980,7 +2108,7 @@ $$
 F(x)=\left\{\begin{array}{ll}
 0 & x<a \\
 \frac{x-a}{b-a} & x \in[a, b] \\
-1 & x>b
+1 & x>b.
 \end{array}\right.
 $$
 
@@ -995,124 +2123,122 @@ runif(n = n, min = a, max = b)
 
 #### The Normal (or Gaussian) Distribution {#sec-NormalDistr}
 
-$X$ has a Normal (or Gaussian) distribution with parameters $\mu$ and $\sigma,$ denoted by $X \sim \mathcal{N}\left(\mu, \sigma^{2}\right),$ if
+$X$ has a normal (or Gaussian) distribution with parameters $\mu$ and $\sigma,$ denoted by $X \sim \mathcal{N}\left(\mu, \sigma^{2}\right),$ if
 $$
-f(x)=\frac{1}{\sigma \sqrt{2 \pi}} \exp \left\{-\frac{1}{2 \sigma^{2}}(x-\mu)^{2}\right\}, \quad x \in \mathbb{R}
+f(x)=\frac{1}{\sigma \sqrt{2 \pi}} \exp \left\{-\frac{1}{2 \sigma^{2}}(x-\mu)^{2}\right\}, \quad x \in \mathbb{R},
 $$
-where $\mu \in \mathbb{R}$ and $\sigma>0.$  Later we shall see that $\mu$ is the "center" (or mean of the distribution and $\sigma$ is the "spread" (or standard deviation) of the distribution. The Normal plays an important role in probability and statistics. Many phenomena in nature have approximately Normal distributions.  The **Central Limit Theorem** gives a special role to the Normal distribution by stating that the distribution of averages of random variables can be approximated by a Normal distribution.
+where $\mu \in \mathbb{R}$ and $\sigma>0.$ Later, we shall see that $\mu$ is the "center" (or mean) of the distribution and $\sigma$ is the "spread" (or standard deviation) of the distribution. The normal distribution plays an important role in probability and statistics. Many phenomena in nature have approximately normal distributions. The **Central Limit Theorem** gives the normal distribution a special role: it states that the distribution of (suitably standardized) averages of i.i.d. random variables with finite variance can be approximated by a normal distribution.
 
 
-We say that $X$ has a standard Normal distribution if $\mu=0$ and $\sigma=1$. Tradition dictates that a standard Normal random variable is denoted by $Z$. The pdf and cdf of a standard Normal are denoted by $\phi(z)$ and $\Phi(z)$. There is no closed-form expression for $\Phi$. Here are some useful facts:
+We say that $X$ has a standard normal distribution if $\mu=0$ and $\sigma=1$. By convention, a standard normal random variable is denoted by $Z$. The pdf and cdf of a standard normal random variable are denoted by $\phi(z)$ and $\Phi(z)$. There is no closed-form expression for $\Phi$. Here are some useful facts:
 
-(i) If $X \sim \mathcal{N}\left(\mu, \sigma^{2}\right)$ then $Z=(X-\mu) / \sigma \sim \mathcal{N}(0,1)$
+::: {.spaced-list}
+(i) If $X \sim \mathcal{N}\left(\mu, \sigma^{2}\right),$ then $Z=(X-\mu) / \sigma \sim \mathcal{N}(0,1)$.
 
-(ii) If $Z \sim \mathcal{N}(0,1)$ then $X=\mu+\sigma Z \sim \mathcal{N}\left(\mu, \sigma^{2}\right)$
+(ii) If $Z \sim \mathcal{N}(0,1),$ then $X=\mu+\sigma Z \sim \mathcal{N}\left(\mu, \sigma^{2}\right)$.
 
-(iii) If $X_{i} \sim \mathcal{N}\left(\mu_{i}, \sigma_{i}^{2}\right), i=1, \ldots, n$ are independent then
+(iii) If $X_{i} \sim \mathcal{N}\left(\mu_{i}, \sigma_{i}^{2}\right),$ $i=1, \ldots, n,$ are independent, then
 $$
 \sum_{i=1}^{n} X_{i} \sim \mathcal{N}\left(\sum_{i=1}^{n} \mu_{i}, \sum_{i=1}^{n} \sigma_{i}^{2}\right).
 $$
+:::
 
-The following `R`-codes plots the standard Normal density function:
-```{r, echo = T, eval = T, message = F, warning = F, fig.align='center'} 
+The following `R` code plots the standard normal density function:
+```{r, echo = T, eval = T, message = F, warning = F, fig.align='center'}
 # draw a plot of the N(0,1) pdf
 curve(dnorm(x),
       xlim = c(-3.5, 3.5),
-      ylab = "Density", 
-      main = "Standard Normal Density Function") 
+      ylab = "Density",
+      main = "Standard Normal Density Function")
 ```
 
-This is how you can draw realizations from pseudo random Normal variables:
+This is how you can draw realizations of pseudo-random normal variables:
 ```{r}
-## Drawing from the uniform distribution:
+## Drawing from the normal distribution:
 n     <- 12
 mu    <- 0
 sigma <- 1
-rnorm(n = n, mean = mu, sd = sigma) 
+rnorm(n = n, mean = mu, sd = sigma)
 ```
 
-An extension of the normal distribution in a univariate setting is the multivariate normal distribution. Let $X=(X_1,\dots,X_k)'$ be a $k$-dimensional normal variable, short $X\sim N_k(\mu,\Sigma)$ with mean vector $E(X)=\mu\in\mathbb{R}^k$ and covariance matrix $\operatorname{Cov}(X)=\Sigma$. The joint density function or **probability density function (pdf)** of the $k$-dimensional multivariate normal distribution is 
+The multivariate normal distribution extends the univariate normal distribution to random vectors. Let $X=(X_1,\dots,X_k)^{\top}$ be a $k$-dimensional normal random vector, written $X\sim \mathcal{N}_k(\mu,\Sigma)$, with mean vector $E(X)=\mu\in\mathbb{R}^k$ and positive definite variance-covariance matrix $\operatorname{Var}(X)=\Sigma$. The joint density function of the $k$-dimensional normal distribution is
 $$
-f_{X}\left(x_{1}, \ldots, x_{k}\right)=\frac{\exp \left(-\frac{1}{2}(x-\mu)' \Sigma^{-1}(x-\mu)\right)}{\sqrt{(2 \pi)^{k}|\Sigma|}},
+f_{X}\left(x_{1}, \ldots, x_{k}\right)=\frac{\exp \left(-\frac{1}{2}(x-\mu)^{\top} \Sigma^{-1}(x-\mu)\right)}{\sqrt{(2 \pi)^{k}|\Sigma|}},
 $$
-where $|\Sigma|$ denotes the determinant of $\Sigma$. For $k=2$ we have the bivariate pdf of two random normal variables, $X$ and $Y$ say
-$$
+where $x=(x_1,\dots,x_k)^{\top}$ and $|\Sigma|$ denotes the determinant of $\Sigma$. For $k=2$, we obtain the bivariate density of two normal random variables, say $X$ and $Y$, with means $\mu_X$ and $\mu_Y$, standard deviations $\sigma_X$ and $\sigma_Y$, and correlation $\rho_{XY}$:
 \begin{align*}
-&g_{X,Y}(x,y) = \frac{1}{2\pi\sigma_X\sigma_Y\sqrt{1-\rho_{XY}^2}} \\ 
-& \cdot \, \exp \left\{ \frac{1}{-2(1-\rho_{XY}^2)} \left[ \left( \frac{x-\mu_x}{\sigma_X} \right)^2 - 2\rho_{XY}\left( \frac{x-\mu_X}{\sigma_X} \right)\left( \frac{y-\mu_Y}{\sigma_Y} \right) + \left( \frac{y-\mu_Y}{\sigma_Y} \right)^2 \right]  \right\}.
+g_{X,Y}(x,y) = &\frac{1}{2\pi\sigma_X\sigma_Y\sqrt{1-\rho_{XY}^2}} \\[2ex]
+& \cdot \, \exp \left\{ -\frac{1}{2(1-\rho_{XY}^2)} \left[ \left( \frac{x-\mu_X}{\sigma_X} \right)^2 - 2\rho_{XY}\left( \frac{x-\mu_X}{\sigma_X} \right)\left( \frac{y-\mu_Y}{\sigma_Y} \right) + \left( \frac{y-\mu_Y}{\sigma_Y} \right)^2 \right]  \right\}.
 \end{align*}
-$$
-Lets consider the special case where $X$ and $Y$ are independent standard normal random variables with densities $f_X(x)$ and $f_Y(y)$. We then have the parameters $\sigma_X = \sigma_Y = 1$, $\mu_X=\mu_Y=0$ (due to marginal standard normality) and correlation $\rho_{XY}=0$ (due to independence). The joint density of $X$ and $Y$ then becomes
+Let's consider the special case where $X$ and $Y$ are independent standard normal random variables with densities $f_X(x)$ and $f_Y(y)$. Then $\sigma_X = \sigma_Y = 1$ and $\mu_X=\mu_Y=0$ (due to marginal standard normality), and the correlation is $\rho_{XY}=0$ (due to independence). The joint density of $X$ and $Y$ then becomes
 $$
 g_{X,Y}(x,y) = f_X(x) f_Y(y) = \frac{1}{2\pi} \cdot \exp \left\{ -\frac{1}{2}\left[x^2 + y^2\right]\right\}.
-$$ 
+$$
 
 
 #### The Chi-Squared Distribution {#sec-chisqdist}
 
-The chi-squared distribution is another distribution relevant in econometrics. It is often needed when testing special types of hypotheses frequently encountered when dealing with regression models. 
+The chi-squared distribution is another important distribution in econometrics. We need it, for instance, to test hypotheses in regression models.
 
-The sum of $\nu=1,2,\dots$ squared *independent standard normal* distributed random variables, $Z_1,\dots,Z_\nu$ follows a chi-squared distribution with $\nu$ degrees of freedom (df):
+The sum of $\nu\in\{1,2,\dots\}$ squared *independent standard normal* random variables $Z_1,\dots,Z_\nu$ follows a chi-squared distribution with $\nu$ degrees of freedom (df):
 $$
-\begin{align*}
-Z_1^2 + \dots + Z_\nu^2 = \sum_{j=1}^\nu Z_j^2 =:W \sim \chi^2_{\nu}. 
-\end{align*}
+W:=Z_1^2 + \dots + Z_\nu^2 = \sum_{j=1}^\nu Z_j^2 \sim \chi^2_{\nu}.
 $$
-A $\chi^2$ distributed random variable $W$ with $\nu$ degrees of freedom has expectation $E(W)=\nu$, mode at $\nu-2$ for $\nu \geq 2$ and variance $2 \cdot \nu.$ 
+A $\chi^2_\nu$ distributed random variable $W$ has expectation $E(W)=\nu$, variance $\operatorname{Var}(W)=2\nu,$ and, for $\nu \geq 2,$ its mode at $\nu-2$.
 
 
-Using the code below, we can display the pdf and the distribution function or **cumulated density function (cdf)** of a $\chi^2_3$ random variable in a single plot. This is achieved by setting the argument `add = TRUE"` in the second call of `"curve()"`. Further we adjust limits of both axes using `"xlim"` and `"ylim"` and choose different colors to make both functions better distinguishable. The plot is completed by adding a legend with help of `"legend()"`.
+Using the code below, we can display the pdf and the **cumulative distribution function (cdf)** of a $\chi^2_3$ random variable in a single plot. This is achieved by setting the argument `add = TRUE` in the second call of `curve()`. Furthermore, we adjust the limits of both axes using `xlim` and `ylim`, and choose different colors to make both functions easier to distinguish. Finally, we add a legend using `legend()`.
 
 
-```{r, echo = T, eval = T, message = F, warning = F, fig.align='center'} 
+```{r, echo = T, eval = T, message = F, warning = F, fig.align='center'}
 # plot the pdf
-curve(dchisq(x, df = 3), 
-      xlim = c(0, 10), 
-      ylim = c(0, 1), 
+curve(dchisq(x, df = 3),
+      xlim = c(0, 10),
+      ylim = c(0, 1),
       col = "blue",
       ylab = "",
       main = "pdf and cdf of Chi-Squared Distribution (df = 3)")
 
 # add the cdf to the plot
-curve(pchisq(x, df = 3), 
-      xlim = c(0, 10), 
-      add = TRUE, 
+curve(pchisq(x, df = 3),
+      xlim = c(0, 10),
+      add = TRUE,
       col = "red")
 
 # add a legend to the plot
-legend("topleft", 
-       c("pdf", "cdf"), 
-       col = c("blue", "red"), 
+legend("topleft",
+       c("pdf", "cdf"),
+       col = c("blue", "red"),
        lty = c(1, 1))
 ```
 
 
-Since the outcomes of a $\chi^2_\nu$ distributed random variable are always positive, the support of the related pdf and cdf is $\mathbb{R}_{\geq 0}$.
+Since a $\chi^2_\nu$ distributed random variable is a sum of squares, it is never negative; the support of its pdf and cdf is $\mathbb{R}_{\geq 0}$.
 
-As expectation and variance depend (solely!) on the degrees of freedom, the distribution's shape changes drastically if we vary the degrees of freedoms. 
+The $\chi^2_\nu$ distribution depends solely on the degrees of freedom $\nu$, and its shape changes drastically as we vary $\nu$.
 
 
-```{r, echo = T, eval = T, message = F, warning = F, fig.align='center'} 
+```{r, echo = T, eval = T, message = F, warning = F, fig.align='center'}
 # plot the density for M=1
-curve(dchisq(x, df = 1), 
-      xlim = c(0, 15), 
-      xlab = "x", 
-      ylab = "Density", 
+curve(dchisq(x, df = 1),
+      xlim = c(0, 15),
+      xlab = "x",
+      ylab = "Density",
       main = "Chi-Square Distributed Random Variables")
 
-# add densities for M=2,...,7 to the plot using a 'for()' loop 
+# add densities for M=2,...,7 to the plot using a 'for()' loop
 for (M in 2:7) {
   curve(dchisq(x, df = M),
-        xlim = c(0, 15), 
-        add = T, 
+        xlim = c(0, 15),
+        add = T,
         col = M)
 }
 
 # add a legend
-legend("topright", 
-       as.character(1:7), 
-       col = 1:7 , 
-       lty = 1, 
+legend("topright",
+       as.character(1:7),
+       col = 1:7 ,
+       lty = 1,
        title = "df")
 ```
 
@@ -1123,65 +2249,62 @@ Increasing the degrees of freedom shifts the distribution to the right (the mode
 
 #### The Student $t$ Distribution {#sec-tdist}
 
-Let $Z$ be a standard normal random variable, $W$ a $\chi^2_\nu$ random variable and further assume that $Z$ and $W$ are independent. Then it holds that
+Let $Z$ be a standard normal random variable and $W$ a $\chi^2_\nu$ random variable, and assume that $Z$ and $W$ are independent. Then
 $$
-\frac{Z}{\sqrt{W/\nu}} =:X \sim t_\nu
+X:=\frac{Z}{\sqrt{W/\nu}} \sim t_\nu,
 $$
-and $X$ follows a *Student $t$ distribution* (or simply $t$ distribution) with $\nu$ degrees of freedom.
+i.e., $X$ follows a *Student $t$ distribution* (or simply $t$ distribution) with $\nu$ degrees of freedom.
 
-The shape of a $t_\nu$ distribution depends on $\nu$. $t$ distributions are symmetric, bell-shaped and look similar to a normal distribution, especially when $\nu$ is large. This is not a coincidence: for a sufficiently large $\nu$, the $t_\nu$ distribution can be approximated by the standard normal distribution. This approximation works reasonably well for $\nu\geq 30$. 
+The shape of a $t_\nu$ distribution depends on $\nu$. All $t$ distributions are symmetric and bell-shaped, and they look similar to a normal distribution, especially when $\nu$ is large. This is not a coincidence: for sufficiently large $\nu$, the $t_\nu$ distribution can be approximated by the standard normal distribution. As a rule of thumb, this approximation works reasonably well for $\nu\geq 30$.
 
-A $t_\nu$ distributed random variable $X$ has an expectation if $\nu>1$ and it has a variance if $\nu>2$.
-$$
+A $t_\nu$ distributed random variable $X$ has a mean if $\nu>1$ and a variance if $\nu>2$:
 \begin{align*}
-  E(X) =& 0, \qquad \nu > 1 \\
-  \text{Var}(X) =& \frac{\nu}{\nu-2}, \qquad \nu > 2
+  E(X) &= 0, \qquad \nu > 1, \\[2ex]
+  \operatorname{Var}(X) &= \frac{\nu}{\nu-2}, \qquad \nu > 2.
 \end{align*}
-$$
 
-Let us plot some $t$ distributions with different degrees of freedoms $\nu$ and compare them to the standard normal distribution.
+Let us plot some $t$ distributions with different degrees of freedom $\nu$ and compare them to the standard normal distribution.
 
-```{r, echo = T, eval = T, message = F, warning = F, fig.align='center'} 
+```{r, echo = T, eval = T, message = F, warning = F, fig.align='center'}
 # plot the standard normal density
-curve(dnorm(x), 
-      xlim = c(-4, 4), 
-      xlab = "x", 
-      lty = 2, 
-      ylab = "Density", 
+curve(dnorm(x),
+      xlim = c(-4, 4),
+      xlab = "x",
+      lty = 2,
+      ylab = "Density",
       main = "Densities of t Distributions")
 
 # plot the t density for M=2
-curve(dt(x, df = 2), 
-      xlim = c(-4, 4), 
-      col = 2, 
+curve(dt(x, df = 2),
+      xlim = c(-4, 4),
+      col = 2,
       add = T)
 
 # plot the t density for M=4
-curve(dt(x, df = 4), 
-      xlim = c(-4, 4), 
-      col = 3, 
+curve(dt(x, df = 4),
+      xlim = c(-4, 4),
+      col = 3,
       add = T)
 
 # plot the t density for M=25
-curve(dt(x, df = 25), 
-      xlim = c(-4, 4), 
-      col = 4, 
+curve(dt(x, df = 25),
+      xlim = c(-4, 4),
+      col = 4,
       add = T)
 
 # add a legend
-legend("topright", 
-       c("N(0, 1)", "df=2", "df=4", "df=25"), 
-       col = 1:4, 
+legend("topright",
+       c("N(0, 1)", "df=2", "df=4", "df=25"),
+       col = 1:4,
        lty = c(2, 1, 1, 1))
 ```
 
-The plot illustrates that as the degrees of freedom increase, the shape of the $t$ distribution comes closer to that of a standard normal bell curve. Already for $\nu=25$ we find little difference to the standard normal density. If $\nu$ is small, we find the distribution to have heavier tails than a standard normal.
+The plot illustrates that as the degrees of freedom increase, the shape of the $t$ distribution comes closer to that of the standard normal bell curve. Already for $\nu=25,$ there is little difference from the standard normal density. For small $\nu,$ the $t$ distribution has heavier tails than the standard normal distribution.
 
 
-#### Cauchy Distribution
+#### The Cauchy Distribution
 
-The Cauchy distribution is a special
-case of the $t$ distribution corresponding to $\nu=1$. The density is
+The (standard) Cauchy distribution is the special case of the $t$ distribution with $\nu=1$. Its density is
 $$
 f(x)=\frac{1}{\pi\left(1+x^{2}\right)}.
 $$
@@ -1193,38 +2316,40 @@ $$
 <!-- \end{aligned} -->
 <!-- $$ -->
 
-For the Cauchy distribution, the **expectation does not exist** -- that is, it has no mean.  Let's try to compute the mean of a Cauchy distribution and see what goes wrong. Its mean should be
+For the Cauchy distribution, the **expectation does not exist**, i.e., it has no mean. Let's try to compute the mean of a Cauchy distribution and see what goes wrong. Its mean would be
 $$
-\mu=E(X)=\int_{-\infty}^{\infty} \frac{x d x}{\pi\left(1+x^{2}\right)}.
+\mu=E(X)=\int_{-\infty}^{\infty} \frac{x}{\pi\left(1+x^{2}\right)}\,dx.
 $$
-In order for this improper integral to exist, we need both integrals $\int_{-\infty}^{0}$ and $\int_{0}^{\infty}$ to be finite. Let's look at the second integral.
+For this improper integral to exist, both integrals $\int_{-\infty}^{0}$ and $\int_{0}^{\infty}$ need to be finite. Let's look at the second integral:
 $$
-\int_{0}^{\infty} \frac{x d x}{\pi\left(1+x^{2}\right)}=\left.\frac{1}{2 \pi} \log \left(1+x^{2}\right)\right|_{0} ^{\infty}=\infty
+\int_{0}^{\infty} \frac{x}{\pi\left(1+x^{2}\right)}\,dx=\left.\frac{1}{2 \pi} \log \left(1+x^{2}\right)\right|_{0} ^{\infty}=\infty.
 $$
-Similarly, the other integral, $\int_{-\infty}^{0},$ is $-\infty$. Since they're not both finite, the integral $\int_{-\infty}^{\infty}$ doesn't exist. In other words $\infty-\infty$ is not a number. Thus, the Cauchy distribution has no mean. 
+Similarly, the first integral, $\int_{-\infty}^{0},$ equals $-\infty$. Since they are not both finite, the integral $\int_{-\infty}^{\infty}$ does not exist; $\infty-\infty$ is not a number. Thus, the Cauchy distribution has no mean.
 
-What this means in practice is that if you take a sample $x_{1}, x_{2}, \ldots, x_{n}$ from the Cauchy distribution, then the average $\bar{x}$ does not tend to a particular number. Instead, every so often you will get such a huge number, either positive or negative, that the average is overwhelmed by it.
+In practice, this means that if you take a sample $x_{1}, x_{2}, \ldots, x_{n}$ from the Cauchy distribution, the average $\bar{x}$ does not tend to a particular number as $n$ grows. Instead, every so often, you get such a huge value, either positive or negative, that the average is overwhelmed by it. In fact, the average of $n$ i.i.d. standard Cauchy random variables is again standard Cauchy distributed, no matter how large $n$ is.
 
 
 
 #### The F Distribution {#sec-Fdist}
 
-Another ratio of random variables important to econometricians is the ratio of two independent $\chi^2$ distributed random variables that are divided by their degrees of freedom $m$ and $n$. The quantity 
-
+Another ratio of random variables that is important to econometricians is the ratio of two independent $\chi^2$ distributed random variables, each divided by its degrees of freedom. Let $W \sim \chi^2_m$ and $V \sim \chi^2_n$ be independent. Then
 $$
-\frac{W/m}{V/n} \sim F_{m,n} \ \ \text{with} \ \ W \sim \chi^2_m \ \ , \ \ V \sim \chi^2_n 
+\frac{W/m}{V/n} \sim F_{m,n},
 $$
-follows an $F$ distribution with numerator degrees of freedom $m$ and denominator degrees of freedom $n$, denoted $F_{m,n}$. The distribution was first derived by George Snedecor but was named in honor of [Sir Ronald Fisher](https://en.wikipedia.org/wiki/Ronald_Fisher).
+i.e., this ratio follows an $F$ distribution with numerator degrees of freedom $m$ and denominator degrees of freedom $n$. The distribution was tabulated and named by George Snedecor in honor of [Sir Ronald Fisher](https://en.wikipedia.org/wiki/Ronald_Fisher), who had derived a closely related distribution.
 
-By definition, the support of both pdf and cdf of an $F_{m,n}$ distributed random variable is $\mathbb{R}_{\geq0}$.
+Since $F_{m,n}$ distributed random variables are ratios of non-negative random variables, the support of both the pdf and the cdf is $\mathbb{R}_{\geq0}$.
 
-Say we have an $F$ distributed random variable $Y$ with numerator degrees of freedom $3$ and denominator degrees of freedom $14$ and are interested in $P(Y \geq 2)$. This can be computed with help of the function `"pf()"`. By setting the argument `"lower.tail"` to `"FALSE"` we ensure that `R` computes $1- P(Y \leq 2)$, i.e,the probability mass in the tail right of $2$. 
+::: {.callout-note}
+## Example: Tail Probability of an $F$ Distribution
+
+Let $Y\sim F_{3,14}$, i.e., $Y$ has numerator degrees of freedom $3$ and denominator degrees of freedom $14$. Suppose we are interested in $P(Y \geq 2)$. This can be computed using the function `pf()`. By setting the argument `lower.tail = FALSE`, we ensure that `R` computes $1- P(Y \leq 2)$, i.e., the probability in the right tail beyond $2$.
 
 ```{r, echo = T, eval = T, message = F, warning = F}
-pf(2, df1 = 3, df2 = 14, lower.tail = F)
+pf(2, df1 = 3, df2 = 14, lower.tail = FALSE)
 ```
 
-We can visualize this probability by drawing a line plot of the related density and adding a color shading with `"polygon()"`.
+We can visualize this probability by plotting the density and shading the tail area using `polygon()`.
 
 ```{r, echo = T, eval = T, message = F, warning = F, fig.align='center'}
 # define coordinate vectors for vertices of the polygon
@@ -1232,28 +2357,29 @@ x <- c(2, seq(2, 10, 0.01), 10)
 y <- c(0, df(seq(2, 10, 0.01), 3, 14), 0)
 
 # draw density of F_{3, 14}
-curve(df(x ,3 ,14), 
-      ylim = c(0, 0.8), 
-      xlim = c(0, 10), 
+curve(df(x, 3, 14),
+      ylim = c(0, 0.8),
+      xlim = c(0, 10),
       ylab = "Density",
       main = "Density Function")
 
 # draw the polygon
 polygon(x, y, col = "orange")
 ```
+:::
 
-The $F$ distribution is related to many other distributions. An important special case encountered in econometrics arises if the denominator degrees of freedom are large such that the $F_{m,n}$ distribution can be approximated by the $F_{m,\infty}$ distribution which turns out to be simply the distribution of a $\chi^2_m$ random variable divided by its degrees of freedom $m,$ i.e. 
-$$ 
+The $F$ distribution is related to many other distributions. An important special case in econometrics arises when the denominator degrees of freedom $n$ are large. Then, the $F_{m,n}$ distribution can be approximated by the $F_{m,\infty}$ distribution, which is simply the distribution of a $\chi^2_m$ random variable divided by its degrees of freedom $m,$ i.e.,
+$$
 \frac{W}{m} \sim F_{m,\infty} \quad\text{with}\quad W \sim \chi^2_m.
 $$
 
 
-<!-- 
+<!--
 ## Exercises
 
 * [Exercises for Chapter 2](https://www.dropbox.com/scl/fi/id6hc7q13veovkopf6xnt/Ch2_Exercises1.pdf?rlkey=fhyv5m2fjw6p9kv2strkxomun&st=jiltpae4&dl=0)
 
-* [Exercises for Chapter 2 with Solutions](https://www.dropbox.com/scl/fi/q4x4q4q996mav47sax8nf/Ch2_Exercises_with_Solutions1.pdf?rlkey=69osulookyvx96ttvj4ovo66a&st=03oydfn1&dl=0) 
+* [Exercises for Chapter 2 with Solutions](https://www.dropbox.com/scl/fi/q4x4q4q996mav47sax8nf/Ch2_Exercises_with_Solutions1.pdf?rlkey=69osulookyvx96ttvj4ovo66a&st=03oydfn1&dl=0)
 -->
 
 ## References {-}

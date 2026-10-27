@@ -9,3 +9,12 @@ $callout-color-note: #0d6efd;   // Bootstrap blue; Flatly's $blue is navy
 img {
   max-width: 100%;
 }
+
+/*-- scss:rules --*/
+// Wide-spaced lists: wrap a list in `::: {.spaced-list}` ... `:::`
+.spaced-list li {
+  margin-bottom: 0.8em;
+}
+.spaced-list li:last-child {
+  margin-bottom: 0;
+}
