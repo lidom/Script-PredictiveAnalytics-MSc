@@ -386,7 +386,7 @@ The lesson here is that you need to compute the answer numerically. **Don't trus
 
 
 
-#### Independence via Conditional Probabilities {-}
+#### **Independence via Conditional Probabilities** {-}
 
 If $A$ and $B$ are **independent events**, then
 $$
@@ -551,7 +551,7 @@ $$
 
 ### Univariate Distribution and Probability Functions
 
-#### Cumulative Distribution Function {#sec-Defcdf}
+#### **Cumulative Distribution Function** {#sec-Defcdf}
 
 The **cumulative distribution function (cdf)**
 $$
@@ -686,7 +686,7 @@ As an alternative to cdfs, we can use
 :::
 
 
-#### Probability Functions for Discrete Random Variables
+#### **Probability Functions for Discrete Random Variables**
 
 A random variable $X$ is *discrete* if it takes only **countably** many values
 $$
@@ -748,15 +748,24 @@ points(x, p, pch = 19, col = "darkblue")
 text(x, p, labels = p, pos = 3, cex = 0.8, col = "darkred")
 ```
 
-The pmf and the cdf contain the same information. The cdf is obtained by summing up the pmf,
+**The pmf and the cdf contain the same information.** 
+
+The cdf $F_X(x)=P(X\leq x)$ is obtained by summing up the pmf values for all $x_\ell$ smaller or equal $x,$
 $$
-F_X(x)=\sum_{x_k\leq x} f_X(x_k),
+F_X(x)=\sum_{x_k\leq x} f_X(x_k).
 $$
-e.g., $F_X(1)=f_X(0)+f_X(1)=0.2+0.4=0.6$. Conversely, the pmf values are the jump heights of the cdf (see the cdf plot above).
+
+
+For instance, 
+$$
+F_X(1)=f_X(0)+f_X(1)=0.2+0.4=0.6.
+$$ 
+
+Conversely, the pmf values are the jump heights of the cdf (see the cdf plot above).
 :::
 
 
-#### Density Functions for Continuous Random Variables
+#### **Density Functions for Continuous Random Variables**
 
 A random variable $X$ is *continuous* if there exists a function $f_{X}$ such that
 
@@ -789,9 +798,11 @@ f_X(x)=F_X^{\prime}(x)=\left\{\begin{array}{ll}
 \frac{1}{5}\,e^{-x/5} & \text{for } x\geq 0.
 \end{array}\right.
 $$
-(At $x=0,$ the cdf has a kink and is not differentiable; the value of a density at a single point does not matter, since it does not change any integral.)
+(At $x=0,$ the cdf has a kink and is not differentiable.)
 
-Probabilities are now **areas under the density**. For instance, the probability that the next customer arrives within $5$ minutes is
+**Probabilities are now areas under the density.** 
+
+For instance, the probability that the next customer arrives within $5$ minutes is
 \begin{align*}
 P(X\leq 5)
 &=\int_{0}^{5}\frac{1}{5}\,e^{-x/5}\,dx\\[2ex]
@@ -843,7 +854,7 @@ $$
 whose elements $X_j\in\mathbb{R}$, $j=1,\dots,d$, are univariate random variables.
 
 
-#### Joint Distribution Function
+#### **Joint Distribution Function**
 
 
 The **joint (or multivariate) distribution function** $F$ of $X$ is given by
@@ -851,10 +862,21 @@ $$
 F(a_1,\dots,a_d)=P(X_1\le a_1,\dots,X_d\le a_d).
 $$
 
+It gives us the probability that $X_1\le a_1$ AND $X_2\le a_2$ AND $\dots$ AND $X_d\le a_d.$
+
+
 ::: {.callout-note}
 ## Example: Joint Distribution Function of a Bivariate Normal Distribution
 
-Let
+Consider a firm (or an entire sector, such as retail) whose revenues depend on the business cycle:
+
+::: {.spaced-list}
+* $X_1$ is the firm's annual revenue growth (in %), with mean $E(X_1)=2$ and variance $\operatorname{Var}(X_1)=1$, i.e., a standard deviation of $1$ percentage point.
+* $X_2$ is the annual GDP growth (in %), with mean $E(X_2)=1$ and variance $\operatorname{Var}(X_2)=1$, i.e., a standard deviation of $1$ percentage point. These values are more or less realistic for Germany.
+* The covariance is $\operatorname{Cov}(X_1,X_2)=0.8$. That is, the firm's revenues move closely with the business cycle.
+:::
+
+We *model* the two growth rates jointly. Let
 $$
 X=
 \begin{pmatrix}
@@ -880,7 +902,10 @@ $$
 =\begin{pmatrix}\operatorname{Var}(X_1)&\operatorname{Cov}(X_1,X_2)\\\operatorname{Cov}(X_1,X_2)&\operatorname{Var}(X_2)\end{pmatrix}
 =\begin{pmatrix}1&0.8\\0.8&1\end{pmatrix};
 $$
-see also @sec-NormalDistr. This bivariate normal distribution serves as our **running example** for the rest of this chapter.
+see also @sec-NormalDistr. 
+
+
+This bivariate normal distribution serves as our **running example** for the rest of this chapter.
 
 Its joint distribution function
 $$
@@ -957,7 +982,7 @@ The positive covariance $\operatorname{Cov}(X_1,X_2)=0.8$ makes it more likely t
 
 
 
-#### Joint Probability Mass Function
+#### **Joint Probability Mass Function**
 
 **Discrete random vectors:** Let the $d$-dimensional random (column) vector
 $$
@@ -1131,7 +1156,7 @@ These are exactly the pmf values from the one-dimensional car sales example abov
 :::
 
 
-#### Joint Density Function
+#### **Joint Density Function**
 
 
 **Continuous random vectors:** $X$ takes values in $\mathbb{R}^d$
@@ -1301,7 +1326,7 @@ This means that $X_1$ and $X_2$ are assumed to be *independent* here, which is r
 In the following, we focus on continuous random vectors; the discrete case is treated analogously, with sums instead of integrals.
 
 
-#### Marginal Distribution Functions and Marginal Density Functions
+#### **Marginal Distribution Functions and Marginal Density Functions**
 
 Let
 $$
@@ -1374,7 +1399,7 @@ legend("bottomright", col = alpha("darkblue", 0.5), lwd = 1, bty = "n",
 
 
 
-#### Conditional Density Function {#sec-condDistr}
+#### **Conditional Density Function** {#sec-condDistr}
 
 Often, we are interested in the **conditional distribution** of $X_j$ given fixed values of all other random variables,
 $$
@@ -1470,7 +1495,7 @@ Therefore, compared to the marginal density $f_1(x_1)$, the conditional density 
 
 ### Means and Moments
 
-#### Unconditional Means
+#### **Unconditional Means**
 
 The **unconditional mean** of $X_1$ is given by
 $$
@@ -1568,7 +1593,7 @@ legend("topleft", col = c("darkorange", "darkred"), lwd = 1.5, bty = "n",
 
 
 
-#### Means of Transformed Random Variables and Moments
+#### **Means of Transformed Random Variables and Moments**
 
 
 The **mean of a transformed random variable** $r(X)$ is given by
@@ -1612,7 +1637,7 @@ Of course, these moments are only defined if the respective integrals exist, i.e
 
 
 
-#### Conditional Means ➡️ Regression Functions
+#### **Conditional Means ➡️ Regression Functions**
 
 The **conditional mean** of $X_1$ given $X_2=x_2,\ldots,X_d=x_d$ is
 \begin{align*}
@@ -1729,7 +1754,7 @@ In our example, the main axis of the contour ellipses moves one-to-one: one unit
 
 
 
-#### Law of Total Expectation $=$ Law of Iterated Expectations
+#### **Law of Total Expectation $=$ Law of Iterated Expectations**
 
 As long as we do not fix the values of the conditioning variables $X_2,\dots,X_d$, they are random variables. Consequently, the conditional mean
 $$
@@ -2021,7 +2046,7 @@ However, whether an i.i.d. random sample is a realistic assumption depends on th
 <!-- The probability function is $f(x)=1$ for $x=a$ and $0$ otherwise. -->
 
 
-#### The Discrete Uniform Distribution
+#### **The Discrete Uniform Distribution**
 
 Let $k>1$ be a given integer. Suppose that $X$ has the probability mass function
 $$
@@ -2041,7 +2066,7 @@ sample(x = 1:k, size = 1, replace = TRUE)
 ```
 
 
-#### The Bernoulli Distribution
+#### **The Bernoulli Distribution**
 
 Let $X$ represent a possibly unfair coin flip. Then $P(X=1)=p$ and $P(X=0)=1-p$ for some $p \in[0,1]$. We say that $X$ has a Bernoulli distribution, written $X\sim\operatorname{Bernoulli}(p)$. The probability mass function is $f(x)=p^{x}(1-p)^{1-x}$ for $x \in\{0,1\}$ (and $f(x)=0$ otherwise).
 
@@ -2059,7 +2084,7 @@ rbinom(n = n, size = 1, prob = p)
 ```
 
 
-#### The Binomial Distribution
+#### **The Binomial Distribution**
 
 Suppose we have a coin that lands heads with probability $p$ for some $p\in[0,1]$. Flip the coin $n$ times, and let $X$ be the number of heads (or successes). Assume that the tosses are independent. Let $f(x)=P(X=x)$ be the probability mass function. It can be shown that
 $$
@@ -2094,7 +2119,7 @@ rbinom(n = n, size = size, prob = p)
 
 ### Some Important Continuous Random Variables
 
-#### The Uniform Distribution
+#### **The Uniform Distribution**
 
 $X$ has a $\operatorname{Uniform}(a, b)$ distribution, written $X\sim \mathcal{U}(a, b),$ if
 $$
@@ -2121,7 +2146,7 @@ runif(n = n, min = a, max = b)
 ```
 
 
-#### The Normal (or Gaussian) Distribution {#sec-NormalDistr}
+#### **The Normal (or Gaussian) Distribution** {#sec-NormalDistr}
 
 $X$ has a normal (or Gaussian) distribution with parameters $\mu$ and $\sigma,$ denoted by $X \sim \mathcal{N}\left(\mu, \sigma^{2}\right),$ if
 $$
@@ -2176,7 +2201,7 @@ g_{X,Y}(x,y) = f_X(x) f_Y(y) = \frac{1}{2\pi} \cdot \exp \left\{ -\frac{1}{2}\le
 $$
 
 
-#### The Chi-Squared Distribution {#sec-chisqdist}
+#### **The Chi-Squared Distribution** {#sec-chisqdist}
 
 The chi-squared distribution is another important distribution in econometrics. We need it, for instance, to test hypotheses in regression models.
 
@@ -2247,7 +2272,7 @@ Increasing the degrees of freedom shifts the distribution to the right (the mode
 
 
 
-#### The Student $t$ Distribution {#sec-tdist}
+#### **The Student $t$ Distribution** {#sec-tdist}
 
 Let $Z$ be a standard normal random variable and $W$ a $\chi^2_\nu$ random variable, and assume that $Z$ and $W$ are independent. Then
 $$
@@ -2302,7 +2327,7 @@ legend("topright",
 The plot illustrates that as the degrees of freedom increase, the shape of the $t$ distribution comes closer to that of the standard normal bell curve. Already for $\nu=25,$ there is little difference from the standard normal density. For small $\nu,$ the $t$ distribution has heavier tails than the standard normal distribution.
 
 
-#### The Cauchy Distribution
+#### **The Cauchy Distribution**
 
 The (standard) Cauchy distribution is the special case of the $t$ distribution with $\nu=1$. Its density is
 $$
@@ -2330,7 +2355,7 @@ In practice, this means that if you take a sample $x_{1}, x_{2}, \ldots, x_{n}$ 
 
 
 
-#### The F Distribution {#sec-Fdist}
+#### **The F Distribution** {#sec-Fdist}
 
 Another ratio of random variables that is important to econometricians is the ratio of two independent $\chi^2$ distributed random variables, each divided by its degrees of freedom. Let $W \sim \chi^2_m$ and $V \sim \chi^2_n$ be independent. Then
 $$

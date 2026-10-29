@@ -354,7 +354,7 @@ For clustered covariances, the `clubSandwich` package can be used.
 
 ### Robust Inference
 
-#### Robust Hypothesis Testing: Multiple Parameters
+#### **Robust Hypothesis Testing: Multiple Parameters**
 
 System of $q$ null hypotheses:
 $$
@@ -393,7 +393,7 @@ Instead of $W$ statistic and the $\chi^2(q)$ distribution use the $\frac{W}{q}$ 
 * For finite $n$: using $\frac{W}{q}$ and $F_{q,n-K}$ gives more conservative test decisions compensating for the estimation error in $S_{X^{\top}X}^{-1}\widehat{E}(\varepsilon^2_iX_iX_i^{\top})S^{-1}_{X^{\top}X}$ (or $s_{ub}^2S_{X^{\top}X}^{-1}$).
 :::
 
-#### Robust Hypothesis Testing: Single Parameters
+#### **Robust Hypothesis Testing: Single Parameters**
 
 Hypotheses about a single parameter $\beta_k,$ $k=1,\dots,K$:
 $$
@@ -422,7 +422,7 @@ Use the $t_{(n-K)}$ distribution ($n-K$ degrees of freedom) instead of $\mathcal
 * For finite $n$: $t_{(n-K)}$ gives larger critical values -- compensates for the estimation error in $[S_{X^{\top}X}^{-1}\widehat{E}(\varepsilon^2_iX_iX_i^{\top})S^{-1}_{X^{\top}X}]_{(k,k)}$ (or $s_{ub}^2[S_{X^{\top}X}^{-1}]_{(k,k)}$).
 :::
 
-#### Robust Confidence Intervals
+#### **Robust Confidence Intervals**
 
 Following @sec-CIsmallsample, but with robust standard errors, the heteroskedasticity robust $(1-\alpha)\cdot 100\%$ confidence interval is:
 $$

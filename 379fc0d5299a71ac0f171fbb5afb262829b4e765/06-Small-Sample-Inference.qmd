@@ -506,7 +506,7 @@ so the three versions differ **only** in the shape of the rejection region $\mat
 
 ::: {.panel-tabset}
 
-#### Right-sided
+#### **Right-sided**
 
 The right-sided version of the one-sided hypothesis is given by
 $$
@@ -568,7 +568,7 @@ c_oneSided <- qt(p = 1-alpha, df = df)
 c_oneSided
 ```
 
-#### Left-sided
+#### **Left-sided**
 
 The left-sided version of the one-sided hypothesis is given by
 $$
@@ -631,7 +631,7 @@ c_oneSided <- qt(p = alpha, df = df)
 c_oneSided
 ```
 
-#### Two-sided
+#### **Two-sided**
 
 The two-sided $t$-test allows us to test
 $$
@@ -722,7 +722,7 @@ The three versions differ **only** in how $p_{\text{obs}}$ is computed.
 
 ::: {.panel-tabset}
 
-#### Right-sided
+#### **Right-sided**
 
 Right-sided version of the one-sided hypothesis:
 $$
@@ -737,7 +737,7 @@ $$
 p_{\text{obs}}=P(T\geq T_{\text{obs}}\;|\;H_0 \text{ is true}).
 $$
 
-#### Left-sided
+#### **Left-sided**
 
 Left-sided version of the one-sided hypothesis:
 $$
@@ -752,7 +752,7 @@ $$
 p_{\text{obs}}=P(T\leq T_{\text{obs}}\;|\;H_0 \text{ is true}).
 $$
 
-#### Two-sided
+#### **Two-sided**
 
 The two-sided $t$-test allows us to test
 $$
@@ -984,7 +984,7 @@ is to collect all hypotheses which we do not care to detect by the statistical t
 
 ::: {.panel-tabset}
 
-#### Example: two-sided test with $\theta\in\mathbb{R}$
+#### **Example: two-sided test with $\theta\in\mathbb{R}$**
 
 $$
 \begin{equation*}
@@ -1005,7 +1005,7 @@ $$
 \Theta_1=\mathbb{R}\setminus\theta^{(0)}.
 $$
 
-#### Example: one-sided test with $\theta\in\mathbb{R}$
+#### **Example: one-sided test with $\theta\in\mathbb{R}$**
 
 $$
 \begin{equation*}
@@ -1369,7 +1369,7 @@ All of these options lead to equivalent test decisions.
 
 The **rejection region** for a statistical test statistic $T$ is defined using **critical values** which are certain quantiles of the distribution of $T$ under $H_0.$  
 
-#### Rejection Regions of the $F$-Test 
+#### **Rejection Regions of the $F$-Test**
 
 The $F$-test allows us to test
 $$
@@ -2180,7 +2180,7 @@ car::linearHypothesis(
 
 <!-- Since $X_{gender,i}$ is a dummy variable,  -->
 
-#### `R` Package Stargazer {-}
+#### **`R` Package Stargazer** {-}
 
 Beautiful and "publication ready" regression outputs can be produced using the `R` package `stargazer` and its function `stargazer()`:
 
@@ -2197,7 +2197,7 @@ stargazer(lm_obj, type="html")
 </center>
 
 
-#### Critical Discussion of the Regression above Results {-}
+#### **Critical Discussion of the Regression above Results** {-}
 
 The above real data analysis does **not** fit into the small sample inference framework we introduced in this chapter. 
 

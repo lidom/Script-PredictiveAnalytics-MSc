@@ -320,7 +320,7 @@ Under the spherical errors assumption, one has, for all possible realizations of
 <!-- **Technical Note:** When we write that $Var(\varepsilon_i|X)=\sigma^2$ or $Var(\varepsilon_i|X_i)=\sigma^2_i,$ we implicitly assume that these second moments exists and that they are finite.  -->
 
 
-#### Homoskedastic versus Heteroskedastic Error Terms {-}
+#### **Homoskedastic versus Heteroskedastic Error Terms** {-}
 
 
 The i.i.d. assumption is not as restrictive as it may seem on first sight. It allows for dependence between $\varepsilon_i$ and $(X_{i1},\dots,X_{iK})\in\mathbb{R}^K$. That is, the error term $\varepsilon_i$ can have a conditional distribution which depends on $(X_{i1},\dots,X_{iK})$; see @sec-condDistr. 
@@ -917,7 +917,7 @@ Using the decomposition $Y^{\top}Y=\hat{Y}^{\top}\hat{Y}+\hat\varepsilon^{\top}\
 :::
 
 
-#### Coefficients of determination: $R^2$ and $\overline{R}^2$ {-}
+#### **Coefficients of determination: $R^2$ and $\overline{R}^2$** {-}
 
 The larger the proportion of the explained variance, the better is the fit of the model. This motivates the definition of the so-called $R^2$ coefficient of determination:
 \begin{eqnarray*}

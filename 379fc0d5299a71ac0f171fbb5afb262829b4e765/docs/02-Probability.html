@@ -623,7 +623,7 @@ P(D \mid+)
 <p>The lesson here is that you need to compute the answer numerically. <strong>Don’t trust your intuition.</strong></p>
 </div>
 </div>
-<section id="independence-via-conditional-probabilities" class="level4 unnumbered"><h4 class="unnumbered anchored" data-anchor-id="independence-via-conditional-probabilities">Independence via Conditional Probabilities</h4>
+<section id="independence-via-conditional-probabilities" class="level4 unnumbered"><h4 class="unnumbered anchored" data-anchor-id="independence-via-conditional-probabilities"><strong>Independence via Conditional Probabilities</strong></h4>
 <p>If <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are <strong>independent events</strong>, then <span class="math display">\[
 P(A \mid B)=\frac{P(A\cap B)}{P(B)}=\frac{P(A) P(B)}{P(B)}=P(A).
 \]</span> Thus, another <strong>interpretation of independence</strong> is that knowing <span class="math inline">\(B\)</span> does not change the probability of <span class="math inline">\(A\)</span>.</p>
@@ -838,7 +838,8 @@ P_X(X\in A)=P\left(X^{-1}(A)\right).
 <section id="univariate-distribution-and-probability-functions" class="level3" data-number="2.2.1"><h3 data-number="2.2.1" class="anchored" data-anchor-id="univariate-distribution-and-probability-functions">
 <span class="header-section-number">2.2.1</span> Univariate Distribution and Probability Functions</h3>
 <section id="sec-Defcdf" class="level4" data-number="2.2.1.1"><h4 data-number="2.2.1.1" class="anchored" data-anchor-id="sec-Defcdf">
-<span class="header-section-number">2.2.1.1</span> Cumulative Distribution Function</h4>
+<span class="header-section-number">2.2.1.1</span> <strong>Cumulative Distribution Function</strong>
+</h4>
 <p>The <strong>cumulative distribution function (cdf)</strong> <span class="math display">\[
 F_{X}: \mathbb{R} \rightarrow [0,1]
 \]</span> of a real-valued random variable <span class="math inline">\(X\in\mathbb{R}\)</span> is defined by <span class="math display">\[
@@ -953,7 +954,8 @@ P(X &gt; 10)
 </ul>
 </div>
 </section><section id="probability-functions-for-discrete-random-variables" class="level4" data-number="2.2.1.2"><h4 data-number="2.2.1.2" class="anchored" data-anchor-id="probability-functions-for-discrete-random-variables">
-<span class="header-section-number">2.2.1.2</span> Probability Functions for Discrete Random Variables</h4>
+<span class="header-section-number">2.2.1.2</span> <strong>Probability Functions for Discrete Random Variables</strong>
+</h4>
 <p>A random variable <span class="math inline">\(X\)</span> is <em>discrete</em> if it takes only <strong>countably</strong> many values <span class="math display">\[
 X\in\{x_{1}, x_{2}, \ldots,x_{m}\},
 \]</span> where <span class="math inline">\(m\)</span> can also be infinite, <span class="math inline">\(m=\infty\)</span>, i.e., <span class="math inline">\(X\in\{x_{1}, x_{2}, \ldots\}\)</span>. For instance:</p>
@@ -1005,13 +1007,19 @@ f_X(x)=P(X=x)=\left\{\begin{array}{ll}
 </div>
 </div>
 </div>
-<p>The pmf and the cdf contain the same information. The cdf is obtained by summing up the pmf, <span class="math display">\[
-F_X(x)=\sum_{x_k\leq x} f_X(x_k),
-\]</span> e.g., <span class="math inline">\(F_X(1)=f_X(0)+f_X(1)=0.2+0.4=0.6\)</span>. Conversely, the pmf values are the jump heights of the cdf (see the cdf plot above).</p>
+<p><strong>The pmf and the cdf contain the same information.</strong></p>
+<p>The cdf <span class="math inline">\(F_X(x)=P(X\leq x)\)</span> is obtained by summing up the pmf values for all <span class="math inline">\(x_\ell\)</span> smaller or equal <span class="math inline">\(x,\)</span> <span class="math display">\[
+F_X(x)=\sum_{x_k\leq x} f_X(x_k).
+\]</span></p>
+<p>For instance, <span class="math display">\[
+F_X(1)=f_X(0)+f_X(1)=0.2+0.4=0.6.
+\]</span></p>
+<p>Conversely, the pmf values are the jump heights of the cdf (see the cdf plot above).</p>
 </div>
 </div>
 </section><section id="density-functions-for-continuous-random-variables" class="level4" data-number="2.2.1.3"><h4 data-number="2.2.1.3" class="anchored" data-anchor-id="density-functions-for-continuous-random-variables">
-<span class="header-section-number">2.2.1.3</span> Density Functions for Continuous Random Variables</h4>
+<span class="header-section-number">2.2.1.3</span> <strong>Density Functions for Continuous Random Variables</strong>
+</h4>
 <p>A random variable <span class="math inline">\(X\)</span> is <em>continuous</em> if there exists a function <span class="math inline">\(f_{X}\)</span> such that</p>
 <div class="spaced-list">
 <ul>
@@ -1044,8 +1052,9 @@ f_X(x)=F_X^{\prime}(x)=\left\{\begin{array}{ll}
 0 &amp; \text{for } x&lt;0 \\
 \frac{1}{5}\,e^{-x/5} &amp; \text{for } x\geq 0.
 \end{array}\right.
-\]</span> (At <span class="math inline">\(x=0,\)</span> the cdf has a kink and is not differentiable; the value of a density at a single point does not matter, since it does not change any integral.)</p>
-<p>Probabilities are now <strong>areas under the density</strong>. For instance, the probability that the next customer arrives within <span class="math inline">\(5\)</span> minutes is <span class="math display">\[\begin{align*}
+\]</span> (At <span class="math inline">\(x=0,\)</span> the cdf has a kink and is not differentiable.)</p>
+<p><strong>Probabilities are now areas under the density.</strong></p>
+<p>For instance, the probability that the next customer arrives within <span class="math inline">\(5\)</span> minutes is <span class="math display">\[\begin{align*}
 P(X\leq 5)
 &amp;=\int_{0}^{5}\frac{1}{5}\,e^{-x/5}\,dx\\[2ex]
 &amp;=\Big[-e^{-x/5}\Big]_{0}^{5}\\[2ex]
@@ -1076,10 +1085,12 @@ X_1\\\vdots\\ X_d
 \end{pmatrix}
 \]</span> whose elements <span class="math inline">\(X_j\in\mathbb{R}\)</span>, <span class="math inline">\(j=1,\dots,d\)</span>, are univariate random variables.</p>
 <section id="joint-distribution-function" class="level4" data-number="2.2.2.1"><h4 data-number="2.2.2.1" class="anchored" data-anchor-id="joint-distribution-function">
-<span class="header-section-number">2.2.2.1</span> Joint Distribution Function</h4>
+<span class="header-section-number">2.2.2.1</span> <strong>Joint Distribution Function</strong>
+</h4>
 <p>The <strong>joint (or multivariate) distribution function</strong> <span class="math inline">\(F\)</span> of <span class="math inline">\(X\)</span> is given by <span class="math display">\[
 F(a_1,\dots,a_d)=P(X_1\le a_1,\dots,X_d\le a_d).
 \]</span></p>
+<p>It gives us the probability that <span class="math inline">\(X_1\le a_1\)</span> AND <span class="math inline">\(X_2\le a_2\)</span> AND <span class="math inline">\(\dots\)</span> AND <span class="math inline">\(X_d\le a_d.\)</span></p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1090,7 +1101,17 @@ Example: Joint Distribution Function of a Bivariate Normal Distribution
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Let <span class="math display">\[
+<p>Consider a firm (or an entire sector, such as retail) whose revenues depend on the business cycle:</p>
+<div class="spaced-list">
+<ul>
+<li>
+<span class="math inline">\(X_1\)</span> is the firm’s annual revenue growth (in %), with mean <span class="math inline">\(E(X_1)=2\)</span> and variance <span class="math inline">\(\operatorname{Var}(X_1)=1\)</span>, i.e., a standard deviation of <span class="math inline">\(1\)</span> percentage point.</li>
+<li>
+<span class="math inline">\(X_2\)</span> is the annual GDP growth (in %), with mean <span class="math inline">\(E(X_2)=1\)</span> and variance <span class="math inline">\(\operatorname{Var}(X_2)=1\)</span>, i.e., a standard deviation of <span class="math inline">\(1\)</span> percentage point. These values are more or less realistic for Germany.</li>
+<li>The covariance is <span class="math inline">\(\operatorname{Cov}(X_1,X_2)=0.8\)</span>. That is, the firm’s revenues move closely with the business cycle.</li>
+</ul>
+</div>
+<p>We <em>model</em> the two growth rates jointly. Let <span class="math display">\[
 X=
 \begin{pmatrix}
 X_1\\ X_2
@@ -1110,7 +1131,8 @@ E(X_1)\\ E(X_2)
 \Sigma = \operatorname{Var}(X)
 =\begin{pmatrix}\operatorname{Var}(X_1)&amp;\operatorname{Cov}(X_1,X_2)\\\operatorname{Cov}(X_1,X_2)&amp;\operatorname{Var}(X_2)\end{pmatrix}
 =\begin{pmatrix}1&amp;0.8\\0.8&amp;1\end{pmatrix};
-\]</span> see also <a href="#sec-NormalDistr" class="quarto-xref"><span>Section 2.2.7.2</span></a>. This bivariate normal distribution serves as our <strong>running example</strong> for the rest of this chapter.</p>
+\]</span> see also <a href="#sec-NormalDistr" class="quarto-xref"><span>Section 2.2.7.2</span></a>.</p>
+<p>This bivariate normal distribution serves as our <strong>running example</strong> for the rest of this chapter.</p>
 <p>Its joint distribution function <span class="math display">\[
 F(x_1,x_2)=P(X_1\leq x_1, X_2\leq x_2)
 \]</span> can be visualized in two ways:</p>
@@ -1164,7 +1186,8 @@ The positive covariance $\operatorname{Cov}(X_1,X_2)=0.8$ makes it more likely t
 </div>
 </div>
 </section><section id="joint-probability-mass-function" class="level4" data-number="2.2.2.2"><h4 data-number="2.2.2.2" class="anchored" data-anchor-id="joint-probability-mass-function">
-<span class="header-section-number">2.2.2.2</span> Joint Probability Mass Function</h4>
+<span class="header-section-number">2.2.2.2</span> <strong>Joint Probability Mass Function</strong>
+</h4>
 <p><strong>Discrete random vectors:</strong> Let the <span class="math inline">\(d\)</span>-dimensional random (column) vector <span class="math display">\[
 X=
 \begin{pmatrix}
@@ -1312,7 +1335,8 @@ P(X_1=1)
 </div>
 </div>
 </section><section id="joint-density-function" class="level4" data-number="2.2.2.3"><h4 data-number="2.2.2.3" class="anchored" data-anchor-id="joint-density-function">
-<span class="header-section-number">2.2.2.3</span> Joint Density Function</h4>
+<span class="header-section-number">2.2.2.3</span> <strong>Joint Density Function</strong>
+</h4>
 <p><strong>Continuous random vectors:</strong> <span class="math inline">\(X\)</span> takes values in <span class="math inline">\(\mathbb{R}^d\)</span></p>
 <p><span class="math display">\[
 X=\left(\begin{matrix}X_{1}\\ X_{2}\\ \vdots \\ X_{d}\end{matrix}\right)\in\mathbb{R}^d
@@ -1450,7 +1474,8 @@ f_X(x_1,x_2)=f_1(x_1)\cdot f_2(x_2).
 </div>
 <p>In the following, we focus on continuous random vectors; the discrete case is treated analogously, with sums instead of integrals.</p>
 </section><section id="marginal-distribution-functions-and-marginal-density-functions" class="level4" data-number="2.2.2.4"><h4 data-number="2.2.2.4" class="anchored" data-anchor-id="marginal-distribution-functions-and-marginal-density-functions">
-<span class="header-section-number">2.2.2.4</span> Marginal Distribution Functions and Marginal Density Functions</h4>
+<span class="header-section-number">2.2.2.4</span> <strong>Marginal Distribution Functions and Marginal Density Functions</strong>
+</h4>
 <p>Let <span class="math display">\[
 X=\left(\begin{matrix}X_{1}\\ X_{2}\\ \vdots \\ X_{d}\end{matrix}\right)\in\mathbb{R}^d.
 \]</span> Each element <span class="math inline">\(X_j,\)</span> <span class="math inline">\(j=1,\dots,d,\)</span> of the random vector <span class="math inline">\(X\)</span> has its own <strong>marginal distribution</strong> <span class="math inline">\(F_j\)</span>. This is simply the univariate distribution of <span class="math inline">\(X_j\)</span> when ignoring all other random variables in <span class="math inline">\(X\)</span>. Formally:</p>
@@ -1501,7 +1526,8 @@ f_2(x_2)&amp;=\int_{-\infty}^{\infty} f(x_1,x_2)\,dx_1
 </div>
 </div>
 </section><section id="sec-condDistr" class="level4" data-number="2.2.2.5"><h4 data-number="2.2.2.5" class="anchored" data-anchor-id="sec-condDistr">
-<span class="header-section-number">2.2.2.5</span> Conditional Density Function</h4>
+<span class="header-section-number">2.2.2.5</span> <strong>Conditional Density Function</strong>
+</h4>
 <p>Often, we are interested in the <strong>conditional distribution</strong> of <span class="math inline">\(X_j\)</span> given fixed values of all other random variables, <span class="math display">\[
 X_1=x_1,\ldots, X_{j-1}=x_{j-1}, X_{j+1}=x_{j+1},\ldots,X_d=x_d.
 \]</span> That is, the distribution of <span class="math inline">\(X_j\)</span> when the values of all other random variables are held fixed.</p>
@@ -1554,7 +1580,8 @@ E(X_1\mid X_2=2)                 &amp;=2.8\\[2ex]
 </section></section><section id="means-and-moments" class="level3" data-number="2.2.3"><h3 data-number="2.2.3" class="anchored" data-anchor-id="means-and-moments">
 <span class="header-section-number">2.2.3</span> Means and Moments</h3>
 <section id="unconditional-means" class="level4" data-number="2.2.3.1"><h4 data-number="2.2.3.1" class="anchored" data-anchor-id="unconditional-means">
-<span class="header-section-number">2.2.3.1</span> Unconditional Means</h4>
+<span class="header-section-number">2.2.3.1</span> <strong>Unconditional Means</strong>
+</h4>
 <p>The <strong>unconditional mean</strong> of <span class="math inline">\(X_1\)</span> is given by <span class="math display">\[
 E(X_1)= \int x f_{X_1}(x)\,dx.
 \]</span> The unconditional mean of a random vector <span class="math display">\[
@@ -1613,7 +1640,8 @@ E(X_1)\\ E(X_2)
 </div>
 </div>
 </section><section id="means-of-transformed-random-variables-and-moments" class="level4" data-number="2.2.3.2"><h4 data-number="2.2.3.2" class="anchored" data-anchor-id="means-of-transformed-random-variables-and-moments">
-<span class="header-section-number">2.2.3.2</span> Means of Transformed Random Variables and Moments</h4>
+<span class="header-section-number">2.2.3.2</span> <strong>Means of Transformed Random Variables and Moments</strong>
+</h4>
 <p>The <strong>mean of a transformed random variable</strong> <span class="math inline">\(r(X)\)</span> is given by <span class="math display">\[
 E(r(X))=\int r(x) f_{X}(x)\,dx.
 \]</span> Typical transformations are, for instance,</p>
@@ -1640,7 +1668,8 @@ E(r(X))=\int r(x) f_{X}(x)\,dx.
 <p>Of course, these moments are only defined if the respective integrals exist, i.e., if <span class="math inline">\(E(|X|^k)&lt;\infty\)</span>.</p>
 <p><strong>Note:</strong> As the title of <span class="citation" data-cites="LB2000">Lindsay and Basak (<a href="#ref-LB2000" role="doc-biblioref">2000</a>)</span> puts it, “moments determine the tail of a distribution (but not much else)”. Roughly: the more moments a distribution has, the faster its tails decay to zero. Distributions with compact support (e.g., the uniform distribution <span class="math inline">\(\mathcal{U}(a,b)\)</span>) have moments of all orders. The normal distribution also has moments of all orders, even though it does not have compact support; see <a href="#sec-NormalDistr" class="quarto-xref"><span>Section 2.2.7.2</span></a>.</p>
 </section><section id="conditional-means-regression-functions" class="level4" data-number="2.2.3.3"><h4 data-number="2.2.3.3" class="anchored" data-anchor-id="conditional-means-regression-functions">
-<span class="header-section-number">2.2.3.3</span> Conditional Means ➡️ Regression Functions</h4>
+<span class="header-section-number">2.2.3.3</span> <strong>Conditional Means ➡️ Regression Functions</strong>
+</h4>
 <p>The <strong>conditional mean</strong> of <span class="math inline">\(X_1\)</span> given <span class="math inline">\(X_2=x_2,\ldots,X_d=x_d\)</span> is <span class="math display">\[\begin{align*}
   m(x_2,\dots,x_d):&amp;=E(X_1\mid X_2=x_2,\ldots,X_d=x_d)\\[2ex]
                    &amp;= \int x_1 f(x_1\mid x_2,\ldots,x_d)\,dx_1.
@@ -1705,7 +1734,8 @@ m(x_2)=E(X_1\mid X_2=x_2),
 </div>
 </div>
 </section><section id="law-of-total-expectation-law-of-iterated-expectations" class="level4" data-number="2.2.3.4"><h4 data-number="2.2.3.4" class="anchored" data-anchor-id="law-of-total-expectation-law-of-iterated-expectations">
-<span class="header-section-number">2.2.3.4</span> Law of Total Expectation <span class="math inline">\(=\)</span> Law of Iterated Expectations</h4>
+<span class="header-section-number">2.2.3.4</span> <strong>Law of Total Expectation <span class="math inline">\(=\)</span> Law of Iterated Expectations</strong>
+</h4>
 <p>As long as we do not fix the values of the conditioning variables <span class="math inline">\(X_2,\dots,X_d\)</span>, they are random variables. Consequently, the conditional mean <span class="math display">\[
 E(X_1\mid X_2,\ldots,X_d)=\int x_1 f(x_1\mid X_2,\ldots,X_d)\,dx_1
 \]</span> is generally itself a <strong>random variable</strong>, due to the randomness in <span class="math inline">\(X_2,\ldots,X_d\)</span>.</p>
@@ -1931,7 +1961,8 @@ Example: Univariate Random Sample
 <!-- $$ -->
 <!-- The probability function is $f(x)=1$ for $x=a$ and $0$ otherwise. -->
 <section id="the-discrete-uniform-distribution" class="level4" data-number="2.2.6.1"><h4 data-number="2.2.6.1" class="anchored" data-anchor-id="the-discrete-uniform-distribution">
-<span class="header-section-number">2.2.6.1</span> The Discrete Uniform Distribution</h4>
+<span class="header-section-number">2.2.6.1</span> <strong>The Discrete Uniform Distribution</strong>
+</h4>
 <p>Let <span class="math inline">\(k&gt;1\)</span> be a given integer. Suppose that <span class="math inline">\(X\)</span> has the probability mass function <span class="math display">\[
 f(x)=\left\{\begin{array}{ll}
 1 / k &amp; \text { for } x=1, \ldots, k \\
@@ -1949,7 +1980,8 @@ f(x)=\left\{\begin{array}{ll}
 </div>
 </div>
 </section><section id="the-bernoulli-distribution" class="level4" data-number="2.2.6.2"><h4 data-number="2.2.6.2" class="anchored" data-anchor-id="the-bernoulli-distribution">
-<span class="header-section-number">2.2.6.2</span> The Bernoulli Distribution</h4>
+<span class="header-section-number">2.2.6.2</span> <strong>The Bernoulli Distribution</strong>
+</h4>
 <p>Let <span class="math inline">\(X\)</span> represent a possibly unfair coin flip. Then <span class="math inline">\(P(X=1)=p\)</span> and <span class="math inline">\(P(X=0)=1-p\)</span> for some <span class="math inline">\(p \in[0,1]\)</span>. We say that <span class="math inline">\(X\)</span> has a Bernoulli distribution, written <span class="math inline">\(X\sim\operatorname{Bernoulli}(p)\)</span>. The probability mass function is <span class="math inline">\(f(x)=p^{x}(1-p)^{1-x}\)</span> for <span class="math inline">\(x \in\{0,1\}\)</span> (and <span class="math inline">\(f(x)=0\)</span> otherwise).</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">51</span><span class="op">)</span></span>
@@ -1969,7 +2001,8 @@ f(x)=\left\{\begin{array}{ll}
 </div>
 </div>
 </section><section id="the-binomial-distribution" class="level4" data-number="2.2.6.3"><h4 data-number="2.2.6.3" class="anchored" data-anchor-id="the-binomial-distribution">
-<span class="header-section-number">2.2.6.3</span> The Binomial Distribution</h4>
+<span class="header-section-number">2.2.6.3</span> <strong>The Binomial Distribution</strong>
+</h4>
 <p>Suppose we have a coin that lands heads with probability <span class="math inline">\(p\)</span> for some <span class="math inline">\(p\in[0,1]\)</span>. Flip the coin <span class="math inline">\(n\)</span> times, and let <span class="math inline">\(X\)</span> be the number of heads (or successes). Assume that the tosses are independent. Let <span class="math inline">\(f(x)=P(X=x)\)</span> be the probability mass function. It can be shown that <span class="math display">\[
 f(x)=\left\{
 \begin{array}{ll}
@@ -1999,7 +2032,8 @@ X_{1}+X_{2} \sim \operatorname{Binomial}\left(n_1 + n_2, p\right).
 </section></section><section id="some-important-continuous-random-variables" class="level3" data-number="2.2.7"><h3 data-number="2.2.7" class="anchored" data-anchor-id="some-important-continuous-random-variables">
 <span class="header-section-number">2.2.7</span> Some Important Continuous Random Variables</h3>
 <section id="the-uniform-distribution" class="level4" data-number="2.2.7.1"><h4 data-number="2.2.7.1" class="anchored" data-anchor-id="the-uniform-distribution">
-<span class="header-section-number">2.2.7.1</span> The Uniform Distribution</h4>
+<span class="header-section-number">2.2.7.1</span> <strong>The Uniform Distribution</strong>
+</h4>
 <p><span class="math inline">\(X\)</span> has a <span class="math inline">\(\operatorname{Uniform}(a, b)\)</span> distribution, written <span class="math inline">\(X\sim \mathcal{U}(a, b),\)</span> if <span class="math display">\[
 f(x)=\left\{\begin{array}{ll}
 \frac{1}{b-a} &amp; \text { for } x \in[a, b] \\
@@ -2024,7 +2058,8 @@ F(x)=\left\{\begin{array}{ll}
 </div>
 </div>
 </section><section id="sec-NormalDistr" class="level4" data-number="2.2.7.2"><h4 data-number="2.2.7.2" class="anchored" data-anchor-id="sec-NormalDistr">
-<span class="header-section-number">2.2.7.2</span> The Normal (or Gaussian) Distribution</h4>
+<span class="header-section-number">2.2.7.2</span> <strong>The Normal (or Gaussian) Distribution</strong>
+</h4>
 <p><span class="math inline">\(X\)</span> has a normal (or Gaussian) distribution with parameters <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma,\)</span> denoted by <span class="math inline">\(X \sim \mathcal{N}\left(\mu, \sigma^{2}\right),\)</span> if <span class="math display">\[
 f(x)=\frac{1}{\sigma \sqrt{2 \pi}} \exp \left\{-\frac{1}{2 \sigma^{2}}(x-\mu)^{2}\right\}, \quad x \in \mathbb{R},
 \]</span> where <span class="math inline">\(\mu \in \mathbb{R}\)</span> and <span class="math inline">\(\sigma&gt;0.\)</span> Later, we shall see that <span class="math inline">\(\mu\)</span> is the “center” (or mean) of the distribution and <span class="math inline">\(\sigma\)</span> is the “spread” (or standard deviation) of the distribution. The normal distribution plays an important role in probability and statistics. Many phenomena in nature have approximately normal distributions. The <strong>Central Limit Theorem</strong> gives the normal distribution a special role: it states that the distribution of (suitably standardized) averages of i.i.d. random variables with finite variance can be approximated by a normal distribution.</p>
@@ -2074,7 +2109,8 @@ g_{X,Y}(x,y) = &amp;\frac{1}{2\pi\sigma_X\sigma_Y\sqrt{1-\rho_{XY}^2}} \\[2ex]
 g_{X,Y}(x,y) = f_X(x) f_Y(y) = \frac{1}{2\pi} \cdot \exp \left\{ -\frac{1}{2}\left[x^2 + y^2\right]\right\}.
 \]</span></p>
 </section><section id="sec-chisqdist" class="level4" data-number="2.2.7.3"><h4 data-number="2.2.7.3" class="anchored" data-anchor-id="sec-chisqdist">
-<span class="header-section-number">2.2.7.3</span> The Chi-Squared Distribution</h4>
+<span class="header-section-number">2.2.7.3</span> <strong>The Chi-Squared Distribution</strong>
+</h4>
 <p>The chi-squared distribution is another important distribution in econometrics. We need it, for instance, to test hypotheses in regression models.</p>
 <p>The sum of <span class="math inline">\(\nu\in\{1,2,\dots\}\)</span> squared <em>independent standard normal</em> random variables <span class="math inline">\(Z_1,\dots,Z_\nu\)</span> follows a chi-squared distribution with <span class="math inline">\(\nu\)</span> degrees of freedom (df): <span class="math display">\[
 W:=Z_1^2 + \dots + Z_\nu^2 = \sum_{j=1}^\nu Z_j^2 \sim \chi^2_{\nu}.
@@ -2140,7 +2176,8 @@ W:=Z_1^2 + \dots + Z_\nu^2 = \sum_{j=1}^\nu Z_j^2 \sim \chi^2_{\nu}.
 </div>
 <p>Increasing the degrees of freedom shifts the distribution to the right (the mode becomes larger) and increases the dispersion (the distribution’s variance grows).</p>
 </section><section id="sec-tdist" class="level4" data-number="2.2.7.4"><h4 data-number="2.2.7.4" class="anchored" data-anchor-id="sec-tdist">
-<span class="header-section-number">2.2.7.4</span> The Student <span class="math inline">\(t\)</span> Distribution</h4>
+<span class="header-section-number">2.2.7.4</span> <strong>The Student <span class="math inline">\(t\)</span> Distribution</strong>
+</h4>
 <p>Let <span class="math inline">\(Z\)</span> be a standard normal random variable and <span class="math inline">\(W\)</span> a <span class="math inline">\(\chi^2_\nu\)</span> random variable, and assume that <span class="math inline">\(Z\)</span> and <span class="math inline">\(W\)</span> are independent. Then <span class="math display">\[
 X:=\frac{Z}{\sqrt{W/\nu}} \sim t_\nu,
 \]</span> i.e., <span class="math inline">\(X\)</span> follows a <em>Student <span class="math inline">\(t\)</span> distribution</em> (or simply <span class="math inline">\(t\)</span> distribution) with <span class="math inline">\(\nu\)</span> degrees of freedom.</p>
@@ -2191,7 +2228,8 @@ X:=\frac{Z}{\sqrt{W/\nu}} \sim t_\nu,
 </div>
 <p>The plot illustrates that as the degrees of freedom increase, the shape of the <span class="math inline">\(t\)</span> distribution comes closer to that of the standard normal bell curve. Already for <span class="math inline">\(\nu=25,\)</span> there is little difference from the standard normal density. For small <span class="math inline">\(\nu,\)</span> the <span class="math inline">\(t\)</span> distribution has heavier tails than the standard normal distribution.</p>
 </section><section id="the-cauchy-distribution" class="level4" data-number="2.2.7.5"><h4 data-number="2.2.7.5" class="anchored" data-anchor-id="the-cauchy-distribution">
-<span class="header-section-number">2.2.7.5</span> The Cauchy Distribution</h4>
+<span class="header-section-number">2.2.7.5</span> <strong>The Cauchy Distribution</strong>
+</h4>
 <p>The (standard) Cauchy distribution is the special case of the <span class="math inline">\(t\)</span> distribution with <span class="math inline">\(\nu=1\)</span>. Its density is <span class="math display">\[
 f(x)=\frac{1}{\pi\left(1+x^{2}\right)}.
 \]</span> <!-- To see that this is indeed a density, let's do the integral: --> <!-- $$ --> <!-- \begin{aligned} --> <!-- \int_{-\infty}^{\infty} f(x) d x &=\frac{1}{\pi} \int_{-\infty}^{\infty} \frac{d x}{1+x^{2}}=\frac{1}{\pi} \int_{-\infty}^{\infty} \frac{d \tan ^{-1}}{d x} \\ --> <!-- &=\frac{1}{\pi}\left[\tan ^{-1}(\infty)-\tan ^{-1}(-\infty)\right]=\frac{1}{\pi}\left[\frac{\pi}{2}-\left(-\frac{\pi}{2}\right)\right]=1 --> <!-- \end{aligned} --> <!-- $$ --></p>
@@ -2202,7 +2240,8 @@ f(x)=\frac{1}{\pi\left(1+x^{2}\right)}.
 \]</span> Similarly, the first integral, <span class="math inline">\(\int_{-\infty}^{0},\)</span> equals <span class="math inline">\(-\infty\)</span>. Since they are not both finite, the integral <span class="math inline">\(\int_{-\infty}^{\infty}\)</span> does not exist; <span class="math inline">\(\infty-\infty\)</span> is not a number. Thus, the Cauchy distribution has no mean.</p>
 <p>In practice, this means that if you take a sample <span class="math inline">\(x_{1}, x_{2}, \ldots, x_{n}\)</span> from the Cauchy distribution, the average <span class="math inline">\(\bar{x}\)</span> does not tend to a particular number as <span class="math inline">\(n\)</span> grows. Instead, every so often, you get such a huge value, either positive or negative, that the average is overwhelmed by it. In fact, the average of <span class="math inline">\(n\)</span> i.i.d. standard Cauchy random variables is again standard Cauchy distributed, no matter how large <span class="math inline">\(n\)</span> is.</p>
 </section><section id="sec-Fdist" class="level4" data-number="2.2.7.6"><h4 data-number="2.2.7.6" class="anchored" data-anchor-id="sec-Fdist">
-<span class="header-section-number">2.2.7.6</span> The F Distribution</h4>
+<span class="header-section-number">2.2.7.6</span> <strong>The F Distribution</strong>
+</h4>
 <p>Another ratio of random variables that is important to econometricians is the ratio of two independent <span class="math inline">\(\chi^2\)</span> distributed random variables, each divided by its degrees of freedom. Let <span class="math inline">\(W \sim \chi^2_m\)</span> and <span class="math inline">\(V \sim \chi^2_n\)</span> be independent. Then <span class="math display">\[
 \frac{W/m}{V/n} \sim F_{m,n},
 \]</span> i.e., this ratio follows an <span class="math inline">\(F\)</span> distribution with numerator degrees of freedom <span class="math inline">\(m\)</span> and denominator degrees of freedom <span class="math inline">\(n\)</span>. The distribution was tabulated and named by George Snedecor in honor of <a href="https://en.wikipedia.org/wiki/Ronald_Fisher">Sir Ronald Fisher</a>, who had derived a closely related distribution.</p>
