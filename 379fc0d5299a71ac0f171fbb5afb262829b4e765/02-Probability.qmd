@@ -795,7 +795,7 @@ Consider again the waiting time $X\in[0,\infty)$ (in minutes) until the next cus
 $$
 f_X(x)=F_X^{\prime}(x)=\left\{\begin{array}{ll}
 0 & \text{for } x<0 \\
-\frac{1}{5}\,e^{-x/5} & \text{for } x\geq 0.
+\frac{1}{5}\,e^{-x/5} & \text{for } x> 0.
 \end{array}\right.
 $$
 (At $x=0,$ the cdf has a kink and is not differentiable.)
@@ -908,9 +908,12 @@ see also @sec-NormalDistr.
 This bivariate normal distribution serves as our **running example** for the rest of this chapter.
 
 Its joint distribution function
-$$
-F(x_1,x_2)=P(X_1\leq x_1, X_2\leq x_2)
-$$
+\begin{align*}
+F(x_1,x_2) 
+& = P(X_1\leq x_1 \quad \text{AND}\quad X_2\leq x_2)\\[2ex]
+& \;\;\text{Short notation (commonly used):}\\[2ex]
+& = P(X_1\leq x_1, X_2\leq x_2)
+\end{align*}
 can be visualized in two ways:
 
 ::: {.spaced-list}
@@ -918,7 +921,7 @@ can be visualized in two ways:
 * **Contour plot** (right): The surface is viewed from above. The contour lines connect all points $(x_1,x_2)$ with the same value of $F(x_1,x_2)$, just like the contour lines on a hiking map.
 :::
 
-For instance, the probability that neither random variable exceeds its mean is
+For instance, the probability that neither of the random variables $X_1$ and $X_2$ exceeds its mean is
 $$
 F(2,1)=P(X_1\leq 2, X_2\leq 1)\approx 0.40.
 $$
@@ -1061,7 +1064,7 @@ $$
 $$
 :::
 
-
+**Caution:**
 
 ::: {.callout-note}
 ## Example: Two-Dimensional pmf (Car Sales and Staffing)
@@ -1095,6 +1098,13 @@ is given by the following table:
 $$
 P(X_1\geq 2, X_2=2)=f_X(2,2)+f_X(3,2)=0.20+0.10=0.30.
 $$
+whereas the probability of selling **at least two cars** on a day with only **one consultant** is
+$$
+P(X_1\geq 2, X_2=1)=f_X(2,1)+f_X(3,1)=0.10+0.00=0.10.
+$$
+<!-- 
+Both staffing levels are equally likely, $P(X_2=1)=P(X_2=2)=0.50$, so this comparison is fair: the difference comes from sales, not from how often each staffing level occurs. 
+-->
 :::
 
 ```{r, fig.align="center", echo=FALSE, fig.width=6, fig.height=5}

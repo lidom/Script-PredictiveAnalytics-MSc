@@ -1050,7 +1050,7 @@ Example: pdf of a Continuous Random Variable (Customer Arrivals)
 <p>Consider again the waiting time <span class="math inline">\(X\in[0,\infty)\)</span> (in minutes) until the next customer enters the shop, with cdf <span class="math inline">\(F_X(x)=1-e^{-x/5}\)</span> for <span class="math inline">\(x\geq 0\)</span>. Differentiating the cdf gives the density function <span class="math display">\[
 f_X(x)=F_X^{\prime}(x)=\left\{\begin{array}{ll}
 0 &amp; \text{for } x&lt;0 \\
-\frac{1}{5}\,e^{-x/5} &amp; \text{for } x\geq 0.
+\frac{1}{5}\,e^{-x/5} &amp; \text{for } x&gt; 0.
 \end{array}\right.
 \]</span> (At <span class="math inline">\(x=0,\)</span> the cdf has a kink and is not differentiable.)</p>
 <p><strong>Probabilities are now areas under the density.</strong></p>
@@ -1133,9 +1133,12 @@ E(X_1)\\ E(X_2)
 =\begin{pmatrix}1&amp;0.8\\0.8&amp;1\end{pmatrix};
 \]</span> see also <a href="#sec-NormalDistr" class="quarto-xref"><span>Section 2.2.7.2</span></a>.</p>
 <p>This bivariate normal distribution serves as our <strong>running example</strong> for the rest of this chapter.</p>
-<p>Its joint distribution function <span class="math display">\[
-F(x_1,x_2)=P(X_1\leq x_1, X_2\leq x_2)
-\]</span> can be visualized in two ways:</p>
+<p>Its joint distribution function <span class="math display">\[\begin{align*}
+F(x_1,x_2)
+&amp; = P(X_1\leq x_1 \quad \text{AND}\quad X_2\leq x_2)\\[2ex]
+&amp; \;\;\text{Short notation (commonly used):}\\[2ex]
+&amp; = P(X_1\leq x_1, X_2\leq x_2)
+\end{align*}\]</span> can be visualized in two ways:</p>
 <div class="spaced-list">
 <ul>
 <li>
@@ -1144,7 +1147,7 @@ F(x_1,x_2)=P(X_1\leq x_1, X_2\leq x_2)
 <strong>Contour plot</strong> (right): The surface is viewed from above. The contour lines connect all points <span class="math inline">\((x_1,x_2)\)</span> with the same value of <span class="math inline">\(F(x_1,x_2)\)</span>, just like the contour lines on a hiking map.</li>
 </ul>
 </div>
-<p>For instance, the probability that neither random variable exceeds its mean is <span class="math display">\[
+<p>For instance, the probability that neither of the random variables <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> exceeds its mean is <span class="math display">\[
 F(2,1)=P(X_1\leq 2, X_2\leq 1)\approx 0.40.
 \]</span> That is, <span class="math inline">\(F(2,1)\approx 0.40\)</span> is the <em>height</em> of the distribution function surface at the point <span class="math inline">\((2,1)\)</span>. This height equals the probability that <span class="math inline">\(X\)</span> falls into the shaded lower-left region <span class="math inline">\(\{x_1\leq 2,\ x_2\leq 1\}\)</span> in the contour plot.</p>
 <div>
@@ -1256,6 +1259,7 @@ f_{X}(x)\geq 0\quad\text{for all}\quad x\in\{x_1,x_2,\dots,x_m\}
 \]</span></p></li>
 </ul>
 </div>
+<p><strong>Caution:</strong></p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1310,7 +1314,11 @@ f_X(x_1,x_2)=P(X_1=x_1,X_2=x_2)
 <li><p>All entries are non-negative and they sum to one.</p></li>
 <li><p>Days with two consultants tend to come with more sales. For instance, the probability of selling <strong>at least two cars</strong> on a day with <strong>two consultants</strong> is <span class="math display">\[
 P(X_1\geq 2, X_2=2)=f_X(2,2)+f_X(3,2)=0.20+0.10=0.30.
-\]</span></p></li>
+\]</span> whereas the probability of selling <strong>at least two cars</strong> on a day with only <strong>one consultant</strong> is <span class="math display">\[
+P(X_1\geq 2, X_2=1)=f_X(2,1)+f_X(3,1)=0.10+0.00=0.10.
+\]</span> <!-- 
+Both staffing levels are equally likely, $P(X_2=1)=P(X_2=2)=0.50$, so this comparison is fair: the difference comes from sales, not from how often each staffing level occurs. 
+--></p></li>
 </ul>
 </div>
 <div class="cell" data-layout-align="center">
