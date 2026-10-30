@@ -1,0 +1,57 @@
+<<echo=FALSE, results=hide>>=
+## Script: Example "Two-Dimensional pmf (Car Sales and Staffing)"
+tabs <- list(rbind(c(0.10, 0.25, 0.10, 0.05), c(0.05, 0.15, 0.20, 0.10)),
+             rbind(c(0.15, 0.15, 0.10, 0.00), c(0.05, 0.20, 0.20, 0.15)),
+             rbind(c(0.20, 0.20, 0.10, 0.00), c(0.05, 0.15, 0.20, 0.10)))
+f  <- tabs[[sample(seq_along(tabs), 1)]]   # rows: x2 = 1, 2; columns: x1 = 0, 1, 2, 3
+f1 <- colSums(f)                           # marginal pmf of X1
+f2 <- rowSums(f)                           # marginal pmf of X2
+
+sol   <- f[2, 3] / f2[2]                   # P(X1 = 2 | X2 = 2)
+wrong <- c(f[2, 3],                        # joint probability P(X1 = 2, X2 = 2)
+           f1[3],                          # marginal probability P(X1 = 2)
+           f[2, 3] / f1[3])                # P(X2 = 2 | X1 = 2)
+stopifnot(length(unique(round(c(sol, wrong), 3))) == 4)
+@
+
+\begin{question}
+\textbf{Conditional Probabilities from a Joint pmf} (Script: Example ``Two-Dimensional pmf (Car Sales and Staffing)'')
+
+Let $X_1\in\{0,1,2,3\}$ be the number of cars sold per day by a car dealership, and let $X_2\in\{1,2\}$ be the number of sales consultants on duty that day. The joint pmf $f(x_1,x_2)=P(X_1=x_1,X_2=x_2)$ is given by the following table:
+\begin{center}
+\begin{tabular}{c|cccc}
+$f(x_1,x_2)$ & $x_1=0$ & $x_1=1$ & $x_1=2$ & $x_1=3$\\\hline
+$x_2=1$ & $\Sexpr{fmt(f[1, 1], 2)}$ & $\Sexpr{fmt(f[1, 2], 2)}$ & $\Sexpr{fmt(f[1, 3], 2)}$ & $\Sexpr{fmt(f[1, 4], 2)}$\\
+$x_2=2$ & $\Sexpr{fmt(f[2, 1], 2)}$ & $\Sexpr{fmt(f[2, 2], 2)}$ & $\Sexpr{fmt(f[2, 3], 2)}$ & $\Sexpr{fmt(f[2, 4], 2)}$
+\end{tabular}
+\end{center}
+What is the probability that the dealership sells exactly two cars on a day with two consultants on duty, i.e., $P(X_1=2\mid X_2=2)$? (Answers are rounded to three decimals.)
+\begin{answerlist}
+  \item $\Sexpr{fmt(sol, 3)}$
+  \item $\Sexpr{fmt(wrong[1], 3)}$
+  \item $\Sexpr{fmt(wrong[2], 3)}$
+  \item $\Sexpr{fmt(wrong[3], 3)}$
+\end{answerlist}
+\end{question}
+
+\begin{solution}
+First, we compute the marginal probability of $X_2=2$ by summing the second row of the table:
+$$
+f_2(2)=P(X_2=2)=\Sexpr{fmt(f[2, 1], 2)}+\Sexpr{fmt(f[2, 2], 2)}+\Sexpr{fmt(f[2, 3], 2)}+\Sexpr{fmt(f[2, 4], 2)}=\Sexpr{fmt(f2[2], 2)}.
+$$
+By the definition of conditional probability,
+$$
+P(X_1=2\mid X_2=2)=\frac{P(X_1=2,X_2=2)}{P(X_2=2)}=\frac{f(2,2)}{f_2(2)}=\frac{\Sexpr{fmt(f[2, 3], 2)}}{\Sexpr{fmt(f2[2], 2)}}\approx\Sexpr{fmt(sol, 3)}.
+$$
+\begin{answerlist}
+  \item True.
+  \item False. This is the joint probability $P(X_1=2,X_2=2)$, not the conditional probability.
+  \item False. This is the marginal probability $P(X_1=2)=f(2,1)+f(2,2)$, which ignores the number of consultants.
+  \item False. This is $P(X_2=2\mid X_1=2)=f(2,2)/f_1(2)$, i.e., the conditional probability the other way around.
+\end{answerlist}
+\end{solution}
+
+\exname{Conditional Probabilities from a Joint pmf}
+\extype{schoice}
+\exsolution{1000}
+\exshuffle{4}

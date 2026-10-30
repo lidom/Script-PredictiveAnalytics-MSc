@@ -1,0 +1,95 @@
+<<echo=FALSE, results=hide>>=
+## Script: Example "Medical Tests"
+prev <- sample(c(0.01, 0.02, 0.05), 1)                      # P(D)
+ss   <- list(c(0.90, 0.95), c(0.95, 0.90))[[sample(1:2, 1)]]
+sens <- ss[1]                                               # P(+ | D)
+spec <- ss[2]                                               # P(- | D^c)
+
+P_pos_D  <- sens * prev                 # P(+ and D)
+P_pos_Dc <- (1 - spec) * (1 - prev)     # P(+ and D^c)
+P_pos    <- P_pos_D + P_pos_Dc          # P(+)
+sol      <- P_pos_D / P_pos             # P(D | +)
+wrong    <- c(sens, spec, P_pos)
+stopifnot(length(unique(round(c(sol, wrong), 3))) == 4)
+@
+
+\begin{question}
+\textbf{Medical Test} (Script: Example ``Medical Tests'')
+
+A disease $D$ occurs in $\Sexpr{100 * prev}\%$ of the population, i.e., $P(D)=\Sexpr{prev}$. A medical test for this disease has outcomes $+$ and $-$, with
+\begin{align*}
+\text{sensitivity:}\quad P(+\mid D)&=\Sexpr{sens},\\[1ex]
+\text{specificity:}\quad P(-\mid D^c)&=\Sexpr{spec}.
+\end{align*}
+A person gets a positive test result. What is the probability that this person has the disease, i.e., $P(D\mid +)$? (Answers are rounded to three decimals.)
+\begin{answerlist}
+  \item $\Sexpr{fmt(sol, 3)}$
+  \item $\Sexpr{fmt(wrong[1], 3)}$
+  \item $\Sexpr{fmt(wrong[2], 3)}$
+  \item $\Sexpr{fmt(wrong[3], 3)}$
+\end{answerlist}
+\end{question}
+
+\begin{solution}
+\textbf{Step 1: Probabilities of the complements.} We need two probabilities that are not given directly, but that follow from the rule $P(A^c)=1-P(A)$ for the complement $A^c$ (``not $A$'') of an event $A$.
+
+\begin{itemize}
+  \item Every person is either sick ($D$) or healthy ($D^c$). Thus, the probability of being healthy is
+  \begin{align*}
+  P(D^c)
+  &=1-P(D)\\[1ex]
+  &=1-\Sexpr{prev}\\[1ex]
+  &=\Sexpr{fmt(1 - prev, 2)}.
+  \end{align*}
+  \item Every healthy person gets either a negative ($-$) or a positive ($+$) test result. Thus, among the healthy people, the probabilities of these two results add up to one, $P(-\mid D^c)+P(+\mid D^c)=1$. (Recall that for fixed $D^c$, $P(\cdot\mid D^c)$ is a probability.) Therefore, the probability that a healthy person gets a (false) positive test result is
+  \begin{align*}
+  P(+\mid D^c)
+  &=1-P(-\mid D^c)\\[1ex]
+  &=1-\Sexpr{spec}\\[1ex]
+  &=\Sexpr{fmt(1 - spec, 2)}.
+  \end{align*}
+\end{itemize}
+
+\textbf{Step 2: Joint probabilities.} Rearranging the definition of conditional probability, $P(A\mid B)=P(A\cap B)/P(B)$, gives $P(A\cap B)=P(A\mid B)\,P(B)$. Thus, the probability of being sick \emph{and} testing positive is
+\begin{align*}
+P(+\cap D)
+&=P(+\mid D)\,P(D)\\[1ex]
+&=\Sexpr{sens}\cdot\Sexpr{prev}\\[1ex]
+&=\Sexpr{fmt(P_pos_D, 4)},
+\end{align*}
+and the probability of being healthy \emph{and} testing positive is
+\begin{align*}
+P(+\cap D^c)
+&=P(+\mid D^c)\,P(D^c)\\[1ex]
+&=\Sexpr{fmt(1 - spec, 2)}\cdot\Sexpr{fmt(1 - prev, 2)}\\[1ex]
+&=\Sexpr{fmt(P_pos_Dc, 4)}.
+\end{align*}
+
+\textbf{Step 3: Probability of a positive test result.} A person with a positive test result is either sick or healthy. These two events are disjoint, so we can add their probabilities:
+\begin{align*}
+P(+)
+&=P(+\cap D)+P(+\cap D^c)\\[1ex]
+&=\Sexpr{fmt(P_pos_D, 4)}+\Sexpr{fmt(P_pos_Dc, 4)}\\[1ex]
+&=\Sexpr{fmt(P_pos, 4)}.
+\end{align*}
+
+\textbf{Step 4: Conditional probability.} By the definition of conditional probability,
+\begin{align*}
+P(D\mid +)
+&=\frac{P(+\cap D)}{P(+)}\\[1ex]
+&=\frac{\Sexpr{fmt(P_pos_D, 4)}}{\Sexpr{fmt(P_pos, 4)}}\\[1ex]
+&\approx\Sexpr{fmt(sol, 3)}.
+\end{align*}
+\textbf{Intuition:} Out of $10{,}000$ people, $\Sexpr{fmt(10000 * prev, 0)}$ are sick, and $\Sexpr{fmt(10000 * P_pos_D, 0)}$ of them test positive. Out of the $\Sexpr{fmt(10000 * (1 - prev), 0)}$ healthy people, $\Sexpr{fmt(10000 * P_pos_Dc, 0)}$ also test positive. Thus, only $\Sexpr{fmt(10000 * P_pos_D, 0)}$ of the $\Sexpr{fmt(10000 * P_pos, 0)}$ positive test results belong to sick people.
+\begin{answerlist}
+  \item True.
+  \item False. This is the sensitivity $P(+\mid D)$. Confusing $P(+\mid D)$ with $P(D\mid +)$ is the prosecutor's fallacy.
+  \item False. This is the specificity $P(-\mid D^c)$.
+  \item False. This is the probability $P(+)$ of a positive test result.
+\end{answerlist}
+\end{solution}
+
+\exname{Medical Test}
+\extype{schoice}
+\exsolution{1000}
+\exshuffle{4}

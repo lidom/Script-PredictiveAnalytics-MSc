@@ -1,0 +1,65 @@
+<<echo=FALSE, results=hide>>=
+## Script: Exercise "Deriving Independence"
+Bs  <- list(c(1, 2), c(1, 2, 3, 4), c(1, 2, 3), c(2, 4), c(1, 2, 3, 4, 5))
+B   <- Bs[[sample(seq_along(Bs), 1)]]
+A   <- c(2, 4, 6)
+AB  <- intersect(A, B)
+nA  <- length(A); nB <- length(B); nAB <- length(AB)
+indep <- (6 * nAB == nA * nB)               # P(A and B) == P(A) P(B), in integers
+
+## reduced fractions; note: \Sexpr{} drops backslashes, so all LaTeX stays in the text below
+red <- function(k, n) { g <- function(a, b) if (b == 0) a else g(b, a %% b); d <- g(k, n); c(k / d, n / d) }
+PAB  <- red(nAB, 6)          # P(A and B)
+PAPB <- red(nA * nB, 36)     # P(A) P(B)
+setB  <- paste(B,  collapse = ",")
+setAB <- paste(AB, collapse = ",")
+correct <- if (indep) "independent" else "not independent"
+wrong1  <- if (indep) "not independent" else "independent"
+@
+
+\begin{question}
+\textbf{Independent Events?} (Script: Exercise ``Deriving Independence'')
+
+A fair die is tossed once. Let
+$$
+A=\{2,4,6\}
+$$
+be the event of observing an even number and let
+$$
+B=\{\Sexpr{setB}\}.
+$$
+Which of the following statements is true?
+\begin{answerlist}
+  \item $A$ and $B$ are \Sexpr{correct}.
+  \item $A$ and $B$ are \Sexpr{wrong1}.
+  \item $A$ and $B$ are disjoint, i.e., $A\cap B=\emptyset$.
+  \item $P(A\cup B)=P(A)+P(B)$.
+\end{answerlist}
+\end{question}
+
+\begin{solution}
+We check the definition of independence. We have $A\cap B=\{\Sexpr{setAB}\}$ and, thus,
+\begin{align*}
+<<echo=FALSE, results=tex>>=
+## show the reduced fraction only if it differs from nAB/6 (e.g., 2/6 = 1/3, but not 1/6 = 1/6)
+if (PAB[2] == 6) {
+  cat(sprintf("P(A\\cap B)&=\\frac{%d}{6},\\\\[1ex]\n", nAB))
+} else {
+  cat(sprintf("P(A\\cap B)&=\\frac{%d}{6}=\\frac{%d}{%d},\\\\[1ex]\n", nAB, PAB[1], PAB[2]))
+}
+@
+P(A)\,P(B)&=\frac{\Sexpr{nA}}{6}\cdot\frac{\Sexpr{nB}}{6}=\frac{\Sexpr{PAPB[1]}}{\Sexpr{PAPB[2]}}.
+\end{align*}
+Thus, $P(A\cap B)$ \Sexpr{if (indep) "equals" else "does not equal"} $P(A)\,P(B)$, and the events $A$ and $B$ are \Sexpr{correct}.
+\begin{answerlist}
+  \item True.
+  \item False; see above.
+  \item False. $A\cap B=\{\Sexpr{setAB}\}\neq\emptyset$.
+  \item False. This addition rule only holds for disjoint events. Here, $P(A\cup B)=P(A)+P(B)-P(A\cap B)$ with $P(A\cap B)=\frac{\Sexpr{PAB[1]}}{\Sexpr{PAB[2]}}>0$.
+\end{answerlist}
+\end{solution}
+
+\exname{Independent Events}
+\extype{schoice}
+\exsolution{1000}
+\exshuffle{4}

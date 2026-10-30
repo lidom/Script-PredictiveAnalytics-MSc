@@ -1,0 +1,47 @@
+<<echo=FALSE, results=hide>>=
+## Script: Example "Joint Distribution Function of a Bivariate Normal Distribution"
+## (running example); adapted from the old exercise Ch2_BivariateNormal_Independence.
+## Uses the script's numbers on purpose, since the exercise refers to F(2,1) = 0.40.
+@
+
+\begin{question}
+\textbf{Joint cdf and Independence} (Script: Example ``Joint Distribution Function of a Bivariate Normal Distribution'')
+
+Consider the running example of the script: the firm's revenue growth $X_1$ and the GDP growth $X_2$ (both in \%) are jointly normally distributed,
+$$
+X=\begin{pmatrix}X_1\\ X_2\end{pmatrix}\sim\mathcal{N}_2\left(\mu,\Sigma\right)
+\quad\text{with}\quad
+\mu=\begin{pmatrix}2\\ 1\end{pmatrix}
+\quad\text{and}\quad
+\Sigma=\begin{pmatrix}1 & 0.8\\ 0.8 & 1\end{pmatrix}.
+$$
+In the script, we found that the joint distribution function at the point $(2,1)$ equals
+$$
+F(2,1)=P(X_1\leq 2, X_2\leq 1)\approx 0.40.
+$$
+\begin{enumerate}
+  \item Compute the probabilities $P(X_1\leq 2)$ and $P(X_2\leq 1)$.\\
+  \emph{Hint:} The normal density is symmetric around its mean.
+  \item Now suppose that $X_1$ and $X_2$ have the same means and variances as above, but that they are independent. Compute $F(2,1)$ for this case.
+  \item Compare your result from (b) with $F(2,1)\approx 0.40$ in the running example. Explain the difference in terms of revenue growth and GDP growth.
+\end{enumerate}
+\end{question}
+
+\begin{solution}
+\begin{enumerate}
+  \item The marginal distributions are $X_1\sim\mathcal{N}(2,1)$ and $X_2\sim\mathcal{N}(1,1)$. Since a normal density is symmetric around its mean, exactly half of the probability lies below the mean:
+  \begin{align*}
+  P(X_1\leq 2)&=0.5,\\[1ex]
+  P(X_2\leq 1)&=0.5.
+  \end{align*}
+  \item If $X_1$ and $X_2$ are independent, the joint cdf is the product of the marginal cdfs:
+  $$
+  F(2,1)=P(X_1\leq 2, X_2\leq 1)=P(X_1\leq 2)\cdot P(X_2\leq 1)=0.5\cdot 0.5=0.25.
+  $$
+  \item In the running example, $F(2,1)\approx 0.40>0.25$. Due to the positive covariance $\operatorname{Cov}(X_1,X_2)=0.8$, below-average revenue growth tends to occur together with below-average GDP growth. Therefore, a year in which \emph{both} growth rates are at or below their means is more likely than in the case of independence.
+\end{enumerate}
+\end{solution}
+
+\exname{Joint cdf and Independence}
+\extype{string}
+\exsolution{nil}

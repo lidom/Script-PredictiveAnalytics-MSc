@@ -1,0 +1,59 @@
+<<echo=FALSE, results=hide>>=
+## Script: Caution box "The Converse Is Not True" (Section "Independence Implies Mean
+##         Independence (but Not Vice Versa)") and Section "Law of Total Expectation"
+q  <- sample(c(0.6, 0.7, 0.8), 1)   # P(X2 = 1): calm market
+mu <- sample(c(0.1, 0.2), 1)        # mean daily return (in %)
+s1 <- 1                             # standard deviation in calm markets
+s2 <- 2                             # standard deviation in volatile markets
+@
+
+\begin{question}
+\textbf{Mean Independence vs.\ Independence} (Script: Section ``Independence Implies Mean Independence (but Not Vice Versa)'')
+
+Let $X_1$ be the daily return of a stock (in \%), and let $X_2\in\{1,2\}$ describe the state of the stock market on that day: calm ($X_2=1$) or volatile ($X_2=2$), where
+$$
+P(X_2=1)=\Sexpr{q}\quad\text{and}\quad P(X_2=2)=\Sexpr{fmt(1 - q, 1)}.
+$$
+Given the state of the market, the return is normally distributed:
+\begin{align*}
+X_1\mid X_2=1&\sim\mathcal{N}\left(\Sexpr{mu},\,\Sexpr{s1^2}\right),\\[1ex]
+X_1\mid X_2=2&\sim\mathcal{N}\left(\Sexpr{mu},\,\Sexpr{s2^2}\right).
+\end{align*}
+\begin{enumerate}
+  \item Compute the conditional means $E(X_1\mid X_2=1)$ and $E(X_1\mid X_2=2)$.
+  \item Compute the unconditional mean $E(X_1)$ using the Law of Total Expectation.
+  \item Is $X_1$ mean independent of $X_2$?
+  \item Compute the conditional variances $\operatorname{Var}(X_1\mid X_2=1)$ and $\operatorname{Var}(X_1\mid X_2=2)$. Are $X_1$ and $X_2$ independent? Interpret the result.
+\end{enumerate}
+\end{question}
+
+\begin{solution}
+\begin{enumerate}
+  \item The conditional means are the means of the conditional normal distributions:
+  $$
+  E(X_1\mid X_2=1)=\Sexpr{mu}\quad\text{and}\quad E(X_1\mid X_2=2)=\Sexpr{mu}.
+  $$
+  \item By the Law of Total Expectation,
+  \begin{align*}
+  E(X_1)
+  &=E\big(E(X_1\mid X_2)\big)\\[1ex]
+  &=E(X_1\mid X_2=1)\,P(X_2=1)+E(X_1\mid X_2=2)\,P(X_2=2)\\[1ex]
+  &=\Sexpr{mu}\cdot \Sexpr{q}+\Sexpr{mu}\cdot \Sexpr{fmt(1 - q, 1)}\\[1ex]
+  &=\Sexpr{mu}.
+  \end{align*}
+  \item Yes. Since
+  $$
+  E(X_1\mid X_2=x_2)=\Sexpr{mu}=E(X_1)\quad\text{for all } x_2\in\{1,2\},
+  $$
+  $X_1$ is mean independent of $X_2$: the state of the market does not affect the \emph{expected} return.
+  \item The conditional variances are the variances of the conditional normal distributions:
+  $$
+  \operatorname{Var}(X_1\mid X_2=1)=\Sexpr{s1^2}\neq\Sexpr{s2^2}=\operatorname{Var}(X_1\mid X_2=2).
+  $$
+  Thus, the conditional distribution of $X_1$ given $X_2=x_2$ depends on $x_2$, and $X_1$ and $X_2$ are \emph{not} independent. Knowing that the market is volatile does not change the expected return, but it makes large gains and large losses more likely. This illustrates that mean independence does not imply independence.
+\end{enumerate}
+\end{solution}
+
+\exname{Mean Independence vs. Independence}
+\extype{string}
+\exsolution{nil}

@@ -1,0 +1,70 @@
+<<echo=FALSE, results=hide>>=
+## Script: Example "Two-Dimensional pdf (Customer Arrivals and Service Times)"
+th1 <- sample(c(4, 6, 10), 1)     # average waiting time until the next call (minutes)
+th2 <- sample(c(2, 3), 1)         # average call duration (minutes)
+a   <- th1                        # P(X1 <= a, X2 <= b)
+b   <- 2 * th2
+P   <- (1 - exp(-1)) * (1 - exp(-2))
+@
+
+\begin{question}
+\textbf{Two-Dimensional Density} (Script: Example ``Two-Dimensional pdf (Customer Arrivals and Service Times)'')
+
+A company runs a service hotline. Let
+\begin{itemize}
+  \item $X_1\geq 0$ be the waiting time (in minutes) until the next call, and
+  \item $X_2\geq 0$ be the duration (in minutes) of this call.
+\end{itemize}
+The random vector $X=(X_1,X_2)^{\top}$ has the joint density function
+$$
+f(x_1,x_2)=\left\{\begin{array}{ll}
+\frac{1}{\Sexpr{th1}}\,e^{-x_1/\Sexpr{th1}}\cdot\frac{1}{\Sexpr{th2}}\,e^{-x_2/\Sexpr{th2}} & \text{for } x_1\geq 0 \text{ and } x_2\geq 0\\[1ex]
+0 & \text{otherwise.}
+\end{array}\right.
+$$
+\begin{enumerate}
+  \item Show that $f$ integrates to one.
+  \item Compute the probability that the next call comes within $\Sexpr{a}$ minutes \textbf{and} lasts at most $\Sexpr{b}$ minutes.
+  \item Compute the marginal density $f_1(x_1)$ of the waiting time $X_1$.
+  \item Are $X_1$ and $X_2$ independent? Justify your answer.
+\end{enumerate}
+\end{question}
+
+\begin{solution}
+\begin{enumerate}
+  \item Since the joint density is a product of a function of $x_1$ and a function of $x_2$, the double integral factorizes:
+  \begin{align*}
+  \int_{-\infty}^{\infty}\int_{-\infty}^{\infty}f(x_1,x_2)\,dx_1\,dx_2
+  &=\left(\int_{0}^{\infty}\frac{1}{\Sexpr{th1}}\,e^{-x_1/\Sexpr{th1}}\,dx_1\right)\cdot\left(\int_{0}^{\infty}\frac{1}{\Sexpr{th2}}\,e^{-x_2/\Sexpr{th2}}\,dx_2\right)\\[1ex]
+  &=\Big[-e^{-x_1/\Sexpr{th1}}\Big]_{0}^{\infty}\cdot\Big[-e^{-x_2/\Sexpr{th2}}\Big]_{0}^{\infty}\\[1ex]
+  &=(0+1)\cdot(0+1)=1.
+  \end{align*}
+  \item Probabilities are volumes under the density surface:
+  \begin{align*}
+  P(X_1\leq \Sexpr{a}, X_2\leq \Sexpr{b})
+  &=\int_{0}^{\Sexpr{b}}\int_{0}^{\Sexpr{a}}\frac{1}{\Sexpr{th1}}\,e^{-x_1/\Sexpr{th1}}\cdot\frac{1}{\Sexpr{th2}}\,e^{-x_2/\Sexpr{th2}}\,dx_1\,dx_2\\[1ex]
+  &=\left(\int_{0}^{\Sexpr{a}}\frac{1}{\Sexpr{th1}}\,e^{-x_1/\Sexpr{th1}}\,dx_1\right)\cdot\left(\int_{0}^{\Sexpr{b}}\frac{1}{\Sexpr{th2}}\,e^{-x_2/\Sexpr{th2}}\,dx_2\right)\\[1ex]
+  &=\Big[-e^{-x_1/\Sexpr{th1}}\Big]_{0}^{\Sexpr{a}}\cdot\Big[-e^{-x_2/\Sexpr{th2}}\Big]_{0}^{\Sexpr{b}}\\[1ex]
+  &=\left(-e^{-\Sexpr{a}/\Sexpr{th1}}-\left(-e^{0}\right)\right)\cdot\left(-e^{-\Sexpr{b}/\Sexpr{th2}}-\left(-e^{0}\right)\right)\\[1ex]
+  &=\left(1-e^{-1}\right)\cdot\left(1-e^{-2}\right)\\[1ex]
+  &\approx\Sexpr{fmt(1 - exp(-1), 2)}\cdot\Sexpr{fmt(1 - exp(-2), 2)}\approx\Sexpr{fmt(P, 2)}.
+  \end{align*}
+  \item We integrate out $x_2$. For $x_1\geq 0$,
+  \begin{align*}
+  f_1(x_1)
+  &=\int_{-\infty}^{\infty}f(x_1,x_2)\,dx_2\\[1ex]
+  &=\frac{1}{\Sexpr{th1}}\,e^{-x_1/\Sexpr{th1}}\cdot\underbrace{\int_{0}^{\infty}\frac{1}{\Sexpr{th2}}\,e^{-x_2/\Sexpr{th2}}\,dx_2}_{=1}\\[1ex]
+  &=\frac{1}{\Sexpr{th1}}\,e^{-x_1/\Sexpr{th1}},
+  \end{align*}
+  and $f_1(x_1)=0$ for $x_1<0$. Likewise, $f_2(x_2)=\frac{1}{\Sexpr{th2}}\,e^{-x_2/\Sexpr{th2}}$ for $x_2\geq 0$ and $f_2(x_2)=0$ otherwise.
+  \item Yes. The joint density equals the product of the marginal densities,
+  $$
+  f(x_1,x_2)=f_1(x_1)\cdot f_2(x_2)\quad\text{for all}\quad x_1,x_2\in\mathbb{R}.
+  $$
+  Thus, $X_1$ and $X_2$ are independent: the waiting time until the next call tells us nothing about the duration of this call.
+\end{enumerate}
+\end{solution}
+
+\exname{Two-Dimensional Density}
+\extype{string}
+\exsolution{nil}

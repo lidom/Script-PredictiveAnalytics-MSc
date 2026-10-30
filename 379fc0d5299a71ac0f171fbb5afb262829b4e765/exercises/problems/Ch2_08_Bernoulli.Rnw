@@ -1,0 +1,59 @@
+<<echo=FALSE, results=hide>>=
+## Script: Section "The Bernoulli Distribution"; adapted from the old exercise Ch2_Bernoulli
+p <- sample(c(0.1, 0.2, 0.3, 0.4), 1)   # purchase probability
+@
+
+\begin{question}
+\textbf{Bernoulli Distribution} (Script: Section ``The Bernoulli Distribution'')
+
+An online shop records whether a visitor of its website buys something ($Y=1$) or not ($Y=0$). Thus, $Y\in\{0,1\}$ is a binary random variable with
+$$
+P(Y=1)=p\quad\text{and}\quad P(Y=0)=1-p,
+$$
+where $0\leq p\leq 1$.
+\begin{enumerate}
+  \item Write down the probability mass function $f_Y(y)$ of $Y$.
+  \item Compute the mean $E(Y)$.
+  \item Compute the variance $\operatorname{Var}(Y)$.
+  \item The shop's visitors buy something with probability $p=\Sexpr{p}$. Compute $E(Y)$ and $\operatorname{Var}(Y)$ for this value of $p$.
+\end{enumerate}
+\end{question}
+
+\begin{solution}
+\begin{enumerate}
+  \item The probability mass function of $Y$ is
+  $$
+  f_Y(y)=\left\{\begin{array}{ll}
+  1-p & \text{for } y=0\\
+  p   & \text{for } y=1\\
+  0   & \text{otherwise.}
+  \end{array}\right.
+  $$
+  Compactly, $f_Y(y)=p^{y}(1-p)^{1-y}$ for $y\in\{0,1\}$. That is, $Y\sim\operatorname{Bernoulli}(p)$.
+  \item For a discrete random variable, the mean is the probability-weighted sum of its values:
+  \begin{align*}
+  E(Y)
+  &= 0\cdot P(Y=0) + 1\cdot P(Y=1)\\[1ex]
+  &= 0\cdot (1-p) + 1\cdot p\\[1ex]
+  &= p.
+  \end{align*}
+  \item The variance is the mean of the squared deviations from the mean $E(Y)=p$:
+  \begin{align*}
+  \operatorname{Var}(Y)
+  &= (0-p)^2\cdot P(Y=0) + (1-p)^2\cdot P(Y=1)\\[1ex]
+  &= p^2\,(1-p) + (1-p)^2\,p\\[1ex]
+  &= p\,(1-p)\,\big(p + (1-p)\big)\\[1ex]
+  &= p\,(1-p).
+  \end{align*}
+  \item For $p=\Sexpr{p}$:
+  \begin{align*}
+  E(Y)&=\Sexpr{p}\\[1ex]
+  \operatorname{Var}(Y)&=\Sexpr{p}\cdot(1-\Sexpr{p})=\Sexpr{fmt(p * (1 - p), 2)}.
+  \end{align*}
+  That is, on average, a share of $\Sexpr{100 * p}\%$ of the visitors buys something.
+\end{enumerate}
+\end{solution}
+
+\exname{Bernoulli Distribution}
+\extype{string}
+\exsolution{nil}

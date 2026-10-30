@@ -1,0 +1,52 @@
+<<echo=FALSE, results=hide>>=
+## Script: Exercise "Drawing Cards Without Replacement"
+cats <- list(list(name = "an ace",      plural = "aces",   short = "aces",       k = 4),
+             list(name = "a heart",     plural = "hearts", short = "hearts",     k = 13),
+             list(name = "a face card", plural = "face cards (jacks, queens, kings)", short = "face cards", k = 12))
+ct <- cats[[sample(seq_along(cats), 1)]]
+k  <- ct$k
+
+sol   <- (k / 52) * ((k - 1) / 51)   # without replacement
+wrong <- c((k / 52)^2,               # with replacement
+           (k / 52) * (k / 51),      # forgot to remove the first card from the category
+           (k - 1) / 51)             # P(B | A) only
+stopifnot(length(unique(round(c(sol, wrong), 4))) == 4)
+@
+
+\begin{question}
+\textbf{Drawing Cards} (Script: Exercise ``Drawing Cards Without Replacement'')
+
+Draw two cards from a standard deck of $52$ cards \emph{without} replacement. The deck contains $\Sexpr{k}$ \Sexpr{ct$plural}. What is the probability that \textbf{both} cards are \Sexpr{ct$short}, i.e., that the first card is \Sexpr{ct$name} \textbf{and} the second card is \Sexpr{ct$name}? (Answers are rounded to four decimals.)
+\begin{answerlist}
+  \item $\frac{\Sexpr{k}}{52}\cdot\frac{\Sexpr{k - 1}}{51}\approx\Sexpr{fmt(sol, 4)}$
+  \item $\frac{\Sexpr{k}}{52}\cdot\frac{\Sexpr{k}}{52}\approx\Sexpr{fmt(wrong[1], 4)}$
+  \item $\frac{\Sexpr{k}}{52}\cdot\frac{\Sexpr{k}}{51}\approx\Sexpr{fmt(wrong[2], 4)}$
+  \item $\frac{\Sexpr{k - 1}}{51}\approx\Sexpr{fmt(wrong[3], 4)}$
+\end{answerlist}
+\end{question}
+
+\begin{solution}
+Let $A$ be the event that the first card is \Sexpr{ct$name}, and let $B$ be the event that the second card is \Sexpr{ct$name}. Then,
+$$
+P(A)=\frac{\Sexpr{k}}{52}.
+$$
+Given $A$, the first card is not replaced, so $51$ cards remain, $\Sexpr{k - 1}$ of which are \Sexpr{ct$short}:
+$$
+P(B\mid A)=\frac{\Sexpr{k - 1}}{51}.
+$$
+Rearranging the definition of conditional probability gives
+$$
+P(A\cap B)=P(A)\,P(B\mid A)=\frac{\Sexpr{k}}{52}\cdot\frac{\Sexpr{k - 1}}{51}\approx\Sexpr{fmt(sol, 4)}.
+$$
+\begin{answerlist}
+  \item True.
+  \item False. This would be the answer for drawing \emph{with} replacement (independent draws).
+  \item False. After the first draw, only $\Sexpr{k - 1}$ \Sexpr{ct$short} are left.
+  \item False. This is only the conditional probability $P(B\mid A)$.
+\end{answerlist}
+\end{solution}
+
+\exname{Drawing Cards}
+\extype{schoice}
+\exsolution{1000}
+\exshuffle{4}

@@ -1,0 +1,42 @@
+<<echo=FALSE, results=hide>>=
+## Script: Exercise "Independence vs. Disjoint Events"
+probs <- list(c(0.6, 0.3), c(0.5, 0.4), c(0.7, 0.2), c(0.4, 0.5))
+pp    <- probs[[sample(seq_along(probs), 1)]]
+PA    <- pp[1]   # P(card)
+PB    <- pp[2]   # P(cash)
+@
+
+\begin{question}
+\textbf{Disjoint Events} (Script: Exercise ``Independence vs.\ Disjoint Events'')
+
+A shop's customers pay by card (event $A$), in cash (event $B$), or with their mobile phone (event $C$). Each customer uses exactly one payment method, such that the three events are disjoint: $A\cap B=\emptyset$, $A\cap C=\emptyset$, and $B\cap C=\emptyset$. Moreover,
+$$
+P(A)=\Sexpr{PA}\quad\text{and}\quad P(B)=\Sexpr{PB}.
+$$
+Which of the following statements is true?
+\begin{answerlist}
+  \item $A$ and $B$ are \emph{not} independent, since $P(A\cap B)=0\neq \Sexpr{fmt(PA * PB, 2)}=P(A)\,P(B)$.
+  \item $A$ and $B$ are independent, since $P(A\cap B)=P(A)\,P(B)=\Sexpr{fmt(PA * PB, 2)}$.
+  \item $P(A\cup B)=P(A)\,P(B)=\Sexpr{fmt(PA * PB, 2)}$.
+  \item $P(A\mid B)=P(A)=\Sexpr{PA}$.
+\end{answerlist}
+\end{question}
+
+\begin{solution}
+Since $A$ and $B$ are disjoint, $P(A\cap B)=P(\emptyset)=0$. However,
+$$
+P(A)\,P(B)=\Sexpr{PA}\cdot\Sexpr{PB}=\Sexpr{fmt(PA * PB, 2)}>0.
+$$
+Thus, $P(A\cap B)\neq P(A)\,P(B)$, and $A$ and $B$ are not independent. Disjoint events with strictly positive probabilities are \emph{never} independent: knowing that a customer pays by card tells us that this customer does \emph{not} pay in cash.
+\begin{answerlist}
+  \item True.
+  \item False. Since $A\cap B=\emptyset$, we have $P(A\cap B)=0\neq P(A)\,P(B)$.
+  \item False. For disjoint events, $P(A\cup B)=P(A)+P(B)=\Sexpr{fmt(PA + PB, 1)}$.
+  \item False. $P(A\mid B)=P(A\cap B)/P(B)=0/\Sexpr{PB}=0$: a customer who pays in cash never pays by card.
+\end{answerlist}
+\end{solution}
+
+\exname{Disjoint Events}
+\extype{schoice}
+\exsolution{1000}
+\exshuffle{4}

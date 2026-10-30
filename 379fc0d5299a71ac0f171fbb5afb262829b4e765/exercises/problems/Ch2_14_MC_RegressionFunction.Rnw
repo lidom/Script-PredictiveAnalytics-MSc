@@ -1,0 +1,65 @@
+<<echo=FALSE, results=hide>>=
+## Script: Example "Conditional Mean Function of a Bivariate Normal Distribution"
+mu1  <- sample(c(2, 3), 1)        # E(X1)
+mu2  <- sample(c(0.5, 1, 1.5), 1)  # E(X2); must differ from E(X1), else distractor 3 = correct answer
+V1   <- 1                         # Var(X1)
+V2   <- sample(c(2, 4), 1)        # Var(X2)
+C12  <- sample(c(0.4, 0.8), 1)    # Cov(X1, X2)
+
+b    <- C12 / V2                  # correct slope
+a    <- mu1 - b * mu2             # correct intercept
+bw   <- C12 / V1                  # wrong slope: divided by Var(X1)
+aw   <- mu1 - bw * mu2
+ac   <- mu2 - b * mu1             # wrong intercept: means swapped
+br   <- C12 / sqrt(V1 * V2)       # wrong slope: correlation
+ar   <- mu1 - br * mu2
+
+## note: \Sexpr{} drops backslashes, so the "\," in the answers stays in the text below
+ints  <- c(a, aw, ac, ar)
+slps  <- c(b, bw, b, br)
+stopifnot(length(unique(paste(fmt(ints, 2), fmt(slps, 2)))) == 4)
+@
+
+\begin{question}
+\textbf{Regression Function} (Script: Example ``Conditional Mean Function of a Bivariate Normal Distribution'')
+
+The revenue growth $X_1$ of a firm and the GDP growth $X_2$ (both in \%) are jointly normally distributed with
+$$
+\mu=\begin{pmatrix}E(X_1)\\ E(X_2)\end{pmatrix}=\begin{pmatrix}\Sexpr{mu1}\\ \Sexpr{mu2}\end{pmatrix}
+\quad\text{and}\quad
+\Sigma=\begin{pmatrix}\operatorname{Var}(X_1)&\operatorname{Cov}(X_1,X_2)\\\operatorname{Cov}(X_1,X_2)&\operatorname{Var}(X_2)\end{pmatrix}=\begin{pmatrix}\Sexpr{V1} & \Sexpr{C12}\\ \Sexpr{C12} & \Sexpr{V2}\end{pmatrix}.
+$$
+For the bivariate normal distribution, the regression function is
+$$
+m(x_2)=E(X_1\mid X_2=x_2)=E(X_1)+\frac{\operatorname{Cov}(X_1,X_2)}{\operatorname{Var}(X_2)}\,\big(x_2-E(X_2)\big).
+$$
+Which of the following is the regression function $m(x_2)$?
+\begin{answerlist}
+  \item $m(x_2)=\Sexpr{fmt(ints[1], 2)}+\Sexpr{fmt(slps[1], 2)}\,x_2$
+  \item $m(x_2)=\Sexpr{fmt(ints[2], 2)}+\Sexpr{fmt(slps[2], 2)}\,x_2$
+  \item $m(x_2)=\Sexpr{fmt(ints[3], 2)}+\Sexpr{fmt(slps[3], 2)}\,x_2$
+  \item $m(x_2)=\Sexpr{fmt(ints[4], 2)}+\Sexpr{fmt(slps[4], 2)}\,x_2$
+\end{answerlist}
+\end{question}
+
+\begin{solution}
+Plugging in the parameters gives
+\begin{align*}
+m(x_2)
+&=\Sexpr{mu1}+\frac{\Sexpr{C12}}{\Sexpr{V2}}\,(x_2-\Sexpr{mu2})\\[1ex]
+&=\Sexpr{mu1}+\Sexpr{fmt(b, 2)}\,(x_2-\Sexpr{mu2})\\[1ex]
+&=\Sexpr{fmt(a, 2)}+\Sexpr{fmt(b, 2)}\,x_2.
+\end{align*}
+\textbf{Interpretation:} Each additional percentage point of GDP growth increases the expected revenue growth of the firm by $\Sexpr{fmt(b, 2)}$ percentage points.
+\begin{answerlist}
+  \item True.
+  \item False. Here, the covariance was divided by $\operatorname{Var}(X_1)$ instead of $\operatorname{Var}(X_2)$.
+  \item False. Here, the roles of $E(X_1)$ and $E(X_2)$ were interchanged when computing the intercept.
+  \item False. Here, the slope is the correlation $\operatorname{Corr}(X_1,X_2)=\Sexpr{fmt(br, 2)}$ instead of $\operatorname{Cov}(X_1,X_2)/\operatorname{Var}(X_2)$.
+\end{answerlist}
+\end{solution}
+
+\exname{Regression Function}
+\extype{schoice}
+\exsolution{1000}
+\exshuffle{4}

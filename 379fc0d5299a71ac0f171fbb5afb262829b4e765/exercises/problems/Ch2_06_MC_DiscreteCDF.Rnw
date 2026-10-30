@@ -1,0 +1,51 @@
+<<echo=FALSE, results=hide>>=
+## Script: Example "cdf of a Discrete Random Variable (Car Sales)"
+pmfs <- list(c(0.1, 0.3, 0.4, 0.2), c(0.3, 0.4, 0.2, 0.1),
+             c(0.2, 0.3, 0.3, 0.2), c(0.1, 0.4, 0.3, 0.2))
+p  <- pmfs[[sample(seq_along(pmfs), 1)]]
+Fx <- cumsum(p)
+
+sol   <- Fx[2]                    # F(1.5) = F(1)
+wrong <- c(Fx[3],                 # F(2)
+           p[2],                  # P(X = 1)
+           (Fx[2] + Fx[3]) / 2)   # linear interpolation between F(1) and F(2)
+stopifnot(length(unique(round(c(sol, wrong), 3))) == 4)
+@
+
+\begin{question}
+\textbf{cdf of a Discrete Random Variable} (Script: Example ``cdf of a Discrete Random Variable (Car Sales)'')
+
+A car dealership sells $X\in\{0,1,2,3\}$ cars per day with the following probabilities:
+\begin{center}
+\begin{tabular}{c|cccc}
+$x$      & $0$ & $1$ & $2$ & $3$\\\hline
+$P(X=x)$ & $\Sexpr{p[1]}$ & $\Sexpr{p[2]}$ & $\Sexpr{p[3]}$ & $\Sexpr{p[4]}$
+\end{tabular}
+\end{center}
+What is the value of the cdf $F_X(x)=P(X\leq x)$ at $x=1.5$?
+\begin{answerlist}
+  \item $F_X(1.5)=\Sexpr{fmt(sol, 2)}$
+  \item $F_X(1.5)=\Sexpr{fmt(wrong[1], 2)}$
+  \item $F_X(1.5)=\Sexpr{fmt(wrong[2], 2)}$
+  \item $F_X(1.5)=\Sexpr{fmt(wrong[3], 2)}$
+\end{answerlist}
+\end{question}
+
+\begin{solution}
+The cdf adds up the probabilities of all values smaller than or equal to $x=1.5$. These are the values $0$ and $1$:
+$$
+F_X(1.5)=P(X\leq 1.5)=P(X=0)+P(X=1)=\Sexpr{p[1]}+\Sexpr{p[2]}=\Sexpr{fmt(sol, 2)}.
+$$
+The cdf of a discrete random variable is a step function: it is flat between the possible values, so $F_X(1.5)=F_X(1)$.
+\begin{answerlist}
+  \item True.
+  \item False. This is $F_X(2)=P(X\leq 2)$; but $X=2$ is not smaller than or equal to $1.5$.
+  \item False. This is only the pmf value $P(X=1)$.
+  \item False. This is the average of $F_X(1)$ and $F_X(2)$. The cdf of a discrete random variable does not increase linearly between the possible values; it is a step function.
+\end{answerlist}
+\end{solution}
+
+\exname{Discrete cdf}
+\extype{schoice}
+\exsolution{1000}
+\exshuffle{4}

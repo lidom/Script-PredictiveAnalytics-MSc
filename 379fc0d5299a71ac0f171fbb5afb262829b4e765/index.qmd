@@ -45,7 +45,8 @@ Further textbooks I can recommend:
 ### Information on the Exam {-}
 
 * Written exam (60 or 90 minutes)
-<!-- 
+* **Exercises:** Each chapter ends with exercises (with solutions). They are your main resource for preparing for the exam, since the exam builds on them. However, reading the script remains advisable, particularly if you aim for a top grade: the exercises cannot cover every concept and every connection between them.
+<!--
 * **10** multiple-choice problems and
    * **2** free-text problems (each with sub-questions)
 * In the exam you are allowed to use

@@ -1,0 +1,49 @@
+<<echo=FALSE, results=hide>>=
+## Script: Exercise "Two Consecutive Coin Tosses" (Section Probability)
+p <- sample(c(0.2, 0.3, 0.4, 0.6, 0.7), 1)   # P(heads); p = 0.5 excluded (answers would coincide)
+
+sol   <- 2 * p - p^2          # P(H1 or H2)
+wrong <- c(p^2,               # P(H1 and H2)
+           2 * p * (1 - p),   # P(exactly one head)
+           1 - p^2)           # 1 - P(H1 and H2)
+stopifnot(length(unique(round(c(sol, wrong), 4))) == 4)
+@
+
+\begin{question}
+\textbf{Two Coin Tosses} (Script: Exercise ``Two Consecutive Coin Tosses'')
+
+A coin lands heads with probability $P(H)=\Sexpr{p}$. The coin is tossed twice, and the two tosses are independent. Let $H_1$ be the event that heads occurs on toss 1 and let $H_2$ be the event that heads occurs on toss 2.
+
+What is the probability that heads occurs on toss 1 \textbf{or} on toss 2, i.e., $P(H_1\cup H_2)$?
+\begin{answerlist}
+  \item $\Sexpr{fmt(sol, 2)}$
+  \item $\Sexpr{fmt(wrong[1], 2)}$
+  \item $\Sexpr{fmt(wrong[2], 2)}$
+  \item $\Sexpr{fmt(wrong[3], 2)}$
+\end{answerlist}
+\end{question}
+
+\begin{solution}
+Since the two tosses are independent,
+$$
+P(H_1\cap H_2)=P(H_1)\,P(H_2)=\Sexpr{p}\cdot\Sexpr{p}=\Sexpr{fmt(p^2, 2)}.
+$$
+Thus,
+\begin{align*}
+P(H_1\cup H_2)
+&=P(H_1)+P(H_2)-P(H_1\cap H_2)\\[1ex]
+&=\Sexpr{p}+\Sexpr{p}-\Sexpr{fmt(p^2, 2)}\\[1ex]
+&=\Sexpr{fmt(sol, 2)}.
+\end{align*}
+\begin{answerlist}
+  \item True.
+  \item False. This is $P(H_1\cap H_2)$, i.e., the probability of heads on \emph{both} tosses.
+  \item False. This is the probability of heads on \emph{exactly one} of the two tosses.
+  \item False. This is $1-P(H_1\cap H_2)$, i.e., the probability of \emph{not} getting heads on both tosses.
+\end{answerlist}
+\end{solution}
+
+\exname{Two Coin Tosses}
+\extype{schoice}
+\exsolution{1000}
+\exshuffle{4}

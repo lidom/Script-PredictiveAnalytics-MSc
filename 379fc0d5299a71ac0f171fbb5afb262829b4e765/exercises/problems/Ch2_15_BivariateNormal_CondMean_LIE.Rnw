@@ -1,0 +1,70 @@
+<<echo=FALSE, results=hide>>=
+## Script: Examples "Covariance and Correlation of a Bivariate Normal Distribution",
+##         "Conditional Mean Function of a Bivariate Normal Distribution", and
+##         "Law of Total Expectation (Bivariate Normal Distribution)"
+mu1 <- sample(c(3, 4), 1)          # E(X1)
+mu2 <- sample(c(1, 2), 1)          # E(X2)
+V1  <- 4                           # Var(X1): standard deviation 2
+V2  <- 1                           # Var(X2): standard deviation 1
+C12 <- sample(c(1.2, 1.6), 1)      # Cov(X1, X2)
+
+rho <- C12 / sqrt(V1 * V2)
+b   <- C12 / V2
+a   <- mu1 - b * mu2
+@
+
+\begin{question}
+\textbf{Covariance, Regression Function, and the Law of Total Expectation} (Script: Examples ``Covariance and Correlation of a Bivariate Normal Distribution'', ``Conditional Mean Function of a Bivariate Normal Distribution'', and ``Law of Total Expectation (Bivariate Normal Distribution)'')
+
+A car manufacturer's revenues react strongly to the business cycle. Let $X_1$ be the manufacturer's annual revenue growth and let $X_2$ be the annual GDP growth (both in \%). Suppose that
+$$
+X=\begin{pmatrix}X_1\\ X_2\end{pmatrix}\sim\mathcal{N}_2\left(\mu,\Sigma\right)
+\quad\text{with}\quad
+\mu=\begin{pmatrix}\Sexpr{mu1}\\ \Sexpr{mu2}\end{pmatrix}
+\quad\text{and}\quad
+\Sigma=\begin{pmatrix}\Sexpr{V1} & \Sexpr{C12}\\ \Sexpr{C12} & \Sexpr{V2}\end{pmatrix}.
+$$
+\begin{enumerate}
+  \item What are the standard deviations of $X_1$ and $X_2$? Compute the correlation $\operatorname{Corr}(X_1,X_2)$.
+  \item Compute the regression function $m(x_2)=E(X_1\mid X_2=x_2)$ using
+  $$
+  m(x_2)=E(X_1)+\frac{\operatorname{Cov}(X_1,X_2)}{\operatorname{Var}(X_2)}\,\big(x_2-E(X_2)\big).
+  $$
+  \item Interpret the slope of the regression function. What is the expected revenue growth in a year with zero GDP growth, and in a year with $3$ percent GDP growth?
+  \item Verify the Law of Total Expectation, $E\big(E(X_1\mid X_2)\big)=E(X_1)$, for this example.
+\end{enumerate}
+\end{question}
+
+\begin{solution}
+\begin{enumerate}
+  \item The standard deviations are $\sqrt{\operatorname{Var}(X_1)}=\sqrt{\Sexpr{V1}}=\Sexpr{sqrt(V1)}$ and $\sqrt{\operatorname{Var}(X_2)}=\sqrt{\Sexpr{V2}}=\Sexpr{sqrt(V2)}$ percentage points. The correlation is
+  $$
+  \operatorname{Corr}(X_1,X_2)=\frac{\operatorname{Cov}(X_1,X_2)}{\sqrt{\operatorname{Var}(X_1)}\sqrt{\operatorname{Var}(X_2)}}=\frac{\Sexpr{C12}}{\Sexpr{sqrt(V1)}\cdot \Sexpr{sqrt(V2)}}=\Sexpr{fmt(rho, 1)}.
+  $$
+  This is a strong positive correlation.
+  \item
+  \begin{align*}
+  m(x_2)
+  &=\Sexpr{mu1}+\frac{\Sexpr{C12}}{\Sexpr{V2}}\,(x_2-\Sexpr{mu2})\\[1ex]
+  &=\Sexpr{fmt(a, 1)}+\Sexpr{fmt(b, 1)}\,x_2.
+  \end{align*}
+  \item Each additional percentage point of GDP growth increases the expected revenue growth of the car manufacturer by $\Sexpr{fmt(b, 1)}$ percentage points. Since the slope is larger than one, the manufacturer's revenues react more than one-to-one to the business cycle. Moreover,
+  \begin{align*}
+  m(0)&=\Sexpr{fmt(a, 1)}+\Sexpr{fmt(b, 1)}\cdot 0=\Sexpr{fmt(a, 1)},\\[1ex]
+  m(3)&=\Sexpr{fmt(a, 1)}+\Sexpr{fmt(b, 1)}\cdot 3=\Sexpr{fmt(a + 3 * b, 1)}.
+  \end{align*}
+  That is, the expected revenue growth is $\Sexpr{fmt(a, 1)}$ percent in a year with zero GDP growth, and $\Sexpr{fmt(a + 3 * b, 1)}$ percent in a year with $3$ percent GDP growth.
+  \item If we do not fix the value of $X_2$, the conditional mean is the random variable $E(X_1\mid X_2)=m(X_2)=\Sexpr{fmt(a, 1)}+\Sexpr{fmt(b, 1)}\,X_2$. Using the linearity of the mean, $E(a+b\,X_2)=a+b\,E(X_2)$,
+  \begin{align*}
+  E\big(E(X_1\mid X_2)\big)
+  &=E\big(\Sexpr{fmt(a, 1)}+\Sexpr{fmt(b, 1)}\,X_2\big)\\[1ex]
+  &=\Sexpr{fmt(a, 1)}+\Sexpr{fmt(b, 1)}\,E(X_2)\\[1ex]
+  &=\Sexpr{fmt(a, 1)}+\Sexpr{fmt(b, 1)}\cdot \Sexpr{mu2}\\[1ex]
+  &=\Sexpr{mu1}=E(X_1).
+  \end{align*}
+\end{enumerate}
+\end{solution}
+
+\exname{Covariance, Regression Function, and LIE}
+\extype{string}
+\exsolution{nil}

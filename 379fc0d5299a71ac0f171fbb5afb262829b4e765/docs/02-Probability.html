@@ -255,6 +255,7 @@ window.Quarto = {
   <li><a href="#some-important-continuous-random-variables" id="toc-some-important-continuous-random-variables" class="nav-link" data-scroll-target="#some-important-continuous-random-variables"><span class="header-section-number">2.2.7</span> Some Important Continuous Random Variables</a></li>
   </ul>
 </li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">2.3</span> Exercises</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul></nav>
     </div>
@@ -337,8 +338,29 @@ A \cap B=\{\omega \in \Omega | \omega \in A\text{ and }\omega \in B\}
 \]</span> which can be read as “<span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>.” If <span class="math inline">\(A_{1}, A_{2}, \ldots\)</span> is a sequence of sets, then <span class="math display">\[
 \bigcap_{i=1}^{\infty} A_{i}=\left\{\omega \in \Omega | \omega \in A_{i} \text{ for all } i\right\}.
 \]</span></p>
-<p>If every element of <span class="math inline">\(A\)</span> is also contained in <span class="math inline">\(B\)</span>, we write <span class="math inline">\(A \subset B\)</span> or, equivalently, <span class="math inline">\(B \supset A\)</span>. If <span class="math inline">\(A\)</span> is a finite set, let <span class="math inline">\(|A|\)</span> denote the number of elements in <span class="math inline">\(A\)</span>. We say that <span class="math inline">\(A_{1}, A_{2}, \ldots\)</span> are <strong>disjoint</strong> or <strong>mutually exclusive</strong> if <span class="math inline">\(A_{i} \cap A_{j}=\emptyset\)</span> whenever <span class="math inline">\(i \neq j\)</span>. For example, <span class="math inline">\(A_{1}=[0,1), A_{2}=[1,2), A_{3}=[2,3), \ldots\)</span> are disjoint. A <strong>partition</strong> of <span class="math inline">\(\Omega\)</span> is a sequence of disjoint sets <span class="math inline">\(A_{1}, A_{2}, \ldots\)</span> such that <span class="math inline">\(\bigcup_{i=1}^{\infty} A_{i}=\Omega\)</span>.</p>
-<p><strong>Summary:</strong> Sample space and events</p>
+<p>Some further notation:</p>
+<div class="spaced-list">
+<ul>
+<li>
+<strong>Subset:</strong> If every element of <span class="math inline">\(A\)</span> is also contained in <span class="math inline">\(B\)</span>, we write <span class="math inline">\(A \subset B\)</span> or, equivalently, <span class="math inline">\(B \supset A\)</span>.</li>
+<li>
+<strong>Number of elements:</strong> If <span class="math inline">\(A\)</span> is a finite set, <span class="math inline">\(|A|\)</span> denotes the number of elements in <span class="math inline">\(A\)</span>.</li>
+<li>
+<strong>Disjoint events:</strong> <span class="math inline">\(A_{1}, A_{2}, \ldots\)</span> are <strong>disjoint</strong> or <strong>mutually exclusive</strong> if <span class="math inline">\(A_{i} \cap A_{j}=\emptyset\)</span> whenever <span class="math inline">\(i \neq j\)</span>. For example, <span class="math inline">\(A_{1}=[0,1), A_{2}=[1,2), A_{3}=[2,3), \ldots\)</span> are disjoint.</li>
+<li>
+<strong>Partition:</strong> A <strong>partition</strong> of <span class="math inline">\(\Omega\)</span> is a sequence of disjoint sets <span class="math inline">\(A_{1}, A_{2}, \ldots\)</span> such that <span class="math inline">\(\bigcup_{i=1}^{\infty} A_{i}=\Omega\)</span>.</li>
+</ul>
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Summary: Sample Space and Events
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p><span class="math display">\[
 \begin{array}{ll}
 \Omega &amp; \text { sample space } \\
@@ -353,6 +375,8 @@ A \subset B &amp;\text{ set inclusion }(A \text{ is a subset of or equal to }B)\
 \Omega      &amp;\text{ true event (always true)}
 \end{array}
 \]</span></p>
+</div>
+</div>
 <!-- Given an event $A,$ define the indicator function of $A$ by -->
 <!-- $$ -->
 <!-- I_{A}(\omega)=I(\omega \in A)=\left\{\begin{array}{ll} -->
@@ -383,7 +407,7 @@ P\left(\bigcup_{i=1}^{\infty} A_{i}\right)=\sum_{i=1}^{\infty} P\left(A_{i}\righ
 </ul>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -392,7 +416,7 @@ P\left(\bigcup_{i=1}^{\infty} A_{i}\right)=\sum_{i=1}^{\infty} P\left(A_{i}\righ
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>It is not always possible to assign a probability to <em>every</em> event <span class="math inline">\(A\)</span> if the sample space is large. For instance, in the case of <span class="math display">\[
 \Omega=\mathbb{R}
@@ -537,7 +561,16 @@ P(A\cap B)=P(\emptyset)=0\neq \frac{1}{9}=\underbrace{P(A)}_{=\frac{1}{3}}\;\und
 <p><strong>Intuition:</strong> Disjoint events are strongly <em>dependent</em>: knowing that <span class="math inline">\(A\)</span> has occurred tells us that <span class="math inline">\(B\)</span> cannot have occurred too.</p>
 </div>
 </div>
-<p><strong>Summary:</strong> Independent Events</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Summary: Independent Events
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <div class="spaced-list">
 <ol type="1">
 <li>
@@ -545,6 +578,8 @@ P(A\cap B)=P(\emptyset)=0\neq \frac{1}{9}=\underbrace{P(A)}_{=\frac{1}{3}}\;\und
 <li>Independence is sometimes assumed and sometimes derived.</li>
 <li>Disjoint events with strictly positive probabilities are <em>not</em> independent.</li>
 </ol>
+</div>
+</div>
 </div>
 </section><section id="conditional-probability" class="level3" data-number="2.1.4"><h3 data-number="2.1.4" class="anchored" data-anchor-id="conditional-probability">
 <span class="header-section-number">2.1.4</span> Conditional Probability</h3>
@@ -613,13 +648,25 @@ P(-\mid D^{c})
 <p>Now, suppose you go for a test and get a positive result. What is the probability you have the disease?</p>
 <p>▶️ Most people answer <span class="math inline">\(0.90=90\%.\)</span></p>
 <p>However, this conclusion is wrong (<strong>prosecutor’s fallacy</strong>).</p>
-<p>The correct answer is <span class="math display">\[
+<p>The correct answer is not <span class="math inline">\(P(+\mid D)=0.9=90\%,\)</span> but <span class="math display">\[
 \begin{align*}
 P(D \mid+)
 &amp; = \frac{P(+\cap D)}{P(+)}\\[2ex]
 &amp; = \frac{0.0081}{(0.0081+0.0900)}\approx 0.08 = 8\%.
 \end{align*}
 \]</span></p>
+<p><strong>Why so low?</strong> Imagine that <span class="math inline">\(10{,}000\)</span> people take the test:</p>
+<div class="spaced-list">
+<ul>
+<li>
+<span class="math inline">\(90\)</span> of them are sick, and <span class="math inline">\(81\)</span> of these sick people test positive.</li>
+<li>
+<span class="math inline">\(9{,}910\)</span> of them are healthy, but still <span class="math inline">\(900\)</span> of these healthy people test positive.</li>
+</ul>
+</div>
+<p>Thus, <span class="math inline">\(81+900=981\)</span> people test positive, but only <span class="math inline">\(81\)</span> of them are actually sick: <span class="math display">\[
+\frac{81}{981}\approx 0.08=8\%.
+\]</span> Since the disease is rare, the few correct positive results of the sick people are outnumbered by the many false positive results of the healthy people.</p>
 <p>The lesson here is that you need to compute the answer numerically. <strong>Don’t trust your intuition.</strong></p>
 </div>
 </div>
@@ -681,7 +728,16 @@ P(A\cap B)
 \end{align*}\]</span></p>
 </div>
 </div>
-<p><strong>Summary:</strong> Conditional Probability</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Summary: Conditional Probability
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <div class="spaced-list">
 <ol type="1">
 <li>If <span class="math inline">\(P(B)&gt;0\)</span>, then <span class="math inline">\(P(A \mid B)=P(A\cap B)/P(B)\)</span>.</li>
@@ -689,6 +745,8 @@ P(A\cap B)
 <li>In general, <span class="math inline">\(P(A \mid B) \neq P(B \mid A)\)</span>.</li>
 <li>If <span class="math inline">\(P(B)&gt;0\)</span>, then <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are independent if and only if <span class="math inline">\(P(A \mid B)=P(A)\)</span>.</li>
 </ol>
+</div>
+</div>
 </div>
 </section></section></section><section id="random-variables" class="level2" data-number="2.2"><h2 data-number="2.2" class="anchored" data-anchor-id="random-variables">
 <span class="header-section-number">2.2</span> Random Variables</h2>
@@ -816,7 +874,7 @@ P_X(X=2)&amp;=P(\{HH\})=\frac{1}{4}.
 <!-- Try generalizing this to $n$ flips. -->
 <p>Here, <span class="math inline">\(P_{X}\)</span> is not the same probability function as <span class="math inline">\(P\)</span>: <span class="math inline">\(P\)</span> assigns probabilities to events in the sample space <span class="math inline">\(\Omega\)</span> (here, sets of outcomes such as <span class="math inline">\(\{HT, TH\}\)</span>), while <span class="math inline">\(P_X\)</span> assigns probabilities to sets of values of <span class="math inline">\(X\)</span> (here, subsets of <span class="math inline">\(\{0,1,2\}\)</span>). In the following, we typically ignore the sample space <span class="math inline">\(\Omega\)</span> and simply think of the random variable as an experiment with real-valued (possibly multivariate) outcomes. Therefore, we write <span class="math inline">\(P\left(X=x_{k}\right)\)</span> instead of <span class="math inline">\(P_{X}\left(X=x_{k}\right)\)</span> to simplify the notation.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -825,7 +883,7 @@ P_X(X=2)&amp;=P(\{HH\})=\frac{1}{4}.
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-13" class="callout-13-contents callout-collapse collapse">
+<div id="callout-16" class="callout-16-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Given a real-valued random variable <span class="math inline">\(X:\Omega\rightarrow\mathbb{R}\)</span> and a subset <span class="math inline">\(A\subseteq\mathbb{R}\)</span> of the real line, define the <strong>pre-image</strong> <span class="math display">\[
 X^{-1}(A)=\{\omega \in \Omega \mid X(\omega) \in A\}.
@@ -1008,7 +1066,7 @@ f_X(x)=P(X=x)=\left\{\begin{array}{ll}
 </div>
 </div>
 <p><strong>The pmf and the cdf contain the same information.</strong></p>
-<p>The cdf <span class="math inline">\(F_X(x)=P(X\leq x)\)</span> is obtained by summing up the pmf values for all <span class="math inline">\(x_\ell\)</span> smaller or equal <span class="math inline">\(x,\)</span> <span class="math display">\[
+<p>The cdf <span class="math inline">\(F_X(x)=P(X\leq x)\)</span> is obtained by summing up the pmf values <span class="math inline">\(f_X(x_k)\)</span> for all values <span class="math inline">\(x_k\)</span> smaller than or equal to <span class="math inline">\(x\)</span>, <span class="math display">\[
 F_X(x)=\sum_{x_k\leq x} f_X(x_k).
 \]</span></p>
 <p>For instance, <span class="math display">\[
@@ -1022,20 +1080,20 @@ F_X(1)=f_X(0)+f_X(1)=0.2+0.4=0.6.
 </h4>
 <p>A random variable <span class="math inline">\(X\)</span> is <em>continuous</em> if there exists a function <span class="math inline">\(f_{X}\)</span> such that</p>
 <div class="spaced-list">
-<ul>
+<ol type="1">
 <li>
 <span class="math inline">\(f_{X}(x)\geq 0\;\)</span> for all <span class="math inline">\(x\in\mathbb{R}\)</span>,</li>
 <li>
 <span class="math inline">\(\int_{-\infty}^{\infty}f_{X}(x)\,dx=1,\;\)</span> and</li>
 <li>
 <span class="math inline">\(P(a&lt;X&lt;b)=\int_{a}^{b} f_{X}(x)\,dx\;\)</span> for all <span class="math inline">\(a\leq b\)</span>.</li>
-</ul>
+</ol>
 </div>
-<p>The function <span class="math inline">\(f_{X}\)</span> is called the <strong>probability density function (pdf)</strong>, or simply the <strong>density function</strong>.</p>
-<p>Moreover, <span class="math display">\[
-F_{X}(x)=\int_{-\infty}^{x} f_{X}(t)\,dt
-\]</span> and that <span class="math display">\[
-f_{X}(x)=F_{X}^{\prime}(x)
+<p>The function <span class="math inline">\(f_{X}\)</span> is called the <strong>probability density function (pdf)</strong>, or simply the <strong>density function</strong>. The key property is 3.: <strong>probabilities are areas under the density.</strong> Properties 1. and 2. ensure that these areas are valid probabilities, i.e., non-negative and summing up to one.</p>
+<p>Moreover, we obtain the cdf by integrating the density, <span class="math display">\[
+F_{X}(x)=\int_{-\infty}^{x} f_{X}(t)\,dt,
+\]</span> and the density by differentiating the cdf, <span class="math display">\[
+f_{X}(x)=F_{X}^{\prime}(x),
 \]</span> at all points <span class="math inline">\(x\)</span> at which <span class="math inline">\(F_{X}\)</span> is differentiable.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -1153,7 +1211,7 @@ F(2,1)=P(X_1\leq 2, X_2\leq 1)\approx 0.40.
 <div>
 
 </div>
-<div class="cell quarto-layout-panel" data-layout-align="center" data-layout-ncol="2">
+<div class="cell quarto-layout-panel" data-layout-ncol="2" data-layout-align="center">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <div class="quarto-figure quarto-figure-center">
@@ -1197,28 +1255,7 @@ X=
 X_1\\\vdots\\ X_d
 \end{pmatrix}
 \]</span> collect <span class="math inline">\(d\)</span> <strong>discrete</strong> univariate random variables <span class="math inline">\(X_1,\dots,X_d\)</span>.</p>
-<p>The discrete random vector <span class="math inline">\(X\)</span> takes countably many different <span class="math inline">\(d\)</span>-dimensional values <span class="math inline">\(x_1,x_2,\dots,x_m\)</span>, where, again, <span class="math inline">\(m=\infty\)</span> is allowed: <span class="math display">\[
-X=
-\begin{pmatrix}
-X_1\\\vdots\\ X_d
-\end{pmatrix}
-\in
-\left\{
-\smash[b]{\underbrace{\begin{pmatrix}
-x_{11}\\\vdots\\ x_{d1}
-\end{pmatrix}}_{=x_1}},\;
-\smash[b]{\underbrace{\begin{pmatrix}
-x_{12}\\\vdots\\ x_{d2}
-\end{pmatrix}}_{=x_2}},\;
-\dots,\;
-\smash[b]{\underbrace{\begin{pmatrix}
-x_{1m}\\\vdots\\ x_{dm}
-\end{pmatrix}}_{=x_m}}
-\right\}
-\vphantom{\underbrace{\begin{pmatrix}
-x_{11}\\\vdots\\ x_{d1}
-\end{pmatrix}}_{=x_1}}.
-\]</span></p>
+<p>The random vector <span class="math inline">\(X\)</span> takes countably many different values, each of which is a <span class="math inline">\(d\)</span>-dimensional vector.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1245,21 +1282,42 @@ and likewise for $X_2$. In general, if each of the $d$ components takes two valu
 -->
 </div>
 </div>
+<p>In general, the discrete random vector <span class="math inline">\(X\)</span> takes countably many different <span class="math inline">\(d\)</span>-dimensional values <span class="math inline">\(x_1,x_2,\dots,x_m\)</span>, where, again, <span class="math inline">\(m=\infty\)</span> is allowed: <span class="math display">\[
+X=
+\begin{pmatrix}
+X_1\\\vdots\\ X_d
+\end{pmatrix}
+\in
+\left\{
+\smash[b]{\underbrace{\begin{pmatrix}
+x_{11}\\\vdots\\ x_{d1}
+\end{pmatrix}}_{=x_1}},\;
+\smash[b]{\underbrace{\begin{pmatrix}
+x_{12}\\\vdots\\ x_{d2}
+\end{pmatrix}}_{=x_2}},\;
+\dots,\;
+\smash[b]{\underbrace{\begin{pmatrix}
+x_{1m}\\\vdots\\ x_{dm}
+\end{pmatrix}}_{=x_m}}
+\right\}
+\vphantom{\underbrace{\begin{pmatrix}
+x_{11}\\\vdots\\ x_{d1}
+\end{pmatrix}}_{=x_1}}.
+\]</span></p>
 <p>The <strong>joint (or multivariate) probability mass function</strong> of <span class="math inline">\(X\)</span> is <span class="math display">\[
-f_{X}(x)=P(X=x)\quad\text{for all}\quad x\in\{x_1,x_2,\dots,x_m\}.
+f(x)=P(X=x)\quad\text{for all}\quad x\in\{x_1,x_2,\dots,x_m\}.
 \]</span></p>
 <p>Properties:</p>
 <div class="spaced-list">
 <ul>
 <li><p>Non-negative: <span class="math display">\[
-f_{X}(x)\geq 0\quad\text{for all}\quad x\in\{x_1,x_2,\dots,x_m\}
+f(x)\geq 0\quad\text{for all}\quad x\in\{x_1,x_2,\dots,x_m\}
 \]</span></p></li>
 <li><p>Normalized: <span class="math display">\[
-\sum_{\ell = 1}^m f_{X}(x_\ell)=1
+\sum_{\ell = 1}^m f(x_\ell)=1
 \]</span></p></li>
 </ul>
 </div>
-<p><strong>Caution:</strong></p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1282,11 +1340,11 @@ Example: Two-Dimensional pmf (Car Sales and Staffing)
 <p>The random vector <span class="math display">\[
 X=\begin{pmatrix}X_1\\ X_2\end{pmatrix}
 \]</span> can take <span class="math inline">\(4\cdot 2=8\)</span> different values. Its two-dimensional pmf <span class="math display">\[
-f_X(x_1,x_2)=P(X_1=x_1,X_2=x_2)
+f(x_1,x_2)=P(X_1=x_1,X_2=x_2)
 \]</span> is given by the following table:</p>
 <table class="caption-top table">
 <thead><tr class="header">
-<th><span class="math inline">\(f_X(x_1,x_2)\)</span></th>
+<th><span class="math inline">\(f(x_1,x_2)\)</span></th>
 <th style="text-align: center;"><span class="math inline">\(x_1=0\)</span></th>
 <th style="text-align: center;"><span class="math inline">\(x_1=1\)</span></th>
 <th style="text-align: center;"><span class="math inline">\(x_1=2\)</span></th>
@@ -1313,9 +1371,9 @@ f_X(x_1,x_2)=P(X_1=x_1,X_2=x_2)
 <ul>
 <li><p>All entries are non-negative and they sum to one.</p></li>
 <li><p>Days with two consultants tend to come with more sales. For instance, the probability of selling <strong>at least two cars</strong> on a day with <strong>two consultants</strong> is <span class="math display">\[
-P(X_1\geq 2, X_2=2)=f_X(2,2)+f_X(3,2)=0.20+0.10=0.30.
+P(X_1\geq 2, X_2=2)=f(2,2)+f(3,2)=0.20+0.10=0.30.
 \]</span> whereas the probability of selling <strong>at least two cars</strong> on a day with only <strong>one consultant</strong> is <span class="math display">\[
-P(X_1\geq 2, X_2=1)=f_X(2,1)+f_X(3,1)=0.10+0.00=0.10.
+P(X_1\geq 2, X_2=1)=f(2,1)+f(3,1)=0.10+0.00=0.10.
 \]</span> <!-- 
 Both staffing levels are equally likely, $P(X_2=1)=P(X_2=2)=0.50$, so this comparison is fair: the difference comes from sales, not from how often each staffing level occurs. 
 --></p></li>
@@ -1332,11 +1390,11 @@ Both staffing levels are equally likely, $P(X_2=1)=P(X_2=2)=0.50$, so this compa
 <p><strong>Outlook:</strong> Summing the pmf over all values of <span class="math inline">\(X_2\)</span> for given values of <span class="math inline">\(X_1\)</span> yields the pmf of <span class="math inline">\(X_1\)</span> alone. For instance, <span class="math display">\[\begin{align*}
 P(X_1=0)
 &amp;=P(X_1=0,X_2=1)+P(X_1=0,X_2=2)\\[2ex]
-&amp;=f_X(0,1)+f_X(0,2)\\[2ex]
+&amp;=f(0,1)+f(0,2)\\[2ex]
 &amp;=0.15+0.05=0.20,\\[4ex]
 P(X_1=1)
 &amp;=P(X_1=1,X_2=1)+P(X_1=1,X_2=2)\\[2ex]
-&amp;=f_X(1,1)+f_X(1,2)\\[2ex]
+&amp;=f(1,1)+f(1,2)\\[2ex]
 &amp;=0.25+0.15=0.40,
 \end{align*}\]</span> and likewise for <span class="math inline">\(P(X_1=2)\)</span> and <span class="math inline">\(P(X_1=3)\)</span>.</p>
 <p>These are exactly the pmf values from the one-dimensional car sales example above. Such <strong><em>marginal</em> distributions</strong> are discussed below.</p>
@@ -1376,15 +1434,12 @@ Example: Joint Density of a Bivariate Normal Distribution
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Consider again our running example, the bivariate <span class="math inline">\((d=2)\)</span> normal random vector from above, <span class="math display">\[
-X=\begin{pmatrix}X_1\\ X_2\end{pmatrix}\sim\mathcal{N}_2\left(\mu,\Sigma\right)
+<p>Consider again our running example with revenue growth <span class="math inline">\(X_1\)</span> and GDP growth <span class="math inline">\(X_2\)</span> (both in %), <span class="math display">\[
+X\sim\mathcal{N}_2\left(\mu,\Sigma\right)
 \quad\text{with}\quad
 \mu=\begin{pmatrix}2\\ 1\end{pmatrix}
 \quad\text{and}\quad
-\Sigma=\begin{pmatrix}
-1   &amp; 0.8\\
-0.8 &amp; 1
-\end{pmatrix}.
+\Sigma=\begin{pmatrix}1&amp;0.8\\0.8&amp;1\end{pmatrix}.
 \]</span> Its joint density function <span class="math inline">\(f(x_1,x_2)\)</span> can be visualized in two ways:</p>
 <div class="spaced-list">
 <ul>
@@ -1397,7 +1452,7 @@ X=\begin{pmatrix}X_1\\ X_2\end{pmatrix}\sim\mathcal{N}_2\left(\mu,\Sigma\right)
 <div>
 
 </div>
-<div class="cell quarto-layout-panel" data-layout-align="center" data-layout-ncol="2">
+<div class="cell quarto-layout-panel" data-layout-ncol="2" data-layout-align="center">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <div class="quarto-figure quarto-figure-center">
@@ -1413,7 +1468,7 @@ X=\begin{pmatrix}X_1\\ X_2\end{pmatrix}\sim\mathcal{N}_2\left(\mu,\Sigma\right)
 </div>
 </div>
 </div>
-<p>Both plots show that the joint density is centered at the mean vector <span class="math inline">\(\mu=(2,1)^{\top}\)</span>. Since <span class="math inline">\(\operatorname{Cov}(X_1,X_2)=0.8&gt;0\)</span>, the density is stretched along a line with positive slope: large values of <span class="math inline">\(X_1\)</span> tend to occur together with large values of <span class="math inline">\(X_2\)</span>, and small values with small values. In the following examples, we use the contour plot to visualize this joint density.</p>
+<p>Both plots show that the joint density is centered at the mean vector <span class="math inline">\(\mu=(2,1)^{\top}\)</span>. Since <span class="math inline">\(\operatorname{Cov}(X_1,X_2)=0.8&gt;0\)</span>, the density is stretched along a line with positive slope: large values of <span class="math inline">\(X_1\)</span> tend to occur together with large values of <span class="math inline">\(X_2\)</span>, and small values with small values. In terms of our example: years with strong GDP growth tend to be years with strong revenue growth. In the following examples, we use the contour plot to visualize this joint density.</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -1445,13 +1500,13 @@ X=\begin{pmatrix}X_1\\ X_2\end{pmatrix}
 </ul>
 </div>
 <p><span class="math display">\[\begin{align*}
-f_X(x_1,x_2)=\left\{\begin{array}{ll}
+f(x_1,x_2)=\left\{\begin{array}{ll}
 \frac{1}{5}\,e^{-x_1/5}\cdot\frac{1}{2}\,e^{-x_2/2} &amp; \text{for } x_1\geq 0 \text{ and } x_2\geq 0\\[1ex]
 0 &amp; \text{otherwise.}
 \end{array}\right.
 \end{align*}\]</span></p>
 <p>The density is non-negative and it integrates to one: <span class="math display">\[\begin{align*}
-&amp;\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}f_X(x_1,x_2)\,dx_1\,dx_2\\[2ex]
+&amp;\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}f(x_1,x_2)\,dx_1\,dx_2\\[2ex]
 &amp;=\int_{0}^{\infty}\int_{0}^{\infty}\frac{1}{5}\,e^{-x_1/5}\cdot\frac{1}{2}\,e^{-x_2/2}\,dx_1\,dx_2\\[2ex]
 &amp;=\left(\int_{0}^{\infty}\frac{1}{5}\,e^{-x_1/5}\,dx_1\right)\cdot\left(\int_{0}^{\infty}\frac{1}{2}\,e^{-x_2/2}\,dx_2\right)\\[2ex]
 &amp;=1\cdot 1=1.
@@ -1476,13 +1531,13 @@ P(X_1\leq 5, X_2\leq 2)\approx 0.40.
 </div>
 </div>
 <p><strong>Outlook:</strong> In this example, the bivariate density is simply the <em>product</em> of the one-dimensional densities of the waiting time and the service time, <span class="math display">\[
-f_X(x_1,x_2)=f_1(x_1)\cdot f_2(x_2).
+f(x_1,x_2)=f_1(x_1)\cdot f_2(x_2).
 \]</span> This means that <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> are assumed to be <em>independent</em> here, which is reasonable in this example. See the section on independent random variables below.</p>
 </div>
 </div>
-<p>In the following, we focus on continuous random vectors; the discrete case is treated analogously, with sums instead of integrals.</p>
-</section><section id="marginal-distribution-functions-and-marginal-density-functions" class="level4" data-number="2.2.2.4"><h4 data-number="2.2.2.4" class="anchored" data-anchor-id="marginal-distribution-functions-and-marginal-density-functions">
-<span class="header-section-number">2.2.2.4</span> <strong>Marginal Distribution Functions and Marginal Density Functions</strong>
+<p>In the following, we mostly focus on continuous random vectors. The discrete case is treated analogously, with sums instead of integrals; the marginal probability mass function below shows how this works.</p>
+</section><section id="marginal-distributions" class="level4" data-number="2.2.2.4"><h4 data-number="2.2.2.4" class="anchored" data-anchor-id="marginal-distributions">
+<span class="header-section-number">2.2.2.4</span> <strong>Marginal Distributions</strong>
 </h4>
 <p>Let <span class="math display">\[
 X=\left(\begin{matrix}X_{1}\\ X_{2}\\ \vdots \\ X_{d}\end{matrix}\right)\in\mathbb{R}^d.
@@ -1497,6 +1552,10 @@ f_1({\color{blue}{x_1}})=\int_{-\infty}^{\infty}\dots \int_{-\infty}^{\infty}f({
 x_d)\,dx_2\dots dx_d.
 \]</span>
 </li>
+<li>
+<strong>Marginal probability mass function:</strong> <span class="math inline">\(f_j\)</span>; for instance, for <span class="math inline">\(d=2\)</span> and <span class="math inline">\(j=1\)</span>: <span class="math display">\[
+f_1({\color{blue}{x_1}})=P(X_1={\color{blue}{x_1}})=\sum_{x_2} f({\color{blue}{x_1}},x_2),
+\]</span> where the sum runs over all possible values <span class="math inline">\(x_2\)</span> of <span class="math inline">\(X_2\)</span>. That is, we add up the joint probabilities of all outcomes with <span class="math inline">\(X_1={\color{blue}{x_1}}\)</span>; see the <strong>Outlook</strong> in the car-sales example above.</li>
 </ul>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -1509,15 +1568,12 @@ Example: Marginal Densities of a Bivariate Normal Distribution
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Consider again our running example, the bivariate <span class="math inline">\((d=2)\)</span> normal random vector <span class="math display">\[
-X=\begin{pmatrix}X_1\\ X_2\end{pmatrix}\sim\mathcal{N}_2\left(\mu,\Sigma\right)
+<p>Consider again our running example with revenue growth <span class="math inline">\(X_1\)</span> and GDP growth <span class="math inline">\(X_2\)</span> (both in %), <span class="math display">\[
+X\sim\mathcal{N}_2\left(\mu,\Sigma\right)
 \quad\text{with}\quad
 \mu=\begin{pmatrix}2\\ 1\end{pmatrix}
 \quad\text{and}\quad
-\Sigma=\begin{pmatrix}
-1   &amp; 0.8\\
-0.8 &amp; 1
-\end{pmatrix}.
+\Sigma=\begin{pmatrix}1&amp;0.8\\0.8&amp;1\end{pmatrix}.
 \]</span></p>
 <p>The following plot shows the joint density <span class="math inline">\(f(x_1,x_2)\)</span> together with its two marginal densities <span class="math display">\[\begin{align*}
 f_1(x_1)&amp;=\int_{-\infty}^{\infty} f(x_1,x_2)\,dx_2\\[2ex]
@@ -1531,17 +1587,19 @@ f_2(x_2)&amp;=\int_{-\infty}^{\infty} f(x_1,x_2)\,dx_1
 </div>
 </div>
 </div>
+<p><strong>Interpretation:</strong> The marginal density <span class="math inline">\(f_1\)</span> describes the firm’s revenue growth on its own, ignoring the state of the economy. Likewise, the marginal density <span class="math inline">\(f_2\)</span> describes GDP growth on its own, ignoring the firm. Here, both marginal densities are normal densities, <span class="math inline">\(X_1\sim\mathcal{N}(2,1)\)</span> and <span class="math inline">\(X_2\sim\mathcal{N}(1,1)\)</span>.</p>
 </div>
 </div>
 </section><section id="sec-condDistr" class="level4" data-number="2.2.2.5"><h4 data-number="2.2.2.5" class="anchored" data-anchor-id="sec-condDistr">
 <span class="header-section-number">2.2.2.5</span> <strong>Conditional Density Function</strong>
 </h4>
-<p>Often, we are interested in the <strong>conditional distribution</strong> of <span class="math inline">\(X_j\)</span> given fixed values of all other random variables, <span class="math display">\[
-X_1=x_1,\ldots, X_{j-1}=x_{j-1}, X_{j+1}=x_{j+1},\ldots,X_d=x_d.
-\]</span> That is, the distribution of <span class="math inline">\(X_j\)</span> when the values of all other random variables are held fixed.</p>
-<p>An important tool here is the <strong>conditional density</strong>. For instance, the conditional density of <span class="math inline">\(X_1\)</span> given <span class="math inline">\(X_2=x_2,\ldots,X_d=x_d\)</span> is <span class="math display">\[
+<p>Often, we are interested in the <strong>conditional distribution</strong> of one random variable given that the other random variables take fixed values. For instance: what is the distribution of a firm’s revenue growth <span class="math inline">\(X_1\)</span> <em>given</em> that GDP grows by <span class="math inline">\(X_2=2\)</span> percent?</p>
+<p><strong>Two random variables <span class="math inline">\((d=2)\)</span>:</strong> The <strong>conditional density</strong> of <span class="math inline">\(X_1\)</span> given <span class="math inline">\(X_2=x_2\)</span> is the joint density divided by the marginal density of <span class="math inline">\(X_2\)</span>, <span class="math display">\[
+f(x_1\mid x_2)=\frac{f(x_1,x_2)}{f_2(x_2)},
+\]</span> where we assume that <span class="math inline">\(f_2(x_2)&gt;0\)</span>.</p>
+<p><strong>In general <span class="math inline">\((d\geq 2)\)</span>:</strong> The conditional density of <span class="math inline">\(X_1\)</span> given <span class="math inline">\(X_2=x_2,\ldots,X_d=x_d\)</span> is <span class="math display">\[
 f(x_1\mid x_2,\ldots,x_d)=\frac{f(x_1,x_2,\ldots,x_d)}{f_{X_{2},\ldots,X_{d}}(x_2,\ldots,x_d)},
-\]</span> where <span class="math inline">\(f_{X_{2},\ldots,X_{d}}\)</span> denotes the joint density of <span class="math inline">\(X_2,\ldots,X_d,\)</span> and where we assume that <span class="math inline">\(f_{X_{2},\ldots,X_{d}}(x_2,\ldots,x_d)&gt;0\)</span>.</p>
+\]</span> where <span class="math inline">\(f_{X_{2},\ldots,X_{d}}\)</span> denotes the joint density of <span class="math inline">\(X_2,\ldots,X_d,\)</span> and where we assume that <span class="math inline">\(f_{X_{2},\ldots,X_{d}}(x_2,\ldots,x_d)&gt;0\)</span>. Conditional densities of the other components <span class="math inline">\(X_j\)</span> are defined analogously.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1552,15 +1610,12 @@ Example: Conditional Density of a Bivariate <span class="math inline">\((d=2)\)<
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Consider again our running example, the bivariate <span class="math inline">\((d=2)\)</span> normal random vector <span class="math display">\[
-X=\begin{pmatrix}X_1\\ X_2\end{pmatrix}\sim\mathcal{N}_2\left(\mu,\Sigma\right)
+<p>Consider again our running example with revenue growth <span class="math inline">\(X_1\)</span> and GDP growth <span class="math inline">\(X_2\)</span> (both in %), <span class="math display">\[
+X\sim\mathcal{N}_2\left(\mu,\Sigma\right)
 \quad\text{with}\quad
 \mu=\begin{pmatrix}2\\ 1\end{pmatrix}
 \quad\text{and}\quad
-\Sigma=\begin{pmatrix}
-1   &amp; 0.8\\
-0.8 &amp; 1
-\end{pmatrix}.
+\Sigma=\begin{pmatrix}1&amp;0.8\\0.8&amp;1\end{pmatrix}.
 \]</span></p>
 <p>The conditional density of <span class="math inline">\(X_1\)</span> given <span class="math inline">\(X_2=2\)</span> is the joint density divided by the marginal density of <span class="math inline">\(X_2\)</span>, both evaluated at <span class="math inline">\(x_2=2\)</span>: <span class="math display">\[
 f(x_1\mid x_2=2)=\frac{f(x_1,2)}{f_2(2)}.
@@ -1579,9 +1634,9 @@ E(X_1\mid X_2=2)                 &amp;=2.8\\[2ex]
 </div>
 </div>
 </div>
-<p><strong>Interpretation:</strong> Since <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> are positively correlated, knowing that <span class="math inline">\(X_2=2\)</span> also tells us something about the random variable <span class="math inline">\(X_1\)</span>.</p>
-<p>Because <span class="math inline">\(X_2=2\)</span> lies above its mean <span class="math inline">\(E(X_2)=1\)</span>, the distribution of <span class="math inline">\(X_1\)</span> shifts towards larger values: its mean increases from <span class="math inline">\(E(X_1)=2\)</span> to <span class="math inline">\(E(X_1\mid X_2=2)=2.8\)</span>.</p>
-<p>Moreover, knowing that <span class="math inline">\(X_2=2\)</span> reduces the uncertainty about <span class="math inline">\(X_1\)</span>: its variance shrinks from <span class="math inline">\(\operatorname{Var}(X_1)=1\)</span> to <span class="math inline">\(\operatorname{Var}(X_1\mid X_2=2)=0.36\)</span>.</p>
+<p><strong>Interpretation:</strong> Since revenue growth <span class="math inline">\(X_1\)</span> and GDP growth <span class="math inline">\(X_2\)</span> are positively correlated, knowing that GDP grows by <span class="math inline">\(X_2=2\)</span> percent also tells us something about the firm’s revenue growth <span class="math inline">\(X_1\)</span>.</p>
+<p>Because <span class="math inline">\(X_2=2\)</span> lies above its mean <span class="math inline">\(E(X_2)=1\)</span> (a boom year), the distribution of <span class="math inline">\(X_1\)</span> shifts towards larger values: the expected revenue growth increases from <span class="math inline">\(E(X_1)=2\)</span> percent to <span class="math inline">\(E(X_1\mid X_2=2)=2.8\)</span> percent.</p>
+<p>Moreover, knowing that <span class="math inline">\(X_2=2\)</span> reduces the uncertainty about <span class="math inline">\(X_1\)</span>: the variance of revenue growth shrinks from <span class="math inline">\(\operatorname{Var}(X_1)=1\)</span> to <span class="math inline">\(\operatorname{Var}(X_1\mid X_2=2)=0.36\)</span>, i.e., its standard deviation shrinks from <span class="math inline">\(1\)</span> to <span class="math inline">\(0.6\)</span> percentage points. This is why forecasts conditional on a macroeconomic scenario are more precise.</p>
 <p>Therefore, compared to the marginal density <span class="math inline">\(f_1(x_1)\)</span>, the conditional density <span class="math inline">\(f(x_1\mid x_2=2)\)</span> is shifted to the right, and it is narrower and taller.</p>
 </div>
 </div>
@@ -1591,7 +1646,7 @@ E(X_1\mid X_2=2)                 &amp;=2.8\\[2ex]
 <span class="header-section-number">2.2.3.1</span> <strong>Unconditional Means</strong>
 </h4>
 <p>The <strong>unconditional mean</strong> of <span class="math inline">\(X_1\)</span> is given by <span class="math display">\[
-E(X_1)= \int x f_{X_1}(x)\,dx.
+E(X_1)= \int x_1 f_1(x_1)\,dx_1.
 \]</span> The unconditional mean of a random vector <span class="math display">\[
 X=
 \begin{pmatrix}
@@ -1613,15 +1668,12 @@ Example: Unconditional Means of a Bivariate Normal Distribution
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Consider again our running example, the bivariate <span class="math inline">\((d=2)\)</span> normal random vector <span class="math display">\[
-X=\begin{pmatrix}X_1\\ X_2\end{pmatrix}\sim\mathcal{N}_2\left(\mu,\Sigma\right)
+<p>Consider again our running example with revenue growth <span class="math inline">\(X_1\)</span> and GDP growth <span class="math inline">\(X_2\)</span> (both in %), <span class="math display">\[
+X\sim\mathcal{N}_2\left(\mu,\Sigma\right)
 \quad\text{with}\quad
 \mu=\begin{pmatrix}2\\ 1\end{pmatrix}
 \quad\text{and}\quad
-\Sigma=\begin{pmatrix}
-1   &amp; 0.8\\
-0.8 &amp; 1
-\end{pmatrix}.
+\Sigma=\begin{pmatrix}1&amp;0.8\\0.8&amp;1\end{pmatrix}.
 \]</span></p>
 <p>The marginal distributions are <span class="math inline">\(X_1\sim\mathcal{N}(2,1)\)</span> and <span class="math inline">\(X_2\sim\mathcal{N}(1,1)\)</span>. Thus, the unconditional means are <span class="math display">\[\begin{align*}
 E(X_1)&amp;=\int_{-\infty}^{\infty} x_1\, f_1(x_1)\,dx_1=2\\[2ex]
@@ -1636,7 +1688,7 @@ E(X_1)\\ E(X_2)
 2\\ 1
 \end{pmatrix}.
 \]</span></p>
-<p>The following plot shows the joint density <span class="math inline">\(f(x_1,x_2)\)</span> together with its two marginal densities. The unconditional means <span class="math inline">\(E(X_1)\)</span> and <span class="math inline">\(E(X_2)\)</span> are the centers of the marginal densities, and the mean vector <span class="math inline">\(E(X)\)</span> (red dot) is the center of the joint density.</p>
+<p>The following plot shows the joint density <span class="math inline">\(f(x_1,x_2)\)</span> together with its two marginal densities. The unconditional means <span class="math inline">\(E(X_1)\)</span> and <span class="math inline">\(E(X_2)\)</span> are the centers of the marginal densities, and the mean vector <span class="math inline">\(E(X)\)</span> (red dot) is the center of the joint density. On average, the firm’s revenue grows by <span class="math inline">\(2\)</span> percent and GDP grows by <span class="math inline">\(1\)</span> percent per year.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -1652,7 +1704,13 @@ E(X_1)\\ E(X_2)
 </h4>
 <p>The <strong>mean of a transformed random variable</strong> <span class="math inline">\(r(X)\)</span> is given by <span class="math display">\[
 E(r(X))=\int r(x) f_{X}(x)\,dx.
-\]</span> Typical transformations are, for instance,</p>
+\]</span> An important special case are <strong>linear transformations</strong> <span class="math inline">\(r(x)=a+b\,x\)</span> with constants <span class="math inline">\(a,b\in\mathbb{R}\)</span>. The mean is linear: <span class="math display">\[\begin{align*}
+E(a+b\,X)
+&amp;=\int (a+b\,x) f_{X}(x)\,dx\\[2ex]
+&amp;=a\underbrace{\int f_{X}(x)\,dx}_{=1}+\,b\underbrace{\int x\, f_{X}(x)\,dx}_{=E(X)}\\[2ex]
+&amp;=a+b\,E(X).
+\end{align*}\]</span></p>
+<p>Further typical transformations are, for instance,</p>
 <div class="spaced-list">
 <ul>
 <li>centering: <span class="math inline">\(r(x)=x-E(X)\)</span>,</li>
@@ -1666,19 +1724,75 @@ E(r(X))=\int r(x) f_{X}(x)\,dx.
 <div class="spaced-list">
 <ul>
 <li><p>The <span class="math inline">\(k\)</span>th moment, <span class="math inline">\(k=1,2,\dots\)</span>, is given by <span class="math display">\[
-\mu_{k}=E\left(X^{k}\right)=\int_{-\infty}^{+\infty}x^{k} f_X(x)\,d x.
+E\left(X^{k}\right)=\int_{-\infty}^{+\infty}x^{k} f_X(x)\,d x.
 \]</span></p></li>
 <li><p>The <span class="math inline">\(k\)</span>th central moment, <span class="math inline">\(k=2,3,\dots\)</span>, is given by <span class="math display">\[
-\mu^c_{k}=E\left((X-\mu)^{k}\right)=\int_{-\infty}^{+\infty}(x-\mu)^{k} f_X(x)\,d x,
-\]</span> where <span class="math inline">\(\mu=E(X)\)</span>.</p></li>
+E\left(\big(X-E(X)\big)^{k}\right)=\int_{-\infty}^{+\infty}\big(x-E(X)\big)^{k} f_X(x)\,d x.
+\]</span></p></li>
 </ul>
 </div>
 <p>Of course, these moments are only defined if the respective integrals exist, i.e., if <span class="math inline">\(E(|X|^k)&lt;\infty\)</span>.</p>
 <p><strong>Note:</strong> As the title of <span class="citation" data-cites="LB2000">Lindsay and Basak (<a href="#ref-LB2000" role="doc-biblioref">2000</a>)</span> puts it, “moments determine the tail of a distribution (but not much else)”. Roughly: the more moments a distribution has, the faster its tails decay to zero. Distributions with compact support (e.g., the uniform distribution <span class="math inline">\(\mathcal{U}(a,b)\)</span>) have moments of all orders. The normal distribution also has moments of all orders, even though it does not have compact support; see <a href="#sec-NormalDistr" class="quarto-xref"><span>Section 2.2.7.2</span></a>.</p>
-</section><section id="conditional-means-regression-functions" class="level4" data-number="2.2.3.3"><h4 data-number="2.2.3.3" class="anchored" data-anchor-id="conditional-means-regression-functions">
-<span class="header-section-number">2.2.3.3</span> <strong>Conditional Means ➡️ Regression Functions</strong>
+</section><section id="covariance-and-correlation" class="level4" data-number="2.2.3.3"><h4 data-number="2.2.3.3" class="anchored" data-anchor-id="covariance-and-correlation">
+<span class="header-section-number">2.2.3.3</span> <strong>Covariance and Correlation</strong>
 </h4>
-<p>The <strong>conditional mean</strong> of <span class="math inline">\(X_1\)</span> given <span class="math inline">\(X_2=x_2,\ldots,X_d=x_d\)</span> is <span class="math display">\[\begin{align*}
+<p>The variance describes how much <em>one</em> random variable varies around its mean. The <strong>covariance</strong> describes how <em>two</em> random variables <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> vary <em>together</em>: <span class="math display">\[\begin{align*}
+\operatorname{Cov}(X_1,X_2)
+&amp;=E\Big(\big(X_1-E(X_1)\big)\big(X_2-E(X_2)\big)\Big)\\[2ex]
+&amp;=\int\int \big(x_1-E(X_1)\big)\big(x_2-E(X_2)\big)\,f(x_1,x_2)\,dx_1\,dx_2.
+\end{align*}\]</span></p>
+<div class="spaced-list">
+<ul>
+<li>
+<span class="math inline">\(\operatorname{Cov}(X_1,X_2)&gt;0\)</span>: Above-average values of <span class="math inline">\(X_1\)</span> tend to occur together with above-average values of <span class="math inline">\(X_2\)</span>, and below-average values with below-average values.</li>
+<li>
+<span class="math inline">\(\operatorname{Cov}(X_1,X_2)&lt;0\)</span>: Above-average values of <span class="math inline">\(X_1\)</span> tend to occur together with below-average values of <span class="math inline">\(X_2\)</span>, and vice versa.</li>
+<li>The covariance of a random variable with itself is its variance, <span class="math inline">\(\operatorname{Cov}(X_1,X_1)=\operatorname{Var}(X_1)\)</span>.</li>
+</ul>
+</div>
+<p>The size of the covariance depends on the units of measurement (e.g., percent vs.&nbsp;decimal numbers). The <strong>correlation</strong> removes this dependence by dividing by both standard deviations: <span class="math display">\[
+\operatorname{Corr}(X_1,X_2)=\frac{\operatorname{Cov}(X_1,X_2)}{\sqrt{\operatorname{Var}(X_1)}\sqrt{\operatorname{Var}(X_2)}}.
+\]</span> The correlation always lies between <span class="math inline">\(-1\)</span> and <span class="math inline">\(1\)</span>. The values <span class="math inline">\(-1\)</span> and <span class="math inline">\(1\)</span> occur if and only if <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> are perfectly linearly related, i.e., <span class="math inline">\(X_1=a+b\,X_2\)</span> with <span class="math inline">\(b&lt;0\)</span> or <span class="math inline">\(b&gt;0\)</span>, respectively.</p>
+<p>The <strong>variance-covariance matrix</strong> of a random vector <span class="math inline">\(X=(X_1,\dots,X_d)^{\top}\)</span> collects all variances (on the diagonal) and all covariances (off the diagonal): <span class="math display">\[
+\operatorname{Var}(X)=
+\begin{pmatrix}
+\operatorname{Var}(X_1)     &amp; \operatorname{Cov}(X_1,X_2) &amp; \cdots &amp; \operatorname{Cov}(X_1,X_d)\\
+\operatorname{Cov}(X_2,X_1) &amp; \operatorname{Var}(X_2)     &amp; \cdots &amp; \operatorname{Cov}(X_2,X_d)\\
+\vdots                      &amp; \vdots                      &amp; \ddots &amp; \vdots\\
+\operatorname{Cov}(X_d,X_1) &amp; \operatorname{Cov}(X_d,X_2) &amp; \cdots &amp; \operatorname{Var}(X_d)
+\end{pmatrix}.
+\]</span> Since <span class="math inline">\(\operatorname{Cov}(X_j,X_l)=\operatorname{Cov}(X_l,X_j)\)</span>, this matrix is symmetric.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Example: Covariance and Correlation of a Bivariate Normal Distribution
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In our running example (revenue growth <span class="math inline">\(X_1\)</span> and GDP growth <span class="math inline">\(X_2\)</span>), the variance-covariance matrix is <span class="math display">\[
+\Sigma=\operatorname{Var}(X)
+=\begin{pmatrix}\operatorname{Var}(X_1)&amp;\operatorname{Cov}(X_1,X_2)\\\operatorname{Cov}(X_2,X_1)&amp;\operatorname{Var}(X_2)\end{pmatrix}
+=\begin{pmatrix}1&amp;0.8\\0.8&amp;1\end{pmatrix}.
+\]</span> Thus, the correlation between revenue growth and GDP growth is <span class="math display">\[\begin{align*}
+\operatorname{Corr}(X_1,X_2)
+&amp;=\frac{\operatorname{Cov}(X_1,X_2)}{\sqrt{\operatorname{Var}(X_1)}\sqrt{\operatorname{Var}(X_2)}}\\[2ex]
+&amp;=\frac{0.8}{\sqrt{1}\cdot\sqrt{1}}\\[2ex]
+&amp;=0.8.
+\end{align*}\]</span> This is a strong positive correlation: in years with above-average GDP growth, the firm’s revenue growth tends to be above average, too. This is the reason why the joint density in the plots above is stretched along a line with positive slope.</p>
+</div>
+</div>
+</section><section id="conditional-means-regression-functions" class="level4" data-number="2.2.3.4"><h4 data-number="2.2.3.4" class="anchored" data-anchor-id="conditional-means-regression-functions">
+<span class="header-section-number">2.2.3.4</span> <strong>Conditional Means ➡️ Regression Functions</strong>
+</h4>
+<p>The <strong>conditional mean</strong> of <span class="math inline">\(X_1\)</span> given <span class="math inline">\(X_2=x_2\)</span> is the mean of the conditional density <span class="math inline">\(f(x_1\mid x_2)\)</span>:</p>
+<p><strong>Two random variables <span class="math inline">\((d=2)\)</span>:</strong> <span class="math display">\[\begin{align*}
+  m(x_2):&amp;=E(X_1\mid X_2=x_2)\\[2ex]
+         &amp;= \int x_1 f(x_1\mid x_2)\,dx_1.
+\end{align*}\]</span></p>
+<p><strong>In general <span class="math inline">\((d\geq 2)\)</span>:</strong> <span class="math display">\[\begin{align*}
   m(x_2,\dots,x_d):&amp;=E(X_1\mid X_2=x_2,\ldots,X_d=x_d)\\[2ex]
                    &amp;= \int x_1 f(x_1\mid x_2,\ldots,x_d)\,dx_1.
 \end{align*}\]</span> The function <span class="math inline">\(m\)</span> is called the <strong>regression function</strong>. It is the central object of <strong>regression analysis</strong>, which we discuss in the following chapters.</p>
@@ -1692,15 +1806,12 @@ Example: Conditional Mean Function of a Bivariate Normal Distribution
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Consider again our running example, the bivariate <span class="math inline">\((d=2)\)</span> normal random vector <span class="math display">\[
-X=\begin{pmatrix}X_1\\ X_2\end{pmatrix}\sim\mathcal{N}_2\left(\mu,\Sigma\right)
+<p>Consider again our running example with revenue growth <span class="math inline">\(X_1\)</span> and GDP growth <span class="math inline">\(X_2\)</span> (both in %), <span class="math display">\[
+X\sim\mathcal{N}_2\left(\mu,\Sigma\right)
 \quad\text{with}\quad
 \mu=\begin{pmatrix}2\\ 1\end{pmatrix}
 \quad\text{and}\quad
-\Sigma=\begin{pmatrix}
-1   &amp; 0.8\\
-0.8 &amp; 1
-\end{pmatrix}.
+\Sigma=\begin{pmatrix}1&amp;0.8\\0.8&amp;1\end{pmatrix}.
 \]</span></p>
 <p>For the bivariate normal distribution, the conditional mean of <span class="math inline">\(X_1\)</span> given <span class="math inline">\(X_2=x_2\)</span> is a linear function of <span class="math inline">\(x_2\)</span>: <span class="math display">\[\begin{align*}
 m(x_2)
@@ -1718,7 +1829,7 @@ m(3)&amp;=1.2+0.8\cdot 3=3.6.
 <div>
 
 </div>
-<div class="cell quarto-layout-panel" data-layout-align="center" data-layout-ncol="2">
+<div class="cell quarto-layout-panel" data-layout-ncol="2" data-layout-align="center">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <div class="quarto-figure quarto-figure-center">
@@ -1734,19 +1845,19 @@ m(3)&amp;=1.2+0.8\cdot 3=3.6.
 </div>
 </div>
 </div>
-<p><strong>Interpretation:</strong> Since <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> are positively correlated, larger values of <span class="math inline">\(X_2\)</span> come with larger conditional means of <span class="math inline">\(X_1\)</span>. Each additional unit of <span class="math inline">\(x_2\)</span> increases the conditional mean of <span class="math inline">\(X_1\)</span> by <span class="math inline">\(0.8\)</span> units. Note that only the location of the conditional density changes with <span class="math inline">\(x_2\)</span>; its variance is always <span class="math inline">\(\operatorname{Var}(X_1\mid X_2=x_2)=0.36\)</span>.</p>
+<p><strong>Interpretation:</strong> Since <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> are positively correlated, larger values of <span class="math inline">\(X_2\)</span> come with larger conditional means of <span class="math inline">\(X_1\)</span>. Each additional percentage point of GDP growth increases the expected revenue growth by <span class="math inline">\(0.8\)</span> percentage points. For instance, in a year without GDP growth, the firm expects a revenue growth of <span class="math inline">\(m(0)=1.2\)</span> percent; in a boom year with <span class="math inline">\(3\)</span> percent GDP growth, it expects <span class="math inline">\(m(3)=3.6\)</span> percent. Note that only the location of the conditional density changes with <span class="math inline">\(x_2\)</span>; its variance is always <span class="math inline">\(\operatorname{Var}(X_1\mid X_2=x_2)=0.36\)</span>.</p>
 <p><strong>Note:</strong> The regression line is <em>not</em> the main axis of the contour ellipses (dashed blue line). The regression line goes through the conditional means <span class="math display">\[
 m(x_2)=E(X_1\mid X_2=x_2),
 \]</span> i.e., through the centers of the conditional distributions of <span class="math inline">\(X_1\)</span> along each horizontal line at height <span class="math inline">\(x_2\)</span>.</p>
 <p>In our example, the main axis of the contour ellipses moves one-to-one: one unit up in <span class="math inline">\(x_2\)</span> means one unit to the right in <span class="math inline">\(x_1\)</span>. The conditional mean <span class="math inline">\(m(x_2)\)</span>, however, moves only <span class="math inline">\(0.8\)</span> units to the right per unit of <span class="math inline">\(x_2\)</span>. Therefore, the regression line is steeper than the main axis in the left plot.</p>
 </div>
 </div>
-</section><section id="law-of-total-expectation-law-of-iterated-expectations" class="level4" data-number="2.2.3.4"><h4 data-number="2.2.3.4" class="anchored" data-anchor-id="law-of-total-expectation-law-of-iterated-expectations">
-<span class="header-section-number">2.2.3.4</span> <strong>Law of Total Expectation <span class="math inline">\(=\)</span> Law of Iterated Expectations</strong>
+</section><section id="law-of-total-expectation-law-of-iterated-expectations" class="level4" data-number="2.2.3.5"><h4 data-number="2.2.3.5" class="anchored" data-anchor-id="law-of-total-expectation-law-of-iterated-expectations">
+<span class="header-section-number">2.2.3.5</span> <strong>Law of Total Expectation <span class="math inline">\(=\)</span> Law of Iterated Expectations</strong>
 </h4>
-<p>As long as we do not fix the values of the conditioning variables <span class="math inline">\(X_2,\dots,X_d\)</span>, they are random variables. Consequently, the conditional mean <span class="math display">\[
-E(X_1\mid X_2,\ldots,X_d)=\int x_1 f(x_1\mid X_2,\ldots,X_d)\,dx_1
-\]</span> is generally itself a <strong>random variable</strong>, due to the randomness in <span class="math inline">\(X_2,\ldots,X_d\)</span>.</p>
+<p>As long as we do not fix the value of the conditioning variable <span class="math inline">\(X_2\)</span>, it is a random variable. Consequently, the conditional mean <span class="math display">\[
+E(X_1\mid X_2)=m(X_2)=\int x_1 f(x_1\mid X_2)\,dx_1
+\]</span> is itself a <strong>random variable</strong>: it is the regression function <span class="math inline">\(m\)</span> evaluated at the random variable <span class="math inline">\(X_2\)</span>. Likewise, <span class="math inline">\(E(X_1\mid X_2,\ldots,X_d)=m(X_2,\ldots,X_d)\)</span> is a random variable.</p>
 <div class="callout callout-style-simple callout-none no-icon">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
@@ -1754,15 +1865,20 @@ E(X_1\mid X_2,\ldots,X_d)=\int x_1 f(x_1\mid X_2,\ldots,X_d)\,dx_1
 </div>
 <div class="callout-body-container">
 <div id="thm-LawTotalExpectation" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 2.1 (Law of Total Expectation)</strong></span> The <strong>Law of Total Expectation</strong>, also called the <strong>Law of Iterated Expectations</strong>, states that <span class="math display">\[
+<p><span class="theorem-title"><strong>Theorem 2.1 (Law of Total Expectation)</strong></span> The <strong>Law of Total Expectation</strong>, also called the <strong>Law of Iterated Expectations</strong>, states that</p>
+<p><strong>Two random variables <span class="math inline">\((d=2)\)</span>:</strong> <span class="math display">\[
+E\big(E(X_1\mid X_2)\big)=E(X_1).
+\]</span></p>
+<p><strong>In general <span class="math inline">\((d\geq 2)\)</span>:</strong> <span class="math display">\[
 E\big(E(X_1\mid X_2,\ldots,X_d)\big)=E(X_1).
 \]</span></p>
 </div>
 </div>
 </div>
 </div>
+<p><strong>In words:</strong> If we average the conditional means <span class="math inline">\(E(X_1\mid X_2=x_2)\)</span> over all possible values <span class="math inline">\(x_2\)</span> of <span class="math inline">\(X_2\)</span>, weighted by how likely these values are, we get back the unconditional mean <span class="math inline">\(E(X_1)\)</span>.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-27-contents" aria-controls="callout-27" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-31-contents" aria-controls="callout-31" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1771,7 +1887,7 @@ E\big(E(X_1\mid X_2,\ldots,X_d)\big)=E(X_1).
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-27" class="callout-27-contents callout-collapse collapse">
+<div id="callout-31" class="callout-31-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>To show this result, we first compute the conditional mean of <span class="math inline">\(X_1\)</span> given <span class="math inline">\(X_2,\dots,X_d\)</span>, and then take the mean with respect to <span class="math inline">\(X_2,\dots,X_d\)</span>: <!-- Note that $f(x_1\mid X_2,\ldots,X_d)$ is just a transformation of the random variables $X_2,\dots,X_d$. So we can easily compute the unconditional mean $E(X_1)$ by taking the mean of $E(X_1|X_2,\ldots,X_d)$ as following,  --> <span class="math display">\[\begin{align*}
 &amp;E\big({\color{purple}{E(X_1\mid X_2,\ldots,X_d)}}\big)\\[2ex]
@@ -1784,41 +1900,152 @@ E\big(E(X_1\mid X_2,\ldots,X_d)\big)=E(X_1).
 &amp;=\int\dots\int x_1 f(x_1,x_2,\ldots,x_d)\,dx_1\,dx_2\dots dx_d\\[2ex]
 &amp;\text{Rearranging terms:}\\[2ex]
 &amp;=\int x_1 \left({\color{blue}{\int\dots\int f(x_1,x_2,\ldots,x_d)\,dx_2\dots dx_d}}\right)dx_1\\[2ex]
-&amp;\text{Integrating out $x_2,\dots,x_d$ yields the marginal density $f_{X_1}\colon$}\\[2ex]
-&amp;=\int x_1 {\color{blue}{f_{X_1}(x_1)}}\,dx_1\\[2ex]
+&amp;\text{Integrating out $x_2,\dots,x_d$ yields the marginal density $f_1\colon$}\\[2ex]
+&amp;=\int x_1 {\color{blue}{f_1(x_1)}}\,dx_1\\[2ex]
 &amp;=E(X_1)
 \end{align*}\]</span></p>
 </div>
 </div>
 </div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Example: Law of Total Expectation (Car Sales and Staffing)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Consider again the car dealership with the joint pmf of the number of cars sold, <span class="math inline">\(X_1\)</span>, and the number of sales consultants on duty, <span class="math inline">\(X_2\)</span>:</p>
+<table class="caption-top table">
+<thead><tr class="header">
+<th><span class="math inline">\(f(x_1,x_2)\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(x_1=0\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(x_1=1\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(x_1=2\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(x_1=3\)</span></th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(x_2=1\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0.15\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0.25\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0.10\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0.00\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(x_2=2\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0.05\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0.15\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0.20\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0.10\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>For discrete random variables, we compute conditional means with sums instead of integrals: <span class="math display">\[
+E(X_1\mid X_2=x_2)=\sum_{x_1} x_1\, P(X_1=x_1\mid X_2=x_2)=\sum_{x_1} x_1\,\frac{f(x_1,x_2)}{f_2(x_2)}.
+\]</span></p>
+<p><strong>Step 1:</strong> The marginal pmf of <span class="math inline">\(X_2\)</span> is obtained by summing each row of the table: <span class="math display">\[\begin{align*}
+f_2(1)&amp;=0.15+0.25+0.10+0.00=0.50\\[2ex]
+f_2(2)&amp;=0.05+0.15+0.20+0.10=0.50.
+\end{align*}\]</span></p>
+<p><strong>Step 2:</strong> The conditional means of <span class="math inline">\(X_1\)</span> given <span class="math inline">\(X_2=1\)</span> and given <span class="math inline">\(X_2=2\)</span> are <span class="math display">\[\begin{align*}
+E(X_1\mid X_2=1)&amp;=\frac{0\cdot 0.15+1\cdot 0.25+2\cdot 0.10+3\cdot 0.00}{0.50}=\frac{0.45}{0.50}=0.9\\[2ex]
+E(X_1\mid X_2=2)&amp;=\frac{0\cdot 0.05+1\cdot 0.15+2\cdot 0.20+3\cdot 0.10}{0.50}=\frac{0.85}{0.50}=1.7.
+\end{align*}\]</span></p>
+<p><strong>Step 3:</strong> The conditional mean <span class="math inline">\(E(X_1\mid X_2)\)</span> is a random variable. It takes the value <span class="math inline">\(0.9\)</span> with probability <span class="math inline">\(f_2(1)=0.50\)</span> and the value <span class="math inline">\(1.7\)</span> with probability <span class="math inline">\(f_2(2)=0.50\)</span>. Its mean is <span class="math display">\[\begin{align*}
+E\big(E(X_1\mid X_2)\big)
+&amp;=0.9\cdot f_2(1)+1.7\cdot f_2(2)\\[2ex]
+&amp;=0.9\cdot 0.50+1.7\cdot 0.50\\[2ex]
+&amp;=1.3.
+\end{align*}\]</span></p>
+<p><strong>Check:</strong> Using the marginal pmf of <span class="math inline">\(X_1\)</span> from the one-dimensional car sales example, <span class="math display">\[\begin{align*}
+E(X_1)
+&amp;=0\cdot 0.2+1\cdot 0.4+2\cdot 0.3+3\cdot 0.1\\[2ex]
+&amp;=1.3.
+\end{align*}\]</span></p>
+<p><strong>In words:</strong> On days with one consultant, the dealership sells <span class="math inline">\(0.9\)</span> cars on average; on days with two consultants, it sells <span class="math inline">\(1.7\)</span> cars on average. Since both kinds of days are equally likely, the dealership sells <span class="math inline">\(0.9\cdot 0.5+1.7\cdot 0.5=1.3\)</span> cars per day on average.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Example: Law of Total Expectation (Bivariate Normal Distribution)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Consider again our running example with revenue growth <span class="math inline">\(X_1\)</span> and GDP growth <span class="math inline">\(X_2\)</span>. From the conditional mean example above, we know the regression function <span class="math display">\[
+m(x_2)=E(X_1\mid X_2=x_2)=1.2+0.8\,x_2.
+\]</span> If we do not fix the value of <span class="math inline">\(X_2\)</span>, the conditional mean is the random variable <span class="math display">\[
+E(X_1\mid X_2)=m(X_2)=1.2+0.8\,X_2.
+\]</span> Using the linearity of the mean, <span class="math inline">\(E(a+b\,X_2)=a+b\,E(X_2)\)</span>, we get <span class="math display">\[\begin{align*}
+E\big(E(X_1\mid X_2)\big)
+&amp;=E\big(1.2+0.8\,X_2\big)\\[2ex]
+&amp;=1.2+0.8\,E(X_2)\\[2ex]
+&amp;=1.2+0.8\cdot 1\\[2ex]
+&amp;=2\\[2ex]
+&amp;=E(X_1).
+\end{align*}\]</span></p>
+<p><strong>In words:</strong> For each possible GDP growth rate <span class="math inline">\(x_2\)</span>, the expected revenue growth is <span class="math inline">\(m(x_2)=1.2+0.8\,x_2\)</span>. Averaging these conditional means over all possible GDP growth rates (weighted by their density) yields the overall mean revenue growth of <span class="math inline">\(2\)</span> percent.</p>
+</div>
+</div>
 </section></section><section id="independent-random-variables" class="level3" data-number="2.2.4"><h3 data-number="2.2.4" class="anchored" data-anchor-id="independent-random-variables">
 <span class="header-section-number">2.2.4</span> Independent Random Variables</h3>
-<p><strong>Two random variables:</strong> Two random variables <span class="math inline">\(Y\)</span> and <span class="math inline">\(X\)</span> are <strong>independent</strong>, written <span class="math display">\[
-Y \independent X,
+<p><strong>Two random variables:</strong> Two random variables <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> are <strong>independent</strong>, written <span class="math display">\[
+X_1 \independent X_2,
 \]</span> if their joint distribution function equals the product of their marginal distribution functions, <span class="math display">\[
-F_{Y,X}(y,x)=F_Y(y)\cdot F_X(x)\quad\text{for all}\quad y,x\in\mathbb{R}.
-\]</span> Equivalently, <span class="math inline">\(Y\)</span> and <span class="math inline">\(X\)</span> are independent if their joint pmf (discrete case) or joint density function (continuous case) equals the product of their marginal pmfs or densities, <span class="math display">\[
-f_{Y,X}(y,x)=f_Y(y)\cdot f_X(x)\quad\text{for all}\quad y,x\in\mathbb{R}.
+F(x_1,x_2)=F_1(x_1)\cdot F_2(x_2)\quad\text{for all}\quad x_1,x_2\in\mathbb{R}.
+\]</span> Equivalently, <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> are independent if their joint pmf (discrete case) or joint density function (continuous case) equals the product of their marginal pmfs or densities, <span class="math display">\[
+f(x_1,x_2)=f_1(x_1)\cdot f_2(x_2)\quad\text{for all}\quad x_1,x_2\in\mathbb{R}.
 \]</span></p>
-<p>Independence can also be characterized using the <strong>conditional density:</strong> <span class="math inline">\(Y\)</span> and <span class="math inline">\(X\)</span> are independent <em>if and only if</em> the marginal density of <span class="math inline">\(X\)</span> equals the conditional density of <span class="math inline">\(X\)</span> given <span class="math inline">\(Y=y\)</span>, <span class="math display">\[
-f_X(x)=f_{X|Y}(x\mid y)
-\]</span> for all <span class="math inline">\(x\in\mathbb{R}\)</span> and all <span class="math inline">\(y\in\mathbb{R}\)</span> with <span class="math inline">\(f_Y(y)&gt;0\)</span>. That is, knowing the value of <span class="math inline">\(Y\)</span> does not change the distribution of <span class="math inline">\(X\)</span>.</p>
+<p>Independence can also be characterized using the <strong>conditional density:</strong> <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> are independent <em>if and only if</em> the conditional density of <span class="math inline">\(X_1\)</span> given <span class="math inline">\(X_2=x_2\)</span> equals the marginal density of <span class="math inline">\(X_1\)</span>, <span class="math display">\[
+f(x_1\mid x_2)=f_1(x_1)
+\]</span> for all <span class="math inline">\(x_1\in\mathbb{R}\)</span> and all <span class="math inline">\(x_2\in\mathbb{R}\)</span> with <span class="math inline">\(f_2(x_2)&gt;0\)</span>. That is, knowing the value of <span class="math inline">\(X_2\)</span> does not change the distribution of <span class="math inline">\(X_1\)</span>.</p>
 <blockquote class="blockquote">
-<p>Of course, the same holds with the roles of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> interchanged: <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are independent <em>if and only if</em> <span class="math inline">\(f_Y(y)=f_{Y|X}(y\mid x)\)</span> for all <span class="math inline">\(y\in\mathbb{R}\)</span> and all <span class="math inline">\(x\)</span> with <span class="math inline">\(f_X(x)&gt;0.\)</span></p>
+<p>Of course, the same holds with the roles of <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> interchanged: <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> are independent <em>if and only if</em> <span class="math inline">\(f(x_2\mid x_1)=f_2(x_2)\)</span> for all <span class="math inline">\(x_2\in\mathbb{R}\)</span> and all <span class="math inline">\(x_1\)</span> with <span class="math inline">\(f_1(x_1)&gt;0.\)</span></p>
 </blockquote>
 <p><strong>More than two random variables:</strong> The random variables <span class="math inline">\(X_1,\dots,X_n\)</span> are mutually <strong>independent</strong> if their joint distribution function equals the product of their marginal distribution functions, <span class="math display">\[
 F(x_1,\dots,x_n)=F_1(x_1)\cdot F_2(x_2)\cdot\ldots\cdot F_n(x_n),
 \]</span> for all <span class="math inline">\((x_1,\dots,x_n)^{\top}\in\mathbb{R}^n,\)</span> or, equivalently, if their joint pmf or joint density function equals the product of their marginal pmfs or densities, <span class="math display">\[
 f(x_1,\dots,x_n)=f_1(x_1)\cdot f_2(x_2)\cdot\ldots\cdot f_n(x_n)
 \]</span> for all <span class="math inline">\((x_1,\dots,x_n)^{\top}\in\mathbb{R}^n.\)</span></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Example: Checking Independence in Our Examples
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<div class="spaced-list">
+<ul>
+<li><p><strong>Car sales and staffing (dependent):</strong> The marginal pmfs give <span class="math inline">\(f_1(0)=0.20\)</span> and <span class="math inline">\(f_2(1)=0.50\)</span>; see the examples above. However, the joint pmf is <span class="math display">\[
+f(0,1)=0.15\neq 0.10=0.20\cdot 0.50=f_1(0)\cdot f_2(1).
+\]</span> A single pair <span class="math inline">\((x_1,x_2)\)</span> for which the product rule fails is enough: the number of cars sold, <span class="math inline">\(X_1\)</span>, and the number of consultants, <span class="math inline">\(X_2\)</span>, are <em>not</em> independent.</p></li>
+<li><p><strong>Customer arrivals and service times (independent):</strong> The joint density was defined as the product of the two marginal densities, <span class="math display">\[
+f(x_1,x_2)=\frac{1}{5}\,e^{-x_1/5}\cdot\frac{1}{2}\,e^{-x_2/2}=f_1(x_1)\cdot f_2(x_2)
+\]</span> for all <span class="math inline">\(x_1,x_2\geq 0\)</span> (and both sides are zero otherwise). Thus, the waiting time <span class="math inline">\(X_1\)</span> and the service time <span class="math inline">\(X_2\)</span> are independent: how long the shop assistant waits for the next customer tells nothing about how long it takes to serve this customer.</p></li>
+<li><p><strong>Revenue growth and GDP growth (dependent):</strong> In our running example, the conditional density of <span class="math inline">\(X_1\)</span> given <span class="math inline">\(X_2=2\)</span> is the <span class="math inline">\(\mathcal{N}(2.8,\,0.36)\)</span> density, whereas the marginal density of <span class="math inline">\(X_1\)</span> is the <span class="math inline">\(\mathcal{N}(2,\,1)\)</span> density. Since <span class="math display">\[
+f(x_1\mid x_2=2)\neq f_1(x_1),
+\]</span> knowing GDP growth changes the distribution of revenue growth: <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> are <em>not</em> independent.</p></li>
+</ul>
+</div>
+</div>
+</div>
 <section id="independence-implies-mean-independence-but-not-vice-versa" class="level4 unnumbered"><h4 class="unnumbered anchored" data-anchor-id="independence-implies-mean-independence-but-not-vice-versa"><strong>Independence Implies Mean Independence (but Not Vice Versa)</strong></h4>
-<p>If <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are independent, then the conditional mean of <span class="math inline">\(X\)</span> given <span class="math inline">\(Y=y\)</span> equals the unconditional mean of <span class="math inline">\(X\)</span>, <span class="math display">\[
-E(X\mid Y=y)=E(X)\quad\text{for all } y,
-\]</span> and, likewise, the conditional mean of <span class="math inline">\(Y\)</span> given <span class="math inline">\(X=x\)</span> equals the unconditional mean of <span class="math inline">\(Y\)</span>, <span class="math display">\[
-E(Y\mid X=x)=E(Y)\quad\text{for all } x.
+<p>If <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> are independent, then the conditional mean of <span class="math inline">\(X_1\)</span> given <span class="math inline">\(X_2=x_2\)</span> equals the unconditional mean of <span class="math inline">\(X_1\)</span>, <span class="math display">\[
+E(X_1\mid X_2=x_2)=E(X_1)\quad\text{for all } x_2,
+\]</span> and, likewise, the conditional mean of <span class="math inline">\(X_2\)</span> given <span class="math inline">\(X_1=x_1\)</span> equals the unconditional mean of <span class="math inline">\(X_2\)</span>, <span class="math display">\[
+E(X_2\mid X_1=x_1)=E(X_2)\quad\text{for all } x_1.
 \]</span> If <span class="math display">\[
-E(X\mid Y=y)=E(X)
-\]</span> for all <span class="math inline">\(y\)</span>, we say that <span class="math inline">\(X\)</span> is <strong>mean independent</strong> of <span class="math inline">\(Y.\)</span></p>
+E(X_1\mid X_2=x_2)=E(X_1)
+\]</span> for all <span class="math inline">\(x_2\)</span>, we say that <span class="math inline">\(X_1\)</span> is <strong>mean independent</strong> of <span class="math inline">\(X_2.\)</span></p>
 <div class="callout callout-style-default callout-caution callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1830,19 +2057,82 @@ E(X\mid Y=y)=E(X)
 </div>
 <div class="callout-body-container callout-body">
 <p>If the conditional mean equals the unconditional mean, <span class="math display">\[
-E(X\mid Y=y)=E(X)\quad\text{for all } y,
-\]</span> then this does <strong>not</strong> imply that <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are independent. (Likewise for <span class="math inline">\(E(Y\mid X=x)=E(Y)\)</span> for all <span class="math inline">\(x\)</span>.)</p>
-<p>It only means that <span class="math inline">\(Y\)</span> has no effect on the <strong>mean</strong> of <span class="math inline">\(X\)</span>. However, <span class="math inline">\(Y\)</span> may still affect other properties of the distribution of <span class="math inline">\(X\)</span>, for instance, its <strong>variance</strong>.</p>
-<p><strong>Example:</strong></p>
+E(X_1\mid X_2=x_2)=E(X_1)\quad\text{for all } x_2,
+\]</span> then this does <strong>not</strong> imply that <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> are independent. (Likewise for <span class="math inline">\(E(X_2\mid X_1=x_1)=E(X_2)\)</span> for all <span class="math inline">\(x_1\)</span>.)</p>
+<p>It only means that <span class="math inline">\(X_2\)</span> has no effect on the <strong>mean</strong> of <span class="math inline">\(X_1\)</span>. However, <span class="math inline">\(X_2\)</span> may still affect other properties of the distribution of <span class="math inline">\(X_1\)</span>, for instance, its <strong>variance</strong>.</p>
+<p><strong>Example:</strong> Let</p>
+<div class="spaced-list">
 <ul>
-<li>Let <span class="math inline">\(Y\in\{1,2\}\)</span> and</li>
-<li>let <span class="math inline">\(X\mid Y=y\sim\mathcal{N}(0,y^2)\)</span>.</li>
+<li>
+<span class="math inline">\(X_2\in\{1,2\}\)</span> and</li>
+<li>
+<span class="math inline">\(X_1\mid X_2=x_2\sim\mathcal{N}(0,x_2^2)\)</span>.</li>
 </ul>
+</div>
 <p>Then <span class="math display">\[
-E(X\mid Y=y)=0=E(X)\quad\text{for all } y,
-\]</span> but <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are not independent, since <span class="math display">\[
-\operatorname{Var}(X\mid Y=1)=1\neq 4=\operatorname{Var}(X\mid Y=2).
+E(X_1\mid X_2=x_2)=0=E(X_1)\quad\text{for all } x_2,
+\]</span> but <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> are not independent, since <span class="math display">\[
+\operatorname{Var}(X_1\mid X_2=1)=1\neq 4=\operatorname{Var}(X_1\mid X_2=2).
 \]</span></p>
+</div>
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Summary: Two Random Variables <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead><tr class="header">
+<th></th>
+<th>Discrete</th>
+<th>Continuous</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td><strong>Joint</strong></td>
+<td>pmf <span class="math inline">\(f(x_1,x_2)=P(X_1=x_1,X_2=x_2)\)</span>
+</td>
+<td>density <span class="math inline">\(f(x_1,x_2)\)</span>
+</td>
+</tr>
+<tr class="even">
+<td><strong>Marginal</strong></td>
+<td><span class="math inline">\(f_1(x_1)=\sum_{x_2} f(x_1,x_2)\)</span></td>
+<td><span class="math inline">\(f_1(x_1)=\int f(x_1,x_2)\,dx_2\)</span></td>
+</tr>
+<tr class="odd">
+<td><strong>Conditional</strong></td>
+<td><span class="math inline">\(f(x_1\mid x_2)=\dfrac{f(x_1,x_2)}{f_2(x_2)}\)</span></td>
+<td><span class="math inline">\(f(x_1\mid x_2)=\dfrac{f(x_1,x_2)}{f_2(x_2)}\)</span></td>
+</tr>
+<tr class="even">
+<td><strong>Conditional mean</strong></td>
+<td><span class="math inline">\(m(x_2)=\sum_{x_1} x_1\,f(x_1\mid x_2)\)</span></td>
+<td><span class="math inline">\(m(x_2)=\int x_1\,f(x_1\mid x_2)\,dx_1\)</span></td>
+</tr>
+<tr class="odd">
+<td><strong>Law of iterated expectations</strong></td>
+<td><span class="math inline">\(E\big(E(X_1\mid X_2)\big)=E(X_1)\)</span></td>
+<td><span class="math inline">\(E\big(E(X_1\mid X_2)\big)=E(X_1)\)</span></td>
+</tr>
+<tr class="even">
+<td><strong>Independence</strong></td>
+<td><span class="math inline">\(f(x_1,x_2)=f_1(x_1)\,f_2(x_2)\)</span></td>
+<td><span class="math inline">\(f(x_1,x_2)=f_1(x_1)\,f_2(x_2)\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>In the discrete case, probabilities and means are computed with <strong>sums</strong>; in the continuous case, with <strong>integrals</strong>. Otherwise, the formulas are the same.</p>
 </div>
 </div>
 </section></section><section id="random-samples" class="level3" data-number="2.2.5"><h3 data-number="2.2.5" class="anchored" data-anchor-id="random-samples">
@@ -1886,10 +2176,10 @@ Example: Univariate Random Sample
 </div>
 <div class="callout-body-container callout-body">
 <p>A shop randomly selects <span class="math inline">\(n=10\)</span> customers and records how much each of them spends (in Euro). Suppose the shop observes the following data:</p>
-<p><span class="math display">\[
-\{X_{1,\operatorname{obs}}, \ldots, X_{10,\operatorname{obs}}\}
-=\{43.7,\ 51.8,\ 41.6,\ 66.0,\ 53.3,\ 41.8,\ 54.9,\ 57.4,\ 55.8,\ 46.9\}.
-\]</span></p>
+<p><span class="math display">\[\begin{align*}
+&amp;\{X_{1,\operatorname{obs}}, \ldots, X_{10,\operatorname{obs}}\}\\[2ex]
+&amp;=\{43.7,\ 51.8,\ 41.6,\ 66.0,\ 53.3,\ 41.8,\ 54.9,\ 57.4,\ 55.8,\ 46.9\}.
+\end{align*}\]</span></p>
 <p>We assume that these data are an observed realization of an <strong>i.i.d. random sample</strong> <span class="math display">\[
 \{X_{1}, \ldots, X_{10}\},
 \]</span> where the random variable <span class="math inline">\(X_i\)</span> models the spending of customer <span class="math inline">\(i\)</span>. That is,</p>
@@ -1937,7 +2227,7 @@ Example: Univariate Random Sample
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-🤓 Nerd’s Box: Estimator vs.&nbsp;Estimate
+Estimator vs.&nbsp;Estimate
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -2108,13 +2398,15 @@ f(x)=\frac{1}{\sigma \sqrt{2 \pi}} \exp \left\{-\frac{1}{2 \sigma^{2}}(x-\mu)^{2
 [11] -0.883560071 -0.795629557</code></pre>
 </div>
 </div>
-<p>The multivariate normal distribution extends the univariate normal distribution to random vectors. Let <span class="math inline">\(X=(X_1,\dots,X_k)^{\top}\)</span> be a <span class="math inline">\(k\)</span>-dimensional normal random vector, written <span class="math inline">\(X\sim \mathcal{N}_k(\mu,\Sigma)\)</span>, with mean vector <span class="math inline">\(E(X)=\mu\in\mathbb{R}^k\)</span> and positive definite variance-covariance matrix <span class="math inline">\(\operatorname{Var}(X)=\Sigma\)</span>. The joint density function of the <span class="math inline">\(k\)</span>-dimensional normal distribution is <span class="math display">\[
-f_{X}\left(x_{1}, \ldots, x_{k}\right)=\frac{\exp \left(-\frac{1}{2}(x-\mu)^{\top} \Sigma^{-1}(x-\mu)\right)}{\sqrt{(2 \pi)^{k}|\Sigma|}},
-\]</span> where <span class="math inline">\(x=(x_1,\dots,x_k)^{\top}\)</span> and <span class="math inline">\(|\Sigma|\)</span> denotes the determinant of <span class="math inline">\(\Sigma\)</span>. For <span class="math inline">\(k=2\)</span>, we obtain the bivariate density of two normal random variables, say <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, with means <span class="math inline">\(\mu_X\)</span> and <span class="math inline">\(\mu_Y\)</span>, standard deviations <span class="math inline">\(\sigma_X\)</span> and <span class="math inline">\(\sigma_Y\)</span>, and correlation <span class="math inline">\(\rho_{XY}\)</span>: <span class="math display">\[\begin{align*}
-g_{X,Y}(x,y) = &amp;\frac{1}{2\pi\sigma_X\sigma_Y\sqrt{1-\rho_{XY}^2}} \\[2ex]
-&amp; \cdot \, \exp \left\{ -\frac{1}{2(1-\rho_{XY}^2)} \left[ \left( \frac{x-\mu_X}{\sigma_X} \right)^2 - 2\rho_{XY}\left( \frac{x-\mu_X}{\sigma_X} \right)\left( \frac{y-\mu_Y}{\sigma_Y} \right) + \left( \frac{y-\mu_Y}{\sigma_Y} \right)^2 \right]  \right\}.
-\end{align*}\]</span> Let’s consider the special case where <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are independent standard normal random variables with densities <span class="math inline">\(f_X(x)\)</span> and <span class="math inline">\(f_Y(y)\)</span>. Then <span class="math inline">\(\sigma_X = \sigma_Y = 1\)</span> and <span class="math inline">\(\mu_X=\mu_Y=0\)</span> (due to marginal standard normality), and the correlation is <span class="math inline">\(\rho_{XY}=0\)</span> (due to independence). The joint density of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> then becomes <span class="math display">\[
-g_{X,Y}(x,y) = f_X(x) f_Y(y) = \frac{1}{2\pi} \cdot \exp \left\{ -\frac{1}{2}\left[x^2 + y^2\right]\right\}.
+<p>The multivariate normal distribution extends the univariate normal distribution to random vectors. Let <span class="math inline">\(X=(X_1,\dots,X_d)^{\top}\)</span> be a <span class="math inline">\(d\)</span>-dimensional normal random vector, written <span class="math inline">\(X\sim \mathcal{N}_d(\mu,\Sigma)\)</span>, with mean vector <span class="math inline">\(E(X)=\mu\in\mathbb{R}^d\)</span> and positive definite variance-covariance matrix <span class="math inline">\(\operatorname{Var}(X)=\Sigma\)</span>. The joint density function of the <span class="math inline">\(d\)</span>-dimensional normal distribution is <span class="math display">\[
+f\left(x_{1}, \ldots, x_{d}\right)=\frac{\exp \left(-\frac{1}{2}(x-\mu)^{\top} \Sigma^{-1}(x-\mu)\right)}{\sqrt{(2 \pi)^{d}|\Sigma|}},
+\]</span> where <span class="math inline">\(x=(x_1,\dots,x_d)^{\top}\)</span> and <span class="math inline">\(|\Sigma|\)</span> denotes the determinant of <span class="math inline">\(\Sigma\)</span>.</p>
+<p>For <span class="math inline">\(d=2\)</span>, we obtain the bivariate density of two normal random variables <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> with means <span class="math inline">\(\mu_1=E(X_1)\)</span> and <span class="math inline">\(\mu_2=E(X_2)\)</span>, standard deviations <span class="math inline">\(\sigma_1=\sqrt{\operatorname{Var}(X_1)}\)</span> and <span class="math inline">\(\sigma_2=\sqrt{\operatorname{Var}(X_2)}\)</span>, and correlation <span class="math inline">\(\rho=\operatorname{Corr}(X_1,X_2)\)</span>: <span class="math display">\[\begin{align*}
+f(x_1,x_2) = &amp;\frac{1}{2\pi\sigma_1\sigma_2\sqrt{1-\rho^2}} \\[2ex]
+&amp; \cdot \, \exp \left\{ -\frac{1}{2(1-\rho^2)} \left[ \left( \frac{x_1-\mu_1}{\sigma_1} \right)^2 - 2\rho\left( \frac{x_1-\mu_1}{\sigma_1} \right)\left( \frac{x_2-\mu_2}{\sigma_2} \right) + \left( \frac{x_2-\mu_2}{\sigma_2} \right)^2 \right]  \right\}.
+\end{align*}\]</span> In our running example (revenue growth <span class="math inline">\(X_1\)</span> and GDP growth <span class="math inline">\(X_2\)</span>), we have <span class="math inline">\(\mu_1=2\)</span>, <span class="math inline">\(\mu_2=1\)</span>, <span class="math inline">\(\sigma_1=\sigma_2=1\)</span>, and <span class="math inline">\(\rho=0.8\)</span>.</p>
+<p>Let’s consider the special case where <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> are independent standard normal random variables with marginal densities <span class="math inline">\(f_1(x_1)\)</span> and <span class="math inline">\(f_2(x_2)\)</span>. Then <span class="math inline">\(\mu_1=\mu_2=0\)</span> and <span class="math inline">\(\sigma_1 = \sigma_2 = 1\)</span> (due to marginal standard normality), and the correlation is <span class="math inline">\(\rho=0\)</span> (due to independence). The joint density of <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> then becomes <span class="math display">\[
+f(x_1,x_2) = f_1(x_1)\, f_2(x_2) = \frac{1}{2\pi} \cdot \exp \left\{ -\frac{1}{2}\left[x_1^2 + x_2^2\right]\right\}.
 \]</span></p>
 </section><section id="sec-chisqdist" class="level4" data-number="2.2.7.3"><h4 data-number="2.2.7.3" class="anchored" data-anchor-id="sec-chisqdist">
 <span class="header-section-number">2.2.7.3</span> <strong>The Chi-Squared Distribution</strong>
@@ -2123,9 +2415,9 @@ g_{X,Y}(x,y) = f_X(x) f_Y(y) = \frac{1}{2\pi} \cdot \exp \left\{ -\frac{1}{2}\le
 <p>The sum of <span class="math inline">\(\nu\in\{1,2,\dots\}\)</span> squared <em>independent standard normal</em> random variables <span class="math inline">\(Z_1,\dots,Z_\nu\)</span> follows a chi-squared distribution with <span class="math inline">\(\nu\)</span> degrees of freedom (df): <span class="math display">\[
 W:=Z_1^2 + \dots + Z_\nu^2 = \sum_{j=1}^\nu Z_j^2 \sim \chi^2_{\nu}.
 \]</span> A <span class="math inline">\(\chi^2_\nu\)</span> distributed random variable <span class="math inline">\(W\)</span> has expectation <span class="math inline">\(E(W)=\nu\)</span>, variance <span class="math inline">\(\operatorname{Var}(W)=2\nu,\)</span> and, for <span class="math inline">\(\nu \geq 2,\)</span> its mode at <span class="math inline">\(\nu-2\)</span>.</p>
-<p>Using the code below, we can display the pdf and the <strong>cumulative distribution function (cdf)</strong> of a <span class="math inline">\(\chi^2_3\)</span> random variable in a single plot. This is achieved by setting the argument <code>add = TRUE</code> in the second call of <code><a href="https://rdrr.io/r/graphics/curve.html">curve()</a></code>. Furthermore, we adjust the limits of both axes using <code>xlim</code> and <code>ylim</code>, and choose different colors to make both functions easier to distinguish. Finally, we add a legend using <code><a href="https://rdrr.io/r/graphics/legend.html">legend()</a></code>.</p>
+<p>The following code plots the pdf and the cdf of a <span class="math inline">\(\chi^2_3\)</span> random variable in a single plot:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># plot the pdf</span></span>
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># plot the pdf (xlim and ylim set the limits of both axes)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/curve.html">curve</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Chisquare.html">dchisq</a></span><span class="op">(</span><span class="va">x</span>, df <span class="op">=</span> <span class="fl">3</span><span class="op">)</span>,</span>
 <span>      xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">10</span><span class="op">)</span>,</span>
 <span>      ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span><span class="op">)</span>,</span>
@@ -2133,7 +2425,7 @@ W:=Z_1^2 + \dots + Z_\nu^2 = \sum_{j=1}^\nu Z_j^2 \sim \chi^2_{\nu}.
 <span>      ylab <span class="op">=</span> <span class="st">""</span>,</span>
 <span>      main <span class="op">=</span> <span class="st">"pdf and cdf of Chi-Squared Distribution (df = 3)"</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># add the cdf to the plot</span></span>
+<span><span class="co"># add the cdf to the existing plot (add = TRUE)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/curve.html">curve</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Chisquare.html">pchisq</a></span><span class="op">(</span><span class="va">x</span>, df <span class="op">=</span> <span class="fl">3</span><span class="op">)</span>,</span>
 <span>      xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">10</span><span class="op">)</span>,</span>
 <span>      add <span class="op">=</span> <span class="cn">TRUE</span>,</span>
@@ -2298,14 +2590,15 @@ Example: Tail Probability of an <span class="math inline">\(F\)</span> Distribut
 <p>The <span class="math inline">\(F\)</span> distribution is related to many other distributions. An important special case in econometrics arises when the denominator degrees of freedom <span class="math inline">\(n\)</span> are large. Then, the <span class="math inline">\(F_{m,n}\)</span> distribution can be approximated by the <span class="math inline">\(F_{m,\infty}\)</span> distribution, which is simply the distribution of a <span class="math inline">\(\chi^2_m\)</span> random variable divided by its degrees of freedom <span class="math inline">\(m,\)</span> i.e., <span class="math display">\[
 \frac{W}{m} \sim F_{m,\infty} \quad\text{with}\quad W \sim \chi^2_m.
 \]</span></p>
-<!--
-## Exercises
-
-* [Exercises for Chapter 2](https://www.dropbox.com/scl/fi/id6hc7q13veovkopf6xnt/Ch2_Exercises1.pdf?rlkey=fhyv5m2fjw6p9kv2strkxomun&st=jiltpae4&dl=0)
-
-* [Exercises for Chapter 2 with Solutions](https://www.dropbox.com/scl/fi/q4x4q4q996mav47sax8nf/Ch2_Exercises_with_Solutions1.pdf?rlkey=69osulookyvx96ttvj4ovo66a&st=03oydfn1&dl=0)
--->
-</section></section></section><section id="references" class="level2 unnumbered"><h2 class="unnumbered anchored" data-anchor-id="references">References</h2>
+</section></section></section><section id="exercises" class="level2" data-number="2.3"><h2 data-number="2.3" class="anchored" data-anchor-id="exercises">
+<span class="header-section-number">2.3</span> Exercises</h2>
+<p>The exercises are based on the examples and exercises in this chapter. They are your main resource for preparing for the exam. About half of them are single-choice questions, as in the exam. However, reading the script remains advisable, particularly if you aim for a top grade: the exercises cannot cover every concept and every connection between them.</p>
+<ul>
+<li><a href="exercises/pdf/Ch2_Exercises.pdf">Exercises for Chapter 2</a></li>
+</ul>
+<!-- 
+* [Exercises for Chapter 2 with Solutions](exercises/pdf/Ch2_Exercises_with_Solutions.pdf) 
+--></section><section id="references" class="level2 unnumbered"><h2 class="unnumbered anchored" data-anchor-id="references">References</h2>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">

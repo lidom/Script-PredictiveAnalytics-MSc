@@ -62,10 +62,17 @@ $$
 \bigcap_{i=1}^{\infty} A_{i}=\left\{\omega \in \Omega | \omega \in A_{i} \text{ for all } i\right\}.
 $$
 
-If every element of $A$ is also contained in $B$, we write $A \subset B$ or, equivalently, $B \supset A$. If $A$ is a finite set, let $|A|$ denote the number of elements in $A$. We say that $A_{1}, A_{2}, \ldots$ are **disjoint** or **mutually exclusive** if $A_{i} \cap A_{j}=\emptyset$ whenever $i \neq j$. For example, $A_{1}=[0,1), A_{2}=[1,2), A_{3}=[2,3), \ldots$ are disjoint. A **partition** of $\Omega$ is a sequence of disjoint sets $A_{1}, A_{2}, \ldots$ such that $\bigcup_{i=1}^{\infty} A_{i}=\Omega$.
+Some further notation:
 
-**Summary:** Sample space and events
+::: {.spaced-list}
+* **Subset:** If every element of $A$ is also contained in $B$, we write $A \subset B$ or, equivalently, $B \supset A$.
+* **Number of elements:** If $A$ is a finite set, $|A|$ denotes the number of elements in $A$.
+* **Disjoint events:** $A_{1}, A_{2}, \ldots$ are **disjoint** or **mutually exclusive** if $A_{i} \cap A_{j}=\emptyset$ whenever $i \neq j$. For example, $A_{1}=[0,1), A_{2}=[1,2), A_{3}=[2,3), \ldots$ are disjoint.
+* **Partition:** A **partition** of $\Omega$ is a sequence of disjoint sets $A_{1}, A_{2}, \ldots$ such that $\bigcup_{i=1}^{\infty} A_{i}=\Omega$.
+:::
 
+::: {.callout-important}
+## Summary: Sample Space and Events
 
 $$
 \begin{array}{ll}
@@ -81,6 +88,7 @@ A \subset B &\text{ set inclusion }(A \text{ is a subset of or equal to }B)\\
 \Omega      &\text{ true event (always true)}
 \end{array}
 $$
+:::
 
 
 
@@ -286,13 +294,14 @@ $$
 **Intuition:** Disjoint events are strongly *dependent*: knowing that $A$ has occurred tells us that $B$ cannot have occurred too.
 :::
 
-**Summary:** Independent Events
-
+::: {.callout-important}
+## Summary: Independent Events
 
 ::: {.spaced-list}
 1. $A$ and $B$ are independent if $P(A\cap B)=P(A) P(B)$.
 2. Independence is sometimes assumed and sometimes derived.
 3. Disjoint events with strictly positive probabilities are *not* independent.
+:::
 :::
 
 
@@ -372,7 +381,7 @@ Now, suppose you go for a test and get a positive result. What is the probabilit
 
 However, this conclusion is wrong (**prosecutor's fallacy**).
 
-The correct answer is
+The correct answer is not $P(+\mid D)=0.9=90\%,$ but
 $$
 \begin{align*}
 P(D \mid+)
@@ -380,6 +389,19 @@ P(D \mid+)
 & = \frac{0.0081}{(0.0081+0.0900)}\approx 0.08 = 8\%.
 \end{align*}
 $$
+
+**Why so low?** Imagine that $10{,}000$ people take the test:
+
+::: {.spaced-list}
+* $90$ of them are sick, and $81$ of these sick people test positive.
+* $9{,}910$ of them are healthy, but still $900$ of these healthy people test positive.
+:::
+
+Thus, $81+900=981$ people test positive, but only $81$ of them are actually sick:
+$$
+\frac{81}{981}\approx 0.08=8\%.
+$$
+Since the disease is rare, the few correct positive results of the sick people are outnumbered by the many false positive results of the healthy people.
 
 The lesson here is that you need to compute the answer numerically. **Don't trust your intuition.**
 :::
@@ -453,13 +475,15 @@ P(A\cap B)
 :::
 
 
-**Summary:** Conditional Probability
+::: {.callout-important}
+## Summary: Conditional Probability
 
 ::: {.spaced-list}
 1. If $P(B)>0$, then $P(A \mid B)=P(A\cap B)/P(B)$.
 2. For fixed $B$, $P(\cdot \mid B)$ satisfies the axioms of probability. In general, for fixed $A$, $P(A \mid \cdot)$ does not satisfy the axioms of probability.
 3. In general, $P(A \mid B) \neq P(B \mid A)$.
 4. If $P(B)>0$, then $A$ and $B$ are independent if and only if $P(A \mid B)=P(A)$.
+:::
 :::
 
 
@@ -750,7 +774,7 @@ text(x, p, labels = p, pos = 3, cex = 0.8, col = "darkred")
 
 **The pmf and the cdf contain the same information.** 
 
-The cdf $F_X(x)=P(X\leq x)$ is obtained by summing up the pmf values for all $x_\ell$ smaller or equal $x,$
+The cdf $F_X(x)=P(X\leq x)$ is obtained by summing up the pmf values $f_X(x_k)$ for all values $x_k$ smaller than or equal to $x$,
 $$
 F_X(x)=\sum_{x_k\leq x} f_X(x_k).
 $$
@@ -770,21 +794,21 @@ Conversely, the pmf values are the jump heights of the cdf (see the cdf plot abo
 A random variable $X$ is *continuous* if there exists a function $f_{X}$ such that
 
 ::: {.spaced-list}
-- $f_{X}(x)\geq 0\;$ for all $x\in\mathbb{R}$,
-- $\int_{-\infty}^{\infty}f_{X}(x)\,dx=1,\;$ and
-- $P(a<X<b)=\int_{a}^{b} f_{X}(x)\,dx\;$ for all $a\leq b$.
+1. $f_{X}(x)\geq 0\;$ for all $x\in\mathbb{R}$,
+2. $\int_{-\infty}^{\infty}f_{X}(x)\,dx=1,\;$ and
+3. $P(a<X<b)=\int_{a}^{b} f_{X}(x)\,dx\;$ for all $a\leq b$.
 :::
 
-The function $f_{X}$ is called the **probability density function (pdf)**, or simply the **density function**.
+The function $f_{X}$ is called the **probability density function (pdf)**, or simply the **density function**. The key property is 3.: **probabilities are areas under the density.** Properties 1. and 2. ensure that these areas are valid probabilities, i.e., non-negative and summing up to one.
 
 
-Moreover,
+Moreover, we obtain the cdf by integrating the density,
 $$
-F_{X}(x)=\int_{-\infty}^{x} f_{X}(t)\,dt
+F_{X}(x)=\int_{-\infty}^{x} f_{X}(t)\,dt,
 $$
-and that
+and the density by differentiating the cdf,
 $$
-f_{X}(x)=F_{X}^{\prime}(x)
+f_{X}(x)=F_{X}^{\prime}(x),
 $$
 at all points $x$ at which $F_{X}$ is differentiable.
 
@@ -943,7 +967,7 @@ F_p  <- outer(x1_p, x2_p, function(a, b) pmnorm(cbind(a, b), mu, Sigma))
 persp(x = x1_p, y = x2_p, z = F_p, theta = -30, phi = 25,
       shade = 0.75, col = "blue", expand = 0.5, r = 2,
       ltheta = 25, ticktype = "detailed",
-      xlab = "x₁", ylab = "x₂", zlab = "")
+      xlab = "x₁ (revenue growth)", ylab = "x₂ (GDP growth)", zlab = "")
 
 # contour plot
 par(lwd = 2, mgp = c(2.2, 0.7, 0), las = 1, mar = c(4, 4, 1, 1), family = "serif")
@@ -951,7 +975,7 @@ x1 <- seq(-1, 5, length.out = 60)
 x2 <- seq(-2, 4, length.out = 60)
 F_c <- outer(x1, x2, function(a, b) pmnorm(cbind(a, b), mu, Sigma))
 plot(NA, xlim = c(-1, 5), ylim = c(-2, 4), xaxs = "i", yaxs = "i", axes = FALSE,
-     xlab = expression(x[1]), ylab = expression(x[2]))
+     xlab = expression(x[1] ~ "(revenue growth in %)"), ylab = expression(x[2] ~ "(GDP growth in %)"))
 # shaded area {x1 <= 2, x2 <= 1} with probability F(2, 1)
 rect(-1, -2, mu[1], mu[2], col = alpha("darkred", 0.15), border = NA)
 contour(x1, x2, F_c, levels = seq(0.1, 0.9, by = 0.2), col = "darkblue",
@@ -996,30 +1020,7 @@ X_1\\\vdots\\ X_d
 $$
 collect $d$ **discrete** univariate random variables $X_1,\dots,X_d$.
 
-The discrete random vector $X$ takes countably many different $d$-dimensional values $x_1,x_2,\dots,x_m$, where, again, $m=\infty$ is allowed:
-$$
-X=
-\begin{pmatrix}
-X_1\\\vdots\\ X_d
-\end{pmatrix}
-\in
-\left\{
-\smash[b]{\underbrace{\begin{pmatrix}
-x_{11}\\\vdots\\ x_{d1}
-\end{pmatrix}}_{=x_1}},\;
-\smash[b]{\underbrace{\begin{pmatrix}
-x_{12}\\\vdots\\ x_{d2}
-\end{pmatrix}}_{=x_2}},\;
-\dots,\;
-\smash[b]{\underbrace{\begin{pmatrix}
-x_{1m}\\\vdots\\ x_{dm}
-\end{pmatrix}}_{=x_m}}
-\right\}
-\vphantom{\underbrace{\begin{pmatrix}
-x_{11}\\\vdots\\ x_{d1}
-\end{pmatrix}}_{=x_1}}.
-$$
-
+The random vector $X$ takes countably many different values, each of which is a $d$-dimensional vector.
 
 ::: {.callout-note}
 ## Example: $X$ with $d=2$ and $m=4$
@@ -1044,9 +1045,33 @@ and likewise for $X_2$. In general, if each of the $d$ components takes two valu
 -->
 :::
 
+In general, the discrete random vector $X$ takes countably many different $d$-dimensional values $x_1,x_2,\dots,x_m$, where, again, $m=\infty$ is allowed:
+$$
+X=
+\begin{pmatrix}
+X_1\\\vdots\\ X_d
+\end{pmatrix}
+\in
+\left\{
+\smash[b]{\underbrace{\begin{pmatrix}
+x_{11}\\\vdots\\ x_{d1}
+\end{pmatrix}}_{=x_1}},\;
+\smash[b]{\underbrace{\begin{pmatrix}
+x_{12}\\\vdots\\ x_{d2}
+\end{pmatrix}}_{=x_2}},\;
+\dots,\;
+\smash[b]{\underbrace{\begin{pmatrix}
+x_{1m}\\\vdots\\ x_{dm}
+\end{pmatrix}}_{=x_m}}
+\right\}
+\vphantom{\underbrace{\begin{pmatrix}
+x_{11}\\\vdots\\ x_{d1}
+\end{pmatrix}}_{=x_1}}.
+$$
+
 The **joint (or multivariate) probability mass function** of $X$ is
 $$
-f_{X}(x)=P(X=x)\quad\text{for all}\quad x\in\{x_1,x_2,\dots,x_m\}.
+f(x)=P(X=x)\quad\text{for all}\quad x\in\{x_1,x_2,\dots,x_m\}.
 $$
 
 
@@ -1055,16 +1080,14 @@ Properties:
 ::: {.spaced-list}
 * Non-negative:
 $$
-f_{X}(x)\geq 0\quad\text{for all}\quad x\in\{x_1,x_2,\dots,x_m\}
+f(x)\geq 0\quad\text{for all}\quad x\in\{x_1,x_2,\dots,x_m\}
 $$
 
 * Normalized:
 $$
-\sum_{\ell = 1}^m f_{X}(x_\ell)=1
+\sum_{\ell = 1}^m f(x_\ell)=1
 $$
 :::
-
-**Caution:**
 
 ::: {.callout-note}
 ## Example: Two-Dimensional pmf (Car Sales and Staffing)
@@ -1082,11 +1105,11 @@ X=\begin{pmatrix}X_1\\ X_2\end{pmatrix}
 $$
 can take $4\cdot 2=8$ different values. Its two-dimensional pmf
 $$
-f_X(x_1,x_2)=P(X_1=x_1,X_2=x_2)
+f(x_1,x_2)=P(X_1=x_1,X_2=x_2)
 $$
 is given by the following table:
 
-| $f_X(x_1,x_2)$ | $x_1=0$ | $x_1=1$ | $x_1=2$ | $x_1=3$ |
+| $f(x_1,x_2)$ | $x_1=0$ | $x_1=1$ | $x_1=2$ | $x_1=3$ |
 |----------------|:-------:|:-------:|:-------:|:-------:|
 | $x_2=1$        | $0.15$  | $0.25$  | $0.10$  | $0.00$  |
 | $x_2=2$        | $0.05$  | $0.15$  | $0.20$  | $0.10$  |
@@ -1096,11 +1119,11 @@ is given by the following table:
 
 * Days with two consultants tend to come with more sales. For instance, the probability of selling **at least two cars** on a day with **two consultants** is
 $$
-P(X_1\geq 2, X_2=2)=f_X(2,2)+f_X(3,2)=0.20+0.10=0.30.
+P(X_1\geq 2, X_2=2)=f(2,2)+f(3,2)=0.20+0.10=0.30.
 $$
 whereas the probability of selling **at least two cars** on a day with only **one consultant** is
 $$
-P(X_1\geq 2, X_2=1)=f_X(2,1)+f_X(3,1)=0.10+0.00=0.10.
+P(X_1\geq 2, X_2=1)=f(2,1)+f(3,1)=0.10+0.00=0.10.
 $$
 <!-- 
 Both staffing levels are equally likely, $P(X_2=1)=P(X_2=2)=0.50$, so this comparison is fair: the difference comes from sales, not from how often each staffing level occurs. 
@@ -1131,7 +1154,7 @@ text(trans3d(-0.5, 2.5, c(0, 0.1, 0.2, 0.3), pm),
      labels = c(0, 0.1, 0.2, 0.3), pos = 2, cex = 0.9)
 text(trans3d(1.5, -0.1, 0, pm), labels = "x\u2081 (cars sold)")
 text(trans3d(4.1, 1.5, 0, pm), labels = "x\u2082 (consultants)", pos = 4)
-text(trans3d(-0.5, 2.5, 0.34, pm), labels = expression(f[X](x[1], x[2])))
+text(trans3d(-0.5, 2.5, 0.34, pm), labels = expression(f(x[1], x[2])))
 # one stem per possible value (x1, x2); back row (x2 = 2) first
 for (j in rev(seq_along(x2))) {
   for (i in seq_along(x1)) {
@@ -1153,11 +1176,11 @@ legend("right", legend = c("x\u2082 = 1", "x\u2082 = 2"), bty = "n",
 \begin{align*}
 P(X_1=0)
 &=P(X_1=0,X_2=1)+P(X_1=0,X_2=2)\\[2ex]
-&=f_X(0,1)+f_X(0,2)\\[2ex]
+&=f(0,1)+f(0,2)\\[2ex]
 &=0.15+0.05=0.20,\\[4ex]
 P(X_1=1)
 &=P(X_1=1,X_2=1)+P(X_1=1,X_2=2)\\[2ex]
-&=f_X(1,1)+f_X(1,2)\\[2ex]
+&=f(1,1)+f(1,2)\\[2ex]
 &=0.25+0.15=0.40,
 \end{align*}
 and likewise for $P(X_1=2)$ and $P(X_1=3)$.
@@ -1197,16 +1220,13 @@ $$
 ::: {.callout-note}
 ## Example: Joint Density of a Bivariate Normal Distribution
 
-Consider again our running example, the bivariate $(d=2)$ normal random vector from above,
+Consider again our running example with revenue growth $X_1$ and GDP growth $X_2$ (both in %),
 $$
-X=\begin{pmatrix}X_1\\ X_2\end{pmatrix}\sim\mathcal{N}_2\left(\mu,\Sigma\right)
+X\sim\mathcal{N}_2\left(\mu,\Sigma\right)
 \quad\text{with}\quad
 \mu=\begin{pmatrix}2\\ 1\end{pmatrix}
 \quad\text{and}\quad
-\Sigma=\begin{pmatrix}
-1   & 0.8\\
-0.8 & 1
-\end{pmatrix}.
+\Sigma=\begin{pmatrix}1&0.8\\0.8&1\end{pmatrix}.
 $$
 Its joint density function $f(x_1,x_2)$ can be visualized in two ways:
 
@@ -1231,7 +1251,7 @@ z_p  <- outer(x1_p, x2_p, function(a, b) dmnorm(cbind(a, b), mu, Sigma))
 persp(x = x1_p, y = x2_p, z = z_p, theta = -30, phi = 25,
       shade = 0.75, col = "blue", expand = 0.5, r = 2,
       ltheta = 25, ticktype = "detailed",
-      xlab = "x₁", ylab = "x₂", zlab = "")
+      xlab = "x₁ (revenue growth)", ylab = "x₂ (GDP growth)", zlab = "")
 
 # contour plot
 par(lwd = 2, mgp = c(2.2, 0.7, 0), las = 1, mar = c(4, 4, 1, 1), family = "serif")
@@ -1239,7 +1259,7 @@ x1 <- seq(-1, 5, length.out = 60)
 x2 <- seq(-2, 4, length.out = 60)
 z  <- outer(x1, x2, function(a, b) dmnorm(cbind(a, b), mu, Sigma))
 image(x1, x2, z, col = gray(seq(1, .2, len = 10)), useRaster = TRUE,
-      xlab = expression(x[1]), ylab = expression(x[2]), axes = FALSE,
+      xlab = expression(x[1] ~ "(revenue growth in %)"), ylab = expression(x[2] ~ "(GDP growth in %)"), axes = FALSE,
       xlim = c(-1, 5), ylim = c(-2, 4), xaxs = "i", yaxs = "i")
 contour(x1, x2, z, col = alpha("darkblue", 0.5), drawlabels = FALSE,
         nlevels = 5, lwd = 1, add = TRUE)
@@ -1247,7 +1267,7 @@ axis(1, at = -1:5, lwd.ticks = 1)
 axis(2, at = -2:4, lwd.ticks = 1)
 ```
 
-Both plots show that the joint density is centered at the mean vector $\mu=(2,1)^{\top}$. Since $\operatorname{Cov}(X_1,X_2)=0.8>0$, the density is stretched along a line with positive slope: large values of $X_1$ tend to occur together with large values of $X_2$, and small values with small values. In the following examples, we use the contour plot to visualize this joint density.
+Both plots show that the joint density is centered at the mean vector $\mu=(2,1)^{\top}$. Since $\operatorname{Cov}(X_1,X_2)=0.8>0$, the density is stretched along a line with positive slope: large values of $X_1$ tend to occur together with large values of $X_2$, and small values with small values. In terms of our example: years with strong GDP growth tend to be years with strong revenue growth. In the following examples, we use the contour plot to visualize this joint density.
 :::
 
 
@@ -1274,7 +1294,7 @@ has the following two-dimensional $(d=2)$ density function with
 :::
 
 \begin{align*}
-f_X(x_1,x_2)=\left\{\begin{array}{ll}
+f(x_1,x_2)=\left\{\begin{array}{ll}
 \frac{1}{5}\,e^{-x_1/5}\cdot\frac{1}{2}\,e^{-x_2/2} & \text{for } x_1\geq 0 \text{ and } x_2\geq 0\\[1ex]
 0 & \text{otherwise.}
 \end{array}\right.
@@ -1283,7 +1303,7 @@ f_X(x_1,x_2)=\left\{\begin{array}{ll}
 
 The density is non-negative and it integrates to one:
 \begin{align*}
-&\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}f_X(x_1,x_2)\,dx_1\,dx_2\\[2ex]
+&\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}f(x_1,x_2)\,dx_1\,dx_2\\[2ex]
 &=\int_{0}^{\infty}\int_{0}^{\infty}\frac{1}{5}\,e^{-x_1/5}\cdot\frac{1}{2}\,e^{-x_2/2}\,dx_1\,dx_2\\[2ex]
 &=\left(\int_{0}^{\infty}\frac{1}{5}\,e^{-x_1/5}\,dx_1\right)\cdot\left(\int_{0}^{\infty}\frac{1}{2}\,e^{-x_2/2}\,dx_2\right)\\[2ex]
 &=1\cdot 1=1.
@@ -1327,16 +1347,16 @@ persp(x = x1, y = x2, z = z, theta = 135, phi = 30,
 
 **Outlook:** In this example, the bivariate density is simply the *product* of the one-dimensional densities of the waiting time and the service time,
 $$
-f_X(x_1,x_2)=f_1(x_1)\cdot f_2(x_2).
+f(x_1,x_2)=f_1(x_1)\cdot f_2(x_2).
 $$
 This means that $X_1$ and $X_2$ are assumed to be *independent* here, which is reasonable in this example. See the section on independent random variables below.
 :::
 
 
-In the following, we focus on continuous random vectors; the discrete case is treated analogously, with sums instead of integrals.
+In the following, we mostly focus on continuous random vectors. The discrete case is treated analogously, with sums instead of integrals; the marginal probability mass function below shows how this works.
 
 
-#### **Marginal Distribution Functions and Marginal Density Functions**
+#### **Marginal Distributions**
 
 Let
 $$
@@ -1351,21 +1371,23 @@ $$
 f_1({\color{blue}{x_1}})=\int_{-\infty}^{\infty}\dots \int_{-\infty}^{\infty}f({\color{blue}{x_1}},x_2,\dots,
 x_d)\,dx_2\dots dx_d.
 $$
+- **Marginal probability mass function:** $f_j$; for instance, for $d=2$ and $j=1$:
+$$
+f_1({\color{blue}{x_1}})=P(X_1={\color{blue}{x_1}})=\sum_{x_2} f({\color{blue}{x_1}},x_2),
+$$
+where the sum runs over all possible values $x_2$ of $X_2$. That is, we add up the joint probabilities of all outcomes with $X_1={\color{blue}{x_1}}$; see the **Outlook** in the car-sales example above.
 :::
 
 ::: {.callout-note}
 ## Example: Marginal Densities of a Bivariate Normal Distribution
 
-Consider again our running example, the bivariate $(d=2)$ normal random vector
+Consider again our running example with revenue growth $X_1$ and GDP growth $X_2$ (both in %),
 $$
-X=\begin{pmatrix}X_1\\ X_2\end{pmatrix}\sim\mathcal{N}_2\left(\mu,\Sigma\right)
+X\sim\mathcal{N}_2\left(\mu,\Sigma\right)
 \quad\text{with}\quad
 \mu=\begin{pmatrix}2\\ 1\end{pmatrix}
 \quad\text{and}\quad
-\Sigma=\begin{pmatrix}
-1   & 0.8\\
-0.8 & 1
-\end{pmatrix}.
+\Sigma=\begin{pmatrix}1&0.8\\0.8&1\end{pmatrix}.
 $$
 
 The following plot shows the joint density $f(x_1,x_2)$ together with its two marginal densities
@@ -1388,7 +1410,7 @@ z  <- outer(x1, x2, function(a, b) dmnorm(cbind(a, b), mu, Sigma))
 
 # joint density
 image(x1, x2, z, col = gray(seq(1, .2, len = 10)), useRaster = TRUE,
-      xlab = expression(x[1]), ylab = expression(x[2]), axes = FALSE,
+      xlab = expression(x[1] ~ "(revenue growth in %)"), ylab = expression(x[2] ~ "(GDP growth in %)"), axes = FALSE,
       xlim = c(-1, 5), ylim = c(-2, 4), xaxs = "i", yaxs = "i")
 contour(x1, x2, z, col = alpha("darkblue", 0.5), drawlabels = FALSE,
         nlevels = 5, lwd = 1, add = TRUE)
@@ -1405,38 +1427,38 @@ legend("topleft", col = c("darkorange", "darkred"), lwd = 1.5, bty = "n",
 legend("bottomright", col = alpha("darkblue", 0.5), lwd = 1, bty = "n",
        legend = expression(f(x[1], x[2])), title = "Joint Density", cex = 0.85)
 ```
+
+**Interpretation:** The marginal density $f_1$ describes the firm's revenue growth on its own, ignoring the state of the economy. Likewise, the marginal density $f_2$ describes GDP growth on its own, ignoring the firm. Here, both marginal densities are normal densities, $X_1\sim\mathcal{N}(2,1)$ and $X_2\sim\mathcal{N}(1,1)$.
 :::
 
 
 
 #### **Conditional Density Function** {#sec-condDistr}
 
-Often, we are interested in the **conditional distribution** of $X_j$ given fixed values of all other random variables,
-$$
-X_1=x_1,\ldots, X_{j-1}=x_{j-1}, X_{j+1}=x_{j+1},\ldots,X_d=x_d.
-$$
-That is, the distribution of $X_j$ when the values of all other random variables are held fixed.
+Often, we are interested in the **conditional distribution** of one random variable given that the other random variables take fixed values. For instance: what is the distribution of a firm's revenue growth $X_1$ *given* that GDP grows by $X_2=2$ percent?
 
+**Two random variables $(d=2)$:** The **conditional density** of $X_1$ given $X_2=x_2$ is the joint density divided by the marginal density of $X_2$,
+$$
+f(x_1\mid x_2)=\frac{f(x_1,x_2)}{f_2(x_2)},
+$$
+where we assume that $f_2(x_2)>0$.
 
-An important tool here is the **conditional density**. For instance, the conditional density of $X_1$ given $X_2=x_2,\ldots,X_d=x_d$ is
+**In general $(d\geq 2)$:** The conditional density of $X_1$ given $X_2=x_2,\ldots,X_d=x_d$ is
 $$
 f(x_1\mid x_2,\ldots,x_d)=\frac{f(x_1,x_2,\ldots,x_d)}{f_{X_{2},\ldots,X_{d}}(x_2,\ldots,x_d)},
 $$
-where $f_{X_{2},\ldots,X_{d}}$ denotes the joint density of $X_2,\ldots,X_d,$ and where we assume that $f_{X_{2},\ldots,X_{d}}(x_2,\ldots,x_d)>0$.
+where $f_{X_{2},\ldots,X_{d}}$ denotes the joint density of $X_2,\ldots,X_d,$ and where we assume that $f_{X_{2},\ldots,X_{d}}(x_2,\ldots,x_d)>0$. Conditional densities of the other components $X_j$ are defined analogously.
 
 ::: {.callout-note}
 ## Example: Conditional Density of a Bivariate $(d=2)$ Normal Distribution
 
-Consider again our running example, the bivariate $(d=2)$ normal random vector
+Consider again our running example with revenue growth $X_1$ and GDP growth $X_2$ (both in %),
 $$
-X=\begin{pmatrix}X_1\\ X_2\end{pmatrix}\sim\mathcal{N}_2\left(\mu,\Sigma\right)
+X\sim\mathcal{N}_2\left(\mu,\Sigma\right)
 \quad\text{with}\quad
 \mu=\begin{pmatrix}2\\ 1\end{pmatrix}
 \quad\text{and}\quad
-\Sigma=\begin{pmatrix}
-1   & 0.8\\
-0.8 & 1
-\end{pmatrix}.
+\Sigma=\begin{pmatrix}1&0.8\\0.8&1\end{pmatrix}.
 $$
 
 The conditional density of $X_1$ given $X_2=2$ is the joint density divided by the marginal density of $X_2$, both evaluated at $x_2=2$:
@@ -1469,7 +1491,7 @@ z  <- outer(x1, x2, function(a, b) dmnorm(cbind(a, b), mu, Sigma))
 
 # joint density
 image(x1, x2, z, col = gray(seq(1, .2, len = 10)), useRaster = TRUE,
-      xlab = expression(x[1]), ylab = expression(x[2]), axes = FALSE,
+      xlab = expression(x[1] ~ "(revenue growth in %)"), ylab = expression(x[2] ~ "(GDP growth in %)"), axes = FALSE,
       xlim = c(-1, 5), ylim = c(-2, 4), xaxs = "i", yaxs = "i")
 contour(x1, x2, z, col = alpha("darkblue", 0.5), drawlabels = FALSE,
         nlevels = 5, lwd = 1, add = TRUE)
@@ -1493,11 +1515,11 @@ legend("topleft", col = "darkgreen", lty = 2, lwd = 1.5, bty = "n",
        title = "Conditional Density", cex = 0.85)
 ```
 
-**Interpretation:** Since $X_1$ and $X_2$ are positively correlated, knowing that $X_2=2$ also tells us something about the random variable $X_1$.
+**Interpretation:** Since revenue growth $X_1$ and GDP growth $X_2$ are positively correlated, knowing that GDP grows by $X_2=2$ percent also tells us something about the firm's revenue growth $X_1$.
 
-Because $X_2=2$ lies above its mean $E(X_2)=1$, the distribution of $X_1$ shifts towards larger values: its mean increases from $E(X_1)=2$ to $E(X_1\mid X_2=2)=2.8$.
+Because $X_2=2$ lies above its mean $E(X_2)=1$ (a boom year), the distribution of $X_1$ shifts towards larger values: the expected revenue growth increases from $E(X_1)=2$ percent to $E(X_1\mid X_2=2)=2.8$ percent.
 
-Moreover, knowing that $X_2=2$ reduces the uncertainty about $X_1$: its variance shrinks from $\operatorname{Var}(X_1)=1$ to $\operatorname{Var}(X_1\mid X_2=2)=0.36$.
+Moreover, knowing that $X_2=2$ reduces the uncertainty about $X_1$: the variance of revenue growth shrinks from $\operatorname{Var}(X_1)=1$ to $\operatorname{Var}(X_1\mid X_2=2)=0.36$, i.e., its standard deviation shrinks from $1$ to $0.6$ percentage points. This is why forecasts conditional on a macroeconomic scenario are more precise.
 
 Therefore, compared to the marginal density $f_1(x_1)$, the conditional density $f(x_1\mid x_2=2)$ is shifted to the right, and it is narrower and taller.
 :::
@@ -1509,7 +1531,7 @@ Therefore, compared to the marginal density $f_1(x_1)$, the conditional density 
 
 The **unconditional mean** of $X_1$ is given by
 $$
-E(X_1)= \int x f_{X_1}(x)\,dx.
+E(X_1)= \int x_1 f_1(x_1)\,dx_1.
 $$
 The unconditional mean of a random vector
 $$
@@ -1529,16 +1551,13 @@ $$
 ::: {.callout-note}
 ## Example: Unconditional Means of a Bivariate Normal Distribution
 
-Consider again our running example, the bivariate $(d=2)$ normal random vector
+Consider again our running example with revenue growth $X_1$ and GDP growth $X_2$ (both in %),
 $$
-X=\begin{pmatrix}X_1\\ X_2\end{pmatrix}\sim\mathcal{N}_2\left(\mu,\Sigma\right)
+X\sim\mathcal{N}_2\left(\mu,\Sigma\right)
 \quad\text{with}\quad
 \mu=\begin{pmatrix}2\\ 1\end{pmatrix}
 \quad\text{and}\quad
-\Sigma=\begin{pmatrix}
-1   & 0.8\\
-0.8 & 1
-\end{pmatrix}.
+\Sigma=\begin{pmatrix}1&0.8\\0.8&1\end{pmatrix}.
 $$
 
 The marginal distributions are $X_1\sim\mathcal{N}(2,1)$ and $X_2\sim\mathcal{N}(1,1)$. Thus, the unconditional means are
@@ -1558,7 +1577,7 @@ E(X_1)\\ E(X_2)
 \end{pmatrix}.
 $$
 
-The following plot shows the joint density $f(x_1,x_2)$ together with its two marginal densities. The unconditional means $E(X_1)$ and $E(X_2)$ are the centers of the marginal densities, and the mean vector $E(X)$ (red dot) is the center of the joint density.
+The following plot shows the joint density $f(x_1,x_2)$ together with its two marginal densities. The unconditional means $E(X_1)$ and $E(X_2)$ are the centers of the marginal densities, and the mean vector $E(X)$ (red dot) is the center of the joint density. On average, the firm's revenue grows by $2$ percent and GDP grows by $1$ percent per year.
 
 ```{r, fig.align="center", echo=FALSE, fig.width=5, fig.height=5}
 library("mnormt")
@@ -1574,7 +1593,7 @@ z  <- outer(x1, x2, function(a, b) dmnorm(cbind(a, b), mu, Sigma))
 
 # joint density
 image(x1, x2, z, col = gray(seq(1, .2, len = 10)), useRaster = TRUE,
-      xlab = expression(x[1]), ylab = expression(x[2]), axes = FALSE,
+      xlab = expression(x[1] ~ "(revenue growth in %)"), ylab = expression(x[2] ~ "(GDP growth in %)"), axes = FALSE,
       xlim = c(-1, 5), ylim = c(-2, 4), xaxs = "i", yaxs = "i")
 contour(x1, x2, z, col = alpha("darkblue", 0.5), drawlabels = FALSE,
         nlevels = 5, lwd = 1, add = TRUE)
@@ -1610,7 +1629,15 @@ The **mean of a transformed random variable** $r(X)$ is given by
 $$
 E(r(X))=\int r(x) f_{X}(x)\,dx.
 $$
-Typical transformations are, for instance,
+An important special case are **linear transformations** $r(x)=a+b\,x$ with constants $a,b\in\mathbb{R}$. The mean is linear:
+\begin{align*}
+E(a+b\,X)
+&=\int (a+b\,x) f_{X}(x)\,dx\\[2ex]
+&=a\underbrace{\int f_{X}(x)\,dx}_{=1}+\,b\underbrace{\int x\, f_{X}(x)\,dx}_{=E(X)}\\[2ex]
+&=a+b\,E(X).
+\end{align*}
+
+Further typical transformations are, for instance,
 
 ::: {.spaced-list}
 - centering: $r(x)=x-E(X)$,
@@ -1627,14 +1654,13 @@ $$
 ::: {.spaced-list}
 * The $k$th moment, $k=1,2,\dots$, is given by
 $$
-\mu_{k}=E\left(X^{k}\right)=\int_{-\infty}^{+\infty}x^{k} f_X(x)\,d x.
+E\left(X^{k}\right)=\int_{-\infty}^{+\infty}x^{k} f_X(x)\,d x.
 $$
 
 * The $k$th central moment, $k=2,3,\dots$, is given by
 $$
-\mu^c_{k}=E\left((X-\mu)^{k}\right)=\int_{-\infty}^{+\infty}(x-\mu)^{k} f_X(x)\,d x,
+E\left(\big(X-E(X)\big)^{k}\right)=\int_{-\infty}^{+\infty}\big(x-E(X)\big)^{k} f_X(x)\,d x.
 $$
-where $\mu=E(X)$.
 :::
 
 Of course, these moments are only defined if the respective integrals exist, i.e., if $E(|X|^k)<\infty$.
@@ -1643,13 +1669,70 @@ Of course, these moments are only defined if the respective integrals exist, i.e
 **Note:** As the title of @LB2000 puts it, "moments determine the tail of a distribution (but not much else)". Roughly: the more moments a distribution has, the faster its tails decay to zero. Distributions with compact support (e.g., the uniform distribution $\mathcal{U}(a,b)$) have moments of all orders. The normal distribution also has moments of all orders, even though it does not have compact support; see @sec-NormalDistr.
 
 
+#### **Covariance and Correlation**
 
+The variance describes how much *one* random variable varies around its mean. The **covariance** describes how *two* random variables $X_1$ and $X_2$ vary *together*:
+\begin{align*}
+\operatorname{Cov}(X_1,X_2)
+&=E\Big(\big(X_1-E(X_1)\big)\big(X_2-E(X_2)\big)\Big)\\[2ex]
+&=\int\int \big(x_1-E(X_1)\big)\big(x_2-E(X_2)\big)\,f(x_1,x_2)\,dx_1\,dx_2.
+\end{align*}
 
+::: {.spaced-list}
+* $\operatorname{Cov}(X_1,X_2)>0$: Above-average values of $X_1$ tend to occur together with above-average values of $X_2$, and below-average values with below-average values.
+* $\operatorname{Cov}(X_1,X_2)<0$: Above-average values of $X_1$ tend to occur together with below-average values of $X_2$, and vice versa.
+* The covariance of a random variable with itself is its variance, $\operatorname{Cov}(X_1,X_1)=\operatorname{Var}(X_1)$.
+:::
+
+The size of the covariance depends on the units of measurement (e.g., percent vs. decimal numbers). The **correlation** removes this dependence by dividing by both standard deviations:
+$$
+\operatorname{Corr}(X_1,X_2)=\frac{\operatorname{Cov}(X_1,X_2)}{\sqrt{\operatorname{Var}(X_1)}\sqrt{\operatorname{Var}(X_2)}}.
+$$
+The correlation always lies between $-1$ and $1$. The values $-1$ and $1$ occur if and only if $X_1$ and $X_2$ are perfectly linearly related, i.e., $X_1=a+b\,X_2$ with $b<0$ or $b>0$, respectively.
+
+The **variance-covariance matrix** of a random vector $X=(X_1,\dots,X_d)^{\top}$ collects all variances (on the diagonal) and all covariances (off the diagonal):
+$$
+\operatorname{Var}(X)=
+\begin{pmatrix}
+\operatorname{Var}(X_1)     & \operatorname{Cov}(X_1,X_2) & \cdots & \operatorname{Cov}(X_1,X_d)\\
+\operatorname{Cov}(X_2,X_1) & \operatorname{Var}(X_2)     & \cdots & \operatorname{Cov}(X_2,X_d)\\
+\vdots                      & \vdots                      & \ddots & \vdots\\
+\operatorname{Cov}(X_d,X_1) & \operatorname{Cov}(X_d,X_2) & \cdots & \operatorname{Var}(X_d)
+\end{pmatrix}.
+$$
+Since $\operatorname{Cov}(X_j,X_l)=\operatorname{Cov}(X_l,X_j)$, this matrix is symmetric.
+
+::: {.callout-note}
+## Example: Covariance and Correlation of a Bivariate Normal Distribution
+
+In our running example (revenue growth $X_1$ and GDP growth $X_2$), the variance-covariance matrix is
+$$
+\Sigma=\operatorname{Var}(X)
+=\begin{pmatrix}\operatorname{Var}(X_1)&\operatorname{Cov}(X_1,X_2)\\\operatorname{Cov}(X_2,X_1)&\operatorname{Var}(X_2)\end{pmatrix}
+=\begin{pmatrix}1&0.8\\0.8&1\end{pmatrix}.
+$$
+Thus, the correlation between revenue growth and GDP growth is
+\begin{align*}
+\operatorname{Corr}(X_1,X_2)
+&=\frac{\operatorname{Cov}(X_1,X_2)}{\sqrt{\operatorname{Var}(X_1)}\sqrt{\operatorname{Var}(X_2)}}\\[2ex]
+&=\frac{0.8}{\sqrt{1}\cdot\sqrt{1}}\\[2ex]
+&=0.8.
+\end{align*}
+This is a strong positive correlation: in years with above-average GDP growth, the firm's revenue growth tends to be above average, too. This is the reason why the joint density in the plots above is stretched along a line with positive slope.
+:::
 
 
 #### **Conditional Means ➡️ Regression Functions**
 
-The **conditional mean** of $X_1$ given $X_2=x_2,\ldots,X_d=x_d$ is
+The **conditional mean** of $X_1$ given $X_2=x_2$ is the mean of the conditional density $f(x_1\mid x_2)$:
+
+**Two random variables $(d=2)$:**
+\begin{align*}
+  m(x_2):&=E(X_1\mid X_2=x_2)\\[2ex]
+         &= \int x_1 f(x_1\mid x_2)\,dx_1.
+\end{align*}
+
+**In general $(d\geq 2)$:**
 \begin{align*}
   m(x_2,\dots,x_d):&=E(X_1\mid X_2=x_2,\ldots,X_d=x_d)\\[2ex]
                    &= \int x_1 f(x_1\mid x_2,\ldots,x_d)\,dx_1.
@@ -1660,16 +1743,13 @@ The function $m$ is called the **regression function**. It is the central object
 ::: {.callout-note}
 ## Example: Conditional Mean Function of a Bivariate Normal Distribution
 
-Consider again our running example, the bivariate $(d=2)$ normal random vector
+Consider again our running example with revenue growth $X_1$ and GDP growth $X_2$ (both in %),
 $$
-X=\begin{pmatrix}X_1\\ X_2\end{pmatrix}\sim\mathcal{N}_2\left(\mu,\Sigma\right)
+X\sim\mathcal{N}_2\left(\mu,\Sigma\right)
 \quad\text{with}\quad
 \mu=\begin{pmatrix}2\\ 1\end{pmatrix}
 \quad\text{and}\quad
-\Sigma=\begin{pmatrix}
-1   & 0.8\\
-0.8 & 1
-\end{pmatrix}.
+\Sigma=\begin{pmatrix}1&0.8\\0.8&1\end{pmatrix}.
 $$
 
 For the bivariate normal distribution, the conditional mean of $X_1$ given $X_2=x_2$ is a linear function of $x_2$:
@@ -1709,7 +1789,7 @@ z  <- outer(x1, x2, function(a, b) dmnorm(cbind(a, b), mu, Sigma))
 
 ## Left plot: conditional densities and regression line
 image(x1, x2, z, col = gray(seq(1, .2, len = 10)), useRaster = TRUE,
-      xlab = expression(x[1]), ylab = expression(x[2]), axes = FALSE,
+      xlab = expression(x[1] ~ "(revenue growth in %)"), ylab = expression(x[2] ~ "(GDP growth in %)"), axes = FALSE,
       xlim = c(-1, 5), ylim = c(-2, 4), xaxs = "i", yaxs = "i")
 contour(x1, x2, z, col = alpha("darkblue", 0.5), drawlabels = FALSE,
         nlevels = 5, lwd = 1, add = TRUE)
@@ -1737,7 +1817,7 @@ legend("bottomright", col = c("darkgreen", "red", "darkblue"), lwd = c(1.5, 2, 1
 
 ## Right plot: regression function with x2 on the horizontal axis
 plot(x2, m_fun(x2), type = "l", lwd = 2, col = "red", axes = FALSE,
-     xlab = expression(x[2]), ylab = expression(m(x[2])==E(X[1] ~ "|" ~ X[2]==x[2])),
+     xlab = expression(x[2] ~ "(GDP growth in %)"), ylab = expression(m(x[2])==E(X[1] ~ "|" ~ X[2]==x[2])),
      xlim = c(-2, 4), ylim = c(-1, 5), xaxs = "i", yaxs = "i")
 axis(1, at = -2:4, lwd.ticks = 1)
 axis(2, at = -1:5, lwd.ticks = 1)
@@ -1749,7 +1829,7 @@ text(x2_0, m_fun(x2_0), labels = format(m_fun(x2_0), nsmall = 1),
 text(3.9, 0, labels = expression(m(x[2])==1.2+0.8~x[2]), adj = c(1, 0), col = "red")
 ```
 
-**Interpretation:** Since $X_1$ and $X_2$ are positively correlated, larger values of $X_2$ come with larger conditional means of $X_1$. Each additional unit of $x_2$ increases the conditional mean of $X_1$ by $0.8$ units. Note that only the location of the conditional density changes with $x_2$; its variance is always $\operatorname{Var}(X_1\mid X_2=x_2)=0.36$.
+**Interpretation:** Since $X_1$ and $X_2$ are positively correlated, larger values of $X_2$ come with larger conditional means of $X_1$. Each additional percentage point of GDP growth increases the expected revenue growth by $0.8$ percentage points. For instance, in a year without GDP growth, the firm expects a revenue growth of $m(0)=1.2$ percent; in a boom year with $3$ percent GDP growth, it expects $m(3)=3.6$ percent. Note that only the location of the conditional density changes with $x_2$; its variance is always $\operatorname{Var}(X_1\mid X_2=x_2)=0.36$.
 
 
 
@@ -1766,11 +1846,11 @@ In our example, the main axis of the contour ellipses moves one-to-one: one unit
 
 #### **Law of Total Expectation $=$ Law of Iterated Expectations**
 
-As long as we do not fix the values of the conditioning variables $X_2,\dots,X_d$, they are random variables. Consequently, the conditional mean
+As long as we do not fix the value of the conditioning variable $X_2$, it is a random variable. Consequently, the conditional mean
 $$
-E(X_1\mid X_2,\ldots,X_d)=\int x_1 f(x_1\mid X_2,\ldots,X_d)\,dx_1
+E(X_1\mid X_2)=m(X_2)=\int x_1 f(x_1\mid X_2)\,dx_1
 $$
-is generally itself a **random variable**, due to the randomness in $X_2,\ldots,X_d$.
+is itself a **random variable**: it is the regression function $m$ evaluated at the random variable $X_2$. Likewise, $E(X_1\mid X_2,\ldots,X_d)=m(X_2,\ldots,X_d)$ is a random variable.
 
 
 ::: {.callout icon=false}
@@ -1779,11 +1859,20 @@ is generally itself a **random variable**, due to the randomness in $X_2,\ldots,
 ## Law of Total Expectation
 
 The **Law of Total Expectation**, also called the **Law of Iterated Expectations**, states that
+
+**Two random variables $(d=2)$:**
+$$
+E\big(E(X_1\mid X_2)\big)=E(X_1).
+$$
+
+**In general $(d\geq 2)$:**
 $$
 E\big(E(X_1\mid X_2,\ldots,X_d)\big)=E(X_1).
 $$
 :::
 :::
+
+**In words:** If we average the conditional means $E(X_1\mid X_2=x_2)$ over all possible values $x_2$ of $X_2$, weighted by how likely these values are, we get back the unconditional mean $E(X_1)$.
 
 ::: {.callout-tip collapse="true"}
 ## 🤓 Nerd's Box: Proof of the Law of Total Expectation
@@ -1801,36 +1890,105 @@ To show this result, we first compute the conditional mean of $X_1$ given $X_2,\
 &=\int\dots\int x_1 f(x_1,x_2,\ldots,x_d)\,dx_1\,dx_2\dots dx_d\\[2ex]
 &\text{Rearranging terms:}\\[2ex]
 &=\int x_1 \left({\color{blue}{\int\dots\int f(x_1,x_2,\ldots,x_d)\,dx_2\dots dx_d}}\right)dx_1\\[2ex]
-&\text{Integrating out $x_2,\dots,x_d$ yields the marginal density $f_{X_1}\colon$}\\[2ex]
-&=\int x_1 {\color{blue}{f_{X_1}(x_1)}}\,dx_1\\[2ex]
+&\text{Integrating out $x_2,\dots,x_d$ yields the marginal density $f_1\colon$}\\[2ex]
+&=\int x_1 {\color{blue}{f_1(x_1)}}\,dx_1\\[2ex]
 &=E(X_1)
 \end{align*}
+:::
+
+::: {.callout-note}
+## Example: Law of Total Expectation (Car Sales and Staffing)
+
+Consider again the car dealership with the joint pmf of the number of cars sold, $X_1$, and the number of sales consultants on duty, $X_2$:
+
+| $f(x_1,x_2)$ | $x_1=0$ | $x_1=1$ | $x_1=2$ | $x_1=3$ |
+|----------------|:-------:|:-------:|:-------:|:-------:|
+| $x_2=1$        | $0.15$  | $0.25$  | $0.10$  | $0.00$  |
+| $x_2=2$        | $0.05$  | $0.15$  | $0.20$  | $0.10$  |
+
+For discrete random variables, we compute conditional means with sums instead of integrals:
+$$
+E(X_1\mid X_2=x_2)=\sum_{x_1} x_1\, P(X_1=x_1\mid X_2=x_2)=\sum_{x_1} x_1\,\frac{f(x_1,x_2)}{f_2(x_2)}.
+$$
+
+**Step 1:** The marginal pmf of $X_2$ is obtained by summing each row of the table:
+\begin{align*}
+f_2(1)&=0.15+0.25+0.10+0.00=0.50\\[2ex]
+f_2(2)&=0.05+0.15+0.20+0.10=0.50.
+\end{align*}
+
+**Step 2:** The conditional means of $X_1$ given $X_2=1$ and given $X_2=2$ are
+\begin{align*}
+E(X_1\mid X_2=1)&=\frac{0\cdot 0.15+1\cdot 0.25+2\cdot 0.10+3\cdot 0.00}{0.50}=\frac{0.45}{0.50}=0.9\\[2ex]
+E(X_1\mid X_2=2)&=\frac{0\cdot 0.05+1\cdot 0.15+2\cdot 0.20+3\cdot 0.10}{0.50}=\frac{0.85}{0.50}=1.7.
+\end{align*}
+
+**Step 3:** The conditional mean $E(X_1\mid X_2)$ is a random variable. It takes the value $0.9$ with probability $f_2(1)=0.50$ and the value $1.7$ with probability $f_2(2)=0.50$. Its mean is
+\begin{align*}
+E\big(E(X_1\mid X_2)\big)
+&=0.9\cdot f_2(1)+1.7\cdot f_2(2)\\[2ex]
+&=0.9\cdot 0.50+1.7\cdot 0.50\\[2ex]
+&=1.3.
+\end{align*}
+
+**Check:** Using the marginal pmf of $X_1$ from the one-dimensional car sales example,
+\begin{align*}
+E(X_1)
+&=0\cdot 0.2+1\cdot 0.4+2\cdot 0.3+3\cdot 0.1\\[2ex]
+&=1.3.
+\end{align*}
+
+**In words:** On days with one consultant, the dealership sells $0.9$ cars on average; on days with two consultants, it sells $1.7$ cars on average. Since both kinds of days are equally likely, the dealership sells $0.9\cdot 0.5+1.7\cdot 0.5=1.3$ cars per day on average.
+:::
+
+::: {.callout-note}
+## Example: Law of Total Expectation (Bivariate Normal Distribution)
+
+Consider again our running example with revenue growth $X_1$ and GDP growth $X_2$. From the conditional mean example above, we know the regression function
+$$
+m(x_2)=E(X_1\mid X_2=x_2)=1.2+0.8\,x_2.
+$$
+If we do not fix the value of $X_2$, the conditional mean is the random variable
+$$
+E(X_1\mid X_2)=m(X_2)=1.2+0.8\,X_2.
+$$
+Using the linearity of the mean, $E(a+b\,X_2)=a+b\,E(X_2)$, we get
+\begin{align*}
+E\big(E(X_1\mid X_2)\big)
+&=E\big(1.2+0.8\,X_2\big)\\[2ex]
+&=1.2+0.8\,E(X_2)\\[2ex]
+&=1.2+0.8\cdot 1\\[2ex]
+&=2\\[2ex]
+&=E(X_1).
+\end{align*}
+
+**In words:** For each possible GDP growth rate $x_2$, the expected revenue growth is $m(x_2)=1.2+0.8\,x_2$. Averaging these conditional means over all possible GDP growth rates (weighted by their density) yields the overall mean revenue growth of $2$ percent.
 :::
 
 
 
 ### Independent Random Variables
 
-**Two random variables:** Two random variables $Y$ and $X$ are **independent**, written
+**Two random variables:** Two random variables $X_1$ and $X_2$ are **independent**, written
 $$
-Y \independent X,
+X_1 \independent X_2,
 $$
 if their joint distribution function equals the product of their marginal distribution functions,
 $$
-F_{Y,X}(y,x)=F_Y(y)\cdot F_X(x)\quad\text{for all}\quad y,x\in\mathbb{R}.
+F(x_1,x_2)=F_1(x_1)\cdot F_2(x_2)\quad\text{for all}\quad x_1,x_2\in\mathbb{R}.
 $$
-Equivalently, $Y$ and $X$ are independent if their joint pmf (discrete case) or joint density function (continuous case) equals the product of their marginal pmfs or densities,
+Equivalently, $X_1$ and $X_2$ are independent if their joint pmf (discrete case) or joint density function (continuous case) equals the product of their marginal pmfs or densities,
 $$
-f_{Y,X}(y,x)=f_Y(y)\cdot f_X(x)\quad\text{for all}\quad y,x\in\mathbb{R}.
+f(x_1,x_2)=f_1(x_1)\cdot f_2(x_2)\quad\text{for all}\quad x_1,x_2\in\mathbb{R}.
 $$
 
-Independence can also be characterized using the **conditional density:** $Y$ and $X$ are independent *if and only if* the marginal density of $X$ equals the conditional density of $X$ given $Y=y$,
+Independence can also be characterized using the **conditional density:** $X_1$ and $X_2$ are independent *if and only if* the conditional density of $X_1$ given $X_2=x_2$ equals the marginal density of $X_1$,
 $$
-f_X(x)=f_{X|Y}(x\mid y)
+f(x_1\mid x_2)=f_1(x_1)
 $$
-for all $x\in\mathbb{R}$ and all $y\in\mathbb{R}$ with $f_Y(y)>0$. That is, knowing the value of $Y$ does not change the distribution of $X$.
+for all $x_1\in\mathbb{R}$ and all $x_2\in\mathbb{R}$ with $f_2(x_2)>0$. That is, knowing the value of $X_2$ does not change the distribution of $X_1$.
 
-> Of course, the same holds with the roles of $X$ and $Y$ interchanged: $X$ and $Y$ are independent *if and only if* $f_Y(y)=f_{Y|X}(y\mid x)$ for all $y\in\mathbb{R}$ and all $x$ with $f_X(x)>0.$
+> Of course, the same holds with the roles of $X_1$ and $X_2$ interchanged: $X_1$ and $X_2$ are independent *if and only if* $f(x_2\mid x_1)=f_2(x_2)$ for all $x_2\in\mathbb{R}$ and all $x_1$ with $f_1(x_1)>0.$
 
 **More than two random variables:** The random variables $X_1,\dots,X_n$ are mutually **independent** if their joint distribution function equals the product of their marginal distribution functions,
 $$
@@ -1842,21 +2000,45 @@ f(x_1,\dots,x_n)=f_1(x_1)\cdot f_2(x_2)\cdot\ldots\cdot f_n(x_n)
 $$
 for all $(x_1,\dots,x_n)^{\top}\in\mathbb{R}^n.$
 
+::: {.callout-note}
+## Example: Checking Independence in Our Examples
+
+::: {.spaced-list}
+* **Car sales and staffing (dependent):** The marginal pmfs give $f_1(0)=0.20$ and $f_2(1)=0.50$; see the examples above. However, the joint pmf is
+$$
+f(0,1)=0.15\neq 0.10=0.20\cdot 0.50=f_1(0)\cdot f_2(1).
+$$
+A single pair $(x_1,x_2)$ for which the product rule fails is enough: the number of cars sold, $X_1$, and the number of consultants, $X_2$, are *not* independent.
+
+* **Customer arrivals and service times (independent):** The joint density was defined as the product of the two marginal densities,
+$$
+f(x_1,x_2)=\frac{1}{5}\,e^{-x_1/5}\cdot\frac{1}{2}\,e^{-x_2/2}=f_1(x_1)\cdot f_2(x_2)
+$$
+for all $x_1,x_2\geq 0$ (and both sides are zero otherwise). Thus, the waiting time $X_1$ and the service time $X_2$ are independent: how long the shop assistant waits for the next customer tells nothing about how long it takes to serve this customer.
+
+* **Revenue growth and GDP growth (dependent):** In our running example, the conditional density of $X_1$ given $X_2=2$ is the $\mathcal{N}(2.8,\,0.36)$ density, whereas the marginal density of $X_1$ is the $\mathcal{N}(2,\,1)$ density. Since
+$$
+f(x_1\mid x_2=2)\neq f_1(x_1),
+$$
+knowing GDP growth changes the distribution of revenue growth: $X_1$ and $X_2$ are *not* independent.
+:::
+:::
+
 #### **Independence Implies Mean Independence (but Not Vice Versa)** {-}
 
-If $X$ and $Y$ are independent, then the conditional mean of $X$ given $Y=y$ equals the unconditional mean of $X$,
+If $X_1$ and $X_2$ are independent, then the conditional mean of $X_1$ given $X_2=x_2$ equals the unconditional mean of $X_1$,
 $$
-E(X\mid Y=y)=E(X)\quad\text{for all } y,
+E(X_1\mid X_2=x_2)=E(X_1)\quad\text{for all } x_2,
 $$
-and, likewise, the conditional mean of $Y$ given $X=x$ equals the unconditional mean of $Y$,
+and, likewise, the conditional mean of $X_2$ given $X_1=x_1$ equals the unconditional mean of $X_2$,
 $$
-E(Y\mid X=x)=E(Y)\quad\text{for all } x.
+E(X_2\mid X_1=x_1)=E(X_2)\quad\text{for all } x_1.
 $$
 If 
 $$
-E(X\mid Y=y)=E(X)
+E(X_1\mid X_2=x_2)=E(X_1)
 $$ 
-for all $y$, we say that $X$ is **mean independent** of $Y.$
+for all $x_2$, we say that $X_1$ is **mean independent** of $X_2.$
 
 
 ::: {.callout-caution}
@@ -1864,29 +2046,47 @@ for all $y$, we say that $X$ is **mean independent** of $Y.$
 
 If the conditional mean equals the unconditional mean,
 $$
-E(X\mid Y=y)=E(X)\quad\text{for all } y,
+E(X_1\mid X_2=x_2)=E(X_1)\quad\text{for all } x_2,
 $$
-then this does **not** imply that $X$ and $Y$ are independent. (Likewise for $E(Y\mid X=x)=E(Y)$ for all $x$.)
+then this does **not** imply that $X_1$ and $X_2$ are independent. (Likewise for $E(X_2\mid X_1=x_1)=E(X_2)$ for all $x_1$.)
 
-It only means that $Y$ has no effect on the **mean** of $X$. However, $Y$ may still affect other properties of the distribution of $X$, for instance, its **variance**.
+It only means that $X_2$ has no effect on the **mean** of $X_1$. However, $X_2$ may still affect other properties of the distribution of $X_1$, for instance, its **variance**.
 
-**Example:** 
+**Example:** Let
 
-* Let $Y\in\{1,2\}$ and 
-* let $X\mid Y=y\sim\mathcal{N}(0,y^2)$. 
+::: {.spaced-list}
+* $X_2\in\{1,2\}$ and
+* $X_1\mid X_2=x_2\sim\mathcal{N}(0,x_2^2)$.
+:::
 
 Then
 $$
-E(X\mid Y=y)=0=E(X)\quad\text{for all } y,
+E(X_1\mid X_2=x_2)=0=E(X_1)\quad\text{for all } x_2,
 $$
-but $X$ and $Y$ are not independent, since
+but $X_1$ and $X_2$ are not independent, since
 $$
-\operatorname{Var}(X\mid Y=1)=1\neq 4=\operatorname{Var}(X\mid Y=2).
+\operatorname{Var}(X_1\mid X_2=1)=1\neq 4=\operatorname{Var}(X_1\mid X_2=2).
 $$
 :::
 
 
 
+
+
+::: {.callout-important}
+## Summary: Two Random Variables $X_1$ and $X_2$
+
+| | Discrete | Continuous |
+|---|---|---|
+| **Joint** | pmf $f(x_1,x_2)=P(X_1=x_1,X_2=x_2)$ | density $f(x_1,x_2)$ |
+| **Marginal** | $f_1(x_1)=\sum_{x_2} f(x_1,x_2)$ | $f_1(x_1)=\int f(x_1,x_2)\,dx_2$ |
+| **Conditional** | $f(x_1\mid x_2)=\dfrac{f(x_1,x_2)}{f_2(x_2)}$ | $f(x_1\mid x_2)=\dfrac{f(x_1,x_2)}{f_2(x_2)}$ |
+| **Conditional mean** | $m(x_2)=\sum_{x_1} x_1\,f(x_1\mid x_2)$ | $m(x_2)=\int x_1\,f(x_1\mid x_2)\,dx_1$ |
+| **Law of iterated expectations** | $E\big(E(X_1\mid X_2)\big)=E(X_1)$ | $E\big(E(X_1\mid X_2)\big)=E(X_1)$ |
+| **Independence** | $f(x_1,x_2)=f_1(x_1)\,f_2(x_2)$ | $f(x_1,x_2)=f_1(x_1)\,f_2(x_2)$ |
+
+In the discrete case, probabilities and means are computed with **sums**; in the continuous case, with **integrals**. Otherwise, the formulas are the same.
+:::
 
 
 ### Random Samples
@@ -1938,10 +2138,10 @@ X_rs    <- matrix(rnorm(n_rs * R_rs, mu_rs, sd_rs), nrow = n_rs)
 x_obs   <- round(X_rs[, 1], 1)                      # the "observed" data
 ```
 
-$$
-\{X_{1,\operatorname{obs}}, \ldots, X_{10,\operatorname{obs}}\}
-=\{`r paste(format(x_obs, nsmall = 1), collapse = ",\\ ")`\}.
-$$
+\begin{align*}
+&\{X_{1,\operatorname{obs}}, \ldots, X_{10,\operatorname{obs}}\}\\[2ex]
+&=\{`r paste(format(x_obs, nsmall = 1), collapse = ",\\ ")`\}.
+\end{align*}
 
 We assume that these data are an observed realization of an **i.i.d. random sample**
 $$
@@ -2015,7 +2215,7 @@ However, the averages always stay close to the unknown mean $\mu$. This is why t
 :::
 
 ::: {.callout-tip}
-## 🤓 Nerd's Box: Estimator vs. Estimate
+## Estimator vs. Estimate
 
 Strictly speaking, we need to distinguish between an estimator and an estimate:
 
@@ -2196,18 +2396,22 @@ sigma <- 1
 rnorm(n = n, mean = mu, sd = sigma)
 ```
 
-The multivariate normal distribution extends the univariate normal distribution to random vectors. Let $X=(X_1,\dots,X_k)^{\top}$ be a $k$-dimensional normal random vector, written $X\sim \mathcal{N}_k(\mu,\Sigma)$, with mean vector $E(X)=\mu\in\mathbb{R}^k$ and positive definite variance-covariance matrix $\operatorname{Var}(X)=\Sigma$. The joint density function of the $k$-dimensional normal distribution is
+The multivariate normal distribution extends the univariate normal distribution to random vectors. Let $X=(X_1,\dots,X_d)^{\top}$ be a $d$-dimensional normal random vector, written $X\sim \mathcal{N}_d(\mu,\Sigma)$, with mean vector $E(X)=\mu\in\mathbb{R}^d$ and positive definite variance-covariance matrix $\operatorname{Var}(X)=\Sigma$. The joint density function of the $d$-dimensional normal distribution is
 $$
-f_{X}\left(x_{1}, \ldots, x_{k}\right)=\frac{\exp \left(-\frac{1}{2}(x-\mu)^{\top} \Sigma^{-1}(x-\mu)\right)}{\sqrt{(2 \pi)^{k}|\Sigma|}},
+f\left(x_{1}, \ldots, x_{d}\right)=\frac{\exp \left(-\frac{1}{2}(x-\mu)^{\top} \Sigma^{-1}(x-\mu)\right)}{\sqrt{(2 \pi)^{d}|\Sigma|}},
 $$
-where $x=(x_1,\dots,x_k)^{\top}$ and $|\Sigma|$ denotes the determinant of $\Sigma$. For $k=2$, we obtain the bivariate density of two normal random variables, say $X$ and $Y$, with means $\mu_X$ and $\mu_Y$, standard deviations $\sigma_X$ and $\sigma_Y$, and correlation $\rho_{XY}$:
+where $x=(x_1,\dots,x_d)^{\top}$ and $|\Sigma|$ denotes the determinant of $\Sigma$.
+
+For $d=2$, we obtain the bivariate density of two normal random variables $X_1$ and $X_2$ with means $\mu_1=E(X_1)$ and $\mu_2=E(X_2)$, standard deviations $\sigma_1=\sqrt{\operatorname{Var}(X_1)}$ and $\sigma_2=\sqrt{\operatorname{Var}(X_2)}$, and correlation $\rho=\operatorname{Corr}(X_1,X_2)$:
 \begin{align*}
-g_{X,Y}(x,y) = &\frac{1}{2\pi\sigma_X\sigma_Y\sqrt{1-\rho_{XY}^2}} \\[2ex]
-& \cdot \, \exp \left\{ -\frac{1}{2(1-\rho_{XY}^2)} \left[ \left( \frac{x-\mu_X}{\sigma_X} \right)^2 - 2\rho_{XY}\left( \frac{x-\mu_X}{\sigma_X} \right)\left( \frac{y-\mu_Y}{\sigma_Y} \right) + \left( \frac{y-\mu_Y}{\sigma_Y} \right)^2 \right]  \right\}.
+f(x_1,x_2) = &\frac{1}{2\pi\sigma_1\sigma_2\sqrt{1-\rho^2}} \\[2ex]
+& \cdot \, \exp \left\{ -\frac{1}{2(1-\rho^2)} \left[ \left( \frac{x_1-\mu_1}{\sigma_1} \right)^2 - 2\rho\left( \frac{x_1-\mu_1}{\sigma_1} \right)\left( \frac{x_2-\mu_2}{\sigma_2} \right) + \left( \frac{x_2-\mu_2}{\sigma_2} \right)^2 \right]  \right\}.
 \end{align*}
-Let's consider the special case where $X$ and $Y$ are independent standard normal random variables with densities $f_X(x)$ and $f_Y(y)$. Then $\sigma_X = \sigma_Y = 1$ and $\mu_X=\mu_Y=0$ (due to marginal standard normality), and the correlation is $\rho_{XY}=0$ (due to independence). The joint density of $X$ and $Y$ then becomes
+In our running example (revenue growth $X_1$ and GDP growth $X_2$), we have $\mu_1=2$, $\mu_2=1$, $\sigma_1=\sigma_2=1$, and $\rho=0.8$.
+
+Let's consider the special case where $X_1$ and $X_2$ are independent standard normal random variables with marginal densities $f_1(x_1)$ and $f_2(x_2)$. Then $\mu_1=\mu_2=0$ and $\sigma_1 = \sigma_2 = 1$ (due to marginal standard normality), and the correlation is $\rho=0$ (due to independence). The joint density of $X_1$ and $X_2$ then becomes
 $$
-g_{X,Y}(x,y) = f_X(x) f_Y(y) = \frac{1}{2\pi} \cdot \exp \left\{ -\frac{1}{2}\left[x^2 + y^2\right]\right\}.
+f(x_1,x_2) = f_1(x_1)\, f_2(x_2) = \frac{1}{2\pi} \cdot \exp \left\{ -\frac{1}{2}\left[x_1^2 + x_2^2\right]\right\}.
 $$
 
 
@@ -2222,11 +2426,11 @@ $$
 A $\chi^2_\nu$ distributed random variable $W$ has expectation $E(W)=\nu$, variance $\operatorname{Var}(W)=2\nu,$ and, for $\nu \geq 2,$ its mode at $\nu-2$.
 
 
-Using the code below, we can display the pdf and the **cumulative distribution function (cdf)** of a $\chi^2_3$ random variable in a single plot. This is achieved by setting the argument `add = TRUE` in the second call of `curve()`. Furthermore, we adjust the limits of both axes using `xlim` and `ylim`, and choose different colors to make both functions easier to distinguish. Finally, we add a legend using `legend()`.
+The following code plots the pdf and the cdf of a $\chi^2_3$ random variable in a single plot:
 
 
 ```{r, echo = T, eval = T, message = F, warning = F, fig.align='center'}
-# plot the pdf
+# plot the pdf (xlim and ylim set the limits of both axes)
 curve(dchisq(x, df = 3),
       xlim = c(0, 10),
       ylim = c(0, 1),
@@ -2234,7 +2438,7 @@ curve(dchisq(x, df = 3),
       ylab = "",
       main = "pdf and cdf of Chi-Squared Distribution (df = 3)")
 
-# add the cdf to the plot
+# add the cdf to the existing plot (add = TRUE)
 curve(pchisq(x, df = 3),
       xlim = c(0, 10),
       add = TRUE,
@@ -2409,12 +2613,14 @@ $$
 $$
 
 
-<!--
 ## Exercises
 
-* [Exercises for Chapter 2](https://www.dropbox.com/scl/fi/id6hc7q13veovkopf6xnt/Ch2_Exercises1.pdf?rlkey=fhyv5m2fjw6p9kv2strkxomun&st=jiltpae4&dl=0)
+The exercises are based on the examples and exercises in this chapter. They are your main resource for preparing for the exam. About half of them are single-choice questions, as in the exam. However, reading the script remains advisable, particularly if you aim for a top grade: the exercises cannot cover every concept and every connection between them.
 
-* [Exercises for Chapter 2 with Solutions](https://www.dropbox.com/scl/fi/q4x4q4q996mav47sax8nf/Ch2_Exercises_with_Solutions1.pdf?rlkey=69osulookyvx96ttvj4ovo66a&st=03oydfn1&dl=0)
+* [Exercises for Chapter 2](exercises/pdf/Ch2_Exercises.pdf)
+
+<!-- 
+* [Exercises for Chapter 2 with Solutions](exercises/pdf/Ch2_Exercises_with_Solutions.pdf) 
 -->
 
 ## References {-}

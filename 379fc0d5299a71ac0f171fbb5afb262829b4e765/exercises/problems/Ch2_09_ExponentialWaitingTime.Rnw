@@ -1,0 +1,89 @@
+<<echo=FALSE, results=hide>>=
+## Script: Examples "cdf of a Continuous Random Variable (Customer Arrivals)" and
+##         "pdf of a Continuous Random Variable (Customer Arrivals)"
+theta <- sample(c(4, 6, 10), 1)          # average waiting time in minutes
+a     <- theta / 2                        # "within a minutes"
+b     <- 3 * theta                        # "more than b minutes"
+Pa    <- 1 - exp(-a / theta)              # = 1 - e^{-1/2}
+Pb    <- exp(-b / theta)                  # = e^{-3}
+Pab   <- exp(-a / theta) - exp(-b / theta)
+@
+
+\begin{question}
+\textbf{Waiting Times} (Script: Examples ``cdf of a Continuous Random Variable (Customer Arrivals)'' and ``pdf of a Continuous Random Variable (Customer Arrivals)'')
+
+Let $X\in[0,\infty)$ be the waiting time (in minutes) until the next customer calls a company's service hotline. The waiting time is exponentially distributed with an average waiting time of $\Sexpr{theta}$ minutes, i.e., its cdf is
+$$
+F_X(x)=\left\{\begin{array}{ll}
+0 & \text{for } x<0\\
+1-e^{-x/\Sexpr{theta}} & \text{for } x\geq 0.
+\end{array}\right.
+$$
+\begin{enumerate}
+  \item Compute the probability that the next customer calls within $\Sexpr{a}$ minutes.
+  \item Compute the probability that the hotline has to wait more than $\Sexpr{b}$ minutes for the next call.
+  \item Compute the probability that the waiting time is between $\Sexpr{a}$ and $\Sexpr{b}$ minutes.
+  \item Derive the density function $f_X$ of $X$.
+  \item Show that the probability in (a) equals the area under the density $f_X$ between $0$ and $\Sexpr{a}$.
+\end{enumerate}
+\end{question}
+
+\begin{solution}
+\begin{enumerate}
+  \item ``Within $\Sexpr{a}$ minutes'' means $X\leq \Sexpr{a}$. This is exactly the value of the cdf at $x=\Sexpr{a}$:
+  \begin{align*}
+  P(X\leq \Sexpr{a})
+  &=F_X(\Sexpr{a})\\[1ex]
+  &=1-e^{-\Sexpr{a}/\Sexpr{theta}}\\[1ex]
+  &=1-e^{-0.5}\\[1ex]
+  &\approx 1-\Sexpr{fmt(exp(-0.5), 2)}\\[1ex]
+  &=\Sexpr{fmt(Pa, 2)}.
+  \end{align*}
+  \item ``More than $\Sexpr{b}$ minutes'' means $X>\Sexpr{b}$. The cdf only gives us probabilities of the form $P(X\leq x)$, so we use the complement: the event ``more than $\Sexpr{b}$ minutes'' ($X>\Sexpr{b}$) is the complement of the event ``at most $\Sexpr{b}$ minutes'' ($X\leq \Sexpr{b}$). Every waiting time falls into exactly one of these two events, so their probabilities add up to one:
+  $$
+  P(X>\Sexpr{b})+P(X\leq \Sexpr{b})=1.
+  $$
+  Solving for $P(X>\Sexpr{b})$ gives
+  \begin{align*}
+  P(X>\Sexpr{b})
+  &=1-P(X\leq \Sexpr{b})\\[1ex]
+  &=1-F_X(\Sexpr{b})\\[1ex]
+  &=1-\left(1-e^{-\Sexpr{b}/\Sexpr{theta}}\right)\\[1ex]
+  &=1-1+e^{-3}\\[1ex]
+  &=e^{-3}\\[1ex]
+  &\approx\Sexpr{fmt(Pb, 2)}.
+  \end{align*}
+  \item The event ``at most $\Sexpr{b}$ minutes'' ($X\leq \Sexpr{b}$) splits into two disjoint parts: ``at most $\Sexpr{a}$ minutes'' ($X\leq \Sexpr{a}$) and ``between $\Sexpr{a}$ and $\Sexpr{b}$ minutes'' ($\Sexpr{a}<X\leq \Sexpr{b}$). Thus,
+  $$
+  P(X\leq \Sexpr{b})=P(X\leq \Sexpr{a})+P(\Sexpr{a}<X\leq \Sexpr{b}).
+  $$
+  Solving for $P(\Sexpr{a}<X\leq \Sexpr{b})$ gives
+  \begin{align*}
+  P(\Sexpr{a}<X\leq \Sexpr{b})
+  &=P(X\leq \Sexpr{b})-P(X\leq \Sexpr{a})\\[1ex]
+  &=F_X(\Sexpr{b})-F_X(\Sexpr{a})\\[1ex]
+  &=\left(1-e^{-3}\right)-\left(1-e^{-0.5}\right)\\[1ex]
+  &=1-e^{-3}-1+e^{-0.5}\\[1ex]
+  &=e^{-0.5}-e^{-3}\\[1ex]
+  &\approx\Sexpr{fmt(exp(-0.5), 2)}-\Sexpr{fmt(exp(-3), 2)}\\[1ex]
+  &=\Sexpr{fmt(round(exp(-0.5), 2) - round(exp(-3), 2), 2)}.
+  \end{align*}
+  \item The density is the derivative of the cdf. For $x>0$,
+  $$
+  f_X(x)=F_X^{\prime}(x)=\frac{d}{dx}\left(1-e^{-x/\Sexpr{theta}}\right)=\frac{1}{\Sexpr{theta}}\,e^{-x/\Sexpr{theta}},
+  $$
+  and $f_X(x)=0$ for $x<0$.
+  \item
+  \begin{align*}
+  \int_0^{\Sexpr{a}}\frac{1}{\Sexpr{theta}}\,e^{-x/\Sexpr{theta}}\,dx
+  &=\Big[-e^{-x/\Sexpr{theta}}\Big]_0^{\Sexpr{a}}\\[1ex]
+  &=-e^{-\Sexpr{a}/\Sexpr{theta}}-\left(-e^{0}\right)\\[1ex]
+  &=1-e^{-0.5}\approx\Sexpr{fmt(Pa, 2)},
+  \end{align*}
+  which equals the probability from (a).
+\end{enumerate}
+\end{solution}
+
+\exname{Waiting Times}
+\extype{string}
+\exsolution{nil}

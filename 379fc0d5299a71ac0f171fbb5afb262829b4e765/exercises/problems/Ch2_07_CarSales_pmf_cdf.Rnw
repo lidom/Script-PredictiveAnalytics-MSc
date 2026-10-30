@@ -1,0 +1,89 @@
+<<echo=FALSE, results=hide>>=
+## Script: Examples "cdf of a Discrete Random Variable (Car Sales)" and
+##         "pmf of a Discrete Random Variable (Car Sales)"
+pmfs <- list(c(0.3, 0.3, 0.3, 0.1), c(0.1, 0.5, 0.3, 0.1),
+             c(0.2, 0.5, 0.2, 0.1), c(0.4, 0.3, 0.2, 0.1))
+p  <- pmfs[[sample(seq_along(pmfs), 1)]]
+x  <- 0:3
+Fx <- cumsum(p)
+EX <- sum(x * p)
+VX <- sum((x - EX)^2 * p)
+@
+
+\begin{question}
+\textbf{pmf, cdf, Mean, and Variance} (Script: Examples ``cdf of a Discrete Random Variable (Car Sales)'' and ``pmf of a Discrete Random Variable (Car Sales)'')
+
+Another car dealership sells $X\in\{0,1,2,3\}$ cars per day with the following probability mass function (pmf):
+\begin{center}
+\begin{tabular}{c|cccc}
+$x$      & $0$ & $1$ & $2$ & $3$\\\hline
+$f_X(x)=P(X=x)$ & $\Sexpr{p[1]}$ & $\Sexpr{p[2]}$ & $\Sexpr{p[3]}$ & $\Sexpr{p[4]}$
+\end{tabular}
+\end{center}
+\begin{enumerate}
+  \item Check that $f_X$ is a valid pmf.
+  \item Write down the cdf $F_X(x)=P(X\leq x)$ for all $x\in\mathbb{R}$ and sketch it.
+  \item Compute the probability that the dealership sells at most one car on a given day, and the probability that it sells more than two cars.
+  \item Compute the mean $E(X)$, i.e., the average number of cars sold per day.
+  \item Compute the variance $\operatorname{Var}(X)$.
+\end{enumerate}
+\end{question}
+
+\begin{solution}
+\begin{enumerate}
+  \item All pmf values are non-negative, and they sum to one:
+  $$
+  \Sexpr{p[1]}+\Sexpr{p[2]}+\Sexpr{p[3]}+\Sexpr{p[4]}=1.
+  $$
+  \item The cdf adds up the pmf values of all values smaller than or equal to $x$:
+  $$
+  F_X(x)=\left\{\begin{array}{ll}
+  0 & \text{for } x<0\\
+  \Sexpr{fmt(Fx[1], 1)} & \text{for } 0\leq x<1\\
+  \Sexpr{fmt(Fx[2], 1)} & \text{for } 1\leq x<2\\
+  \Sexpr{fmt(Fx[3], 1)} & \text{for } 2\leq x<3\\
+  1 & \text{for } x\geq 3.
+  \end{array}\right.
+  $$
+  The cdf is a step function. It jumps at $x=0,1,2,3$, and the jump heights are the pmf values $f_X(x)$.
+  \item \textbf{At most one car:} ``At most one car'' means $X\leq 1$, i.e., $X=0$ or $X=1$. This is exactly the value of the cdf at $x=1$:
+  \begin{align*}
+  P(X\leq 1)
+  &=F_X(1)\\[1ex]
+  &=P(X=0)+P(X=1)\\[1ex]
+  &=\Sexpr{p[1]}+\Sexpr{p[2]}\\[1ex]
+  &=\Sexpr{fmt(Fx[2], 1)}.
+  \end{align*}
+  \textbf{More than two cars:} ``More than two cars'' means $X>2$. The cdf only gives us probabilities of the form $P(X\leq x)$, so we use the complement: the event ``more than two cars'' ($X>2$) is the complement of the event ``at most two cars'' ($X\leq 2$). Every day falls into exactly one of these two events, so their probabilities add up to one:
+  $$
+  P(X>2)+P(X\leq 2)=1.
+  $$
+  Solving for $P(X>2)$ gives
+  \begin{align*}
+  P(X>2)
+  &=1-P(X\leq 2)\\[1ex]
+  &=1-F_X(2)\\[1ex]
+  &=1-\Sexpr{fmt(Fx[3], 1)}\\[1ex]
+  &=\Sexpr{fmt(1 - Fx[3], 1)}.
+  \end{align*}
+  \textbf{Check:} More than two cars means exactly three cars here, and indeed $P(X=3)=\Sexpr{p[4]}$.
+  \item For a discrete random variable, the mean is the probability-weighted sum of its values:
+  \begin{align*}
+  E(X)
+  &=0\cdot \Sexpr{p[1]}+1\cdot \Sexpr{p[2]}+2\cdot \Sexpr{p[3]}+3\cdot \Sexpr{p[4]}\\[1ex]
+  &=\Sexpr{fmt(EX, 1)}.
+  \end{align*}
+  That is, the dealership sells $\Sexpr{fmt(EX, 1)}$ cars per day on average.
+  \item The variance is the probability-weighted sum of the squared deviations from the mean $E(X)=\Sexpr{fmt(EX, 1)}$:
+  \begin{align*}
+  \operatorname{Var}(X)
+  &=(0-\Sexpr{fmt(EX, 1)})^2\cdot \Sexpr{p[1]}+(1-\Sexpr{fmt(EX, 1)})^2\cdot \Sexpr{p[2]}\\[1ex]
+  &\quad+(2-\Sexpr{fmt(EX, 1)})^2\cdot \Sexpr{p[3]}+(3-\Sexpr{fmt(EX, 1)})^2\cdot \Sexpr{p[4]}\\[1ex]
+  &=\Sexpr{fmt(VX, 2)}.
+  \end{align*}
+\end{enumerate}
+\end{solution}
+
+\exname{pmf, cdf, Mean, and Variance}
+\extype{string}
+\exsolution{nil}
