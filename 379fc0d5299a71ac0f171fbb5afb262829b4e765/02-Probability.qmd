@@ -2619,8 +2619,7 @@ The exercises are based on the examples and exercises in this chapter. They are 
 
 * [Exercises for Chapter 2](exercises/pdf/Ch2_Exercises.pdf)
 
-<!-- 
 * [Exercises for Chapter 2 with Solutions](exercises/pdf/Ch2_Exercises_with_Solutions.pdf) 
--->
+
 
 ## References {-}

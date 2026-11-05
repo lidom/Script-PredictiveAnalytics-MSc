@@ -204,7 +204,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./03-Matrix-Algebra.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Matrix Algebra</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Interlude: Matrix Algebra</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -569,7 +569,8 @@ Note
 <section id="robust-inference" class="level3" data-number="7.3.1"><h3 data-number="7.3.1" class="anchored" data-anchor-id="robust-inference">
 <span class="header-section-number">7.3.1</span> Robust Inference</h3>
 <section id="robust-hypothesis-testing-multiple-parameters" class="level4" data-number="7.3.1.1"><h4 data-number="7.3.1.1" class="anchored" data-anchor-id="robust-hypothesis-testing-multiple-parameters">
-<span class="header-section-number">7.3.1.1</span> Robust Hypothesis Testing: Multiple Parameters</h4>
+<span class="header-section-number">7.3.1.1</span> <strong>Robust Hypothesis Testing: Multiple Parameters</strong>
+</h4>
 <p>System of <span class="math inline">\(q\)</span> null hypotheses: <span class="math display">\[
 \begin{aligned}
 H_0: \underset{(q\times K)}{R}\underset{(K\times 1)}{\beta}  = \underset{(q\times 1)}{r^{(0)}}\\
@@ -615,7 +616,8 @@ Finite-sample correction
 </div>
 </div>
 </section><section id="robust-hypothesis-testing-single-parameters" class="level4" data-number="7.3.1.2"><h4 data-number="7.3.1.2" class="anchored" data-anchor-id="robust-hypothesis-testing-single-parameters">
-<span class="header-section-number">7.3.1.2</span> Robust Hypothesis Testing: Single Parameters</h4>
+<span class="header-section-number">7.3.1.2</span> <strong>Robust Hypothesis Testing: Single Parameters</strong>
+</h4>
 <p>Hypotheses about a single parameter <span class="math inline">\(\beta_k,\)</span> <span class="math inline">\(k=1,\dots,K\)</span>: <span class="math display">\[
 \begin{array}{ll}
 H_0: &amp; \beta_k=\beta_k^{(0)}\\
@@ -651,7 +653,8 @@ Finite-sample correction
 </div>
 </div>
 </section><section id="robust-confidence-intervals" class="level4" data-number="7.3.1.3"><h4 data-number="7.3.1.3" class="anchored" data-anchor-id="robust-confidence-intervals">
-<span class="header-section-number">7.3.1.3</span> Robust Confidence Intervals</h4>
+<span class="header-section-number">7.3.1.3</span> <strong>Robust Confidence Intervals</strong>
+</h4>
 <p>Following <a href="06-Small-Sample-Inference.html#sec-CIsmallsample" class="quarto-xref"><span>Section 6.4</span></a>, but with robust standard errors, the heteroskedasticity robust <span class="math inline">\((1-\alpha)\cdot 100\%\)</span> confidence interval is: <span class="math display">\[
 \operatorname{CI}^{\text{rob}}_{k,n,1-\alpha}=
 \left[\hat\beta_k\pm t_{1-\alpha/2,n-K}\sqrt{n^{-1}\left[S_{X^{\top}X}^{-1}\widehat{E}(\varepsilon^2_iX_iX_i^{\top})S^{-1}_{X^{\top}X}\right]_{(k,k)}}\right].
@@ -945,7 +948,7 @@ r^{(0)}=\left(\begin{matrix}3\\4\\\end{matrix}\right).
 <span><span class="co">## Estimate the linear regression model parameters</span></span>
 <span><span class="va">lm_obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">Y</span> <span class="op">~</span> <span class="va">X_2</span> <span class="op">+</span> <span class="va">X_3</span>, data <span class="op">=</span> <span class="va">MC_data</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">vcovHC3_mat</span> <span class="op">&lt;-</span> <span class="fu">sandwich</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/sandwich/man/vcovHC.html">vcovHC</a></span><span class="op">(</span><span class="va">lm_obj</span>, type<span class="op">=</span><span class="st">"HC3"</span><span class="op">)</span></span>
+<span><span class="va">vcovHC3_mat</span> <span class="op">&lt;-</span> <span class="fu">sandwich</span><span class="fu">::</span><span class="fu"><a href="https://sandwich.R-Forge.R-project.org/reference/vcovHC.html">vcovHC</a></span><span class="op">(</span><span class="va">lm_obj</span>, type<span class="op">=</span><span class="st">"HC3"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co">## Option 1:</span></span>
 <span><span class="co"># car::linearHypothesis(model = lm_obj,</span></span>
@@ -987,7 +990,7 @@ Note: Coefficient covariance matrix supplied.
 <span><span class="kw">for</span><span class="op">(</span><span class="va">r</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="va">B</span><span class="op">)</span><span class="op">{</span></span>
 <span>  <span class="va">MC_data</span>     <span class="op">&lt;-</span> <span class="fu">myDataGenerator</span><span class="op">(</span>n    <span class="op">=</span> <span class="fl">100</span>, beta <span class="op">=</span> <span class="va">beta_true</span><span class="op">)</span></span>
 <span>  <span class="va">lm_obj</span>      <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">Y</span> <span class="op">~</span> <span class="va">X_2</span> <span class="op">+</span> <span class="va">X_3</span>, data <span class="op">=</span> <span class="va">MC_data</span><span class="op">)</span></span>
-<span>  <span class="va">vcovHC3_mat</span> <span class="op">&lt;-</span> <span class="fu">sandwich</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/sandwich/man/vcovHC.html">vcovHC</a></span><span class="op">(</span><span class="va">lm_obj</span>, type<span class="op">=</span><span class="st">"HC3"</span><span class="op">)</span></span>
+<span>  <span class="va">vcovHC3_mat</span> <span class="op">&lt;-</span> <span class="fu">sandwich</span><span class="fu">::</span><span class="fu"><a href="https://sandwich.R-Forge.R-project.org/reference/vcovHC.html">vcovHC</a></span><span class="op">(</span><span class="va">lm_obj</span>, type<span class="op">=</span><span class="st">"HC3"</span><span class="op">)</span></span>
 <span>  <span class="va">Ftest</span>       <span class="op">&lt;-</span> <span class="fu">car</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/car/man/linearHypothesis.html">linearHypothesis</a></span><span class="op">(</span>model <span class="op">=</span> <span class="va">lm_obj</span>,</span>
 <span>                        hypothesis.matrix <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"X_2=3"</span>, <span class="st">"X_3=4"</span><span class="op">)</span>,</span>
 <span>                        vcov <span class="op">=</span> <span class="va">vcovHC3_mat</span><span class="op">)</span></span>
@@ -1023,7 +1026,7 @@ H_0:&amp;\beta_3=4\\
 <span><span class="co">## Robust t test</span></span>
 <span></span>
 <span><span class="co">## Robust standard error for \hat{\beta}_3:</span></span>
-<span><span class="va">SE_rob</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/sandwich/man/vcovHC.html">vcovHC</a></span><span class="op">(</span><span class="va">lm_obj</span>, type <span class="op">=</span> <span class="st">"HC3"</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span>,<span class="fl">3</span><span class="op">]</span><span class="op">)</span></span>
+<span><span class="va">SE_rob</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fu"><a href="https://sandwich.R-Forge.R-project.org/reference/vcovHC.html">vcovHC</a></span><span class="op">(</span><span class="va">lm_obj</span>, type <span class="op">=</span> <span class="st">"HC3"</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span>,<span class="fl">3</span><span class="op">]</span><span class="op">)</span></span>
 <span><span class="co">## hypothetical (H0) value of \beta_3:</span></span>
 <span><span class="va">beta_3_H0</span> <span class="op">&lt;-</span> <span class="fl">4</span></span>
 <span><span class="co">## estimate for beta_3:</span></span>
@@ -1051,7 +1054,7 @@ H_0:&amp;\beta_3=4\\
 <span><span class="kw">for</span><span class="op">(</span><span class="va">r</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="va">B</span><span class="op">)</span><span class="op">{</span></span>
 <span>  <span class="va">MC_data</span>     <span class="op">&lt;-</span> <span class="fu">myDataGenerator</span><span class="op">(</span>n <span class="op">=</span> <span class="va">n</span>, beta <span class="op">=</span> <span class="va">beta_true</span><span class="op">)</span></span>
 <span>  <span class="va">lm_obj</span>      <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">Y</span> <span class="op">~</span> <span class="va">X_2</span> <span class="op">+</span> <span class="va">X_3</span>, data <span class="op">=</span> <span class="va">MC_data</span><span class="op">)</span></span>
-<span>  <span class="va">SE_rob</span>      <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/sandwich/man/vcovHC.html">vcovHC</a></span><span class="op">(</span><span class="va">lm_obj</span>, type <span class="op">=</span> <span class="st">"HC3"</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span>,<span class="fl">3</span><span class="op">]</span><span class="op">)</span></span>
+<span>  <span class="va">SE_rob</span>      <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fu"><a href="https://sandwich.R-Forge.R-project.org/reference/vcovHC.html">vcovHC</a></span><span class="op">(</span><span class="va">lm_obj</span>, type <span class="op">=</span> <span class="st">"HC3"</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span>,<span class="fl">3</span><span class="op">]</span><span class="op">)</span></span>
 <span>  <span class="va">beta_3_hat</span>  <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span><span class="op">(</span><span class="va">lm_obj</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></span>
 <span>  <span class="co">## robust t-test statistic</span></span>
 <span>  <span class="va">t_test_stat</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="va">beta_3_hat</span> <span class="op">-</span> <span class="va">beta_3_H0</span><span class="op">)</span><span class="op">/</span><span class="va">SE_rob</span></span>
@@ -1096,7 +1099,7 @@ Y_i = \beta_1 + \beta_{gender} X_{gender,i}
 <p>Heteroskedasticity-robust inference:</p>
 <ul>
 <li>
-<code><a href="https://rdrr.io/pkg/sandwich/man/vcovHC.html">sandwich::vcovHC()</a></code> HC3 robust variance estimation</li>
+<code><a href="https://sandwich.R-Forge.R-project.org/reference/vcovHC.html">sandwich::vcovHC()</a></code> HC3 robust variance estimation</li>
 <li>
 <code><a href="https://rdrr.io/pkg/lmtest/man/coeftest.html">lmtest::coeftest()</a></code> Coefficient/inference table</li>
 </ul>
@@ -1116,7 +1119,7 @@ income       -0.082306   0.031670 -2.5989  0.009380 **
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
 <div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">## HC3 robust standard errors:</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/lmtest/man/coeftest.html">coeftest</a></span><span class="op">(</span><span class="va">lm_obj</span>, vcov <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/sandwich/man/vcovHC.html">vcovHC</a></span><span class="op">(</span><span class="va">lm_obj</span>, type <span class="op">=</span> <span class="st">"HC3"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/pkg/lmtest/man/coeftest.html">coeftest</a></span><span class="op">(</span><span class="va">lm_obj</span>, vcov <span class="op">=</span> <span class="fu"><a href="https://sandwich.R-Forge.R-project.org/reference/vcovHC.html">vcovHC</a></span><span class="op">(</span><span class="va">lm_obj</span>, type <span class="op">=</span> <span class="st">"HC3"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 t test of coefficients:
@@ -1135,7 +1138,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/message.html">suppressPackageStartupMessages</a></span><span class="op">(</span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st">"stargazer"</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Adjust standard errors</span></span>
-<span><span class="va">cov_beta_HC3</span>   <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/sandwich/man/vcovHC.html">vcovHC</a></span><span class="op">(</span><span class="va">lm_obj</span>, type <span class="op">=</span> <span class="st">"HC3"</span><span class="op">)</span></span>
+<span><span class="va">cov_beta_HC3</span>   <span class="op">&lt;-</span> <span class="fu"><a href="https://sandwich.R-Forge.R-project.org/reference/vcovHC.html">vcovHC</a></span><span class="op">(</span><span class="va">lm_obj</span>, type <span class="op">=</span> <span class="st">"HC3"</span><span class="op">)</span></span>
 <span><span class="va">robust_HC3_se</span>  <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/diag.html">diag</a></span><span class="op">(</span><span class="va">cov_beta_HC3</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Stargazer output (with and without RSE)</span></span>
@@ -1383,7 +1386,7 @@ F Statistic (df = 3; 5186)
 <ul>
 <li>
 <code>DoctorVisits</code> is a single cross-section <span class="math inline">\(\Rightarrow\)</span> HC-type SEs are appropriate.</li>
-<li>For time series or panel data: swap in <code><a href="https://rdrr.io/pkg/sandwich/man/vcovHAC.html">vcovHAC()</a></code> or <code><a href="https://rdrr.io/pkg/sandwich/man/vcovCL.html">vcovCL()</a></code> – same <code>coeftest(lm_obj, vcov = ...)</code> pattern.</li>
+<li>For time series or panel data: swap in <code><a href="https://sandwich.R-Forge.R-project.org/reference/vcovHAC.html">vcovHAC()</a></code> or <code><a href="https://sandwich.R-Forge.R-project.org/reference/vcovCL.html">vcovCL()</a></code> – same <code>coeftest(lm_obj, vcov = ...)</code> pattern.</li>
 </ul>
 <!-- TODO: the link below was a private /preview/?session_id= URL, which only works
      in your own logged-in Dropbox session and 404s for students. Replace it with a
