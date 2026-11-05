@@ -1,6 +1,7 @@
 <<echo=FALSE, results=hide>>=
-## Script: Examples "cdf of a Discrete Random Variable (Car Sales)" and
-##         "pmf of a Discrete Random Variable (Car Sales)"
+## Script: Examples "cdf of a Discrete Random Variable (Car Sales)",
+##         "pmf of a Discrete Random Variable (Car Sales)", and
+##         "Mean and Variance of a Discrete Random Variable (Car Sales)"
 pmfs <- list(c(0.3, 0.3, 0.3, 0.1), c(0.1, 0.5, 0.3, 0.1),
              c(0.2, 0.5, 0.2, 0.1), c(0.4, 0.3, 0.2, 0.1))
 p  <- pmfs[[sample(seq_along(pmfs), 1)]]
@@ -11,7 +12,7 @@ VX <- sum((x - EX)^2 * p)
 @
 
 \begin{question}
-\textbf{pmf, cdf, Mean, and Variance} (Script: Examples ``cdf of a Discrete Random Variable (Car Sales)'' and ``pmf of a Discrete Random Variable (Car Sales)'')
+\textbf{pmf, cdf, Mean, and Variance} (Script: Examples ``cdf of a Discrete Random Variable (Car Sales)'', ``pmf of a Discrete Random Variable (Car Sales)'', and ``Mean and Variance of a Discrete Random Variable (Car Sales)'')
 
 Another car dealership sells $X\in\{0,1,2,3\}$ cars per day with the following probability mass function (pmf):
 \begin{center}
@@ -68,15 +69,25 @@ $f_X(x)=P(X=x)$ & $\Sexpr{p[1]}$ & $\Sexpr{p[2]}$ & $\Sexpr{p[3]}$ & $\Sexpr{p[4
   \end{align*}
   \textbf{Check:} More than two cars means exactly three cars here, and indeed $P(X=3)=\Sexpr{p[4]}$.
   \item For a discrete random variable, the mean is the probability-weighted sum of its values:
+  $$
+  E(X)=\sum_{x} x\, f_X(x),
+  $$
+  where the sum runs over all possible values $x$ of $X$. Here, $x\in\{0,1,2,3\}$, so
   \begin{align*}
   E(X)
+  &=\sum_{x\in\{0,1,2,3\}} x\, f_X(x)\\[1ex]
   &=0\cdot \Sexpr{p[1]}+1\cdot \Sexpr{p[2]}+2\cdot \Sexpr{p[3]}+3\cdot \Sexpr{p[4]}\\[1ex]
   &=\Sexpr{fmt(EX, 1)}.
   \end{align*}
   That is, the dealership sells $\Sexpr{fmt(EX, 1)}$ cars per day on average.
-  \item The variance is the probability-weighted sum of the squared deviations from the mean $E(X)=\Sexpr{fmt(EX, 1)}$:
+  \item For a discrete random variable, the variance is the probability-weighted sum of the squared deviations from the mean:
+  $$
+  \operatorname{Var}(X)=E\Big(\big(X-E(X)\big)^2\Big)=\sum_{x} \big(x-E(X)\big)^2 f_X(x).
+  $$
+  Here, $x\in\{0,1,2,3\}$ and $E(X)=\Sexpr{fmt(EX, 1)}$ from part (d), so
   \begin{align*}
   \operatorname{Var}(X)
+  &=\sum_{x\in\{0,1,2,3\}} \big(x-\Sexpr{fmt(EX, 1)}\big)^2 f_X(x)\\[1ex]
   &=(0-\Sexpr{fmt(EX, 1)})^2\cdot \Sexpr{p[1]}+(1-\Sexpr{fmt(EX, 1)})^2\cdot \Sexpr{p[2]}\\[1ex]
   &\quad+(2-\Sexpr{fmt(EX, 1)})^2\cdot \Sexpr{p[3]}+(3-\Sexpr{fmt(EX, 1)})^2\cdot \Sexpr{p[4]}\\[1ex]
   &=\Sexpr{fmt(VX, 2)}.

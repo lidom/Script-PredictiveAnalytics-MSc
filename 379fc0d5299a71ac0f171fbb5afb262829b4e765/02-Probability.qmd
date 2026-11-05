@@ -1353,7 +1353,7 @@ This means that $X_1$ and $X_2$ are assumed to be *independent* here, which is r
 :::
 
 
-In the following, we mostly focus on continuous random vectors. The discrete case is treated analogously, with sums instead of integrals; the marginal probability mass function below shows how this works.
+In the following, we mostly focus on continuous random vectors. The discrete case is treated analogously, with sums instead of integrals; the marginal probability mass function and the means and variances of discrete random variables below show how this works.
 
 
 #### **Marginal Distributions**
@@ -1529,10 +1529,16 @@ Therefore, compared to the marginal density $f_1(x_1)$, the conditional density 
 
 #### **Unconditional Means**
 
-The **unconditional mean** of $X_1$ is given by
+The **unconditional mean** of a continuous random variable $X_1$ is given by
 $$
 E(X_1)= \int x_1 f_1(x_1)\,dx_1.
 $$
+For a discrete random variable $X_1$, the integral becomes a sum, and the density becomes the pmf:
+$$
+E(X_1)= \sum_{x_1} x_1 f_1(x_1),
+$$
+where the sum runs over all possible values $x_1$ of $X_1$. That is, the mean is the probability-weighted sum of the possible values of $X_1$.
+
 The unconditional mean of a random vector
 $$
 X=
@@ -1627,8 +1633,14 @@ legend("topleft", col = c("darkorange", "darkred"), lwd = 1.5, bty = "n",
 
 The **mean of a transformed random variable** $r(X)$ is given by
 $$
-E(r(X))=\int r(x) f_{X}(x)\,dx.
+E(r(X))=\int r(x) f_{X}(x)\,dx
 $$
+if $X$ is continuous, and by
+$$
+E(r(X))=\sum_{x} r(x) f_{X}(x)
+$$
+if $X$ is discrete, where the sum runs over all possible values $x$ of $X$.
+
 An important special case are **linear transformations** $r(x)=a+b\,x$ with constants $a,b\in\mathbb{R}$. The mean is linear:
 \begin{align*}
 E(a+b\,X)
@@ -1636,6 +1648,7 @@ E(a+b\,X)
 &=a\underbrace{\int f_{X}(x)\,dx}_{=1}+\,b\underbrace{\int x\, f_{X}(x)\,dx}_{=E(X)}\\[2ex]
 &=a+b\,E(X).
 \end{align*}
+For discrete random variables, the same steps work with sums instead of integrals.
 
 Further typical transformations are, for instance,
 
@@ -1647,8 +1660,47 @@ Further typical transformations are, for instance,
 
 where the latter transformation leads to the **second central moment**, i.e., the variance of $X$,
 $$
-\operatorname{Var}(X)=\int (x - E(X))^2 f_{X}(x)\,dx.
+\operatorname{Var}(X)=E\Big(\big(X-E(X)\big)^2\Big)=\int (x - E(X))^2 f_{X}(x)\,dx
 $$
+if $X$ is continuous, and
+$$
+\operatorname{Var}(X)=E\Big(\big(X-E(X)\big)^2\Big)=\sum_{x} (x - E(X))^2 f_{X}(x)
+$$
+if $X$ is discrete. 
+
+
+That is, the variance is the probability-weighted average of the squared deviations from the mean. The square root of the variance, $\sqrt{\operatorname{Var}(X)}$, is called the **standard deviation**; it measures the spread of $X$ in the same units as $X$.
+
+::: {.callout-note}
+## Example: Mean and Variance of a Discrete Random Variable (Car Sales)
+
+Consider again the daily number of cars $X\in\{0,1,2,3\}$ sold by the small car dealership with pmf
+
+| $x$      | $0$   | $1$   | $2$   | $3$   |
+|----------|:-----:|:-----:|:-----:|:-----:|
+| $f_X(x)$ | $0.2$ | $0.4$ | $0.3$ | $0.1$ |
+
+**Mean:** We multiply each possible value $x$ by its probability $f_X(x)$ and add up:
+\begin{align*}
+E(X)
+&=\sum_{x\in\{0,1,2,3\}} x\, f_X(x)\\[2ex]
+&=0\cdot 0.2+1\cdot 0.4+2\cdot 0.3+3\cdot 0.1\\[2ex]
+&=0+0.4+0.6+0.3\\[2ex]
+&=1.3.
+\end{align*}
+That is, the dealership sells $1.3$ cars per day on average. Note that the mean $1.3$ is not a possible value of $X$; it is a long-run average over many days.
+
+**Variance:** We multiply each squared deviation from the mean, $(x-1.3)^2$, by its probability $f_X(x)$ and add up:
+\begin{align*}
+\operatorname{Var}(X)
+&=\sum_{x\in\{0,1,2,3\}} (x-E(X))^2\, f_X(x)\\[2ex]
+&=(0-1.3)^2\cdot 0.2+(1-1.3)^2\cdot 0.4+(2-1.3)^2\cdot 0.3+(3-1.3)^2\cdot 0.1\\[2ex]
+&=1.69\cdot 0.2+0.09\cdot 0.4+0.49\cdot 0.3+2.89\cdot 0.1\\[2ex]
+&=0.338+0.036+0.147+0.289\\[2ex]
+&=0.81.
+\end{align*}
+Thus, the standard deviation is $\sqrt{\operatorname{Var}(X)}=\sqrt{0.81}=0.9$ cars per day.
+:::
 
 
 ::: {.spaced-list}
@@ -1662,6 +1714,8 @@ $$
 E\left(\big(X-E(X)\big)^{k}\right)=\int_{-\infty}^{+\infty}\big(x-E(X)\big)^{k} f_X(x)\,d x.
 $$
 :::
+
+For discrete random variables, the integrals are again replaced by sums, e.g., $E\left(X^{k}\right)=\sum_{x}x^{k} f_X(x)$.
 
 Of course, these moments are only defined if the respective integrals exist, i.e., if $E(|X|^k)<\infty$.
 
@@ -1931,7 +1985,7 @@ E\big(E(X_1\mid X_2)\big)
 &=1.3.
 \end{align*}
 
-**Check:** Using the marginal pmf of $X_1$ from the one-dimensional car sales example,
+**Check:** Using the marginal pmf of $X_1$ from the one-dimensional car sales example (see also the example on the mean and variance of a discrete random variable),
 \begin{align*}
 E(X_1)
 &=0\cdot 0.2+1\cdot 0.4+2\cdot 0.3+3\cdot 0.1\\[2ex]
@@ -2081,6 +2135,8 @@ $$
 | **Joint** | pmf $f(x_1,x_2)=P(X_1=x_1,X_2=x_2)$ | density $f(x_1,x_2)$ |
 | **Marginal** | $f_1(x_1)=\sum_{x_2} f(x_1,x_2)$ | $f_1(x_1)=\int f(x_1,x_2)\,dx_2$ |
 | **Conditional** | $f(x_1\mid x_2)=\dfrac{f(x_1,x_2)}{f_2(x_2)}$ | $f(x_1\mid x_2)=\dfrac{f(x_1,x_2)}{f_2(x_2)}$ |
+| **Mean** | $E(X_1)=\sum_{x_1} x_1\,f_1(x_1)$ | $E(X_1)=\int x_1\,f_1(x_1)\,dx_1$ |
+| **Variance** | $\operatorname{Var}(X_1)=\sum_{x_1} (x_1-E(X_1))^2\,f_1(x_1)$ | $\operatorname{Var}(X_1)=\int (x_1-E(X_1))^2\,f_1(x_1)\,dx_1$ |
 | **Conditional mean** | $m(x_2)=\sum_{x_1} x_1\,f(x_1\mid x_2)$ | $m(x_2)=\int x_1\,f(x_1\mid x_2)\,dx_1$ |
 | **Law of iterated expectations** | $E\big(E(X_1\mid X_2)\big)=E(X_1)$ | $E\big(E(X_1\mid X_2)\big)=E(X_1)$ |
 | **Independence** | $f(x_1,x_2)=f_1(x_1)\,f_2(x_2)$ | $f(x_1,x_2)=f_1(x_1)\,f_2(x_2)$ |

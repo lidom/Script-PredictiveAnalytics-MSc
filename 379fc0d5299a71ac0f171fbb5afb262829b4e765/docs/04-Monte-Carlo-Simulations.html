@@ -404,7 +404,7 @@ Monte Carlo (MC) Simulations
 <li><p>For the <span class="math inline">\(Var\left(\hat\theta_n\right)\)</span> we need to compute <span class="math inline">\(E\left[\left(\hat\theta_n - E(\hat\theta_n)\right)^2\right]\)</span>.</p></li>
 <li><p>For the <span class="math inline">\(\operatorname{MSE}\left(\hat\theta_n\right)\)</span> we need to compute <span class="math inline">\(E\left[\left(\hat\theta_n - \theta\right)^2\right]\)</span>.</p></li>
 </ul>
-<p>We can use a Monte Carlo (MC) simulation to approximate these means by <strong>sample means</strong> using the <strong>law of large numbers</strong> which states that a sample mean over iid random variables is able to approximate the population mean of these random variables as the number of random variables to average over gets large (see <a href="#thm-SLLN1" class="quarto-xref">Theorem&nbsp;<span class="quarto-unresolved-ref">thm-SLLN1</span></a> in <a href="#sec-lsinf" class="quarto-xref"><span class="quarto-unresolved-ref">sec-lsinf</span></a>).</p>
+<p>We can use a Monte Carlo (MC) simulation to approximate these means by <strong>sample means</strong> using the <strong>law of large numbers</strong> which states that a sample mean over iid random variables is able to approximate the population mean of these random variables as the number of random variables to average over gets large (see <a href="07-Asymptotics.html#thm-SLLN1" class="quarto-xref">Theorem&nbsp;<span>7.1</span></a> in <a href="07-Asymptotics.html" class="quarto-xref"><span>Chapter 7</span></a>).</p>
 <p>The core part of a MC-simulation generates a large number of <span class="math inline">\(B\)</span> (e.g.&nbsp;<span class="math inline">\(B=10,000\)</span>) many realizations of <span class="math inline">\(\hat{\theta}_n\)</span> for</p>
 <ul>
 <li>a given sample size <span class="math inline">\(n\)</span> and</li>
@@ -469,7 +469,7 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>By the law of large numbers (see <a href="#thm-SLLN1" class="quarto-xref">Theorem&nbsp;<span class="quarto-unresolved-ref">thm-SLLN1</span></a> in <a href="#sec-lsinf" class="quarto-xref"><span class="quarto-unresolved-ref">sec-lsinf</span></a>) these approximations get arbitrarily precise as <span class="math inline">\(B \to \infty,\)</span> i.e. <span class="math display">\[
+<p>By the law of large numbers (see <a href="07-Asymptotics.html#thm-SLLN1" class="quarto-xref">Theorem&nbsp;<span>7.1</span></a> in <a href="07-Asymptotics.html" class="quarto-xref"><span>Chapter 7</span></a>) these approximations get arbitrarily precise as <span class="math inline">\(B \to \infty,\)</span> i.e. <span class="math display">\[
 \begin{align*}
 \widehat{\operatorname{Bias}}_{MC}\left(\hat\theta_n\right)&amp;\to_p
 \operatorname{Bias}\left(\hat\theta_n\right)\quad\text{as}\quad B\to\infty\\[2ex]
@@ -538,7 +538,7 @@ Var(\hat\theta_n),\text{ and }
 <span><span class="co">## Mean squared error of the sample mean for different sample sizes n</span></span>
 <span><span class="va">MC_MSE_n_seq</span>  <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/apply.html">apply</a></span><span class="op">(</span><span class="va">estimates_mat</span>, <span class="fl">2</span>, <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">{</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="op">(</span><span class="va">x</span> <span class="op">-</span> <span class="va">mu</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span><span class="op">}</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><a href="#tbl-mcbvmse" class="quarto-xref">Table&nbsp;<span class="quarto-unresolved-ref">tbl-mcbvmse</span></a> shows the Monte Carlo approximations for the bias, the variance, and the mean squared error of <span class="math inline">\(\bar{X}_n.\)</span></p>
+<p><a href="#tbl-mcbvmse" class="quarto-xref">Table&nbsp;<span>3.1</span></a> shows the Monte Carlo approximations for the bias, the variance, and the mean squared error of <span class="math inline">\(\bar{X}_n.\)</span></p>
 <div class="cell" data-layout-align="center">
 <div id="tbl-mcbvmse" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
 <figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-mcbvmse-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -578,11 +578,11 @@ Table&nbsp;3.1: Monte Carlo approximations for the true bias, true variance, and
 </figure>
 </div>
 </div>
-<p>The Monte Carlo approximations in <a href="#tbl-mcbvmse" class="quarto-xref">Table&nbsp;<span class="quarto-unresolved-ref">tbl-mcbvmse</span></a> indicate that:</p>
+<p>The Monte Carlo approximations in <a href="#tbl-mcbvmse" class="quarto-xref">Table&nbsp;<span>3.1</span></a> indicate that:</p>
 <ul>
 <li><p>The bias <span class="math inline">\(\operatorname{Bias}(\bar{X}_n)\)</span> is effectively zero for all sample sizes <span class="math inline">\(n\in\{5,15,50\}\)</span></p></li>
 <li><p>The mean squared error <span class="math inline">\(\operatorname{MSE}(\bar{X}_n)\)</span> is decreasing as the sample size <span class="math inline">\(n\)</span> gets larger.</p></li>
-<li><p>The log-log plot in <a href="#fig-loglog" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-loglog</span></a> suggests a convergence rate of <span class="math inline">\(-1\)</span> for <span class="math inline">\(\operatorname{MSE}(\bar{X}_n)\)</span> i.e. <span class="math display">\[
+<li><p>The log-log plot in <a href="#fig-loglog" class="quarto-xref">Figure&nbsp;<span>3.1</span></a> suggests a convergence rate of <span class="math inline">\(-1\)</span> for <span class="math inline">\(\operatorname{MSE}(\bar{X}_n)\)</span> i.e. <span class="math display">\[
 \begin{align*}
 \operatorname{MSE}(\bar{X}_n) &amp;= \texttt{Constant} \cdot n^{-1}\\[2ex]
 \Leftrightarrow\log\left(\operatorname{MSE}(\bar{X}_n)\right) &amp;= \log\left(\texttt{Constant}\right) -1 \cdot \log\left(n\right),
