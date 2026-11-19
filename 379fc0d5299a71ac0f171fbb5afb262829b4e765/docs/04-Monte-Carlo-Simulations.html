@@ -469,7 +469,7 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>By the law of large numbers (see <a href="07-Asymptotics.html#thm-SLLN1" class="quarto-xref">Theorem&nbsp;<span>7.1</span></a> in <a href="07-Asymptotics.html" class="quarto-xref"><span>Chapter 7</span></a>) these approximations get arbitrarily precise as <span class="math inline">\(B \to \infty,\)</span> i.e. <span class="math display">\[
+<p>By the law of large numbers (see <a href="07-Asymptotics.html#thm-SLLN1" class="quarto-xref">Theorem&nbsp;<span>7.1</span></a> in <a href="07-Asymptotics.html" class="quarto-xref"><span>Chapter 7</span></a>) these approximations <strong>get arbitrarily precise</strong> as <span class="math inline">\(B \to \infty,\)</span> i.e. <span class="math display">\[
 \begin{align*}
 \widehat{\operatorname{Bias}}_{MC}\left(\hat\theta_n\right)&amp;\to_p
 \operatorname{Bias}\left(\hat\theta_n\right)\quad\text{as}\quad B\to\infty\\[2ex]
@@ -509,7 +509,7 @@ Var(\hat\theta_n),\text{ and }
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">## Set seed for the random number generator to get reproducible results</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span></span>
-<span><span class="co">## True parameter value ('theta' here 'mu')</span></span>
+<span><span class="co">## True (usually unknown) parameter value of interest</span></span>
 <span><span class="va">mu</span>            <span class="op">&lt;-</span> <span class="fl">10</span></span>
 <span><span class="co">## Number of Monte Carlo repetitions:</span></span>
 <span><span class="va">B</span>             <span class="op">&lt;-</span> <span class="fl">10000</span></span>
@@ -518,15 +518,16 @@ Var(\hat\theta_n),\text{ and }
 <span></span>
 <span><span class="co">## Function that generates estimator realizations </span></span>
 <span><span class="va">my_estimates_generator</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">n</span><span class="op">)</span><span class="op">{</span></span>
+<span>  <span class="co">## generate a realization of the random sample</span></span>
 <span>  <span class="va">X_sample</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span>n <span class="op">=</span> <span class="va">n</span>, mean <span class="op">=</span> <span class="va">mu</span>, sd <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span><span class="op">)</span></span>
 <span>  <span class="co">## compute the sample mean realization</span></span>
 <span>  <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">X_sample</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="op">}</span></span>
 <span></span>
 <span><span class="va">estimates_mat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span><span class="op">(</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">replicate</a></span><span class="op">(</span><span class="va">B</span>, <span class="fu">my_estimates_generator</span><span class="op">(</span>n <span class="op">=</span> <span class="va">n_seq</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span><span class="op">)</span>,</span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">replicate</a></span><span class="op">(</span><span class="va">B</span>, <span class="fu">my_estimates_generator</span><span class="op">(</span>n <span class="op">=</span> <span class="va">n_seq</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span><span class="op">)</span><span class="op">)</span>,</span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">replicate</a></span><span class="op">(</span><span class="va">B</span>, <span class="fu">my_estimates_generator</span><span class="op">(</span>n <span class="op">=</span> <span class="va">n_seq</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">replicate</a></span><span class="op">(</span><span class="va">B</span>, <span class="fu">my_estimates_generator</span><span class="op">(</span>n <span class="op">=</span> <span class="va">n_seq</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span><span class="op">)</span>,<span class="co"># n small</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">replicate</a></span><span class="op">(</span><span class="va">B</span>, <span class="fu">my_estimates_generator</span><span class="op">(</span>n <span class="op">=</span> <span class="va">n_seq</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span><span class="op">)</span><span class="op">)</span>,<span class="co"># n intermediate</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">replicate</a></span><span class="op">(</span><span class="va">B</span>, <span class="fu">my_estimates_generator</span><span class="op">(</span>n <span class="op">=</span> <span class="va">n_seq</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span><span class="op">)</span><span class="op">)</span> <span class="co"># n largish</span></span>
 <span><span class="op">)</span></span>
 <span></span>
 <span><span class="co">## Bias of the sample mean for different sample sizes n</span></span>
@@ -593,11 +594,11 @@ Table&nbsp;3.1: Monte Carlo approximations for the true bias, true variance, and
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span>y    <span class="op">=</span> <span class="va">MC_MSE_n_seq</span>,  </span>
 <span>     x    <span class="op">=</span> <span class="va">n_seq</span>, </span>
 <span>     type <span class="op">=</span> <span class="st">"o"</span>, </span>
-<span>     log  <span class="op">=</span> <span class="st">"xy"</span>, </span>
+<span>     log  <span class="op">=</span> <span class="st">"xy"</span>, <span class="co"># x-axis and y-axis on a log-scale</span></span>
 <span>     ylab <span class="op">=</span> <span class="st">"MSE (log scale)"</span>,</span>
 <span>     xlab <span class="op">=</span> <span class="st">"n (log scale)"</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co">## Slope: </span></span>
+<span><span class="co">## Computing the slope (values read out from the plot): </span></span>
 <span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="fl">0.1</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span><span class="op">)</span> <span class="op">/</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="fl">50</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -1</code></pre>

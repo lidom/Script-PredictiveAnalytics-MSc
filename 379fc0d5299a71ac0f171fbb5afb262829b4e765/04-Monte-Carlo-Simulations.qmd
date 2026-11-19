@@ -275,7 +275,7 @@ $$
 
 ::: {.callout-note}
 
-By the law of large numbers (see @thm-SLLN1 in @sec-lsinf) these approximations get arbitrarily precise as $B \to \infty,$ i.e.
+By the law of large numbers (see @thm-SLLN1 in @sec-lsinf) these approximations **get arbitrarily precise** as $B \to \infty,$ i.e.
 $$
 \begin{align*}
 \widehat{\operatorname{Bias}}_{MC}\left(\hat\theta_n\right)&\to_p
@@ -320,7 +320,7 @@ Setup:
 ```{r}
 ## Set seed for the random number generator to get reproducible results
 set.seed(3)
-## True parameter value ('theta' here 'mu')
+## True (usually unknown) parameter value of interest
 mu            <- 10
 ## Number of Monte Carlo repetitions:
 B             <- 10000
@@ -329,15 +329,16 @@ n_seq         <- c(5, 15, 50)
 
 ## Function that generates estimator realizations 
 my_estimates_generator <- function(n){
+  ## generate a realization of the random sample
   X_sample <- rnorm(n = n, mean = mu, sd = sqrt(5))
   ## compute the sample mean realization
   return(mean(X_sample))
 }
 
 estimates_mat <- cbind(
-  replicate(B, my_estimates_generator(n = n_seq[1])),
-  replicate(B, my_estimates_generator(n = n_seq[2])),
-  replicate(B, my_estimates_generator(n = n_seq[3]))
+  replicate(B, my_estimates_generator(n = n_seq[1])),# n small
+  replicate(B, my_estimates_generator(n = n_seq[2])),# n intermediate
+  replicate(B, my_estimates_generator(n = n_seq[3])) # n largish
 )
 
 ## Bias of the sample mean for different sample sizes n
@@ -349,7 +350,6 @@ MC_Var_n_seq  <- apply(estimates_mat, 2, var)
 ## Mean squared error of the sample mean for different sample sizes n
 MC_MSE_n_seq  <- apply(estimates_mat, 2, function(x){mean((x - mu)^2)})
 ```
-
 
 
 @tbl-mcbvmse shows the Monte Carlo approximations for the bias, the variance, and the mean squared error of $\bar{X}_n.$
@@ -391,11 +391,11 @@ where $\texttt{Constant}$ depends on the data generating process and the estimat
 plot(y    = MC_MSE_n_seq,  
      x    = n_seq, 
      type = "o", 
-     log  = "xy", 
+     log  = "xy", # x-axis and y-axis on a log-scale
      ylab = "MSE (log scale)",
      xlab = "n (log scale)")
 
-## Slope: 
+## Computing the slope (values read out from the plot): 
 (log(0.1) - log(1)) / (log(50) - log(5))
 ```
 
