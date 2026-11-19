@@ -315,7 +315,7 @@ window.Quarto = {
 <li>
 <span class="math inline">\(\varepsilon_i\)</span> denotes the statistical error term.</li>
 </ul>
-<p>It is convenient to write <a href="#eq-LinMod" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-LinMod</span></a> using matrix notation <span class="math display">\[
+<p>It is convenient to write <a href="#eq-LinMod" class="quarto-xref">Equation&nbsp;<span>5.1</span></a> using matrix notation <span class="math display">\[
 \begin{eqnarray*}
   Y_i&amp;=&amp;\underset{(1\times K)}{X_i^{\top}}\underset{(K\times 1)}{\beta} +\varepsilon_i, \quad i=1,\dots,n,
 \end{eqnarray*}
@@ -381,7 +381,7 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Due to <a href="#eq-LinMod" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-LinMod</span></a>, this i.i.d. assumption is equivalent to assuming that the multivariate random variables <span class="math display">\[
+<p>Due to <a href="#eq-LinMod" class="quarto-xref">Equation&nbsp;<span>5.1</span></a>, this i.i.d. assumption is equivalent to assuming that the multivariate random variables <span class="math display">\[
 (\varepsilon_i,X_{i1},\dots,X_{iK})\in\mathbb{R}^{K+1}
 \]</span> are i.i.d. across <span class="math inline">\(i=1,\dots,n\)</span>.</p>
 </div>
@@ -421,7 +421,7 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Together with the random sample assumption (Assumption 1, Part (b)) <a href="#eq-assExogen" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-assExogen</span></a> even implies <strong>strict exogeneity</strong> <span class="math display">\[
+<p>Together with the random sample assumption (Assumption 1, Part (b)) <a href="#eq-assExogen" class="quarto-xref">Equation&nbsp;<span>5.2</span></a> even implies <strong>strict exogeneity</strong> <span class="math display">\[
 E(\varepsilon|X) = \underset{(n\times 1)}{0}
 \]</span> since we have independence across <span class="math inline">\(i=1,\dots,n\)</span>. Under strict exogeneity, the mean of the random vector <span class="math inline">\(\varepsilon\)</span> is zero irrespective of the realizations of the <span class="math inline">\((n\times K)\)</span>-dimensional random predictor matrix <span class="math inline">\(X.\)</span></p>
 </div>
@@ -578,7 +578,7 @@ Cov(\varepsilon_n,\varepsilon_1|X)&amp;Cov(\varepsilon_n,\varepsilon_2|X)&amp;\d
 </li>
 </ul>
 <!-- **Technical Note:** When we write that $Var(\varepsilon_i|X)=\sigma^2$ or $Var(\varepsilon_i|X_i)=\sigma^2_i,$ we implicitly assume that these second moments exists and that they are finite.  --><section id="homoskedastic-versus-heteroskedastic-error-terms" class="level4 unnumbered"><h4 class="unnumbered anchored" data-anchor-id="homoskedastic-versus-heteroskedastic-error-terms"><strong>Homoskedastic versus Heteroskedastic Error Terms</strong></h4>
-<p>The i.i.d. assumption is not as restrictive as it may seem on first sight. It allows for dependence between <span class="math inline">\(\varepsilon_i\)</span> and <span class="math inline">\((X_{i1},\dots,X_{iK})\in\mathbb{R}^K\)</span>. That is, the error term <span class="math inline">\(\varepsilon_i\)</span> can have a conditional distribution which depends on <span class="math inline">\((X_{i1},\dots,X_{iK})\)</span>; see <a href="#sec-condDistr" class="quarto-xref"><span class="quarto-unresolved-ref">sec-condDistr</span></a>.</p>
+<p>The i.i.d. assumption is not as restrictive as it may seem on first sight. It allows for dependence between <span class="math inline">\(\varepsilon_i\)</span> and <span class="math inline">\((X_{i1},\dots,X_{iK})\in\mathbb{R}^K\)</span>. That is, the error term <span class="math inline">\(\varepsilon_i\)</span> can have a conditional distribution which depends on <span class="math inline">\((X_{i1},\dots,X_{iK})\)</span>; see <a href="02-Probability.html#sec-condDistr" class="quarto-xref"><span>Section 2.2.2.5</span></a>.</p>
 <!-- However, we need to rule out one certain 
 dependency between $\varepsilon_i$ and $X_i$; namely the conditional mean of $\varepsilon_i$ is not 
 allowed to depend on $X_i$ (see Assumption 2: Exogeneity). -->
@@ -608,7 +608,7 @@ X_{i2}\sim U[-4,4]
 \]</span> for all <span class="math inline">\(i=1,\dots,n.\)</span> This error term is mean independent of <span class="math inline">\(X_i\)</span> since <span class="math inline">\(E(\varepsilon_i|X_i)=0,\)</span> but it has a heteroskedastic conditional variance since <span class="math display">\[
 Var(\varepsilon_i|X_i)=\frac{1}{12}X_{i2}^2
 \]</span> depends on <span class="math inline">\(X_{i2}.\)</span></p>
-<p>Sometimes, we need to be more restrictive by assuming that also the variances of the error terms <span class="math inline">\(\varepsilon_i\)</span> are independent of <span class="math inline">\(X_i;\)</span> for instance, to do small sample inference (see <a href="#sec-ssinf" class="quarto-xref"><span class="quarto-unresolved-ref">sec-ssinf</span></a>).</p>
+<p>Sometimes, we need to be more restrictive by assuming that also the variances of the error terms <span class="math inline">\(\varepsilon_i\)</span> are independent of <span class="math inline">\(X_i;\)</span> for instance, to do small sample inference (see <a href="06-Small-Sample-Inference.html" class="quarto-xref"><span>Chapter 6</span></a>).</p>
 <div class="callout callout-style-simple callout-none no-icon">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
@@ -708,7 +708,7 @@ E(X_{ik}\varepsilon_i)=E(X_{ik}E(\varepsilon_i|X_{ik}))=E(X_{ik}0)=0
 </div>
 </div>
 </div>
-<p>Because the mean of the error term is zero (<span class="math inline">\(E(\varepsilon_i)=0\)</span>; see <a href="#thm-a" class="quarto-xref">Theorem&nbsp;<span class="quarto-unresolved-ref">thm-a</span></a>), it follows that the orthogonality property, <span class="math inline">\(E(X_{ik}\varepsilon_i)=0,\)</span> is equivalent to a zero correlation property.</p>
+<p>Because the mean of the error term is zero (<span class="math inline">\(E(\varepsilon_i)=0\)</span>; see <a href="#thm-a" class="quarto-xref">Theorem&nbsp;<span>5.1</span></a>), it follows that the orthogonality property, <span class="math inline">\(E(X_{ik}\varepsilon_i)=0,\)</span> is equivalent to a zero correlation property.</p>
 <div class="callout callout-style-simple callout-none no-icon">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
@@ -755,7 +755,7 @@ Correlations between the error term <span class="math inline">\(\epsilon_i\)</sp
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>By <a href="#thm-c" class="quarto-xref">Theorem&nbsp;<span class="quarto-unresolved-ref">thm-c</span></a>, we have that</p>
+<p>By <a href="#thm-c" class="quarto-xref">Theorem&nbsp;<span>5.3</span></a>, we have that</p>
 <p><span class="math display">\[
 \underbrace{E(\epsilon_i|X_i)=0}_{A} \Rightarrow \underbrace{\operatorname{Cov}(\epsilon_i,X_{ik})=0\quad \text{for all}\quad k=1,\dots,K}_{B}
 \]</span></p>
@@ -844,7 +844,7 @@ S_n(b)
 \Leftrightarrow\qquad X^{\top} X\hat{\beta}
 &amp;=\underset{(K\times 1)}{X^{\top}Y}.
 \end{align*}
-\qquad(5.3)\]</span></span> From our rank assumption (Assumption 3) it follows that <span class="math inline">\(X^{\top}X\)</span> is an invertible <span class="math inline">\((K\times K)\)</span>-dimensional matrix which allows us to solve the equation system in <a href="#eq-NormalEquations" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-NormalEquations</span></a> by <span class="math display">\[
+\qquad(5.3)\]</span></span> From our rank assumption (Assumption 3) it follows that <span class="math inline">\(X^{\top}X\)</span> is an invertible <span class="math inline">\((K\times K)\)</span>-dimensional matrix which allows us to solve the equation system in <a href="#eq-NormalEquations" class="quarto-xref">Equation&nbsp;<span>5.3</span></a> by <span class="math display">\[
 \begin{aligned}
 \underset{(K\times 1)}{\hat{\beta}} &amp;=\left(X^{\top} X\right)^{-1} X^{\top} Y.
 \end{aligned}
@@ -912,7 +912,7 @@ E(X_iX_i^{\top}) &amp; \quad \text{is substituted by}\quad \frac{1}{n}\sum_{i=1}
 E(X_iY_i) &amp; \quad \text{is substituted by}\quad \frac{1}{n}\sum_{i=1}^n X_iY_i.
 \end{align*}
 \]</span></p>
-<p>Note that <a href="#eq-MMEstimator" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-MMEstimator</span></a> can be further simplified as following: <span class="math display">\[
+<p>Note that <a href="#eq-MMEstimator" class="quarto-xref">Equation&nbsp;<span>5.4</span></a> can be further simplified as following: <span class="math display">\[
 \begin{align*}
 \hat\beta_{mm}
 &amp; = \left(\frac{1}{n}\sum_{i=1}^n X_iX_i^{\top}\right)^{-1} \frac{1}{n}\sum_{i=1}^n X_iY_i  \\
@@ -929,11 +929,11 @@ $$
 where the latter statement only hold under Assumption 2 (exogeneity). -->
 <p>The method of moments estimation approach, firstly, checks whether the parameter of interest, <span class="math inline">\(\beta,\)</span> is identified; i.e., whether <span class="math inline">\(\beta\)</span> can be written in terms of population moments of observables <span id="eq-IdentificationBeta"><span class="math display">\[
 \beta = \left(E(X_iX_i^{\top})\right)^{-1} E(X_iY_i),
-\qquad(5.5)\]</span></span> where the identification result of <a href="#eq-IdentificationBeta" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-IdentificationBeta</span></a> only holds under Assumption 2 (exogeneity). The identified parameter <span class="math inline">\(\beta\)</span> is then estimated using the simple method of moments idea of substituting population moments by sample moments.</p>
+\qquad(5.5)\]</span></span> where the identification result of <a href="#eq-IdentificationBeta" class="quarto-xref">Equation&nbsp;<span>5.5</span></a> only holds under Assumption 2 (exogeneity). The identified parameter <span class="math inline">\(\beta\)</span> is then estimated using the simple method of moments idea of substituting population moments by sample moments.</p>
 <p>Note: If Assumption 2 (exogeneity) is violated, then we generally have that <span class="math display">\[
 \beta \neq \tilde \beta = \left(E(X_iX_i^{\top})\right)^{-1} E(X_iY_i).
 \]</span></p>
-<p>The OLS derivation of the OLS estimator does not require a check whether <span class="math inline">\(\beta\)</span> is actually identified. By the law of large numbers (sample means converge in probability to population means; see <a href="#sec-lsinf" class="quarto-xref"><span class="quarto-unresolved-ref">sec-lsinf</span></a>), the OLS estimator <span class="math display">\[
+<p>The OLS derivation of the OLS estimator does not require a check whether <span class="math inline">\(\beta\)</span> is actually identified. By the law of large numbers (sample means converge in probability to population means; see <a href="07-Asymptotics.html" class="quarto-xref"><span>Chapter 7</span></a>), the OLS estimator <span class="math display">\[
 \begin{align*}
 \hat\beta
 &amp; = \left(X^{\top}X\right)^{-1} X^{\top}Y\\[2ex]
@@ -1021,7 +1021,7 @@ X^{\top}\hat\varepsilon&amp;=&amp;X^{\top}M_XY\quad{\small\text{(By Def. of $M_X
 \Leftrightarrow\;\; X^{\top}\hat\varepsilon&amp;=&amp;\underset{(K\times n)}{0}\underset{(n\times 1)}{Y}\quad{\small\text{(since $X^{\top}M_X=0$)}}\\[2ex]
 \Leftrightarrow\;\; X^{\top}\hat\varepsilon&amp;=&amp;\underset{(K\times 1)}{0}.
 \end{eqnarray}
-\qquad(5.6)\]</span></span> Note that, in the case with intercept, <a href="#eq-ResidRestrictions" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-ResidRestrictions</span></a> implies that <span class="math display">\[
+\qquad(5.6)\]</span></span> Note that, in the case with intercept, <a href="#eq-ResidRestrictions" class="quarto-xref">Equation&nbsp;<span>5.6</span></a> implies that <span class="math display">\[
 \begin{align*}
 \sum_{i=1}^n 1\cdot \hat\varepsilon_i&amp; = 0\\[2ex]
 \Leftrightarrow\;\;\underbrace{\frac{1}{n}\sum_{i=1}^n \hat\varepsilon_i}_{=\bar{\hat\varepsilon}} &amp; = 0\\[2ex]
@@ -1034,7 +1034,7 @@ X^{\top}\hat\varepsilon&amp;=0\\
 \Leftrightarrow\;\hat Y^{\top}\hat\varepsilon&amp;=0.
 \end{align*}
 \]</span></p>
-<p>Another insight from <a href="#eq-ResidRestrictions" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-ResidRestrictions</span></a> is that the vector <span class="math inline">\(\hat\varepsilon\)</span> has to satisfy <span class="math inline">\(K\)</span> linear restrictions which means we loose <span class="math inline">\(K\)</span> degrees of freedom in the data. Consequently, the vector of residuals <span class="math inline">\(\hat\varepsilon\)</span> has only <span class="math inline">\(n-K\)</span> so-called <em>degrees of freedom</em>. This loss of <span class="math inline">\(K\)</span> degrees of freedom also appears in the definition of the <em>unbiased</em> variance estimator <span class="math display">\[
+<p>Another insight from <a href="#eq-ResidRestrictions" class="quarto-xref">Equation&nbsp;<span>5.6</span></a> is that the vector <span class="math inline">\(\hat\varepsilon\)</span> has to satisfy <span class="math inline">\(K\)</span> linear restrictions which means we loose <span class="math inline">\(K\)</span> degrees of freedom in the data. Consequently, the vector of residuals <span class="math inline">\(\hat\varepsilon\)</span> has only <span class="math inline">\(n-K\)</span> so-called <em>degrees of freedom</em>. This loss of <span class="math inline">\(K\)</span> degrees of freedom also appears in the definition of the <em>unbiased</em> variance estimator <span class="math display">\[
 s_{UB}^2=\frac{1}{n-K}\sum_{i=1}^n\hat\varepsilon_i^2.
 \]</span></p>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -1070,7 +1070,7 @@ Y^{\top}Y&amp;=&amp;(\hat Y+\hat\varepsilon)^{\top}(\hat Y+\hat\varepsilon)\nota
 </div>
 <div class="callout-body-container">
 <div id="thm-vardecomp" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 5.4 (Variance Decomposition)</strong></span> For the linear regression model with intercept (<a href="#eq-LinMod" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-LinMod</span></a>), the total sample variance of the dependent variable <span class="math inline">\(Y_1,\dots,Y_n\)</span> can be decomposed as following: <span class="math display">\[\begin{eqnarray}
+<p><span class="theorem-title"><strong>Theorem 5.4 (Variance Decomposition)</strong></span> For the linear regression model with intercept (<a href="#eq-LinMod" class="quarto-xref">Equation&nbsp;<span>5.1</span></a>), the total sample variance of the dependent variable <span class="math inline">\(Y_1,\dots,Y_n\)</span> can be decomposed as following: <span class="math display">\[\begin{eqnarray}
 \underset{\text{total sample variance}}{\frac{1}{n}\sum_{i=1}^n\left(Y_i-\bar{Y}\right)^2}&amp;=&amp;\underset{\text{explained sample variance}}{\frac{1}{n}\sum_{i=1}^n\left(\hat{Y}_i-\bar{\hat{Y}}\right)^2}+\underset{\text{unexplained sample variance}}{\frac{1}{n}\sum_{i=1}^n\hat\varepsilon_i^2,}\label{VarDecomp}
 \end{eqnarray}\]</span> where <span class="math inline">\(\bar{Y}=\frac{1}{n}\sum_{i=1}^nY_i\)</span> and <span class="math inline">\(\bar{\hat{Y}}=\frac{1}{n}\sum_{i=1}^n\hat{Y}_i,\)</span> and where <span class="math inline">\(\bar{Y}=\bar{\hat{Y}}.\)</span></p>
 </div>
@@ -1240,7 +1240,7 @@ Var(Z|X)
 </div>
 </div>
 </div>
-<p>Using the definition of the conditional variance (<a href="#def-CondVarMult" class="quarto-xref">Definition&nbsp;<span class="quarto-unresolved-ref">def-CondVarMult</span></a>) for multivariate random variables <span class="math inline">\((Z=(X^{\top}X)^{-1}X^{\top}\varepsilon)\)</span> we have that <span class="math display">\[
+<p>Using the definition of the conditional variance (<a href="#def-CondVarMult" class="quarto-xref">Definition&nbsp;<span>5.3</span></a>) for multivariate random variables <span class="math inline">\((Z=(X^{\top}X)^{-1}X^{\top}\varepsilon)\)</span> we have that <span class="math display">\[
 \begin{align*}
 &amp;Var(\hat\beta|X)=\\[2ex]
 %&amp;=Var(\hat\beta - \beta|X)\\[2ex]
@@ -1375,9 +1375,9 @@ E(\tilde{\beta}|X)=\underbrace{E(DX{\beta}|X)}_{=DX\beta}+\underbrace{E(D\vareps
 \]</span> and thus <span id="eq-c3e17"><span class="math display">\[
 E(\tilde{\beta}|X)=DX{\beta}+0+{\beta}.
 \qquad(5.8)\]</span></span></p>
-<p>Since <span class="math inline">\(\tilde{\beta}\)</span> is (by assumption) unbiased, we have that <span class="math inline">\(E(\tilde{\beta}|X)={\beta}\)</span>. Therefore, <a href="#eq-c3e17" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-c3e17</span></a> implies that <span class="math inline">\(DX=0_{(K\times K)}\)</span> since we must have that <span class="math display">\[
+<p>Since <span class="math inline">\(\tilde{\beta}\)</span> is (by assumption) unbiased, we have that <span class="math inline">\(E(\tilde{\beta}|X)={\beta}\)</span>. Therefore, <a href="#eq-c3e17" class="quarto-xref">Equation&nbsp;<span>5.8</span></a> implies that <span class="math inline">\(DX=0_{(K\times K)}\)</span> since we must have that <span class="math display">\[
 E(\tilde{\beta}|X)=DX{\beta}+0+{\beta}=\beta.
-\]</span> Plugging <span class="math inline">\(DX=0\)</span> into <a href="#eq-c3e16" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-c3e16</span></a> yields, <span class="math display">\[
+\]</span> Plugging <span class="math inline">\(DX=0\)</span> into <a href="#eq-c3e16" class="quarto-xref">Equation&nbsp;<span>5.7</span></a> yields, <span class="math display">\[
 \begin{align*}
 \tilde{\beta}&amp;=D{\varepsilon} + \hat{\beta}\\[2ex]
 \tilde{\beta}-{\beta}&amp;=D{\varepsilon} + \highlight{(\hat{\beta}-{\beta})}\\[2ex]
@@ -1392,7 +1392,7 @@ E(\tilde{\beta}|X)=DX{\beta}+0+{\beta}=\beta.
 &amp;=\highlight{(X^{\top}X)^{-1}X^{\top}\varepsilon}.
 \end{align*}
 \]</span></p>
-<p>Using that <span class="math inline">\(Var(\tilde{\beta}|X)= Var(\tilde{\beta}-{\beta}|X)\)</span> since <span class="math inline">\(\beta\)</span> is not random and using <a href="#eq-c3e18" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-c3e18</span></a> yields <span class="math display">\[
+<p>Using that <span class="math inline">\(Var(\tilde{\beta}|X)= Var(\tilde{\beta}-{\beta}|X)\)</span> since <span class="math inline">\(\beta\)</span> is not random and using <a href="#eq-c3e18" class="quarto-xref">Equation&nbsp;<span>5.9</span></a> yields <span class="math display">\[
 \begin{align*}
 Var(\tilde{\beta}|X)
 &amp;= Var((D + (X^{\top}X)^{-1}X^{\top}){\varepsilon}|X)\\[2ex]
@@ -1937,7 +1937,7 @@ Y_i = \beta_1 + \beta_2 X_{i2} + \beta_3 X_{i2}^2 +  \varepsilon_i
 </section><section id="behavior-of-the-ols-estimates-for-resampled-data" class="level3" data-number="5.5.4"><h3 data-number="5.5.4" class="anchored" data-anchor-id="behavior-of-the-ols-estimates-for-resampled-data">
 <span class="header-section-number">5.5.4</span> Behavior of the OLS Estimates for Resampled Data</h3>
 <p>Usually, we only observe <em>one</em> estimate <span class="math inline">\(\hat{\beta}\)</span> of <span class="math inline">\(\beta\)</span> computed based on <em>one</em> given dataset (one realization of the random sample).</p>
-<p>However, in order to understand the statistical properties of the estimator <span class="math inline">\(\hat{\beta}\)</span> we need to view it as a random variable which yields different realizations in repeated realizations of the random sample from the Model (<a href="#eq-LinMod" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-LinMod</span></a>).</p>
+<p>However, in order to understand the statistical properties of the estimator <span class="math inline">\(\hat{\beta}\)</span> we need to view it as a random variable which yields different realizations in repeated realizations of the random sample from the Model (<a href="#eq-LinMod" class="quarto-xref">Equation&nbsp;<span>5.1</span></a>).</p>
 <p>This view allows us then to think about questions like:</p>
 <ul>
 <li>Is the estimator able to estimate the unknown parameter-value correctly <em>on average</em>?<br>

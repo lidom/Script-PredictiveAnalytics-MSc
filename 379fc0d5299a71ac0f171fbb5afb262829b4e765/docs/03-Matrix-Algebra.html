@@ -278,22 +278,22 @@ window.Quarto = {
   
 
 
-</header><!-- LTeX: language=en-US --><p>Matrix algebra is the language of the multiple linear regression model in <a href="#sec-MLR" class="quarto-xref"><span class="quarto-unresolved-ref">sec-MLR</span></a>. With <span class="math inline">\(n\)</span> observations and <span class="math inline">\(K\)</span> predictors, the model and its OLS estimator can be written compactly as <span class="math display">\[
+</header><!-- LTeX: language=en-US --><p>Matrix algebra is the language of the multiple linear regression model in <a href="05-Multiple-Linear-Regression.html" class="quarto-xref"><span>Chapter 5</span></a>. With <span class="math inline">\(n\)</span> observations and <span class="math inline">\(K\)</span> predictors, the model and its OLS estimator can be written compactly as <span class="math display">\[
 \underset{(n\times 1)}{Y}=\underset{(n\times K)}{X}\,\underset{(K\times 1)}{\beta} + \underset{(n\times 1)}{\varepsilon}
 \qquad\text{and}\qquad
 \hat\beta=\left(X^{\top}X\right)^{-1}X^{\top}Y.
 \]</span> This interlude provides the tools to read these two formulas:</p>
 <ul>
 <li>
-<a href="#sec-MAbasics" class="quarto-xref"><span class="quarto-unresolved-ref">sec-MAbasics</span></a>: What are the vectors <span class="math inline">\(Y,\)</span> <span class="math inline">\(\beta,\)</span> <span class="math inline">\(\varepsilon,\)</span> the matrix <span class="math inline">\(X,\)</span> and its transpose <span class="math inline">\(X^{\top}\)</span>?</li>
+<a href="#sec-MAbasics" class="quarto-xref"><span>Section 4.1</span></a>: What are the vectors <span class="math inline">\(Y,\)</span> <span class="math inline">\(\beta,\)</span> <span class="math inline">\(\varepsilon,\)</span> the matrix <span class="math inline">\(X,\)</span> and its transpose <span class="math inline">\(X^{\top}\)</span>?</li>
 <li>
-<a href="#sec-MAsums" class="quarto-xref"><span class="quarto-unresolved-ref">sec-MAsums</span></a>: What do <span class="math inline">\(X\beta\)</span> and <span class="math inline">\(X^{\top}X\)</span> mean?</li>
+<a href="#sec-MAsums" class="quarto-xref"><span>Section 4.2</span></a>: What do <span class="math inline">\(X\beta\)</span> and <span class="math inline">\(X^{\top}X\)</span> mean?</li>
 <li>
-<a href="#sec-MArank" class="quarto-xref"><span class="quarto-unresolved-ref">sec-MArank</span></a>: When does the inverse <span class="math inline">\(\left(X^{\top}X\right)^{-1}\)</span> exist?</li>
+<a href="#sec-MArank" class="quarto-xref"><span>Section 4.3</span></a>: When does the inverse <span class="math inline">\(\left(X^{\top}X\right)^{-1}\)</span> exist?</li>
 <li>
-<a href="#sec-MAfurther" class="quarto-xref"><span class="quarto-unresolved-ref">sec-MAfurther</span></a>: Two matrix properties we need to study the OLS estimator.</li>
+<a href="#sec-MAfurther" class="quarto-xref"><span>Section 4.4</span></a>: Two matrix properties we need to study the OLS estimator.</li>
 <li>
-<a href="#sec-MAcalculus" class="quarto-xref"><span class="quarto-unresolved-ref">sec-MAcalculus</span></a>: Where does the formula for <span class="math inline">\(\hat\beta\)</span> come from?</li>
+<a href="#sec-MAcalculus" class="quarto-xref"><span>Section 4.5</span></a>: Where does the formula for <span class="math inline">\(\hat\beta\)</span> come from?</li>
 </ul>
 <section id="sec-MAbasics" class="level2" data-number="4.1"><h2 data-number="4.1" class="anchored" data-anchor-id="sec-MAbasics">
 <span class="header-section-number">4.1</span> Basic Definitions</h2>
@@ -1107,7 +1107,7 @@ c^{\top}Bc = c_1^2 + 2c_1c_2 + c_2^2 = (c_1+c_2)^2 \geq 0,
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-body-container">
-<p>Why this matters in econometrics: for a random vector <span class="math inline">\(Z\)</span> with variance matrix <span class="math inline">\(Var(Z),\)</span> the variance of the scalar random variable <span class="math inline">\(c^{\top}Z\)</span> is <span class="math inline">\(Var(c^{\top}Z)=c^{\top}Var(Z)\,c\geq 0.\)</span> Hence, every variance matrix is positive semi-definite, the matrix counterpart of a variance being nonnegative. The Gauss-Markov Theorem (<a href="#thm-GMTheorem" class="quarto-xref">Theorem&nbsp;<span class="quarto-unresolved-ref">thm-GMTheorem</span></a>) uses exactly this matrix ordering: <span class="math inline">\(Var(\tilde\beta|X)\geq Var(\hat\beta|X)\)</span> means that <span class="math inline">\(Var(\tilde\beta|X)-Var(\hat\beta|X)\)</span> is positive semi-definite.</p>
+<p>Why this matters in econometrics: for a random vector <span class="math inline">\(Z\)</span> with variance matrix <span class="math inline">\(Var(Z),\)</span> the variance of the scalar random variable <span class="math inline">\(c^{\top}Z\)</span> is <span class="math inline">\(Var(c^{\top}Z)=c^{\top}Var(Z)\,c\geq 0.\)</span> Hence, every variance matrix is positive semi-definite, the matrix counterpart of a variance being nonnegative. The Gauss-Markov Theorem (<a href="05-Multiple-Linear-Regression.html#thm-GMTheorem" class="quarto-xref">Theorem&nbsp;<span>5.5</span></a>) uses exactly this matrix ordering: <span class="math inline">\(Var(\tilde\beta|X)\geq Var(\hat\beta|X)\)</span> means that <span class="math inline">\(Var(\tilde\beta|X)-Var(\hat\beta|X)\)</span> is positive semi-definite.</p>
 </div>
 </div>
 </div>
