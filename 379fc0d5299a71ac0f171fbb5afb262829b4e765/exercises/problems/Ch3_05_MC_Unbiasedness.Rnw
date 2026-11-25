@@ -1,0 +1,35 @@
+<<echo=FALSE, results=hide>>=
+## Script: Section "Bias" and Example "Bias of the Sample Mean"
+mu <- sample(c(20, 35, 50), 1)
+@
+
+\begin{question}
+\textbf{Unbiasedness} (Script: Section ``Bias'')
+
+The average spending of all customers of a shop is $\mu=E(X_i)=\Sexpr{mu}$ Euro. The sample mean $\bar{X}_n$ is an \emph{unbiased} estimator of $\mu$. What does this mean?
+\begin{answerlist}
+  \item $E(\bar{X}_n)=\Sexpr{mu}$, i.e., on average over all possible random samples, the sample mean equals the true mean $\mu=\Sexpr{mu}$.
+  \item The estimate $\bar{X}_{n,obs}$ computed from the observed data is exactly equal to $\Sexpr{mu}$.
+  \item $\operatorname{Var}(\bar{X}_n)=0$, i.e., the sample mean does not vary from sample to sample.
+  \item $E(\bar{X}_n)$ gets close to $\Sexpr{mu}$ only as the sample size $n$ goes to infinity.
+\end{answerlist}
+\end{question}
+
+\begin{solution}
+An estimator $\hat\theta_n$ is unbiased if $\operatorname{Bias}(\hat\theta_n)=E(\hat\theta_n)-\theta=0$ for all sample sizes $n$. For the sample mean, this means
+$$
+E(\bar{X}_n)=\mu=\Sexpr{mu}.
+$$
+The distribution of $\bar{X}_n$ is \emph{centered} around the true mean. Single realizations of $\bar{X}_n$ can still lie above or below $\Sexpr{mu}$.
+\begin{answerlist}
+  \item True.
+  \item False. Unbiasedness is a property of the \emph{estimator} (a random variable), not of a single estimate. A single estimate is usually not exactly equal to $\mu$.
+  \item False. This mixes up bias and variance. In fact, $\operatorname{Var}(\bar{X}_n)=\sigma^2/n>0$.
+  \item False. This describes \emph{asymptotic} unbiasedness. The sample mean is unbiased for \emph{every} sample size $n$.
+\end{answerlist}
+\end{solution}
+
+\exname{Unbiasedness}
+\extype{schoice}
+\exsolution{1000}
+\exshuffle{4}

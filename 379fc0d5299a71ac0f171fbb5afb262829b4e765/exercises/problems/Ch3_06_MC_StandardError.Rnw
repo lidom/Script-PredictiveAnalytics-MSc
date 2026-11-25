@@ -1,0 +1,54 @@
+<<echo=FALSE, results=hide>>=
+## Script: Section "Variance and Standard Error" and Example "Variance of the Sample Mean"
+sigma <- sample(c(6, 8, 12, 20), 1)        # standard deviation of X_i
+n     <- sample(c(16, 25, 64, 100), 1)
+sigma2 <- sigma^2
+
+sol   <- sigma / sqrt(n)                    # SE
+wrong <- c(sigma2 / n,                      # variance instead of SE
+           sigma / n,                       # divided by n instead of sqrt(n)
+           sigma2 / sqrt(n))                # variance divided by sqrt(n)
+stopifnot(length(unique(round(c(sol, wrong), 3))) == 4)
+@
+
+\begin{question}
+\textbf{Standard Error of the Sample Mean} (Script: Example ``Variance of the Sample Mean'')
+
+The spending $X_i$ (in Euro) of the customers of a shop has variance $\operatorname{Var}(X_i)=\sigma^2=\Sexpr{sigma2}$. The shop computes the sample mean $\bar{X}_n$ from an i.i.d.\ random sample of $n=\Sexpr{n}$ customers. What is the standard error $\operatorname{SE}(\bar{X}_n)$?
+\begin{answerlist}
+  \item $\Sexpr{fmt(sol, 2)}$
+  \item $\Sexpr{fmt(wrong[1], 2)}$
+  \item $\Sexpr{fmt(wrong[2], 2)}$
+  \item $\Sexpr{fmt(wrong[3], 2)}$
+\end{answerlist}
+\end{question}
+
+\begin{solution}
+First, we compute the variance of the sample mean:
+\begin{align*}
+\operatorname{Var}(\bar{X}_n)
+&=\frac{\sigma^2}{n}\\[1ex]
+&=\frac{\Sexpr{sigma2}}{\Sexpr{n}}\\[1ex]
+&=\Sexpr{fmt(sigma2 / n, 2)}.
+\end{align*}
+The standard error is the square root of the variance:
+\begin{align*}
+\operatorname{SE}(\bar{X}_n)
+&=\sqrt{\operatorname{Var}(\bar{X}_n)}\\[1ex]
+&=\frac{\sigma}{\sqrt{n}}\\[1ex]
+&=\frac{\sqrt{\Sexpr{sigma2}}}{\sqrt{\Sexpr{n}}}\\[1ex]
+&=\frac{\Sexpr{sigma}}{\Sexpr{sqrt(n)}}\\[1ex]
+&=\Sexpr{fmt(sol, 2)}.
+\end{align*}
+\begin{answerlist}
+  \item True.
+  \item False. This is the \emph{variance} $\operatorname{Var}(\bar{X}_n)=\sigma^2/n$. The standard error is its square root.
+  \item False. Here, $\sigma$ was divided by $n$ instead of by $\sqrt{n}$.
+  \item False. Here, the variance $\sigma^2$ (instead of the standard deviation $\sigma$) was divided by $\sqrt{n}$.
+\end{answerlist}
+\end{solution}
+
+\exname{Standard Error of the Sample Mean}
+\extype{schoice}
+\exsolution{1000}
+\exshuffle{4}

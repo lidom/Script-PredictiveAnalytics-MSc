@@ -1,0 +1,97 @@
+<<echo=FALSE, results=hide>>=
+## Script: Section "Example: Sample Mean" and Examples "Bias/Variance/MSE of the Sample Mean"
+## (old Bonn exercise 1, simplified)
+mu     <- sample(c(5, 10, 20), 1)      # true mean
+sigma2 <- sample(c(2, 4, 8), 1)        # true variance
+n_seq  <- c(5, 20, 50)
+B      <- 10000
+
+## true values
+true_var <- sigma2 / n_seq             # = true MSE
+
+## Monte Carlo approximations (shown in the problem)
+MC_Bias <- MC_Var <- MC_MSE <- numeric(3)
+for (k in 1:3) {
+  estimates  <- replicate(B, mean(rnorm(n_seq[k], mean = mu, sd = sqrt(sigma2))))
+  MC_Bias[k] <- mean(estimates) - mu
+  MC_Var[k]  <- mean((estimates - mean(estimates))^2)
+  MC_MSE[k]  <- mean((estimates - mu)^2)
+}
+@
+
+\begin{question}
+\textbf{Bias, Variance, and MSE of the Sample Mean} (Script: Section ``Example: Sample Mean'' and Examples ``Bias/Variance/MSE of the Sample Mean'')
+
+Let $X_1,\dots,X_n$ be an i.i.d.\ random sample with $X_i\sim\mathcal{N}(\mu,\sigma^2)$, where
+$$
+\mu=\Sexpr{mu}\quad\text{and}\quad\sigma^2=\Sexpr{sigma2}.
+$$
+We estimate the mean $\mu$ by the sample mean $\bar{X}_n=\frac{1}{n}\sum_{i=1}^nX_i$.
+
+A Monte Carlo simulation with $B=10000$ repetitions gives the following approximations:
+\begin{center}
+\begin{tabular}{rccc}
+$n$ & Bias (MC) & Variance (MC) & MSE (MC)\\\hline
+$\Sexpr{n_seq[1]}$ & $\Sexpr{fmt(MC_Bias[1], 3)}$ & $\Sexpr{fmt(MC_Var[1], 3)}$ & $\Sexpr{fmt(MC_MSE[1], 3)}$\\
+$\Sexpr{n_seq[2]}$ & $\Sexpr{fmt(MC_Bias[2], 3)}$ & $\Sexpr{fmt(MC_Var[2], 3)}$ & $\Sexpr{fmt(MC_MSE[2], 3)}$\\
+$\Sexpr{n_seq[3]}$ & $\Sexpr{fmt(MC_Bias[3], 3)}$ & $\Sexpr{fmt(MC_Var[3], 3)}$ & $\Sexpr{fmt(MC_MSE[3], 3)}$
+\end{tabular}
+\end{center}
+\begin{enumerate}
+  \item Compute the true bias, the true variance, and the true MSE of $\bar{X}_n$ for $n\in\{\Sexpr{n_seq[1]},\Sexpr{n_seq[2]},\Sexpr{n_seq[3]}\}$.
+  \item Compare your results from (a) with the Monte Carlo approximations in the table.
+  \item How can we make the Monte Carlo approximations more precise?
+\end{enumerate}
+\end{question}
+
+\begin{solution}
+\begin{enumerate}
+  \item \textbf{Bias:} The expected value of a sum is the sum of the expected values. Thus,
+  \begin{align*}
+  E\left(\bar{X}_n\right)
+  &=E\left(\frac{1}{n}\sum_{i=1}^nX_i\right)\\[1ex]
+  &=\frac{1}{n}\sum_{i=1}^nE(X_i)\\[1ex]
+  &=\frac{1}{n}\,n\,\mu\\[1ex]
+  &=\mu
+  \end{align*}
+  and
+  $$
+  \operatorname{Bias}\left(\bar{X}_n\right)=E\left(\bar{X}_n\right)-\mu=\mu-\mu=0
+  $$
+  for all sample sizes $n$.
+
+  \textbf{Variance:} Since the $X_i$'s are independent, the variance of their sum is the sum of their variances. Thus,
+  \begin{align*}
+  \operatorname{Var}\left(\bar{X}_n\right)
+  &=\operatorname{Var}\left(\frac{1}{n}\sum_{i=1}^nX_i\right)\\[1ex]
+  &=\frac{1}{n^2}\sum_{i=1}^n\operatorname{Var}(X_i)\\[1ex]
+  &=\frac{1}{n^2}\,n\,\sigma^2\\[1ex]
+  &=\frac{\sigma^2}{n}=\frac{\Sexpr{sigma2}}{n}.
+  \end{align*}
+
+  \textbf{MSE:} The MSE is the squared bias plus the variance:
+  \begin{align*}
+  \operatorname{MSE}\left(\bar{X}_n\right)
+  &=\left(\operatorname{Bias}\left(\bar{X}_n\right)\right)^2+\operatorname{Var}\left(\bar{X}_n\right)\\[1ex]
+  &=0^2+\frac{\sigma^2}{n}\\[1ex]
+  &=\frac{\Sexpr{sigma2}}{n}.
+  \end{align*}
+  Plugging in the sample sizes gives:
+  \begin{center}
+  \begin{tabular}{rccc}
+  $n$ & Bias (true) & Variance (true) & MSE (true)\\\hline
+  $\Sexpr{n_seq[1]}$ & $0$ & $\Sexpr{sigma2}/\Sexpr{n_seq[1]}=\Sexpr{fmt(true_var[1], 3)}$ & $\Sexpr{fmt(true_var[1], 3)}$\\
+  $\Sexpr{n_seq[2]}$ & $0$ & $\Sexpr{sigma2}/\Sexpr{n_seq[2]}=\Sexpr{fmt(true_var[2], 3)}$ & $\Sexpr{fmt(true_var[2], 3)}$\\
+  $\Sexpr{n_seq[3]}$ & $0$ & $\Sexpr{sigma2}/\Sexpr{n_seq[3]}=\Sexpr{fmt(true_var[3], 3)}$ & $\Sexpr{fmt(true_var[3], 3)}$
+  \end{tabular}
+  \end{center}
+  \item The Monte Carlo approximations are very close to the true values. They are not exactly equal, because the Monte Carlo simulation uses only a finite number $B=10000$ of repetitions.
+  \item By increasing the number of Monte Carlo repetitions $B$. By the law of large numbers, the Monte Carlo approximations get arbitrarily precise as $B\to\infty$.
+
+  \textbf{Careful:} Increasing the sample size $n$ does \emph{not} make the Monte Carlo approximations more precise. A larger $n$ changes the \emph{true} variance and the \emph{true} MSE of $\bar{X}_n$ (they become smaller), i.e., it changes the quantities that we want to approximate.
+\end{enumerate}
+\end{solution}
+
+\exname{Bias, Variance, and MSE of the Sample Mean}
+\extype{string}
+\exsolution{nil}

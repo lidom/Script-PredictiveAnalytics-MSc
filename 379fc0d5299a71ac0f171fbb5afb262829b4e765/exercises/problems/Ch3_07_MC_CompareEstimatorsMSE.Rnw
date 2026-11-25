@@ -1,0 +1,59 @@
+<<echo=FALSE, results=hide>>=
+## Script: Section "Mean Squared Error (MSE)"
+repeat {
+  biasA <- 0
+  varA  <- sample(c(4, 5, 6, 8), 1)
+  biasB <- sample(c(-1.5, -1, 1, 1.5), 1)
+  varB  <- sample(c(1, 2, 2.5, 3), 1)
+  mseA  <- biasA^2 + varA
+  mseB  <- biasB^2 + varB
+  if (mseB < mseA && abs(biasB) + varB < mseA) break   # B wins, also with the wrong formula
+}
+@
+
+\begin{question}
+\textbf{Comparing Two Estimators} (Script: Section ``Mean Squared Error (MSE)'')
+
+Two estimators $\hat\theta_A$ and $\hat\theta_B$ of the same parameter $\theta$ have the following bias and variance:
+\begin{center}
+\begin{tabular}{lcc}
+ & Bias & Variance\\\hline
+$\hat\theta_A$ & $\Sexpr{biasA}$ & $\Sexpr{varA}$\\
+$\hat\theta_B$ & $\Sexpr{biasB}$ & $\Sexpr{varB}$
+\end{tabular}
+\end{center}
+Which estimator is better according to the mean squared error (MSE)?
+\begin{answerlist}
+  \item $\hat\theta_B$, since $\operatorname{MSE}(\hat\theta_B)=\Sexpr{fmt(mseB, 2)}<\operatorname{MSE}(\hat\theta_A)=\Sexpr{fmt(mseA, 2)}$.
+  \item $\hat\theta_A$, since an unbiased estimator always has the smaller MSE.
+  \item $\hat\theta_A$, since $\operatorname{MSE}(\hat\theta_A)=0$.
+  \item Both are equally good, since the MSE only depends on the variance.
+\end{answerlist}
+\end{question}
+
+\begin{solution}
+The MSE is the squared bias plus the variance:
+\begin{align*}
+\operatorname{MSE}(\hat\theta_A)
+&=\left(\operatorname{Bias}(\hat\theta_A)\right)^2+\operatorname{Var}(\hat\theta_A)\\[1ex]
+&=\Sexpr{biasA}^2+\Sexpr{varA}\\[1ex]
+&=\Sexpr{fmt(mseA, 2)}\\[2ex]
+\operatorname{MSE}(\hat\theta_B)
+&=\left(\operatorname{Bias}(\hat\theta_B)\right)^2+\operatorname{Var}(\hat\theta_B)\\[1ex]
+&=(\Sexpr{biasB})^2+\Sexpr{varB}\\[1ex]
+&=\Sexpr{fmt(biasB^2, 2)}+\Sexpr{varB}\\[1ex]
+&=\Sexpr{fmt(mseB, 2)}.
+\end{align*}
+Thus, the biased estimator $\hat\theta_B$ has the smaller MSE. Its small bias is more than compensated by its much smaller variance.
+\begin{answerlist}
+  \item True.
+  \item False. Being unbiased does not guarantee the smallest MSE. Here, the large variance of $\hat\theta_A$ makes its MSE larger.
+  \item False. The MSE of an unbiased estimator equals its \emph{variance} ($\Sexpr{varA}$), not zero. Only the \emph{bias} of $\hat\theta_A$ is zero.
+  \item False. The MSE depends on both the bias and the variance: $\operatorname{MSE}=(\operatorname{Bias})^2+\operatorname{Var}$.
+\end{answerlist}
+\end{solution}
+
+\exname{Comparing Two Estimators}
+\extype{schoice}
+\exsolution{1000}
+\exshuffle{4}

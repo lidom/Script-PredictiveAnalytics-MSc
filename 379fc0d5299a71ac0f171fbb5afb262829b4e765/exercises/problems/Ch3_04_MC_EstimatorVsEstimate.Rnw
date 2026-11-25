@@ -1,0 +1,32 @@
+<<echo=FALSE, results=hide>>=
+## Script: Section "Estimator vs. Estimate" and
+##         Example "Estimating the Mean Spending of a Shop's Customers"
+n <- sample(c(20, 50, 100), 1)
+@
+
+\begin{question}
+\textbf{Estimator vs.\ Estimate} (Script: Section ``Estimator vs.\ Estimate'')
+
+A shop records the spending of $n=\Sexpr{n}$ randomly selected customers. Let $\bar{X}_n=\frac{1}{n}\sum_{i=1}^nX_i$ be the sample mean of the random sample $X_1,\dots,X_n$, and let $\bar{X}_{n,obs}=\frac{1}{n}\sum_{i=1}^nX_{i,obs}$ be the sample mean of the observed data. Which of the following statements is correct?
+\begin{answerlist}
+  \item $\bar{X}_n$ is a random variable, and $\bar{X}_{n,obs}$ is a fixed number (one realization of $\bar{X}_n$).
+  \item $\bar{X}_n$ is a fixed number, and $\bar{X}_{n,obs}$ is a random variable.
+  \item Both $\bar{X}_n$ and $\bar{X}_{n,obs}$ are fixed numbers, since both are computed from the same $\Sexpr{n}$ customers.
+  \item $\bar{X}_{n,obs}$ is always equal to the true mean $\mu=E(X_i)$, since it is computed from real data.
+\end{answerlist}
+\end{question}
+
+\begin{solution}
+The \textbf{estimator} $\bar{X}_n$ is a function of the random variables $X_1,\dots,X_n$, so it is itself a random variable. It describes all the values that we \emph{could} have observed (e.g., if the shop had selected other customers). The \textbf{estimate} $\bar{X}_{n,obs}$ is computed from the data that we \emph{actually} observed, so it is a fixed number, i.e., one realization of $\bar{X}_n$.
+\begin{answerlist}
+  \item True.
+  \item False. The roles are interchanged: the estimator is random, the estimate is a number.
+  \item False. $\bar{X}_n$ is computed from the \emph{random variables} $X_1,\dots,X_n$, not from the observed data. Other customers would give other values.
+  \item False. The estimate $\bar{X}_{n,obs}$ is only an approximation of $\mu$. Other customers would give a different estimate, but the true mean $\mu$ stays the same.
+\end{answerlist}
+\end{solution}
+
+\exname{Estimator vs. Estimate}
+\extype{schoice}
+\exsolution{1000}
+\exshuffle{4}

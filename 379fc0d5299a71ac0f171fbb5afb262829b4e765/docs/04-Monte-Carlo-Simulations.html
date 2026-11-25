@@ -216,9 +216,17 @@ window.Quarto = {
    
   <ul>
 <li><a href="#estimator-vs.-estimate" id="toc-estimator-vs.-estimate" class="nav-link active" data-scroll-target="#estimator-vs.-estimate"><span class="header-section-number">3.1</span> Estimator vs.&nbsp;Estimate</a></li>
-  <li><a href="#assessing-the-quality-of-estimators" id="toc-assessing-the-quality-of-estimators" class="nav-link" data-scroll-target="#assessing-the-quality-of-estimators"><span class="header-section-number">3.2</span> Assessing the Quality of Estimators</a></li>
+  <li>
+<a href="#assessing-the-quality-of-estimators" id="toc-assessing-the-quality-of-estimators" class="nav-link" data-scroll-target="#assessing-the-quality-of-estimators"><span class="header-section-number">3.2</span> Assessing the Quality of Estimators</a>
+  <ul class="collapse">
+<li><a href="#bias" id="toc-bias" class="nav-link" data-scroll-target="#bias"><span class="header-section-number">3.2.1</span> Bias</a></li>
+  <li><a href="#variance-and-standard-error" id="toc-variance-and-standard-error" class="nav-link" data-scroll-target="#variance-and-standard-error"><span class="header-section-number">3.2.2</span> Variance and Standard Error</a></li>
+  <li><a href="#mean-squared-error-mse" id="toc-mean-squared-error-mse" class="nav-link" data-scroll-target="#mean-squared-error-mse"><span class="header-section-number">3.2.3</span> Mean Squared Error (MSE)</a></li>
+  </ul>
+</li>
   <li><a href="#approximating-bias-variance-and-mse-using-mc-simulations" id="toc-approximating-bias-variance-and-mse-using-mc-simulations" class="nav-link" data-scroll-target="#approximating-bias-variance-and-mse-using-mc-simulations"><span class="header-section-number">3.3</span> Approximating Bias, Variance, and MSE using MC Simulations</a></li>
   <li><a href="#example-sample-mean" id="toc-example-sample-mean" class="nav-link" data-scroll-target="#example-sample-mean"><span class="header-section-number">3.4</span> Example: Sample Mean</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">3.5</span> Exercises</a></li>
   </ul></nav>
     </div>
 <!-- main -->
@@ -260,26 +268,89 @@ X_1,\dots,X_n.
 \]</span> The corresponding <strong>realization</strong> of the estimator is called an <strong>estimate</strong> of <span class="math inline">\(\theta\)</span> <span class="math display">\[
 \hat\theta_{n,obs}=\hat\theta(X_{1,obs},\dots,X_{n,obs}).
 \]</span></p>
-<p><strong>Examples:</strong></p>
-<ul>
-<li><p>The sample mean as an estimator of the population mean <span class="math inline">\(E(X_i) =\theta:\)</span> <span class="math display">\[
-\hat\theta_n=\bar{X}_n=\frac{1}{n}\sum_{i=1}^nX_i
-\]</span> For given data, we observe the realization <span class="math display">\[
-\hat\theta_{n,obs}=\bar{X}_{n,obs}=\frac{1}{n}\sum_{i=1}^nX_{i,obs}
-\]</span></p></li>
-<li><p>The sample variance as an estimator of the population variance <span class="math inline">\(Var(X_i) =\theta:\)</span> <span class="math display">\[
-\hat\theta_n=s_{UB}^2=\frac{1}{n-1}\sum_{i=1}^n\left(X_i - \bar{X}_n\right)^2
-\]</span> For given data, we observe the realization <span class="math display">\[
-\hat\theta_{n,obs}=s_{UB,obs}^2=\frac{1}{n-1}\sum_{i=1}^n\left(X_{i,obs} - \bar{X}_{n,obs}\right)^2
-\]</span></p></li>
-</ul>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Note
+Example: Estimators of the Mean and the Variance
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><p>The sample mean as an estimator of the population mean <span class="math inline">\(E(X_i) =\theta:\)</span> <span class="math display">\[
+\hat\theta_n=\bar{X}_n=\frac{1}{n}\sum_{i=1}^nX_i
+\]</span> For given data, we observe the realization <span class="math display">\[
+\hat\theta_{n,obs}=\bar{X}_{n,obs}=\frac{1}{n}\sum_{i=1}^nX_{i,obs}
+\]</span></p></li>
+<li><p>The <strong>U</strong>n<strong>B</strong>iased variance estimator of the population variance <span class="math inline">\(Var(X_i) =\theta\colon\)</span> <span class="math display">\[
+\hat\theta_n=s_{UB}^2=\frac{1}{n-1}\sum_{i=1}^n\left(X_i - \bar{X}_n\right)^2
+\]</span> For given data, we observe the realization <span class="math display">\[
+\hat\theta_{n,obs}=s_{UB,obs}^2=\frac{1}{n-1}\sum_{i=1}^n\left(X_{i,obs} - \bar{X}_{n,obs}\right)^2
+\]</span></p></li>
+<li><p>The <strong>M</strong>aximum <strong>L</strong>ikelihood estimator of the population variance <span class="math inline">\(Var(X_i) =\theta\colon\)</span> <span class="math display">\[
+\hat\theta_n=s_{ML}^2=\frac{1}{n}\sum_{i=1}^n\left(X_i - \bar{X}_n\right)^2
+\]</span> For given data, we observe the realization <span class="math display">\[
+\hat\theta_{n,obs}=s_{ML,obs}^2=\frac{1}{n}\sum_{i=1}^n\left(X_{i,obs} - \bar{X}_{n,obs}\right)^2
+\]</span></p></li>
+</ul>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Example: Estimating the Mean Spending of a Shop’s Customers
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Recall the shop example from the chapter on probability: a shop randomly selects <span class="math inline">\(n=10\)</span> customers and records how much each of them spends (in Euro). The observed data</p>
+<p><span class="math display">\[\begin{align*}
+&amp;\{X_{1,obs}, \ldots, X_{10,obs}\}\\[2ex]
+&amp;=\{43.7,\ 51.8,\ 41.6,\ 66.0,\ 53.3,\ 41.8,\ 54.9,\ 57.4,\ 55.8,\ 46.9\}
+\end{align*}\]</span> are assumed to be a realization of an i.i.d. random sample <span class="math inline">\(\{X_1,\dots,X_{10}\}\)</span> with <span class="math inline">\(X_i\sim F_X\)</span>. The shop wants to learn the mean spending <span class="math display">\[
+\theta=\mu=E(X_i)
+\]</span> of its customers.</p>
+<div class="spaced-list">
+<ul>
+<li><p>The <strong>estimator</strong> <span class="math display">\[
+\hat\theta_n=\bar{X}_n=\frac{1}{n}\sum_{i=1}^n X_i
+\]</span> is a function of the random variables <span class="math inline">\(X_1,\dots,X_n\)</span> and is, therefore, itself a <strong>random variable</strong>. It describes all the values of the average that we <em>could</em> have observed.</p></li>
+<li><p>The <strong>estimate</strong> <span class="math display">\[
+\hat\theta_{n,obs}=\bar{X}_{n,obs}=\frac{1}{n}\sum_{i=1}^n X_{i,obs}
+\]</span> is the value of the estimator computed from the observed data <span class="math inline">\(\{X_{1,obs}, \ldots, X_{n,obs}\}\)</span>. It is a fixed <strong>number</strong>; in the shop example, <span class="math display">\[
+\bar{X}_{n,obs}=51.3.
+\]</span></p></li>
+</ul>
+</div>
+<p>The following animation shows the observed data (first frame) together with further possible realizations of the same random sample.</p>
+<div class="spaced-list">
+<ul>
+<li><p>The dashed line shows the true (usually unknown) mean <span class="math inline">\(\mu=E(X_i)=50\)</span>.</p></li>
+<li><p>The solid line shows the realization of the estimator <span class="math inline">\(\bar{X}_n\)</span> computed from the respective realization of the random sample.</p></li>
+</ul>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="04-Monte-Carlo-Simulations_files/figure-html/unnamed-chunk-2-.gif" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Each frame of the animation shows one realization of the estimator <span class="math inline">\(\bar{X}_n\)</span>. That is, the estimate <span class="math inline">\(\bar{X}_{n,obs}\)</span> (first frame) is just one possible realization of the random estimator <span class="math inline">\(\bar{X}_n\)</span>. The realizations of <span class="math inline">\(\bar{X}_n\)</span> jump around from realization to realization, but they always stay close to the unknown mean <span class="math inline">\(\mu\)</span>. How to assess this quality of an estimator is the topic of the next section.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note: Notation for Estimators and Estimates
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -305,6 +376,8 @@ To check (via MC-Simulations) the quality of an estimator, one can look at the t
 <li>mean squared error (mse) of an estimator <span class="math inline">\(\hat{\theta}_n\)</span>
 </li>
 </ul>
+<section id="bias" class="level3" data-number="3.2.1"><h3 data-number="3.2.1" class="anchored" data-anchor-id="bias">
+<span class="header-section-number">3.2.1</span> Bias</h3>
 <div class="callout callout-style-simple callout-none no-icon">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
@@ -328,6 +401,61 @@ To check (via MC-Simulations) the quality of an estimator, one can look at the t
 \]</span> <strong>for all</strong> <span class="math inline">\(\theta\in\mathbb{R}.\)</span></p>
 <p>We would like to have estimators <span class="math inline">\(\hat\theta_n\)</span> with a small (or zero) bias.</p>
 <p>If the bias of an estimator <span class="math inline">\(\hat\theta_n\)</span> is small (or zero), we know that the distribution of the estimator <span class="math inline">\(\hat\theta_n\)</span> is roughly (or exactly) centered around the true (usually unknown) parameter <span class="math inline">\(\theta.\)</span></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Example: Bias of the Sample Mean <span class="math inline">\(\bar{X}_n\)</span>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Let <span class="math inline">\(X_1,\dots,X_n\)</span> be an i.i.d. random sample with mean <span class="math inline">\(E(X_i)=\mu\)</span> and variance <span class="math inline">\(Var(X_i)=\sigma^2\)</span>.</p>
+<p><strong>Sample mean <span class="math inline">\(\bar{X}_n\)</span>:</strong> Because the expected value of a sum is the sum of the expected values, <span class="math display">\[\begin{align*}
+E\left(\bar{X}_n\right)
+&amp;=E\left(\frac{1}{n}\sum_{i=1}^nX_i\right)\\[2ex]
+&amp;=\frac{1}{n}\sum_{i=1}^nE(X_i)\\[2ex]
+&amp;=\frac{1}{n}\,n\,\mu=\mu.
+\end{align*}\]</span></p>
+<ul>
+<li>Thus, <span class="math inline">\(\operatorname{Bias}(\bar{X}_n)=\mu-\mu=0\)</span>. The sample mean is <strong>unbiased</strong>.</li>
+</ul>
+<!-- Examples for the variance estimators (currently not used)
+
+**Unbiased variance estimator $s^2_{UB}$:** One can show that
+$$
+E\left(s^2_{UB}\right)=\sigma^2.
+$$
+
+* Thus, $\operatorname{Bias}(s^2_{UB})=0$. This is exactly why we divide by $n-1$ (and not by $n$), and why we use the subscript "UB".
+
+**ML variance estimator $s^2_{ML}$:** The two variance estimators, $s^2_{UB}$ and $s^2_{ML},$ only differ in the factor in front of the sum. Therefore,
+$$
+s^2_{ML}=\frac{n-1}{n}\,s^2_{UB}
+$$
+and
+\begin{align*}
+E\left(s^2_{ML}\right)
+&=\frac{n-1}{n}\,E\left(s^2_{UB}\right)\\[2ex]
+&=\frac{n-1}{n}\,\sigma^2.
+\end{align*}
+
+Thus,
+\begin{align*}
+\operatorname{Bias}\left(s^2_{ML}\right)
+&=\frac{n-1}{n}\,\sigma^2-\sigma^2\\[2ex]
+&=-\frac{1}{n}\,\sigma^2.
+\end{align*}
+
+* The ML variance estimator $s^2_{ML}$ is **biased**: on average, it slightly *underestimates* $\sigma^2$. 
+
+* However, the bias $\operatorname{Bias}\left(s^2_{ML}\right)$ goes to zero as $n\to\infty$, so $s^2_{ML}$ is **asymptotically unbiased**.
+-->
+</div>
+</div>
+</section><section id="variance-and-standard-error" class="level3" data-number="3.2.2"><h3 data-number="3.2.2" class="anchored" data-anchor-id="variance-and-standard-error">
+<span class="header-section-number">3.2.2</span> Variance and Standard Error</h3>
 <p>However, also unbiased estimators <span class="math inline">\(\hat{\theta}_n\)</span> may still vary a lot around the parameter <span class="math inline">\(\theta\)</span> to be estimated. Therefore, is is also important to assess the variance (or the standard deviation) of the estimator.</p>
 <div class="callout callout-style-simple callout-none no-icon">
 <div class="callout-body d-flex">
@@ -350,6 +478,59 @@ Var\left(\hat\theta_n\right) = E\left[\left(\hat\theta_n - E(\hat\theta_n)\right
 <p>The variance (and thus also standard error) should decline as the sample size increases, such that <span class="math display">\[
 \lim_{n\to\infty}Var\left(\hat\theta_n\right)=0.
 \]</span></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Example: Variance of the Sample Mean <span class="math inline">\(\bar{X}_n\)</span>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Let <span class="math inline">\(X_1,\dots,X_n\)</span> be an i.i.d. random sample with mean <span class="math inline">\(E(X_i)=\mu\)</span> and variance <span class="math inline">\(Var(X_i)=\sigma^2\)</span>.</p>
+<p><strong>Sample mean <span class="math inline">\(\bar{X}_n\)</span>:</strong> Because the <span class="math inline">\(X_i\)</span> are independent, the variance of their sum is the sum of their variances. Thus, <span class="math display">\[\begin{align*}
+Var\left(\bar{X}_n\right)
+&amp;=Var\left(\frac{1}{n}\sum_{i=1}^nX_i\right)\\[2ex]
+&amp;=\frac{1}{n^2}\sum_{i=1}^nVar(X_i)\\[2ex]
+&amp;=\frac{1}{n^2}\,n\,\sigma^2=\frac{\sigma^2}{n}.
+\end{align*}\]</span></p>
+<ul>
+<li>The variance <span class="math inline">\(Var\left(\bar{X}_n\right)\)</span> goes to zero as <span class="math inline">\(n\to\infty.\)</span>
+</li>
+<li>The standard error is <span class="math inline">\(\operatorname{SE}(\bar{X}_n)=\sigma/\sqrt{n}\)</span> and also goes to zero as <span class="math inline">\(n\to\infty.\)</span>
+</li>
+</ul>
+<!-- Examples for the variance estimators (currently not used)
+
+**Unbiased variance estimator $s^2_{UB}$:** The variance of $s^2_{UB}$ depends on the **fourth moment** of the $X_i$'s. Therefore, we additionally assume that 
+$$
+\mu_4=E\left[\left(X_i-\mu\right)^4\right]<\infty.
+$$
+Under this setup, one can show that
+$$
+Var\left(s^2_{UB}\right)=\frac{1}{n}\left(\mu_4-\frac{n-3}{n-1}\,\sigma^4\right).
+$$
+For normally distributed $X_i$'s, we have $\mu_4=3\sigma^4$, and the formula simplifies to $Var\left(s^2_{UB}\right)=\frac{2\sigma^4}{n-1}.$
+
+* The variance $Var\left(s^2_{UB}\right)$ goes to zero as $n\to\infty.$
+* The standard error $\operatorname{SE}(s^2_{UB})=\sqrt{Var\left(s^2_{UB}\right)}$ also goes to zero as $n\to\infty.$
+
+**ML variance estimator $s^2_{ML}$:** Using $s^2_{ML}=\frac{n-1}{n}\,s^2_{UB}$ and the rule $Var(aX)=a^2Var(X)$ gives 
+\begin{align*}
+Var\left(s^2_{ML}\right)
+&=\left(\frac{n-1}{n}\right)^2Var\left(s^2_{UB}\right)\\[2ex]
+&=\frac{(n-1)^2}{n^3}\left(\mu_4-\frac{n-3}{n-1}\,\sigma^4\right).
+\end{align*}
+
+* The variance $Var\left(s^2_{ML}\right)$ goes to zero as $n\to\infty.$
+* The standard error $\operatorname{SE}(s^2_{ML})=\sqrt{Var\left(s^2_{ML}\right)}$ also goes to zero as $n\to\infty.$
+* Since $\frac{n-1}{n}<1$, the ML variance estimator has a **smaller variance** than the unbiased variance estimator.
+-->
+</div>
+</div>
+</section><section id="mean-squared-error-mse" class="level3" data-number="3.2.3"><h3 data-number="3.2.3" class="anchored" data-anchor-id="mean-squared-error-mse">
+<span class="header-section-number">3.2.3</span> Mean Squared Error (MSE)</h3>
 <p>To <strong>combine bias and variance</strong> into one metric, one typically uses the <strong>Mean Squared Error (MSE)</strong> of an estimator <span class="math inline">\(\hat\theta_n.\)</span></p>
 <div class="callout callout-style-simple callout-none no-icon">
 <div class="callout-body d-flex">
@@ -382,6 +563,65 @@ Var\left(\hat\theta_n\right) = E\left[\left(\hat\theta_n - E(\hat\theta_n)\right
 <p><span class="math display">\[
 \underbrace{E\left[\left(\hat\theta_n - \theta\right)^2\right]}_{\operatorname{MSE}\left(\hat\theta_n\right)} = \underbrace{E\left[\left(\hat\theta_n - E\left(\hat\theta_n\right)\right)^2\right]}_{ Var\left(\hat\theta_n\right)}
 \]</span></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Example: MSE of the Sample Mean <span class="math inline">\(\bar{X}_n\)</span>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>We use <span class="math inline">\(\operatorname{MSE}=(\operatorname{Bias})^2+Var\)</span> and the results from the two examples above.</p>
+<p><strong>Sample mean <span class="math inline">\(\bar{X}_n\)</span>:</strong> The bias is zero, so the MSE equals the variance, <span class="math display">\[\begin{align*}
+\operatorname{MSE}\left(\bar{X}_n\right)
+&amp;=\left(\operatorname{Bias}\left(\bar{X}_n\right)\right)^2+Var\left(\bar{X}_n\right)\\[2ex]
+&amp;=0^2+\frac{\sigma^2}{n}\\[2ex]
+&amp;=\frac{\sigma^2}{n}.
+\end{align*}\]</span></p>
+<ul>
+<li>The MSE <span class="math inline">\(\operatorname{MSE}\left(\bar{X}_n\right)\)</span> goes to zero as <span class="math inline">\(n\to\infty.\)</span>
+</li>
+<li>Since <span class="math inline">\(\bar{X}_n\)</span> is unbiased, its MSE equals its variance.</li>
+</ul>
+<!-- Examples for the variance estimators (currently not used)
+
+**Unbiased variance estimator $s^2_{UB}$:** The bias is zero, so the MSE equals the variance,
+$$
+\operatorname{MSE}\left(s^2_{UB}\right)=Var\left(s^2_{UB}\right)=\frac{1}{n}\left(\mu_4-\frac{n-3}{n-1}\,\sigma^4\right).
+$$
+
+* The MSE $\operatorname{MSE}\left(s^2_{UB}\right)$ goes to zero as $n\to\infty.$
+* Since $s^2_{UB}$ is unbiased, its MSE equals its variance.
+
+**ML variance estimator $s^2_{ML}$:** Here, the bias is not zero, so
+\begin{align*}
+\operatorname{MSE}\left(s^2_{ML}\right)
+&=\left(\operatorname{Bias}\left(s^2_{ML}\right)\right)^2+Var\left(s^2_{ML}\right)\\[2ex]
+&=\frac{\sigma^4}{n^2}+\left(\frac{n-1}{n}\right)^2Var\left(s^2_{UB}\right).
+\end{align*}
+
+* The MSE $\operatorname{MSE}\left(s^2_{ML}\right)$ goes to zero as $n\to\infty,$ since both the squared bias and the variance go to zero.
+* Since $s^2_{ML}$ is biased, its MSE is larger than its variance.
+
+**Which variance estimator is better?** This depends on the distribution of the $X_i$'s. For normally distributed $X_i$'s ($\mu_4=3\sigma^4$), we get
+$$
+\operatorname{MSE}\left(s^2_{UB}\right)=\frac{2\sigma^4}{n-1}
+\quad\text{and}\quad
+\operatorname{MSE}\left(s^2_{ML}\right)=\frac{(2n-1)\,\sigma^4}{n^2}.
+$$
+For instance, for $n=10$ and $\sigma^2=1$:
+\begin{align*}
+\operatorname{MSE}\left(s^2_{UB}\right)&=\frac{2}{9}\approx 0.222\\[2ex]
+\operatorname{MSE}\left(s^2_{ML}\right)&=\frac{19}{100}=0.190
+\end{align*}
+In fact, for normally distributed $X_i$'s, $\operatorname{MSE}(s^2_{ML})<\operatorname{MSE}(s^2_{UB})$ for every $n\geq 2$. That is, the *biased* ML estimator is, on average, closer to $\sigma^2$ than the *unbiased* estimator, since its smaller variance more than compensates for its small bias. Lesson: unbiasedness alone does not make an estimator the best one.
+-->
+</div>
+</div>
+</section></section><section id="approximating-bias-variance-and-mse-using-mc-simulations" class="level2" data-number="3.3"><h2 data-number="3.3" class="anchored" data-anchor-id="approximating-bias-variance-and-mse-using-mc-simulations">
+<span class="header-section-number">3.3</span> Approximating Bias, Variance, and MSE using MC Simulations</h2>
 <div class="callout callout-style-simple callout-none no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -396,8 +636,6 @@ Monte Carlo (MC) Simulations
 <p>Unfortunately, it is often difficult to derive the above assessment metrics for given sample sizes <span class="math inline">\(n\)</span> and given data distributions <span class="math inline">\(F_X,\)</span> since for given <span class="math inline">\(n\)</span> we typically do not know the distribution of the estimator <span class="math inline">\(\hat\theta_n\)</span> and thus also not its bias and variance. Monte Carlo simulations allow us to solve this issue.</p>
 </div>
 </div>
-</section><section id="approximating-bias-variance-and-mse-using-mc-simulations" class="level2" data-number="3.3"><h2 data-number="3.3" class="anchored" data-anchor-id="approximating-bias-variance-and-mse-using-mc-simulations">
-<span class="header-section-number">3.3</span> Approximating Bias, Variance, and MSE using MC Simulations</h2>
 <p>Any of the the above assessment metrics requires us to compute <strong>means</strong>, i.e.&nbsp;<span class="math inline">\(E(\cdot)\)</span>, of random variables:</p>
 <ul>
 <li><p>For the <span class="math inline">\(\operatorname{Bias}\left(\hat\theta_n\right)\)</span> we need to compute <span class="math inline">\(E\left(\hat\theta_n\right)-\theta\)</span></p></li>
@@ -492,85 +730,163 @@ Var(\hat\theta_n),\text{ and }
 </div>
 </section><section id="example-sample-mean" class="level2" data-number="3.4"><h2 data-number="3.4" class="anchored" data-anchor-id="example-sample-mean">
 <span class="header-section-number">3.4</span> Example: Sample Mean</h2>
-<p>The following <code>R</code> code contains a Monte Carlo simulation with <span class="math inline">\(B = 10000\)</span> replications to approximate the bias, the variance, and the mean squared error for the sample mean <span class="math display">\[
-(\hat\theta_n=)\bar{X}_n=\frac{1}{n}\sum_{i=1}^nX_i
-\]</span> Setup:</p>
+<p>In this example, we use a Monte Carlo simulation to check how well the sample mean estimates the population mean. To set up the simulation, we need to answer three questions:</p>
+<div class="spaced-list">
+<ol type="1">
+<li>What do we want to estimate? (<strong>parameter of interest</strong>)</li>
+<li>How do we estimate it? (<strong>estimator</strong>)</li>
+<li>Under which conditions do we study the estimator? (<strong>scenario</strong>)</li>
+</ol>
+</div>
+<section id="parameter-of-interest" class="level4 unnumbered"><h4 class="unnumbered anchored" data-anchor-id="parameter-of-interest"><strong>1. Parameter of Interest</strong></h4>
+<p>We want to estimate the population mean <span class="math display">\[
+(\theta=)\mu=E(X_i).
+\]</span> In real data applications, the value of <span class="math inline">\(\mu\)</span> is <strong>unknown</strong>.</p>
+</section><section id="estimator" class="level4 unnumbered"><h4 class="unnumbered anchored" data-anchor-id="estimator"><strong>2. Estimator</strong></h4>
+<p>We estimate <span class="math inline">\(\mu\)</span> using the sample mean <span class="math display">\[
+(\hat\theta_n)=\bar{X}_n=\frac{1}{n}\sum_{i=1}^nX_i.
+\]</span> We want to find out the bias, the variance, and the MSE of <span class="math inline">\(\bar{X}_n\)</span>.</p>
+</section><section id="scenario" class="level4 unnumbered"><h4 class="unnumbered anchored" data-anchor-id="scenario"><strong>3. Scenario</strong></h4>
+<p>In a simulation, <em>we</em> choose the data distribution <span class="math inline">\(F_X\)</span>. This has two big advantages:</p>
+<div class="spaced-list">
+<ul>
+<li>We <strong>know the true parameter value</strong> <span class="math inline">\(\mu\)</span>. Thus, we can check how close the estimates are to it.</li>
+<li>We can <strong>study the estimator under different scenarios</strong>, i.e., under different distributions <span class="math inline">\(F_X\)</span>.</li>
+</ul>
+</div>
+<p>We consider the following scenario:</p>
+<div class="spaced-list">
 <ul>
 <li>
-<span class="math inline">\(X_i\overset{iid}{\sim}F_X\)</span>, <span class="math inline">\(i=1,\dots,n\)</span>, with <span class="math inline">\(F_X=\mathcal{N}(\mu,\sigma^2)\)</span>
-</li>
-<li>Mean <span class="math inline">\(\mu=10\)</span>
-</li>
-<li>Variance <span class="math inline">\(\sigma^2=5\)</span>
-</li>
-<li>Sample sizes <span class="math inline">\(n\in\{5,15,50\}\)</span> <!-- The following `R` codes generated `B = 10000` realizations of the estimator $\bar{X}_n$ for each sample size $n\in\{5,15,50\}$ and stores all these realizations in a $10000\times 3$ matrix `estimates_mat`: -->
-</li>
+<strong>Random sample:</strong> <span class="math inline">\(X_1,\dots,X_n\)</span> are i.i.d. with <span class="math inline">\(X_i\sim\mathcal{N}(\mu,\sigma^2)\)</span> for all <span class="math inline">\(i=1,\dots,n\)</span>.<br> (In real data applications, the distribution <span class="math inline">\(F_X\)</span> is <strong>unknown</strong>.)</li>
+<li>
+<strong>True mean:</strong> <span class="math inline">\(\mu=10\)</span><br> (In real data applications, <strong>unknown</strong>.)</li>
+<li>
+<strong>True variance:</strong> <span class="math inline">\(\sigma^2=5\)</span><br> (In real data applications, <strong>unknown</strong>.)</li>
+<li>
+<strong>Sample sizes:</strong> <span class="math inline">\(n\in\{5,15,50\}\)</span><br> (In real data applications, <strong>known</strong>: <span class="math inline">\(n\)</span> is the number of observations in the dataset.)</li>
 </ul>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">## Set seed for the random number generator to get reproducible results</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span></span>
-<span><span class="co">## True (usually unknown) parameter value of interest</span></span>
-<span><span class="va">mu</span>            <span class="op">&lt;-</span> <span class="fl">10</span></span>
-<span><span class="co">## Number of Monte Carlo repetitions:</span></span>
-<span><span class="va">B</span>             <span class="op">&lt;-</span> <span class="fl">10000</span></span>
-<span><span class="co">## Sequence of different sample sizes:</span></span>
-<span><span class="va">n_seq</span>         <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">15</span>, <span class="fl">50</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co">## Function that generates estimator realizations </span></span>
-<span><span class="va">my_estimates_generator</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">n</span><span class="op">)</span><span class="op">{</span></span>
-<span>  <span class="co">## generate a realization of the random sample</span></span>
-<span>  <span class="va">X_sample</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span>n <span class="op">=</span> <span class="va">n</span>, mean <span class="op">=</span> <span class="va">mu</span>, sd <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span><span class="op">)</span></span>
-<span>  <span class="co">## compute the sample mean realization</span></span>
-<span>  <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">X_sample</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="op">}</span></span>
-<span></span>
-<span><span class="va">estimates_mat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span><span class="op">(</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">replicate</a></span><span class="op">(</span><span class="va">B</span>, <span class="fu">my_estimates_generator</span><span class="op">(</span>n <span class="op">=</span> <span class="va">n_seq</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span><span class="op">)</span>,<span class="co"># n small</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">replicate</a></span><span class="op">(</span><span class="va">B</span>, <span class="fu">my_estimates_generator</span><span class="op">(</span>n <span class="op">=</span> <span class="va">n_seq</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span><span class="op">)</span><span class="op">)</span>,<span class="co"># n intermediate</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">replicate</a></span><span class="op">(</span><span class="va">B</span>, <span class="fu">my_estimates_generator</span><span class="op">(</span>n <span class="op">=</span> <span class="va">n_seq</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span><span class="op">)</span><span class="op">)</span> <span class="co"># n largish</span></span>
-<span><span class="op">)</span></span>
-<span></span>
-<span><span class="co">## Bias of the sample mean for different sample sizes n</span></span>
-<span><span class="va">MC_Bias_n_seq</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/apply.html">apply</a></span><span class="op">(</span><span class="va">estimates_mat</span>, <span class="fl">2</span>, <span class="va">mean</span><span class="op">)</span> <span class="op">-</span> <span class="va">mu</span></span>
-<span></span>
-<span><span class="co">## Variance of the sample mean for different sample sizes n</span></span>
-<span><span class="va">MC_Var_n_seq</span>  <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/apply.html">apply</a></span><span class="op">(</span><span class="va">estimates_mat</span>, <span class="fl">2</span>, <span class="va">var</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co">## Mean squared error of the sample mean for different sample sizes n</span></span>
-<span><span class="va">MC_MSE_n_seq</span>  <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/apply.html">apply</a></span><span class="op">(</span><span class="va">estimates_mat</span>, <span class="fl">2</span>, <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">{</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="op">(</span><span class="va">x</span> <span class="op">-</span> <span class="va">mu</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span><span class="op">}</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><a href="#tbl-mcbvmse" class="quarto-xref">Table&nbsp;<span>3.1</span></a> shows the Monte Carlo approximations for the bias, the variance, and the mean squared error of <span class="math inline">\(\bar{X}_n.\)</span></p>
+<p>For each sample size <span class="math inline">\(n\)</span>, we generate <span class="math inline">\(B=10000\)</span> realizations of <span class="math inline">\(\bar{X}_n\)</span> using the MC-simulation algorithm above.</p>
+</section><section id="monte-carlo-simulation" class="level4 unnumbered"><h4 class="unnumbered anchored" data-anchor-id="monte-carlo-simulation"><strong>4. Monte Carlo Simulation</strong></h4>
+<p>The code follows the MC-simulation algorithm above: for each sample size <span class="math inline">\(n\)</span>, we repeat Step 1 (draw a random sample) and Step 2 (compute the sample mean) <span class="math inline">\(B\)</span> times. Then, we use the <span class="math inline">\(B\)</span> realizations of <span class="math inline">\(\bar{X}_n\)</span> to compute the MC approximations of the bias, the variance, and the MSE.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist">
+<li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true"><code>R</code></a></li>
+<li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Python</a></li>
+</ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<div class="cell" data-layout-align="center">
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span>              <span class="co"># makes the results reproducible</span></span>
+<span></span>
+<span><span class="co">## Scenario (in real data applications unknown)</span></span>
+<span><span class="va">mu</span>     <span class="op">&lt;-</span> <span class="fl">10</span>             <span class="co"># true mean (= parameter of interest)</span></span>
+<span><span class="va">sigma2</span> <span class="op">&lt;-</span> <span class="fl">5</span>              <span class="co"># true variance</span></span>
+<span></span>
+<span><span class="co">## Sample sizes and number of MC repetitions</span></span>
+<span><span class="va">n_seq</span>  <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">15</span>, <span class="fl">50</span><span class="op">)</span></span>
+<span><span class="va">B</span>      <span class="op">&lt;-</span> <span class="fl">10000</span></span>
+<span></span>
+<span><span class="co">## Empty vectors to store the results (one entry per sample size)</span></span>
+<span><span class="va">MC_Bias</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">numeric</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">n_seq</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">MC_Var</span>  <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">numeric</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">n_seq</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">MC_MSE</span>  <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">numeric</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">n_seq</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="kw">for</span> <span class="op">(</span><span class="va">k</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">n_seq</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">n</span> <span class="op">&lt;-</span> <span class="va">n_seq</span><span class="op">[</span><span class="va">k</span><span class="op">]</span></span>
+<span></span>
+<span>  <span class="co">## Generate B realizations of the sample mean</span></span>
+<span>  <span class="va">estimates</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">numeric</a></span><span class="op">(</span><span class="va">B</span><span class="op">)</span></span>
+<span>  <span class="kw">for</span> <span class="op">(</span><span class="va">b</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="va">B</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="va">X_sample</span>     <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="va">n</span>, mean <span class="op">=</span> <span class="va">mu</span>, sd <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="va">sigma2</span><span class="op">)</span><span class="op">)</span> <span class="co"># Step 1</span></span>
+<span>    <span class="va">estimates</span><span class="op">[</span><span class="va">b</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">X_sample</span><span class="op">)</span>                         <span class="co"># Step 2</span></span>
+<span>  <span class="op">}</span></span>
+<span></span>
+<span>  <span class="co">## MC approximations</span></span>
+<span>  <span class="va">MC_Bias</span><span class="op">[</span><span class="va">k</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">estimates</span><span class="op">)</span> <span class="op">-</span> <span class="va">mu</span></span>
+<span>  <span class="va">MC_Var</span><span class="op">[</span><span class="va">k</span><span class="op">]</span>  <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="op">(</span><span class="va">estimates</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">estimates</span><span class="op">)</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span></span>
+<span>  <span class="va">MC_MSE</span><span class="op">[</span><span class="va">k</span><span class="op">]</span>  <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="op">(</span><span class="va">estimates</span> <span class="op">-</span> <span class="va">mu</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> np.random.default_rng(<span class="dv">3</span>)  <span class="co"># makes the results reproducible</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co">## Scenario (in real data applications unknown)</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>mu     <span class="op">=</span> <span class="dv">10</span>                     <span class="co"># true mean (= parameter of interest)</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>sigma2 <span class="op">=</span> <span class="dv">5</span>                      <span class="co"># true variance</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co">## Sample sizes and number of MC repetitions</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>n_seq  <span class="op">=</span> [<span class="dv">5</span>, <span class="dv">15</span>, <span class="dv">50</span>]</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>B      <span class="op">=</span> <span class="dv">10000</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="co">## Empty arrays to store the results (one entry per sample size)</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>MC_Bias <span class="op">=</span> np.zeros(<span class="bu">len</span>(n_seq))</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>MC_Var  <span class="op">=</span> np.zeros(<span class="bu">len</span>(n_seq))</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>MC_MSE  <span class="op">=</span> np.zeros(<span class="bu">len</span>(n_seq))</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> k <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(n_seq)):</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>    n <span class="op">=</span> n_seq[k]</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>    <span class="co">## Generate B realizations of the sample mean</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>    estimates <span class="op">=</span> np.zeros(B)</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> b <span class="kw">in</span> <span class="bu">range</span>(B):</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>        X_sample     <span class="op">=</span> rng.normal(loc<span class="op">=</span>mu, scale<span class="op">=</span>np.sqrt(sigma2), size<span class="op">=</span>n)  <span class="co"># Step 1</span></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>        estimates[b] <span class="op">=</span> np.mean(X_sample)                                   <span class="co"># Step 2</span></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>    <span class="co">## MC approximations</span></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>    MC_Bias[k] <span class="op">=</span> np.mean(estimates) <span class="op">-</span> mu</span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>    MC_Var[k]  <span class="op">=</span> np.mean((estimates <span class="op">-</span> np.mean(estimates))<span class="op">**</span><span class="dv">2</span>)</span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>    MC_MSE[k]  <span class="op">=</span> np.mean((estimates <span class="op">-</span> mu)<span class="op">**</span><span class="dv">2</span>)</span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(MC_Bias, MC_Var, MC_MSE)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section><section id="results" class="level4 unnumbered"><h4 class="unnumbered anchored" data-anchor-id="results"><strong>5. Results</strong></h4>
+<p><a href="#tbl-mcbvmse" class="quarto-xref">Table&nbsp;<span>3.1</span></a> shows the Monte Carlo approximations of the bias, the variance, and the MSE of <span class="math inline">\(\bar{X}_n\)</span>. Since we know the scenario, we can compare them with the true values that we derived above: <span class="math display">\[
+\operatorname{Bias}(\bar{X}_n)=0
+\quad\text{and}\quad
+Var(\bar{X}_n)=\operatorname{MSE}(\bar{X}_n)=\frac{\sigma^2}{n}=\frac{5}{n}.
+\]</span></p>
 <div class="cell" data-layout-align="center">
 <div id="tbl-mcbvmse" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
 <figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-mcbvmse-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;3.1: Monte Carlo approximations for the true bias, true variance, and true mean squared error of sample mean.
+Table&nbsp;3.1: Monte Carlo approximations and true values of the bias, the variance, and the mean squared error of the sample mean.
 </figcaption><div aria-describedby="tbl-mcbvmse-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
 <table class="table do-not-create-environment cell caption-top table-sm table-striped small" data-quarto-postprocess="true">
 <thead><tr class="header">
 <th style="text-align: right;" data-quarto-table-cell-role="th">n</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">Bias (MC-Sim)</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">Variance (MC-Sim)</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">MSE (MC-Sim)</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Bias (MC)</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Variance (MC)</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">MSE (MC)</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">True Variance = True MSE</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
 <td style="text-align: right;">5</td>
 <td style="text-align: right;">-0.001</td>
-<td style="text-align: right;">1.02</td>
-<td style="text-align: right;">1.02</td>
+<td style="text-align: right;">1.018</td>
+<td style="text-align: right;">1.018</td>
+<td style="text-align: right;">1.000</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">15</td>
 <td style="text-align: right;">0.000</td>
-<td style="text-align: right;">0.33</td>
-<td style="text-align: right;">0.33</td>
+<td style="text-align: right;">0.330</td>
+<td style="text-align: right;">0.330</td>
+<td style="text-align: right;">0.333</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">50</td>
 <td style="text-align: right;">0.001</td>
-<td style="text-align: right;">0.10</td>
-<td style="text-align: right;">0.10</td>
+<td style="text-align: right;">0.102</td>
+<td style="text-align: right;">0.102</td>
+<td style="text-align: right;">0.100</td>
 </tr>
 </tbody>
 </table>
@@ -579,29 +895,45 @@ Table&nbsp;3.1: Monte Carlo approximations for the true bias, true variance, and
 </figure>
 </div>
 </div>
-<p>The Monte Carlo approximations in <a href="#tbl-mcbvmse" class="quarto-xref">Table&nbsp;<span>3.1</span></a> indicate that:</p>
+<p>The Monte Carlo results in <a href="#tbl-mcbvmse" class="quarto-xref">Table&nbsp;<span>3.1</span></a> show:</p>
+<div class="spaced-list">
 <ul>
-<li><p>The bias <span class="math inline">\(\operatorname{Bias}(\bar{X}_n)\)</span> is effectively zero for all sample sizes <span class="math inline">\(n\in\{5,15,50\}\)</span></p></li>
-<li><p>The mean squared error <span class="math inline">\(\operatorname{MSE}(\bar{X}_n)\)</span> is decreasing as the sample size <span class="math inline">\(n\)</span> gets larger.</p></li>
-<li><p>The log-log plot in <a href="#fig-loglog" class="quarto-xref">Figure&nbsp;<span>3.1</span></a> suggests a convergence rate of <span class="math inline">\(-1\)</span> for <span class="math inline">\(\operatorname{MSE}(\bar{X}_n)\)</span> i.e. <span class="math display">\[
-\begin{align*}
-\operatorname{MSE}(\bar{X}_n) &amp;= \texttt{Constant} \cdot n^{-1}\\[2ex]
-\Leftrightarrow\log\left(\operatorname{MSE}(\bar{X}_n)\right) &amp;= \log\left(\texttt{Constant}\right) -1 \cdot \log\left(n\right),
-\end{align*}
-\]</span> where <span class="math inline">\(\texttt{Constant}\)</span> depends on the data generating process and the estimator, but not on the sample size <span class="math inline">\(n\)</span>.</p></li>
+<li>
+<strong>Bias:</strong> The bias of <span class="math inline">\(\bar{X}_n\)</span> is (almost) zero for all sample sizes. This confirms that <span class="math inline">\(\bar{X}_n\)</span> is unbiased.</li>
+<li>
+<strong>Variance:</strong> The variance of <span class="math inline">\(\bar{X}_n\)</span> decreases as the sample size <span class="math inline">\(n\)</span> gets larger, and it is very close to the true variance <span class="math inline">\(\sigma^2/n\)</span>.</li>
+<li>
+<strong>MSE:</strong> Since the bias is zero, the MSE is (almost) equal to the variance. Thus, also the MSE decreases as <span class="math inline">\(n\)</span> gets larger.</li>
 </ul>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+🤓 Nerd’s Box: How Fast Does the MSE Decrease?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>The log-log plot in <a href="#fig-loglog" class="quarto-xref">Figure&nbsp;<span>3.1</span></a> shows a straight line with slope of about <span class="math inline">\(-1\)</span>. This means that <span class="math display">\[\begin{align*}
+\operatorname{MSE}(\bar{X}_n) &amp;= \texttt{Constant} \cdot n^{-1}\\[2ex]
+\Leftrightarrow\quad\log\left(\operatorname{MSE}(\bar{X}_n)\right) &amp;= \log\left(\texttt{Constant}\right) -1 \cdot \log\left(n\right),
+\end{align*}\]</span> where <span class="math inline">\(\texttt{Constant}\)</span> depends on the scenario and the estimator, but not on the sample size <span class="math inline">\(n\)</span>. This fits our theoretical result <span class="math inline">\(\operatorname{MSE}(\bar{X}_n)=\sigma^2/n\)</span>, where <span class="math inline">\(\texttt{Constant}=\sigma^2=5\)</span>.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span>y    <span class="op">=</span> <span class="va">MC_MSE_n_seq</span>,  </span>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span>y    <span class="op">=</span> <span class="va">MC_MSE</span>,  </span>
 <span>     x    <span class="op">=</span> <span class="va">n_seq</span>, </span>
 <span>     type <span class="op">=</span> <span class="st">"o"</span>, </span>
 <span>     log  <span class="op">=</span> <span class="st">"xy"</span>, <span class="co"># x-axis and y-axis on a log-scale</span></span>
 <span>     ylab <span class="op">=</span> <span class="st">"MSE (log scale)"</span>,</span>
 <span>     xlab <span class="op">=</span> <span class="st">"n (log scale)"</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co">## Computing the slope (values read out from the plot): </span></span>
-<span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="fl">0.1</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span><span class="op">)</span> <span class="op">/</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="fl">50</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">## Computing the slope (from the smallest to the largest sample size):</span></span>
+<span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="va">MC_MSE</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="va">MC_MSE</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span><span class="op">)</span> <span class="op">/</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="va">n_seq</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="va">n_seq</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] -1</code></pre>
+<pre><code>[1] -0.9972814</code></pre>
 </div>
 <div class="cell-output-display">
 <div id="fig-loglog" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
@@ -609,8 +941,11 @@ Table&nbsp;3.1: Monte Carlo approximations for the true bias, true variance, and
 <img src="04-Monte-Carlo-Simulations_files/figure-html/fig-loglog-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-loglog-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3.1: Plotting the logarithm of the MSE-values against the logarithm of the sample size values <span class="math inline">\(n\)</span> allows to approximate the convergence rate of the MSE-values as the sample size increases by the slope of the graph.
+Figure&nbsp;3.1: Logarithm of the MSE-values plotted against the logarithm of the sample sizes <span class="math inline">\(n\)</span>. The slope of the line approximates the rate at which the MSE decreases as the sample size increases.
 </figcaption></figure>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -949,31 +1284,14 @@ We can use Monte Carlo simulations to approximate the *exact* distribution of an
 * As the sample size increases, the distributions of the estimators $\bar{X}_n$ concentrate around the target parameter $\mu=10$. This feature of the estimator's distribution is summarized by the **mean squared error** (see next section) of an estimator.
 
 Thus here the quality of the estimator $\bar{X}_n$ gets better as $n$ gets large. To describe the quality of estimators more compactly, statisticians/econometricians use specific metrics like bias, variance and the mean squared error of the distribution of a estimator $\hat\theta$. -->
-<!-- 
-## Exercises
-
-* [Exercises for Chapter 4](https://www.dropbox.com/scl/fi/w1nj9wnpj15r53opudhns/Ch4_Exercises1.pdf?rlkey=4bk9h4rpg4mkizi46s2r11okv&st=0dawfy6m&dl=0)
-
-* [Exercises for Chapter 4 with Solutions](https://www.dropbox.com/scl/fi/jssefvtifo6wczxaxr250/Ch4_Exercises_with_Solutions1.pdf?rlkey=wcineb1vy4vpqxy8989qplexr&st=fp5sf04v&dl=0)
--->
-<!-- ```{r, fig.align="center"} -->
-<!-- par(mfrow=c(1,3)) -->
-<!-- plot(x = n_seq, y = Bias_n_seq, type = "b", ylim = c(-0.2, 0.2),  -->
-<!--      main="Bias", xlab = "n", ylab = "") -->
-<!-- abline(h = 0) -->
-<!-- plot(x = n_seq, y = Var_n_seq, type = "b", ylim = c(0, 1.5), -->
-<!--      main="Variance", xlab = "n", ylab = "") -->
-<!-- abline(h = 0) -->
-<!-- plot(x = n_seq, y = MSE_n_seq, type = "b", ylim = c(0, 1.5), -->
-<!--      main="MSE", xlab = "n", ylab = "") -->
-<!-- abline(h = 0) -->
-<!-- ``` -->
-<!-- like, for instance, the arithmetic mean   -->
-<!-- $$ -->
-<!-- \bar{X}_n=\frac{1}{n}\sum_{i=1}^nX_i -->
-<!-- $$ -->
-<!-- as an estimator of the population mean value $\mu$.  -->
-
+</section></section><section id="exercises" class="level2" data-number="3.5"><h2 data-number="3.5" class="anchored" data-anchor-id="exercises">
+<span class="header-section-number">3.5</span> Exercises</h2>
+<p>The exercises are based on the examples in this chapter. They are your main resource for preparing for the exam. About half of them are single-choice questions, as in the exam. However, reading the script remains advisable, particularly if you aim for a top grade: the exercises cannot cover every concept and every connection between them.</p>
+<ul>
+<li><p><a href="exercises/pdf/Ch3_Exercises.pdf">Exercises for Chapter 3</a></p></li>
+<li><p><a href="exercises/pdf/Ch3_Exercises_with_Solutions.pdf">Exercises for Chapter 3 with Solutions</a></p></li>
+</ul>
+<!-- ```{r, fig.align="center"} --><!-- par(mfrow=c(1,3)) --><!-- plot(x = n_seq, y = Bias_n_seq, type = "b", ylim = c(-0.2, 0.2),  --><!--      main="Bias", xlab = "n", ylab = "") --><!-- abline(h = 0) --><!-- plot(x = n_seq, y = Var_n_seq, type = "b", ylim = c(0, 1.5), --><!--      main="Variance", xlab = "n", ylab = "") --><!-- abline(h = 0) --><!-- plot(x = n_seq, y = MSE_n_seq, type = "b", ylim = c(0, 1.5), --><!--      main="MSE", xlab = "n", ylab = "") --><!-- abline(h = 0) --><!-- ``` --><!-- like, for instance, the arithmetic mean   --><!-- $$ --><!-- \bar{X}_n=\frac{1}{n}\sum_{i=1}^nX_i --><!-- $$ --><!-- as an estimator of the population mean value $\mu$.  -->
 
 </section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {

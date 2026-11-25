@@ -1,0 +1,80 @@
+<<echo=FALSE, results=hide>>=
+## Script: Examples "Estimators of the Mean and the Variance" and
+##         "Estimating the Mean Spending of a Shop's Customers"
+repeat {
+  xbar <- sample(30:60, 1)                       # integer sample mean
+  d    <- sample(c(-8:-1, 1:8), 4)               # deviations
+  d    <- c(d, -sum(d))                          # deviations sum to zero
+  if (abs(d[5]) <= 10 && d[5] != 0 && length(unique(d)) == 5) break
+}
+x   <- xbar + d
+n   <- length(x)
+SS  <- sum(d^2)
+sUB <- SS / (n - 1)
+sML <- SS / n
+@
+
+\begin{question}
+\textbf{Estimates from Observed Data} (Script: Examples ``Estimators of the Mean and the Variance'' and ``Estimating the Mean Spending of a Shop's Customers'')
+
+A shop randomly selects $n=\Sexpr{n}$ customers and records how much each of them spends (in Euro):
+$$
+\{X_{1,obs},\dots,X_{\Sexpr{n},obs}\}=\{\Sexpr{paste(x, collapse = ",\\ ")}\}.
+$$
+We assume that these data are a realization of an i.i.d.\ random sample $\{X_1,\dots,X_{\Sexpr{n}}\}$ with mean $E(X_i)=\mu$ and variance $\operatorname{Var}(X_i)=\sigma^2$.
+\begin{enumerate}
+  \item Compute the estimate $\bar{X}_{n,obs}$ of the mean $\mu$.
+  \item Compute the estimate $s^2_{UB,obs}$ of the variance $\sigma^2$.
+  \item Compute the estimate $s^2_{ML,obs}$ of the variance $\sigma^2$.
+  \item Explain the difference between the \emph{estimator} $\bar{X}_n$ and the \emph{estimate} $\bar{X}_{n,obs}$.
+\end{enumerate}
+\end{question}
+
+\begin{solution}
+\begin{enumerate}
+  \item The estimate is the sample mean computed from the observed data:
+  \begin{align*}
+  \bar{X}_{n,obs}
+  &=\frac{1}{n}\sum_{i=1}^nX_{i,obs}\\[1ex]
+  &=\frac{1}{\Sexpr{n}}\left(\Sexpr{paste(x, collapse = "+")}\right)\\[1ex]
+  &=\frac{\Sexpr{sum(x)}}{\Sexpr{n}}\\[1ex]
+  &=\Sexpr{xbar}.
+  \end{align*}
+  \item First, we compute the deviations $X_{i,obs}-\bar{X}_{n,obs}$ from the sample mean and their squares:
+  \begin{center}
+  \begin{tabular}{rrrr}
+  $i$ & $X_{i,obs}$ & $X_{i,obs}-\bar{X}_{n,obs}$ & $\left(X_{i,obs}-\bar{X}_{n,obs}\right)^2$\\\hline
+  $1$ & $\Sexpr{x[1]}$ & $\Sexpr{d[1]}$ & $\Sexpr{d[1]^2}$\\
+  $2$ & $\Sexpr{x[2]}$ & $\Sexpr{d[2]}$ & $\Sexpr{d[2]^2}$\\
+  $3$ & $\Sexpr{x[3]}$ & $\Sexpr{d[3]}$ & $\Sexpr{d[3]^2}$\\
+  $4$ & $\Sexpr{x[4]}$ & $\Sexpr{d[4]}$ & $\Sexpr{d[4]^2}$\\
+  $5$ & $\Sexpr{x[5]}$ & $\Sexpr{d[5]}$ & $\Sexpr{d[5]^2}$\\\hline
+  Sum & & $0$ & $\Sexpr{SS}$
+  \end{tabular}
+  \end{center}
+  Note: the deviations from the sample mean always sum to zero. The unbiased variance estimator divides the sum of squares by $n-1=\Sexpr{n-1}$:
+  \begin{align*}
+  s^2_{UB,obs}
+  &=\frac{1}{n-1}\sum_{i=1}^n\left(X_{i,obs}-\bar{X}_{n,obs}\right)^2\\[1ex]
+  &=\frac{\Sexpr{SS}}{\Sexpr{n-1}}\\[1ex]
+  &=\Sexpr{fmt(sUB, 2)}.
+  \end{align*}
+  \item The ML variance estimator uses the same sum of squares, but divides by $n=\Sexpr{n}$:
+  \begin{align*}
+  s^2_{ML,obs}
+  &=\frac{1}{n}\sum_{i=1}^n\left(X_{i,obs}-\bar{X}_{n,obs}\right)^2\\[1ex]
+  &=\frac{\Sexpr{SS}}{\Sexpr{n}}\\[1ex]
+  &=\Sexpr{fmt(sML, 2)}.
+  \end{align*}
+  Since we divide by a larger number, $s^2_{ML,obs}$ is smaller than $s^2_{UB,obs}$.
+  \item
+  \begin{itemize}
+    \item The \textbf{estimator} $\bar{X}_n=\frac{1}{n}\sum_{i=1}^nX_i$ is a function of the random variables $X_1,\dots,X_n$. Thus, it is itself a \textbf{random variable}. It describes all the values of the sample mean that we \emph{could} have observed (e.g., if the shop had selected $\Sexpr{n}$ other customers).
+    \item The \textbf{estimate} $\bar{X}_{n,obs}=\Sexpr{xbar}$ is the value of the estimator for the data that we \emph{actually} observed. Thus, it is a fixed \textbf{number}, i.e., one realization of the random variable $\bar{X}_n$.
+  \end{itemize}
+\end{enumerate}
+\end{solution}
+
+\exname{Estimates from Observed Data}
+\extype{string}
+\exsolution{nil}

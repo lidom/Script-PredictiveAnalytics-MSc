@@ -56,3 +56,20 @@ exercises_ch2 <- c("Ch2_01_MC_CoinTosses.Rnw",
 ##   Ch2_13_BivariateNormal_Independence.Rnw  (cf. Ch2_12, Ch2_16)
 
 make_sheet(exercises_ch2, chapter = 2, title = "Probability", seed = 2026)
+
+
+## Chapter 3: Estimation Theory and Monte Carlo Simulations ####################
+exercises_ch3 <- c("Ch3_01_SampleMean_BiasVarMSE.Rnw",
+                   "Ch3_02_VarianceEstimators_MC.Rnw",
+                   "Ch3_03_EstimatesFromData.Rnw",
+                   "Ch3_05_MC_Unbiasedness.Rnw",
+                   "Ch3_08_MC_WhyMCSimulations.Rnw")
+
+## Not on the sheet (shorter sheet); pool for exam questions:
+##   Ch3_04_MC_EstimatorVsEstimate.Rnw        (cf. Ch3_03 (d))
+##   Ch3_06_MC_StandardError.Rnw              (cf. Ch3_01)
+##   Ch3_07_MC_CompareEstimatorsMSE.Rnw       (cf. Ch3_02)
+##   Ch3_09_MC_RepetitionsVsSampleSize.Rnw    (cf. Ch3_01 (c))
+##   Ch3_10_MC_ComputeMCApproximations.Rnw
+
+make_sheet(exercises_ch3, chapter = 3, title = "Estimation Theory and Monte Carlo Simulations", seed = 2026)

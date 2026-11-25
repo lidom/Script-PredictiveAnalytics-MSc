@@ -1,0 +1,58 @@
+<<echo=FALSE, results=hide>>=
+## Script: Section "Approximating Bias, Variance, and MSE using MC Simulations"
+repeat {
+  theta <- sample(c(5, 10, 20), 1)                  # true parameter
+  dev   <- sample(c(-3, -2, -1, 1, 2, 3, 4), 5, replace = TRUE)
+  est   <- theta + dev                              # B = 5 realizations
+  B     <- length(est)
+  bias  <- mean(est) - theta
+  mse   <- mean((est - theta)^2)
+
+  sol   <- mse
+  wrong <- c(bias,                       # MC bias
+             mean(abs(est - theta)),     # absolute instead of squared deviations
+             sqrt(mse))                  # root MSE
+  if (length(unique(round(c(sol, wrong), 2))) == 4) break
+}
+@
+
+\begin{question}
+\textbf{Computing a Monte Carlo Approximation} (Script: Section ``Approximating Bias, Variance, and MSE using MC Simulations'')
+
+In a (very small) Monte Carlo simulation, the true parameter is $\theta=\Sexpr{theta}$. The simulation generates $B=\Sexpr{B}$ realizations of an estimator $\hat\theta_n$:
+$$
+\hat\theta_{n,1,obs},\dots,\hat\theta_{n,\Sexpr{B},obs}=\Sexpr{paste(est, collapse = ",\\ ")}.
+$$
+What is the Monte Carlo approximation $\widehat{\operatorname{MSE}}_{MC}(\hat\theta_n)$ of the MSE?
+\begin{answerlist}
+  \item $\Sexpr{fmt(sol, 2)}$
+  \item $\Sexpr{fmt(wrong[1], 2)}$
+  \item $\Sexpr{fmt(wrong[2], 2)}$
+  \item $\Sexpr{fmt(wrong[3], 2)}$
+\end{answerlist}
+\end{question}
+
+\begin{solution}
+The MC approximation of the MSE is the average of the squared deviations of the $B$ realizations from the true parameter $\theta=\Sexpr{theta}$:
+$$
+\widehat{\operatorname{MSE}}_{MC}(\hat\theta_n)=\frac{1}{B}\sum_{b=1}^B\left(\hat\theta_{n,b,obs}-\theta\right)^2.
+$$
+The deviations from $\theta$ are $\Sexpr{paste(dev, collapse = ",\\ ")}$, and their squares are $\Sexpr{paste(dev^2, collapse = ",\\ ")}$. Thus,
+\begin{align*}
+\widehat{\operatorname{MSE}}_{MC}(\hat\theta_n)
+&=\frac{1}{\Sexpr{B}}\left(\Sexpr{paste(dev^2, collapse = "+")}\right)\\[1ex]
+&=\frac{\Sexpr{sum(dev^2)}}{\Sexpr{B}}\\[1ex]
+&=\Sexpr{fmt(sol, 2)}.
+\end{align*}
+\begin{answerlist}
+  \item True.
+  \item False. This is the MC approximation of the \emph{bias}, $\frac{1}{B}\sum_{b=1}^B\hat\theta_{n,b,obs}-\theta$.
+  \item False. Here, the \emph{absolute} deviations $|\hat\theta_{n,b,obs}-\theta|$ were averaged instead of the \emph{squared} deviations.
+  \item False. This is the square root of the MSE.
+\end{answerlist}
+\end{solution}
+
+\exname{Computing a Monte Carlo Approximation}
+\extype{schoice}
+\exsolution{1000}
+\exshuffle{4}

@@ -140,7 +140,7 @@ Two OLS estimators:
 $$
 \hat\beta_n=(X^{\top}X)^{-1}X^{\top}Y
 \qquad\text{and}\qquad
-s^2_{ub,n}=\frac{1}{n-K}\sum_{i=1}^n\hat\epsilon_i^2.
+s^2_{UB,n}=\frac{1}{n-K}\sum_{i=1}^n\hat\epsilon_i^2.
 $$
 
 * Both are **consistent**.
@@ -281,9 +281,9 @@ The approximation error vanishes as $n\to\infty.$
 
 We don't know $\operatorname{AVar}(\hat\beta_n) = \sigma^2\Sigma_{X^{\top}X}^{-1}$ -- plug in the consistent estimator
 $$
-\widehat{\operatorname{AVar}}(\hat\beta_n) = s_{ub}^2 S_{X^{\top}X}^{-1}.
+\widehat{\operatorname{AVar}}(\hat\beta_n) = s_{UB}^2 S_{X^{\top}X}^{-1}.
 $$
-(Both $S_{X^{\top}X}^{-1}$ and $s_{ub}^2$ are consistent, by the LLN.)
+(Both $S_{X^{\top}X}^{-1}$ and $s_{UB}^2$ are consistent, by the LLN.)
 
 ### The Case of Heteroskedasticity {#sec-CaseHetero}
 
@@ -382,7 +382,7 @@ S_{X^{\top}X}^{-1}\widehat{E}(\varepsilon^2_iX_iX_i^{\top})S^{-1}_{X^{\top}X}
 $$ 
 by 
 $$
-s_{ub}^2S_{X^{\top}X}^{-1}
+s_{UB}^2S_{X^{\top}X}^{-1}
 $$
 
 ::: {.callout-tip}
@@ -390,7 +390,7 @@ $$
 Instead of $W$ statistic and the $\chi^2(q)$ distribution use the $\frac{W}{q}$ statistic and the $F_{q,n-K}$ distribution for inference.
 
 * Asymptotically ($n\to\infty$): $F_{q,n-K}$ and $\frac{1}{q}\chi^2(q)$ agree.
-* For finite $n$: using $\frac{W}{q}$ and $F_{q,n-K}$ gives more conservative test decisions compensating for the estimation error in $S_{X^{\top}X}^{-1}\widehat{E}(\varepsilon^2_iX_iX_i^{\top})S^{-1}_{X^{\top}X}$ (or $s_{ub}^2S_{X^{\top}X}^{-1}$).
+* For finite $n$: using $\frac{W}{q}$ and $F_{q,n-K}$ gives more conservative test decisions compensating for the estimation error in $S_{X^{\top}X}^{-1}\widehat{E}(\varepsilon^2_iX_iX_i^{\top})S^{-1}_{X^{\top}X}$ (or $s_{UB}^2S_{X^{\top}X}^{-1}$).
 :::
 
 #### **Robust Hypothesis Testing: Single Parameters**
@@ -412,14 +412,14 @@ $$
 
 * $\left[S_{X^{\top}X}^{-1}\widehat{E}(\varepsilon^2_iX_iX_i^{\top})S^{-1}_{X^{\top}X}\right]_{(k,k)}$: the $(k,k)$ element of that $K\times K$ matrix.
 * This $t$-test statistic allows for **heteroskedastic** error terms.
-* Homoskedastic errors: substitute by $s_{ub}^2[S_{X^{\top}X}^{-1}]_{(k,k)}$.
+* Homoskedastic errors: substitute by $s_{UB}^2[S_{X^{\top}X}^{-1}]_{(k,k)}$.
 
 ::: {.callout-tip}
 # Finite-sample correction
 Use the $t_{(n-K)}$ distribution ($n-K$ degrees of freedom) instead of $\mathcal{N}(0,1)$.
 
 * Asymptotically ($n\to\infty$): $t_{(n-K)}$ and $\mathcal{N}(0,1)$ agree.
-* For finite $n$: $t_{(n-K)}$ gives larger critical values -- compensates for the estimation error in $[S_{X^{\top}X}^{-1}\widehat{E}(\varepsilon^2_iX_iX_i^{\top})S^{-1}_{X^{\top}X}]_{(k,k)}$ (or $s_{ub}^2[S_{X^{\top}X}^{-1}]_{(k,k)}$).
+* For finite $n$: $t_{(n-K)}$ gives larger critical values -- compensates for the estimation error in $[S_{X^{\top}X}^{-1}\widehat{E}(\varepsilon^2_iX_iX_i^{\top})S^{-1}_{X^{\top}X}]_{(k,k)}$ (or $s_{UB}^2[S_{X^{\top}X}^{-1}]_{(k,k)}$).
 :::
 
 #### **Robust Confidence Intervals**

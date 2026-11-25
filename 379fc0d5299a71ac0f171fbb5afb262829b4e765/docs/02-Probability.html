@@ -1535,7 +1535,7 @@ f(x_1,x_2)=f_1(x_1)\cdot f_2(x_2).
 \]</span> This means that <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> are assumed to be <em>independent</em> here, which is reasonable in this example. See the section on independent random variables below.</p>
 </div>
 </div>
-<p>In the following, we mostly focus on continuous random vectors. The discrete case is treated analogously, with sums instead of integrals; the marginal probability mass function below shows how this works.</p>
+<p>In the following, we mostly focus on continuous random vectors. The discrete case is treated analogously, with sums instead of integrals; the marginal probability mass function and the means and variances of discrete random variables below show how this works.</p>
 </section><section id="marginal-distributions" class="level4" data-number="2.2.2.4"><h4 data-number="2.2.2.4" class="anchored" data-anchor-id="marginal-distributions">
 <span class="header-section-number">2.2.2.4</span> <strong>Marginal Distributions</strong>
 </h4>
@@ -1645,9 +1645,12 @@ E(X_1\mid X_2=2)                 &amp;=2.8\\[2ex]
 <section id="unconditional-means" class="level4" data-number="2.2.3.1"><h4 data-number="2.2.3.1" class="anchored" data-anchor-id="unconditional-means">
 <span class="header-section-number">2.2.3.1</span> <strong>Unconditional Means</strong>
 </h4>
-<p>The <strong>unconditional mean</strong> of <span class="math inline">\(X_1\)</span> is given by <span class="math display">\[
+<p>The <strong>unconditional mean</strong> of a continuous random variable <span class="math inline">\(X_1\)</span> is given by <span class="math display">\[
 E(X_1)= \int x_1 f_1(x_1)\,dx_1.
-\]</span> The unconditional mean of a random vector <span class="math display">\[
+\]</span> For a discrete random variable <span class="math inline">\(X_1\)</span>, the integral becomes a sum, and the density becomes the pmf: <span class="math display">\[
+E(X_1)= \sum_{x_1} x_1 f_1(x_1),
+\]</span> where the sum runs over all possible values <span class="math inline">\(x_1\)</span> of <span class="math inline">\(X_1\)</span>. That is, the mean is the probability-weighted sum of the possible values of <span class="math inline">\(X_1\)</span>.</p>
+<p>The unconditional mean of a random vector <span class="math display">\[
 X=
 \begin{pmatrix}
 X_1\\ \vdots \\ X_d
@@ -1703,13 +1706,16 @@ E(X_1)\\ E(X_2)
 <span class="header-section-number">2.2.3.2</span> <strong>Means of Transformed Random Variables and Moments</strong>
 </h4>
 <p>The <strong>mean of a transformed random variable</strong> <span class="math inline">\(r(X)\)</span> is given by <span class="math display">\[
-E(r(X))=\int r(x) f_{X}(x)\,dx.
-\]</span> An important special case are <strong>linear transformations</strong> <span class="math inline">\(r(x)=a+b\,x\)</span> with constants <span class="math inline">\(a,b\in\mathbb{R}\)</span>. The mean is linear: <span class="math display">\[\begin{align*}
+E(r(X))=\int r(x) f_{X}(x)\,dx
+\]</span> if <span class="math inline">\(X\)</span> is continuous, and by <span class="math display">\[
+E(r(X))=\sum_{x} r(x) f_{X}(x)
+\]</span> if <span class="math inline">\(X\)</span> is discrete, where the sum runs over all possible values <span class="math inline">\(x\)</span> of <span class="math inline">\(X\)</span>.</p>
+<p>An important special case are <strong>linear transformations</strong> <span class="math inline">\(r(x)=a+b\,x\)</span> with constants <span class="math inline">\(a,b\in\mathbb{R}\)</span>. The mean is linear: <span class="math display">\[\begin{align*}
 E(a+b\,X)
 &amp;=\int (a+b\,x) f_{X}(x)\,dx\\[2ex]
 &amp;=a\underbrace{\int f_{X}(x)\,dx}_{=1}+\,b\underbrace{\int x\, f_{X}(x)\,dx}_{=E(X)}\\[2ex]
 &amp;=a+b\,E(X).
-\end{align*}\]</span></p>
+\end{align*}\]</span> For discrete random variables, the same steps work with sums instead of integrals.</p>
 <p>Further typical transformations are, for instance,</p>
 <div class="spaced-list">
 <ul>
@@ -1719,8 +1725,55 @@ E(a+b\,X)
 </ul>
 </div>
 <p>where the latter transformation leads to the <strong>second central moment</strong>, i.e., the variance of <span class="math inline">\(X\)</span>, <span class="math display">\[
-\operatorname{Var}(X)=\int (x - E(X))^2 f_{X}(x)\,dx.
-\]</span></p>
+\operatorname{Var}(X)=E\Big(\big(X-E(X)\big)^2\Big)=\int (x - E(X))^2 f_{X}(x)\,dx
+\]</span> if <span class="math inline">\(X\)</span> is continuous, and <span class="math display">\[
+\operatorname{Var}(X)=E\Big(\big(X-E(X)\big)^2\Big)=\sum_{x} (x - E(X))^2 f_{X}(x)
+\]</span> if <span class="math inline">\(X\)</span> is discrete.</p>
+<p>That is, the variance is the probability-weighted average of the squared deviations from the mean. The square root of the variance, <span class="math inline">\(\sqrt{\operatorname{Var}(X)}\)</span>, is called the <strong>standard deviation</strong>; it measures the spread of <span class="math inline">\(X\)</span> in the same units as <span class="math inline">\(X\)</span>.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Example: Mean and Variance of a Discrete Random Variable (Car Sales)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Consider again the daily number of cars <span class="math inline">\(X\in\{0,1,2,3\}\)</span> sold by the small car dealership with pmf</p>
+<table class="caption-top table">
+<thead><tr class="header">
+<th><span class="math inline">\(x\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(0\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(1\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(2\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(3\)</span></th>
+</tr></thead>
+<tbody><tr class="odd">
+<td><span class="math inline">\(f_X(x)\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0.2\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0.4\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0.3\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0.1\)</span></td>
+</tr></tbody>
+</table>
+<p><strong>Mean:</strong> We multiply each possible value <span class="math inline">\(x\)</span> by its probability <span class="math inline">\(f_X(x)\)</span> and add up: <span class="math display">\[\begin{align*}
+E(X)
+&amp;=\sum_{x\in\{0,1,2,3\}} x\, f_X(x)\\[2ex]
+&amp;=0\cdot 0.2+1\cdot 0.4+2\cdot 0.3+3\cdot 0.1\\[2ex]
+&amp;=0+0.4+0.6+0.3\\[2ex]
+&amp;=1.3.
+\end{align*}\]</span> That is, the dealership sells <span class="math inline">\(1.3\)</span> cars per day on average. Note that the mean <span class="math inline">\(1.3\)</span> is not a possible value of <span class="math inline">\(X\)</span>; it is a long-run average over many days.</p>
+<p><strong>Variance:</strong> We multiply each squared deviation from the mean, <span class="math inline">\((x-1.3)^2\)</span>, by its probability <span class="math inline">\(f_X(x)\)</span> and add up: <span class="math display">\[\begin{align*}
+\operatorname{Var}(X)
+&amp;=\sum_{x\in\{0,1,2,3\}} (x-E(X))^2\, f_X(x)\\[2ex]
+&amp;=(0-1.3)^2\cdot 0.2+(1-1.3)^2\cdot 0.4+(2-1.3)^2\cdot 0.3+(3-1.3)^2\cdot 0.1\\[2ex]
+&amp;=1.69\cdot 0.2+0.09\cdot 0.4+0.49\cdot 0.3+2.89\cdot 0.1\\[2ex]
+&amp;=0.338+0.036+0.147+0.289\\[2ex]
+&amp;=0.81.
+\end{align*}\]</span> Thus, the standard deviation is <span class="math inline">\(\sqrt{\operatorname{Var}(X)}=\sqrt{0.81}=0.9\)</span> cars per day.</p>
+</div>
+</div>
 <div class="spaced-list">
 <ul>
 <li><p>The <span class="math inline">\(k\)</span>th moment, <span class="math inline">\(k=1,2,\dots\)</span>, is given by <span class="math display">\[
@@ -1731,6 +1784,7 @@ E\left(\big(X-E(X)\big)^{k}\right)=\int_{-\infty}^{+\infty}\big(x-E(X)\big)^{k} 
 \]</span></p></li>
 </ul>
 </div>
+<p>For discrete random variables, the integrals are again replaced by sums, e.g., <span class="math inline">\(E\left(X^{k}\right)=\sum_{x}x^{k} f_X(x)\)</span>.</p>
 <p>Of course, these moments are only defined if the respective integrals exist, i.e., if <span class="math inline">\(E(|X|^k)&lt;\infty\)</span>.</p>
 <p><strong>Note:</strong> As the title of <span class="citation" data-cites="LB2000">Lindsay and Basak (<a href="#ref-LB2000" role="doc-biblioref">2000</a>)</span> puts it, “moments determine the tail of a distribution (but not much else)”. Roughly: the more moments a distribution has, the faster its tails decay to zero. Distributions with compact support (e.g., the uniform distribution <span class="math inline">\(\mathcal{U}(a,b)\)</span>) have moments of all orders. The normal distribution also has moments of all orders, even though it does not have compact support; see <a href="#sec-NormalDistr" class="quarto-xref"><span>Section 2.2.7.2</span></a>.</p>
 </section><section id="covariance-and-correlation" class="level4" data-number="2.2.3.3"><h4 data-number="2.2.3.3" class="anchored" data-anchor-id="covariance-and-correlation">
@@ -1878,7 +1932,7 @@ E\big(E(X_1\mid X_2,\ldots,X_d)\big)=E(X_1).
 </div>
 <p><strong>In words:</strong> If we average the conditional means <span class="math inline">\(E(X_1\mid X_2=x_2)\)</span> over all possible values <span class="math inline">\(x_2\)</span> of <span class="math inline">\(X_2\)</span>, weighted by how likely these values are, we get back the unconditional mean <span class="math inline">\(E(X_1)\)</span>.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-31-contents" aria-controls="callout-31" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-32-contents" aria-controls="callout-32" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1887,7 +1941,7 @@ E\big(E(X_1\mid X_2,\ldots,X_d)\big)=E(X_1).
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-31" class="callout-31-contents callout-collapse collapse">
+<div id="callout-32" class="callout-32-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>To show this result, we first compute the conditional mean of <span class="math inline">\(X_1\)</span> given <span class="math inline">\(X_2,\dots,X_d\)</span>, and then take the mean with respect to <span class="math inline">\(X_2,\dots,X_d\)</span>: <!-- Note that $f(x_1\mid X_2,\ldots,X_d)$ is just a transformation of the random variables $X_2,\dots,X_d$. So we can easily compute the unconditional mean $E(X_1)$ by taking the mean of $E(X_1|X_2,\ldots,X_d)$ as following,  --> <span class="math display">\[\begin{align*}
 &amp;E\big({\color{purple}{E(X_1\mid X_2,\ldots,X_d)}}\big)\\[2ex]
@@ -1960,7 +2014,7 @@ E\big(E(X_1\mid X_2)\big)
 &amp;=0.9\cdot 0.50+1.7\cdot 0.50\\[2ex]
 &amp;=1.3.
 \end{align*}\]</span></p>
-<p><strong>Check:</strong> Using the marginal pmf of <span class="math inline">\(X_1\)</span> from the one-dimensional car sales example, <span class="math display">\[\begin{align*}
+<p><strong>Check:</strong> Using the marginal pmf of <span class="math inline">\(X_1\)</span> from the one-dimensional car sales example (see also the example on the mean and variance of a discrete random variable), <span class="math display">\[\begin{align*}
 E(X_1)
 &amp;=0\cdot 0.2+1\cdot 0.4+2\cdot 0.3+3\cdot 0.1\\[2ex]
 &amp;=1.3.
@@ -2116,6 +2170,16 @@ Summary: Two Random Variables <span class="math inline">\(X_1\)</span> and <span
 <td><span class="math inline">\(f(x_1\mid x_2)=\dfrac{f(x_1,x_2)}{f_2(x_2)}\)</span></td>
 </tr>
 <tr class="even">
+<td><strong>Mean</strong></td>
+<td><span class="math inline">\(E(X_1)=\sum_{x_1} x_1\,f_1(x_1)\)</span></td>
+<td><span class="math inline">\(E(X_1)=\int x_1\,f_1(x_1)\,dx_1\)</span></td>
+</tr>
+<tr class="odd">
+<td><strong>Variance</strong></td>
+<td><span class="math inline">\(\operatorname{Var}(X_1)=\sum_{x_1} (x_1-E(X_1))^2\,f_1(x_1)\)</span></td>
+<td><span class="math inline">\(\operatorname{Var}(X_1)=\int (x_1-E(X_1))^2\,f_1(x_1)\,dx_1\)</span></td>
+</tr>
+<tr class="even">
 <td><strong>Conditional mean</strong></td>
 <td><span class="math inline">\(m(x_2)=\sum_{x_1} x_1\,f(x_1\mid x_2)\)</span></td>
 <td><span class="math inline">\(m(x_2)=\int x_1\,f(x_1\mid x_2)\,dx_1\)</span></td>
@@ -2198,16 +2262,6 @@ Example: Univariate Random Sample
 \{X_{1}, \ldots, X_{10}\}.
 \]</span> If the shop had selected ten other customers, it would have observed different numbers. The random variables <span class="math inline">\(X_1,\dots,X_{10}\)</span> describe all the data we <strong>could</strong> have observed; the observed data are the one realization we <em>happened</em> to observe.</p>
 <p>The following animation shows the observed data (first frame) together with further possible realizations of the same random sample.</p>
-<div class="spaced-list">
-<ul>
-<li><p>The dashed line shows the true (usually unknown) mean <span class="math inline">\(\mu=E(X_i)=50\)</span>.</p></li>
-<li><p>The solid line shows the estimate of <span class="math inline">\(\mu\)</span> computed from the respective realization, i.e., the average of its ten data points, <span class="math display">\[\begin{align*}
-\hat\mu
-&amp;= \frac{1}{n}\left(X_1+X_2+\dots+X_n\right)\\[2ex]
-&amp;= \frac{1}{n}\sum_{i=1}^n X_i.
-\end{align*}\]</span></p></li>
-</ul>
-</div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -2216,33 +2270,7 @@ Example: Univariate Random Sample
 </div>
 </div>
 </div>
-<p>The data points jump around from realization to realization, and so does their average <span class="math display">\[
-\hat\mu = \frac{1}{n}\sum_{i=1}^n X_i.
-\]</span> However, the averages always stay close to the unknown mean <span class="math inline">\(\mu\)</span>. This is why the observed data allow us to learn about the unknown distribution <span class="math inline">\(F_X\)</span>. How to do this well is the topic of <strong>estimation</strong>, which we discuss in the following chapters.</p>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Estimator vs.&nbsp;Estimate
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Strictly speaking, we need to distinguish between an estimator and an estimate:</p>
-<div class="spaced-list">
-<ul>
-<li><p>The <strong>estimator</strong> <span class="math display">\[
-\hat\mu=\frac{1}{n}\sum_{i=1}^n X_i
-\]</span> is a function of the random variables <span class="math inline">\(X_1,\dots,X_n\)</span> and is, therefore, itself a <strong>random variable</strong>. It describes all the values of the average that we <em>could</em> have observed.</p></li>
-<li><p>The <strong>estimate</strong> <span class="math display">\[
-\hat\mu_{\operatorname{obs}}=\frac{1}{n}\sum_{i=1}^n X_{i,\operatorname{obs}}
-\]</span> is the value of the estimator computed from the observed data <span class="math inline">\(\{X_{1,\operatorname{obs}}, \ldots, X_{n,\operatorname{obs}}\}\)</span>. It is a fixed <strong>number</strong>; in the shop example, <span class="math inline">\(\hat\mu_{\operatorname{obs}}=51.3\)</span>.</p></li>
-</ul>
-</div>
-<p>Each frame of the animation above shows one realization of the estimator <span class="math inline">\(\hat\mu\)</span>. That is, the estimate <span class="math inline">\(\hat\mu_{\operatorname{obs}}\)</span> is just one possible realization of the random estimator <span class="math inline">\(\hat\mu\)</span>.</p>
+<p>The data points jump around from realization to realization. Nevertheless, all realizations are generated by the same (unknown) distribution <span class="math inline">\(F_X\)</span>. This is why the observed data allow us to learn about <span class="math inline">\(F_X\)</span>. How to do this well is the topic of <strong>estimation</strong>, which we discuss in <a href="04-Monte-Carlo-Simulations.html" class="quarto-xref"><span>Chapter 3</span></a>.</p>
 </div>
 </div>
 <p>The i.i.d. random sample is the simplest sampling scheme, and it serves as the default sampling scheme in many fields, such as economics and business administration.</p>

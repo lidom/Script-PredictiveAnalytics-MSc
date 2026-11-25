@@ -44,7 +44,8 @@ $$
 \hat\theta_{n,obs}=\hat\theta(X_{1,obs},\dots,X_{n,obs}).
 $$
 
-**Examples:**
+::: {.callout-note}
+## Example: Estimators of the Mean and the Variance
 
 * The sample mean as an estimator of the population mean $E(X_i) =\theta:$
 $$
@@ -55,17 +56,108 @@ $$
 \hat\theta_{n,obs}=\bar{X}_{n,obs}=\frac{1}{n}\sum_{i=1}^nX_{i,obs}
 $$ 
 
-* The sample variance as an estimator of the population variance $Var(X_i) =\theta:$
+* The **U**n**B**iased variance estimator of the population variance $Var(X_i) =\theta\colon$
 $$
 \hat\theta_n=s_{UB}^2=\frac{1}{n-1}\sum_{i=1}^n\left(X_i - \bar{X}_n\right)^2
-$$ 
+$$
 For given data, we observe the realization
 $$
 \hat\theta_{n,obs}=s_{UB,obs}^2=\frac{1}{n-1}\sum_{i=1}^n\left(X_{i,obs} - \bar{X}_{n,obs}\right)^2
-$$ 
+$$
+
+* The **M**aximum **L**ikelihood estimator of the population variance $Var(X_i) =\theta\colon$
+$$
+\hat\theta_n=s_{ML}^2=\frac{1}{n}\sum_{i=1}^n\left(X_i - \bar{X}_n\right)^2
+$$
+For given data, we observe the realization
+$$
+\hat\theta_{n,obs}=s_{ML,obs}^2=\frac{1}{n}\sum_{i=1}^n\left(X_{i,obs} - \bar{X}_{n,obs}\right)^2
+$$
+:::
 
 
 ::: {.callout-note}
+## Example: Estimating the Mean Spending of a Shop's Customers
+
+Recall the shop example from the chapter on probability: a shop randomly selects $n=10$ customers and records how much each of them spends (in Euro). The observed data
+```{r, echo=FALSE}
+set.seed(1)
+n_rs    <- 10
+mu_rs   <- 50
+sd_rs   <- 10
+R_rs    <- 20                                       # number of realizations
+X_rs    <- matrix(rnorm(n_rs * R_rs, mu_rs, sd_rs), nrow = n_rs)
+x_obs   <- round(X_rs[, 1], 1)                      # the "observed" data
+```
+\begin{align*}
+&\{X_{1,obs}, \ldots, X_{10,obs}\}\\[2ex]
+&=\{`r paste(format(x_obs, nsmall = 1), collapse = ",\\ ")`\}
+\end{align*}
+are assumed to be a realization of an i.i.d. random sample $\{X_1,\dots,X_{10}\}$ with $X_i\sim F_X$. The shop wants to learn the mean spending
+$$
+\theta=\mu=E(X_i)
+$$
+of its customers. 
+
+::: {.spaced-list}
+* The **estimator**
+$$
+\hat\theta_n=\bar{X}_n=\frac{1}{n}\sum_{i=1}^n X_i
+$$
+is a function of the random variables $X_1,\dots,X_n$ and is, therefore, itself a **random variable**. It describes all the values of the average that we *could* have observed.
+
+* The **estimate**
+$$
+\hat\theta_{n,obs}=\bar{X}_{n,obs}=\frac{1}{n}\sum_{i=1}^n X_{i,obs}
+$$
+is the value of the estimator computed from the observed data $\{X_{1,obs}, \ldots, X_{n,obs}\}$. It is a fixed **number**; in the shop example, 
+$$
+\bar{X}_{n,obs}=`r format(round(mean(X_rs[, 1]), 1), nsmall = 1)`.
+$$
+:::
+
+The following animation shows the observed data (first frame) together with further possible realizations of the same random sample.
+
+::: {.spaced-list}
+* The dashed line shows the true (usually unknown) mean $\mu=E(X_i)=50$.
+
+* The solid line shows the realization of the estimator $\bar{X}_n$ computed from the respective realization of the random sample.
+:::
+
+```{r}
+#| echo: false
+#| fig-width: 7
+#| fig-height: 4.5
+#| fig-retina: 1
+#| fig-keep: all
+#| animation-hook: gifski
+#| interval: 1
+for(r in seq_len(R_rs)){
+  col_r <- if(r == 1) "darkred" else "steelblue"
+  par(lwd = 2, mgp = c(2.2, 0.7, 0), las = 1, family = "serif", mar = c(4, 4, 3, 1))
+  plot(NA, xlim = c(0.5, n_rs + 0.5), ylim = c(15, 85), axes = FALSE,
+       xlab = "Customer i", ylab = "Spending (in Euro)",
+       main = if(r == 1) "Observed data: one realization of the random sample"
+              else paste0("Another possible realization (", r, " of ", R_rs, ")"))
+  axis(1, at = 1:n_rs, lwd.ticks = 1)
+  axis(2, at = seq(20, 80, by = 10), lwd.ticks = 1)
+  # unknown mean and average of the realized data
+  abline(h = mu_rs, lty = 2, lwd = 1.5)
+  segments(0.5, mean(X_rs[, r]), n_rs + 0.5, mean(X_rs[, r]), lwd = 1.5, col = col_r)
+  points(1:n_rs, X_rs[, r], pch = 19, cex = 2.5, col = col_r)
+  legend("topleft", bty = "n", lty = c(2, 1), lwd = 1.5, col = c(par("fg"), col_r),
+         legend = c(expression("unknown mean" ~ mu),
+                    bquote("estimate" ~ bar(X)[n] == .(format(round(mean(X_rs[, r]), 1), nsmall = 1)))),
+         cex = 0.9)
+}
+```
+
+Each frame of the animation shows one realization of the estimator $\bar{X}_n$. That is, the estimate $\bar{X}_{n,obs}$ (first frame) is just one possible realization of the random estimator $\bar{X}_n$. The realizations of $\bar{X}_n$ jump around from realization to realization, but they always stay close to the unknown mean $\mu$. How to assess this quality of an estimator is the topic of the next section.
+:::
+
+
+::: {.callout-note}
+## Note: Notation for Estimators and Estimates
 Often we do not use a distinguishing notation, but denote both the estimator $\hat\theta_{n}$ and its realization $\hat\theta_{n,obs}$ as $\hat\theta_{n}$. This ambiguity is often convenient since both points of views can make sense in a given context. Sometimes, also the subscript $n$ in $\hat\theta_{n}$ is dropped and one simply writes $\hat\theta.$
 :::
 
@@ -92,6 +184,8 @@ Statisticians/econometricians use different metrics to assess the quality of an 
 * variance and standard error of an estimator $\hat{\theta}_n$
 * mean squared error (mse) of an estimator $\hat{\theta}_n$
 
+
+### Bias
 
 ::: {.callout icon=false}
 ##
@@ -123,6 +217,57 @@ We would like to have estimators $\hat\theta_n$ with a small (or zero) bias.
 
 If the bias of an estimator $\hat\theta_n$ is small (or zero), we know that the distribution of the estimator $\hat\theta_n$ is roughly (or exactly) centered around the true (usually unknown) parameter $\theta.$ 
 
+::: {.callout-note}
+## Example: Bias of the Sample Mean $\bar{X}_n$
+
+Let $X_1,\dots,X_n$ be an i.i.d. random sample with mean $E(X_i)=\mu$ and variance $Var(X_i)=\sigma^2$.
+
+**Sample mean $\bar{X}_n$:** Because the expected value of a sum is the sum of the expected values,
+\begin{align*}
+E\left(\bar{X}_n\right)
+&=E\left(\frac{1}{n}\sum_{i=1}^nX_i\right)\\[2ex]
+&=\frac{1}{n}\sum_{i=1}^nE(X_i)\\[2ex]
+&=\frac{1}{n}\,n\,\mu=\mu.
+\end{align*}
+
+* Thus, $\operatorname{Bias}(\bar{X}_n)=\mu-\mu=0$. The sample mean is **unbiased**.
+
+<!-- Examples for the variance estimators (currently not used)
+
+**Unbiased variance estimator $s^2_{UB}$:** One can show that
+$$
+E\left(s^2_{UB}\right)=\sigma^2.
+$$
+
+* Thus, $\operatorname{Bias}(s^2_{UB})=0$. This is exactly why we divide by $n-1$ (and not by $n$), and why we use the subscript "UB".
+
+**ML variance estimator $s^2_{ML}$:** The two variance estimators, $s^2_{UB}$ and $s^2_{ML},$ only differ in the factor in front of the sum. Therefore,
+$$
+s^2_{ML}=\frac{n-1}{n}\,s^2_{UB}
+$$
+and
+\begin{align*}
+E\left(s^2_{ML}\right)
+&=\frac{n-1}{n}\,E\left(s^2_{UB}\right)\\[2ex]
+&=\frac{n-1}{n}\,\sigma^2.
+\end{align*}
+
+Thus,
+\begin{align*}
+\operatorname{Bias}\left(s^2_{ML}\right)
+&=\frac{n-1}{n}\,\sigma^2-\sigma^2\\[2ex]
+&=-\frac{1}{n}\,\sigma^2.
+\end{align*}
+
+* The ML variance estimator $s^2_{ML}$ is **biased**: on average, it slightly *underestimates* $\sigma^2$. 
+
+* However, the bias $\operatorname{Bias}\left(s^2_{ML}\right)$ goes to zero as $n\to\infty$, so $s^2_{ML}$ is **asymptotically unbiased**.
+-->
+:::
+
+
+
+### Variance and Standard Error
 
 However, also unbiased estimators $\hat{\theta}_n$ may still vary a lot around the parameter $\theta$ to be estimated. Therefore, is is also important to assess the variance (or the standard deviation) of the estimator. 
 
@@ -152,6 +297,52 @@ $$
 \lim_{n\to\infty}Var\left(\hat\theta_n\right)=0.
 $$
 
+::: {.callout-note}
+## Example: Variance of the Sample Mean $\bar{X}_n$
+
+Let $X_1,\dots,X_n$ be an i.i.d. random sample with mean $E(X_i)=\mu$ and variance $Var(X_i)=\sigma^2$.
+
+**Sample mean $\bar{X}_n$:** Because the $X_i$ are independent, the variance of their sum is the sum of their variances. Thus,
+\begin{align*}
+Var\left(\bar{X}_n\right)
+&=Var\left(\frac{1}{n}\sum_{i=1}^nX_i\right)\\[2ex]
+&=\frac{1}{n^2}\sum_{i=1}^nVar(X_i)\\[2ex]
+&=\frac{1}{n^2}\,n\,\sigma^2=\frac{\sigma^2}{n}.
+\end{align*}
+
+* The variance $Var\left(\bar{X}_n\right)$ goes to zero as $n\to\infty.$ 
+* The standard error is $\operatorname{SE}(\bar{X}_n)=\sigma/\sqrt{n}$ and also goes to zero as $n\to\infty.$
+
+<!-- Examples for the variance estimators (currently not used)
+
+**Unbiased variance estimator $s^2_{UB}$:** The variance of $s^2_{UB}$ depends on the **fourth moment** of the $X_i$'s. Therefore, we additionally assume that 
+$$
+\mu_4=E\left[\left(X_i-\mu\right)^4\right]<\infty.
+$$
+Under this setup, one can show that
+$$
+Var\left(s^2_{UB}\right)=\frac{1}{n}\left(\mu_4-\frac{n-3}{n-1}\,\sigma^4\right).
+$$
+For normally distributed $X_i$'s, we have $\mu_4=3\sigma^4$, and the formula simplifies to $Var\left(s^2_{UB}\right)=\frac{2\sigma^4}{n-1}.$
+
+* The variance $Var\left(s^2_{UB}\right)$ goes to zero as $n\to\infty.$
+* The standard error $\operatorname{SE}(s^2_{UB})=\sqrt{Var\left(s^2_{UB}\right)}$ also goes to zero as $n\to\infty.$
+
+**ML variance estimator $s^2_{ML}$:** Using $s^2_{ML}=\frac{n-1}{n}\,s^2_{UB}$ and the rule $Var(aX)=a^2Var(X)$ gives 
+\begin{align*}
+Var\left(s^2_{ML}\right)
+&=\left(\frac{n-1}{n}\right)^2Var\left(s^2_{UB}\right)\\[2ex]
+&=\frac{(n-1)^2}{n^3}\left(\mu_4-\frac{n-3}{n-1}\,\sigma^4\right).
+\end{align*}
+
+* The variance $Var\left(s^2_{ML}\right)$ goes to zero as $n\to\infty.$
+* The standard error $\operatorname{SE}(s^2_{ML})=\sqrt{Var\left(s^2_{ML}\right)}$ also goes to zero as $n\to\infty.$
+* Since $\frac{n-1}{n}<1$, the ML variance estimator has a **smaller variance** than the unbiased variance estimator.
+-->
+:::
+
+
+### Mean Squared Error (MSE)
 
 To **combine bias and variance** into one metric, one typically uses the **Mean Squared Error (MSE)** of an estimator $\hat\theta_n.$
 
@@ -189,6 +380,63 @@ $$
 \underbrace{E\left[\left(\hat\theta_n - \theta\right)^2\right]}_{\operatorname{MSE}\left(\hat\theta_n\right)} = \underbrace{E\left[\left(\hat\theta_n - E\left(\hat\theta_n\right)\right)^2\right]}_{ Var\left(\hat\theta_n\right)} 
 $$
 
+::: {.callout-note}
+## Example: MSE of the Sample Mean $\bar{X}_n$
+
+We use $\operatorname{MSE}=(\operatorname{Bias})^2+Var$ and the results from the two examples above.
+
+**Sample mean $\bar{X}_n$:** The bias is zero, so the MSE equals the variance,
+\begin{align*}
+\operatorname{MSE}\left(\bar{X}_n\right)
+&=\left(\operatorname{Bias}\left(\bar{X}_n\right)\right)^2+Var\left(\bar{X}_n\right)\\[2ex]
+&=0^2+\frac{\sigma^2}{n}\\[2ex]
+&=\frac{\sigma^2}{n}.
+\end{align*}
+
+* The MSE $\operatorname{MSE}\left(\bar{X}_n\right)$ goes to zero as $n\to\infty.$
+* Since $\bar{X}_n$ is unbiased, its MSE equals its variance.
+
+<!-- Examples for the variance estimators (currently not used)
+
+**Unbiased variance estimator $s^2_{UB}$:** The bias is zero, so the MSE equals the variance,
+$$
+\operatorname{MSE}\left(s^2_{UB}\right)=Var\left(s^2_{UB}\right)=\frac{1}{n}\left(\mu_4-\frac{n-3}{n-1}\,\sigma^4\right).
+$$
+
+* The MSE $\operatorname{MSE}\left(s^2_{UB}\right)$ goes to zero as $n\to\infty.$
+* Since $s^2_{UB}$ is unbiased, its MSE equals its variance.
+
+**ML variance estimator $s^2_{ML}$:** Here, the bias is not zero, so
+\begin{align*}
+\operatorname{MSE}\left(s^2_{ML}\right)
+&=\left(\operatorname{Bias}\left(s^2_{ML}\right)\right)^2+Var\left(s^2_{ML}\right)\\[2ex]
+&=\frac{\sigma^4}{n^2}+\left(\frac{n-1}{n}\right)^2Var\left(s^2_{UB}\right).
+\end{align*}
+
+* The MSE $\operatorname{MSE}\left(s^2_{ML}\right)$ goes to zero as $n\to\infty,$ since both the squared bias and the variance go to zero.
+* Since $s^2_{ML}$ is biased, its MSE is larger than its variance.
+
+**Which variance estimator is better?** This depends on the distribution of the $X_i$'s. For normally distributed $X_i$'s ($\mu_4=3\sigma^4$), we get
+$$
+\operatorname{MSE}\left(s^2_{UB}\right)=\frac{2\sigma^4}{n-1}
+\quad\text{and}\quad
+\operatorname{MSE}\left(s^2_{ML}\right)=\frac{(2n-1)\,\sigma^4}{n^2}.
+$$
+For instance, for $n=10$ and $\sigma^2=1$:
+\begin{align*}
+\operatorname{MSE}\left(s^2_{UB}\right)&=\frac{2}{9}\approx 0.222\\[2ex]
+\operatorname{MSE}\left(s^2_{ML}\right)&=\frac{19}{100}=0.190
+\end{align*}
+In fact, for normally distributed $X_i$'s, $\operatorname{MSE}(s^2_{ML})<\operatorname{MSE}(s^2_{UB})$ for every $n\geq 2$. That is, the *biased* ML estimator is, on average, closer to $\sigma^2$ than the *unbiased* estimator, since its smaller variance more than compensates for its small bias. Lesson: unbiasedness alone does not make an estimator the best one.
+-->
+:::
+
+
+
+
+
+## Approximating Bias, Variance, and MSE using MC Simulations 
+
 
 ::: {.callout}
 
@@ -199,8 +447,6 @@ $$
 Unfortunately, it is often difficult to derive the above assessment metrics for given sample sizes $n$ and given data distributions $F_X,$ since for given $n$ we typically do not know the distribution of the estimator $\hat\theta_n$ and thus also not its bias and variance. Monte Carlo simulations allow us to solve this issue.
 ::: 
 
-
-## Approximating Bias, Variance, and MSE using MC Simulations 
 
 Any of the the above assessment metrics requires us to compute **means**, i.e. $E(\cdot)$, of random variables: 
 
@@ -306,98 +552,196 @@ $$
 
 ## Example: Sample Mean 
 
-The following `R` code contains a Monte Carlo simulation with $B = 10000$ replications to approximate the bias, the variance, and the mean squared error for the sample mean 
+In this example, we use a Monte Carlo simulation to check how well the sample mean estimates the population mean. To set up the simulation, we need to answer three questions:
+
+::: {.spaced-list}
+1. What do we want to estimate? (**parameter of interest**)
+2. How do we estimate it? (**estimator**)
+3. Under which conditions do we study the estimator? (**scenario**)
+:::
+
+
+#### **1. Parameter of Interest** {-}
+
+We want to estimate the population mean
 $$
-(\hat\theta_n=)\bar{X}_n=\frac{1}{n}\sum_{i=1}^nX_i
-$$ 
-Setup: 
+(\theta=)\mu=E(X_i).
+$$
+In real data applications, the value of $\mu$ is **unknown**.
 
-* $X_i\overset{iid}{\sim}F_X$, $i=1,\dots,n$, with $F_X=\mathcal{N}(\mu,\sigma^2)$ 
-* Mean $\mu=10$ 
-* Variance $\sigma^2=5$ 
-* Sample sizes $n\in\{5,15,50\}$ 
-<!-- The following `R` codes generated `B = 10000` realizations of the estimator $\bar{X}_n$ for each sample size $n\in\{5,15,50\}$ and stores all these realizations in a $10000\times 3$ matrix `estimates_mat`: -->
+
+#### **2. Estimator** {-}
+
+We estimate $\mu$ using the sample mean
+$$
+(\hat\theta_n)=\bar{X}_n=\frac{1}{n}\sum_{i=1}^nX_i.
+$$
+We want to find out the bias, the variance, and the MSE of $\bar{X}_n$.
+
+
+#### **3. Scenario** {-}
+
+In a simulation, *we* choose the data distribution $F_X$. This has two big advantages:
+
+::: {.spaced-list}
+* We **know the true parameter value** $\mu$. Thus, we can check how close the estimates are to it.
+* We can **study the estimator under different scenarios**, i.e., under different distributions $F_X$.
+:::
+
+
+We consider the following scenario:
+
+::: {.spaced-list}
+* **Random sample:** $X_1,\dots,X_n$ are i.i.d. with $X_i\sim\mathcal{N}(\mu,\sigma^2)$ for all $i=1,\dots,n$.<br>
+(In real data applications, the distribution $F_X$ is **unknown**.)
+* **True mean:** $\mu=10$<br>
+(In real data applications, **unknown**.)
+* **True variance:** $\sigma^2=5$<br>
+(In real data applications, **unknown**.)
+* **Sample sizes:** $n\in\{5,15,50\}$<br>
+(In real data applications, **known**: $n$ is the number of observations in the dataset.)
+:::
+
+For each sample size $n$, we generate $B=10000$ realizations of $\bar{X}_n$ using the MC-simulation algorithm above.
+
+
+#### **4. Monte Carlo Simulation** {-}
+
+The code follows the MC-simulation algorithm above: for each sample size $n$, we repeat Step 1 (draw a random sample) and Step 2 (compute the sample mean) $B$ times. Then, we use the $B$ realizations of $\bar{X}_n$ to compute the MC approximations of the bias, the variance, and the MSE.
+
+::: {.panel-tabset}
+
+## `R`
+
 ```{r}
-## Set seed for the random number generator to get reproducible results
-set.seed(3)
-## True (usually unknown) parameter value of interest
-mu            <- 10
-## Number of Monte Carlo repetitions:
-B             <- 10000
-## Sequence of different sample sizes:
-n_seq         <- c(5, 15, 50)
+set.seed(3)              # makes the results reproducible
 
-## Function that generates estimator realizations 
-my_estimates_generator <- function(n){
-  ## generate a realization of the random sample
-  X_sample <- rnorm(n = n, mean = mu, sd = sqrt(5))
-  ## compute the sample mean realization
-  return(mean(X_sample))
+## Scenario (in real data applications unknown)
+mu     <- 10             # true mean (= parameter of interest)
+sigma2 <- 5              # true variance
+
+## Sample sizes and number of MC repetitions
+n_seq  <- c(5, 15, 50)
+B      <- 10000
+
+## Empty vectors to store the results (one entry per sample size)
+MC_Bias <- numeric(length(n_seq))
+MC_Var  <- numeric(length(n_seq))
+MC_MSE  <- numeric(length(n_seq))
+
+for (k in 1:length(n_seq)) {
+  n <- n_seq[k]
+
+  ## Generate B realizations of the sample mean
+  estimates <- numeric(B)
+  for (b in 1:B) {
+    X_sample     <- rnorm(n, mean = mu, sd = sqrt(sigma2)) # Step 1
+    estimates[b] <- mean(X_sample)                         # Step 2
+  }
+
+  ## MC approximations
+  MC_Bias[k] <- mean(estimates) - mu
+  MC_Var[k]  <- mean((estimates - mean(estimates))^2)
+  MC_MSE[k]  <- mean((estimates - mu)^2)
 }
-
-estimates_mat <- cbind(
-  replicate(B, my_estimates_generator(n = n_seq[1])),# n small
-  replicate(B, my_estimates_generator(n = n_seq[2])),# n intermediate
-  replicate(B, my_estimates_generator(n = n_seq[3])) # n largish
-)
-
-## Bias of the sample mean for different sample sizes n
-MC_Bias_n_seq <- apply(estimates_mat, 2, mean) - mu
-
-## Variance of the sample mean for different sample sizes n
-MC_Var_n_seq  <- apply(estimates_mat, 2, var)
-
-## Mean squared error of the sample mean for different sample sizes n
-MC_MSE_n_seq  <- apply(estimates_mat, 2, function(x){mean((x - mu)^2)})
 ```
 
+## Python
 
-@tbl-mcbvmse shows the Monte Carlo approximations for the bias, the variance, and the mean squared error of $\bar{X}_n.$
+```python
+import numpy as np
+
+rng = np.random.default_rng(3)  # makes the results reproducible
+
+## Scenario (in real data applications unknown)
+mu     = 10                     # true mean (= parameter of interest)
+sigma2 = 5                      # true variance
+
+## Sample sizes and number of MC repetitions
+n_seq  = [5, 15, 50]
+B      = 10000
+
+## Empty arrays to store the results (one entry per sample size)
+MC_Bias = np.zeros(len(n_seq))
+MC_Var  = np.zeros(len(n_seq))
+MC_MSE  = np.zeros(len(n_seq))
+
+for k in range(len(n_seq)):
+    n = n_seq[k]
+
+    ## Generate B realizations of the sample mean
+    estimates = np.zeros(B)
+    for b in range(B):
+        X_sample     = rng.normal(loc=mu, scale=np.sqrt(sigma2), size=n)  # Step 1
+        estimates[b] = np.mean(X_sample)                                   # Step 2
+
+    ## MC approximations
+    MC_Bias[k] = np.mean(estimates) - mu
+    MC_Var[k]  = np.mean((estimates - np.mean(estimates))**2)
+    MC_MSE[k]  = np.mean((estimates - mu)**2)
+
+print(MC_Bias, MC_Var, MC_MSE)
+```
+:::
+
+
+#### **5. Results** {-}
+
+@tbl-mcbvmse shows the Monte Carlo approximations of the bias, the variance, and the MSE of $\bar{X}_n$. Since we know the scenario, we can compare them with the true values that we derived above:
+$$
+\operatorname{Bias}(\bar{X}_n)=0
+\quad\text{and}\quad
+Var(\bar{X}_n)=\operatorname{MSE}(\bar{X}_n)=\frac{\sigma^2}{n}=\frac{5}{n}.
+$$
 
 ```{r, echo=FALSE}
 #| label: tbl-mcbvmse
-#| tbl-cap: Monte Carlo approximations for the true bias, true variance, and true mean squared error of sample mean.
+#| tbl-cap: Monte Carlo approximations and true values of the bias, the variance, and the mean squared error of the sample mean.
 suppressPackageStartupMessages(library("kableExtra"))
 suppressPackageStartupMessages(library("tidyverse"))
 
 MCResults <- tibble(
-  "n"                  = n_seq,
-  "Bias (MC-Sim) "     = round(MC_Bias_n_seq, 3),
-  "Variance (MC-Sim)"  = round(MC_Var_n_seq,  2),
-  "MSE (MC-Sim) "      = round(MC_MSE_n_seq,  2))
+  "n"                         = n_seq,
+  "Bias (MC)"                 = round(MC_Bias, 3),
+  "Variance (MC)"             = round(MC_Var,  3),
+  "MSE (MC)"                  = round(MC_MSE,  3),
+  "True Variance = True MSE"  = round(sigma2 / n_seq, 3))
            
 MCResults %>% kbl() %>%  kable_styling()
 ```
 
+The Monte Carlo results in @tbl-mcbvmse show:  
 
-The Monte Carlo approximations in @tbl-mcbvmse indicate that:  
+::: {.spaced-list}
+* **Bias:** The bias of $\bar{X}_n$ is (almost) zero for all sample sizes. This confirms that $\bar{X}_n$ is unbiased.
+* **Variance:** The variance of $\bar{X}_n$ decreases as the sample size $n$ gets larger, and it is very close to the true variance $\sigma^2/n$.
+* **MSE:** Since the bias is zero, the MSE is (almost) equal to the variance. Thus, also the MSE decreases as $n$ gets larger.
+:::
 
-- The bias $\operatorname{Bias}(\bar{X}_n)$ is effectively zero for all sample sizes $n\in\{5,15,50\}$
+::: {.callout-tip collapse="true"}
+## 🤓 Nerd's Box: How Fast Does the MSE Decrease?
 
-- The mean squared error $\operatorname{MSE}(\bar{X}_n)$ is decreasing as the sample size $n$ gets larger. 
-
-- The log-log plot in @fig-loglog suggests a convergence rate of $-1$ for $\operatorname{MSE}(\bar{X}_n)$ i.e.
-$$
+The log-log plot in @fig-loglog shows a straight line with slope of about $-1$. This means that
 \begin{align*}
 \operatorname{MSE}(\bar{X}_n) &= \texttt{Constant} \cdot n^{-1}\\[2ex]
-\Leftrightarrow\log\left(\operatorname{MSE}(\bar{X}_n)\right) &= \log\left(\texttt{Constant}\right) -1 \cdot \log\left(n\right),
+\Leftrightarrow\quad\log\left(\operatorname{MSE}(\bar{X}_n)\right) &= \log\left(\texttt{Constant}\right) -1 \cdot \log\left(n\right),
 \end{align*}
-$$
-where $\texttt{Constant}$ depends on the data generating process and the estimator, but not on the sample size $n$. 
+where $\texttt{Constant}$ depends on the scenario and the estimator, but not on the sample size $n$. This fits our theoretical result $\operatorname{MSE}(\bar{X}_n)=\sigma^2/n$, where $\texttt{Constant}=\sigma^2=5$.
 
 ```{r}
 #| label: fig-loglog
-#| fig-cap: "Plotting the logarithm of the MSE-values against the logarithm of the sample size values $n$ allows to approximate the convergence rate of the MSE-values as the sample size increases by the slope of the graph." 
-plot(y    = MC_MSE_n_seq,  
+#| fig-cap: "Logarithm of the MSE-values plotted against the logarithm of the sample sizes $n$. The slope of the line approximates the rate at which the MSE decreases as the sample size increases." 
+plot(y    = MC_MSE,  
      x    = n_seq, 
      type = "o", 
      log  = "xy", # x-axis and y-axis on a log-scale
      ylab = "MSE (log scale)",
      xlab = "n (log scale)")
 
-## Computing the slope (values read out from the plot): 
-(log(0.1) - log(1)) / (log(50) - log(5))
+## Computing the slope (from the smallest to the largest sample size):
+(log(MC_MSE[3]) - log(MC_MSE[1])) / (log(n_seq[3]) - log(n_seq[1]))
 ```
+:::
 
 
 
@@ -678,16 +1022,13 @@ We can use Monte Carlo simulations to approximate the *exact* distribution of an
 Thus here the quality of the estimator $\bar{X}_n$ gets better as $n$ gets large. To describe the quality of estimators more compactly, statisticians/econometricians use specific metrics like bias, variance and the mean squared error of the distribution of a estimator $\hat\theta$. -->
 
 
-
-
-
-<!-- 
 ## Exercises
 
-* [Exercises for Chapter 4](https://www.dropbox.com/scl/fi/w1nj9wnpj15r53opudhns/Ch4_Exercises1.pdf?rlkey=4bk9h4rpg4mkizi46s2r11okv&st=0dawfy6m&dl=0)
+The exercises are based on the examples in this chapter. They are your main resource for preparing for the exam. About half of them are single-choice questions, as in the exam. However, reading the script remains advisable, particularly if you aim for a top grade: the exercises cannot cover every concept and every connection between them.
 
-* [Exercises for Chapter 4 with Solutions](https://www.dropbox.com/scl/fi/jssefvtifo6wczxaxr250/Ch4_Exercises_with_Solutions1.pdf?rlkey=wcineb1vy4vpqxy8989qplexr&st=fp5sf04v&dl=0)
--->
+* [Exercises for Chapter 3](exercises/pdf/Ch3_Exercises.pdf)
+
+* [Exercises for Chapter 3 with Solutions](exercises/pdf/Ch3_Exercises_with_Solutions.pdf)
 
 
 

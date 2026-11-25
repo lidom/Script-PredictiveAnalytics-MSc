@@ -1,0 +1,31 @@
+<<echo=FALSE, results=hide>>=
+## Script: Section "Approximating Bias, Variance, and MSE using MC Simulations"
+##         and Section "Example: Sample Mean" (3. Scenario)
+@
+
+\begin{question}
+\textbf{Why Monte Carlo Simulations?} (Script: Section ``Approximating Bias, Variance, and MSE using MC Simulations'')
+
+Why are Monte Carlo simulations useful to assess the quality of an estimator $\hat\theta_n$?
+\begin{answerlist}
+  \item In a simulation, we choose the data distribution $F_X$ ourselves. Thus, we know the true parameter $\theta$ and can approximate the bias, the variance, and the MSE of $\hat\theta_n$, even if they are difficult to derive mathematically.
+  \item A Monte Carlo simulation computes the true value of $\theta$ from the observed real data.
+  \item A Monte Carlo simulation removes the bias of an estimator.
+  \item A Monte Carlo simulation does not need any assumption about the data distribution $F_X$.
+\end{answerlist}
+\end{question}
+
+\begin{solution}
+The bias, the variance, and the MSE of an estimator are expected values (means) of functions of $\hat\theta_n$. For a given data distribution $F_X$ and sample size $n$, they are often difficult to derive mathematically. In a Monte Carlo simulation, we choose $F_X$ (and thus $\theta$) ourselves, generate $B$ realizations of $\hat\theta_n$, and approximate these expected values by sample means over the $B$ realizations.
+\begin{answerlist}
+  \item True.
+  \item False. A simulation does not use the real data at all. With real data, the true value of $\theta$ is unknown.
+  \item False. A simulation only \emph{measures} the bias of an estimator. It does not change the estimator.
+  \item False. To generate data, we must choose a \emph{complete} data distribution $F_X$ (e.g., $\mathcal{N}(\mu,\sigma^2)$ with given $\mu$ and $\sigma^2$). The results only hold for this chosen scenario.
+\end{answerlist}
+\end{solution}
+
+\exname{Why Monte Carlo Simulations?}
+\extype{schoice}
+\exsolution{1000}
+\exshuffle{4}

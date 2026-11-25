@@ -1,0 +1,128 @@
+<<echo=FALSE, results=hide>>=
+## Script: Section "Example: Sample Mean" (MC simulation) and
+##         Example "Estimators of the Mean and the Variance"
+## (old Bonn exercise 2, simplified: no ecdf plots, results table given)
+mu     <- sample(c(2, 3, 5), 1)        # true mean
+sigma2 <- sample(c(1, 2, 4), 1)        # true variance (= parameter of interest)
+n_seq  <- c(2, 5, 10, 20)
+B      <- 10000
+
+Bias_UB <- Var_UB <- MSE_UB <- numeric(4)
+Bias_ML <- Var_ML <- MSE_ML <- numeric(4)
+for (k in 1:4) {
+  n <- n_seq[k]
+  est_UB <- numeric(B)
+  est_ML <- numeric(B)
+  for (b in 1:B) {
+    X_sample  <- rnorm(n, mean = mu, sd = sqrt(sigma2))
+    est_UB[b] <- sum((X_sample - mean(X_sample))^2) / (n - 1)
+    est_ML[b] <- sum((X_sample - mean(X_sample))^2) / n
+  }
+  Bias_UB[k] <- mean(est_UB) - sigma2
+  Var_UB[k]  <- mean((est_UB - mean(est_UB))^2)
+  MSE_UB[k]  <- mean((est_UB - sigma2)^2)
+  Bias_ML[k] <- mean(est_ML) - sigma2
+  Var_ML[k]  <- mean((est_ML - mean(est_ML))^2)
+  MSE_ML[k]  <- mean((est_ML - sigma2)^2)
+}
+stopifnot(all(MSE_ML < MSE_UB), all(Var_ML < Var_UB))
+
+row <- function(k, b, v, m) paste0("$", n_seq[k], "$ & $", fmt(b[k], 3), "$ & $", fmt(v[k], 3), "$ & $", fmt(m[k], 3), "$")
+@
+
+\begin{question}
+\textbf{Two Estimators of the Variance} (Script: Section ``Example: Sample Mean'' and Example ``Estimators of the Mean and the Variance'')
+
+Let $X_1,\dots,X_n$ be an i.i.d.\ random sample with $X_i\sim\mathcal{N}(\mu,\sigma^2)$, where $\mu=\Sexpr{mu}$ and $\sigma^2=\Sexpr{sigma2}$. We want to estimate the variance $\sigma^2$ and consider two estimators:
+$$
+s^2_{UB}=\frac{1}{n-1}\sum_{i=1}^n\left(X_i-\bar{X}_n\right)^2
+\quad\text{and}\quad
+s^2_{ML}=\frac{1}{n}\sum_{i=1}^n\left(X_i-\bar{X}_n\right)^2.
+$$
+A Monte Carlo simulation with $B=10000$ repetitions gives the following approximations of the bias, the variance, and the MSE of both estimators:
+\begin{center}
+\begin{tabular}{rccc}
+\multicolumn{4}{c}{Unbiased estimator $s^2_{UB}$}\\[0.5ex]
+$n$ & Bias (MC) & Variance (MC) & MSE (MC)\\\hline
+\Sexpr{row(1, Bias_UB, Var_UB, MSE_UB)}\\
+\Sexpr{row(2, Bias_UB, Var_UB, MSE_UB)}\\
+\Sexpr{row(3, Bias_UB, Var_UB, MSE_UB)}\\
+\Sexpr{row(4, Bias_UB, Var_UB, MSE_UB)}
+\end{tabular}
+\qquad
+\begin{tabular}{rccc}
+\multicolumn{4}{c}{ML estimator $s^2_{ML}$}\\[0.5ex]
+$n$ & Bias (MC) & Variance (MC) & MSE (MC)\\\hline
+\Sexpr{row(1, Bias_ML, Var_ML, MSE_ML)}\\
+\Sexpr{row(2, Bias_ML, Var_ML, MSE_ML)}\\
+\Sexpr{row(3, Bias_ML, Var_ML, MSE_ML)}\\
+\Sexpr{row(4, Bias_ML, Var_ML, MSE_ML)}
+\end{tabular}
+\end{center}
+\begin{enumerate}
+  \item Adapt the \texttt{R} code from the script (Section ``Example: Sample Mean'') to compute these Monte Carlo approximations yourself.
+  \item Which of the two estimators is (approximately) unbiased? Which one is biased?
+  \item Which of the two estimators has the smaller variance?
+  \item Which of the two estimators has the smaller MSE? Which estimator would you prefer?
+  \item What happens to the bias, the variance, and the MSE of both estimators as $n$ gets larger?
+\end{enumerate}
+\end{question}
+
+\begin{solution}
+\begin{enumerate}
+  \item The code follows the MC-simulation algorithm from the script. Inside the loop over $b$, Step~1 draws a random sample and Step~2 computes the realizations of \emph{both} estimators from the \emph{same} sample.
+\begin{verbatim}
+set.seed(3)              # makes the results reproducible
+
+## Scenario
+mu     <- 3              # true mean (use the value from the problem)
+sigma2 <- 2              # true variance (use the value from the problem)
+
+## Sample sizes and number of MC repetitions
+n_seq  <- c(2, 5, 10, 20)
+B      <- 10000
+
+## Empty vectors to store the results (one entry per sample size)
+Bias_UB <- numeric(length(n_seq)); Bias_ML <- numeric(length(n_seq))
+Var_UB  <- numeric(length(n_seq)); Var_ML  <- numeric(length(n_seq))
+MSE_UB  <- numeric(length(n_seq)); MSE_ML  <- numeric(length(n_seq))
+
+for (k in 1:length(n_seq)) {
+  n <- n_seq[k]
+
+  ## Generate B realizations of both estimators
+  est_UB <- numeric(B)
+  est_ML <- numeric(B)
+  for (b in 1:B) {
+    X_sample  <- rnorm(n, mean = mu, sd = sqrt(sigma2))         # Step 1
+    est_UB[b] <- sum((X_sample - mean(X_sample))^2) / (n - 1)   # Step 2
+    est_ML[b] <- sum((X_sample - mean(X_sample))^2) / n         # Step 2
+  }
+
+  ## MC approximations
+  Bias_UB[k] <- mean(est_UB) - sigma2
+  Var_UB[k]  <- mean((est_UB - mean(est_UB))^2)
+  MSE_UB[k]  <- mean((est_UB - sigma2)^2)
+
+  Bias_ML[k] <- mean(est_ML) - sigma2
+  Var_ML[k]  <- mean((est_ML - mean(est_ML))^2)
+  MSE_ML[k]  <- mean((est_ML - sigma2)^2)
+}
+\end{verbatim}
+  \item The bias of $s^2_{UB}$ is (almost) zero for all sample sizes. Thus, $s^2_{UB}$ is (approximately) unbiased. This is why we use the subscript ``UB'' (\textbf{u}n\textbf{b}iased).
+
+  The bias of $s^2_{ML}$ is clearly negative, particularly for small $n$. Thus, $s^2_{ML}$ is biased: on average, it \emph{underestimates} the true variance $\sigma^2=\Sexpr{sigma2}$. The reason is that $s^2_{ML}$ divides by $n$ instead of by $n-1$, which makes it smaller than $s^2_{UB}$:
+  $$
+  s^2_{ML}=\frac{n-1}{n}\,s^2_{UB}<s^2_{UB}.
+  $$
+  \item The ML estimator $s^2_{ML}$ has the smaller variance for all sample sizes. Again, the reason is the factor $\frac{n-1}{n}<1$, which ``shrinks'' $s^2_{ML}$ (and thus also its fluctuations) compared to $s^2_{UB}$.
+  \item The ML estimator $s^2_{ML}$ has the smaller MSE for all sample sizes. Its smaller variance more than compensates for its (small) bias. Thus, according to the MSE criterion, we prefer the \emph{biased} estimator $s^2_{ML}$.
+
+  \textbf{Lesson:} Unbiasedness alone does not make an estimator the best one.
+  \item For both estimators, the bias, the variance, and the MSE get smaller as $n$ gets larger. Thus, the differences between the two estimators become small for large $n$. (For large $n$, the factors $\frac{1}{n-1}$ and $\frac{1}{n}$ are almost equal.)
+\end{enumerate}
+\end{solution}
+
+\exname{Two Estimators of the Variance}
+\extype{string}
+\exsolution{nil}
