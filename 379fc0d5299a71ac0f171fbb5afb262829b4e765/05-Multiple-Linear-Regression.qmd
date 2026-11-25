@@ -1480,7 +1480,7 @@ To check whether there are non-linear relationships between the outcome and the 
 
 ::: {.panel-tabset}
 
-## Base `R`
+## Base R
 
 ```{r}
 car_data <- read.csv(file = "https://cdn.rawgit.com/lidom/Teaching_Repo/bc692b56/autodata.csv")
@@ -1493,7 +1493,7 @@ my_car_df <- data.frame(
 pairs(my_car_df)
 ```
 
-## Tidyverse `R`
+## Tidyverse R
 
 ```{r}
 ## install.packages("tidyverse")
@@ -1533,7 +1533,7 @@ Such a simple model is not able to take into account the non-linear relationship
 
 ::: {.panel-tabset}
 
-## Base `R`
+## Base R
 
 ```{r, fig.dim = c(5, 10)}
 lm_obj_1 <- lm(MPG ~ HP, data = my_car_df)
@@ -1549,7 +1549,7 @@ plot(lm_obj_1, which=1,
        main = "Simple Linear Regression")
 ```
 
-## Tidyverse `R`
+## Tidyverse R
 
 ```{r}
 ## install.packages("tidyverse")
@@ -1591,7 +1591,7 @@ This more flexible model is indeed better in taking into account the non-linear 
 
 ::: {.panel-tabset}
 
-## Base `R`
+## Base R
 
 ```{r, fig.dim = c(5, 10)}
 ## Adding new variable HP squared:
@@ -1615,7 +1615,7 @@ plot(lm_obj_2, which=1,
 ```
 
 
-## Tidyverse `R`
+## Tidyverse R
 
 ```{r}
 ## install.packages("tidyverse")

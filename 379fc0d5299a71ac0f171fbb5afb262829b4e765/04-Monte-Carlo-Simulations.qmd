@@ -611,7 +611,7 @@ The code follows the MC-simulation algorithm above: for each sample size $n$, we
 
 ::: {.panel-tabset}
 
-## `R`
+## R
 
 ```{r}
 set.seed(3)              # makes the results reproducible

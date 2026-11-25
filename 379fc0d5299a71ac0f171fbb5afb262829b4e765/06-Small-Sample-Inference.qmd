@@ -2180,7 +2180,7 @@ car::linearHypothesis(
 
 <!-- Since $X_{gender,i}$ is a dummy variable,  -->
 
-#### **`R` Package Stargazer** {-}
+#### **R Package Stargazer** {-}
 
 Beautiful and "publication ready" regression outputs can be produced using the `R` package `stargazer` and its function `stargazer()`:
 

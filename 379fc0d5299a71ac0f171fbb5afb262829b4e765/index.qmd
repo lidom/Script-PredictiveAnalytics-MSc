@@ -19,21 +19,26 @@ timetable %>% kbl() %>%  kable_styling()
 ```
 
 
-### Lecture Material  
+### Lecture Material {-} 
 
-* This online script
-* [eWhiteboard](https://www.dropbox.com/scl/fi/cekkrg29r1toqha35wdek/eWhiteboard_2627_annotated.pdf?rlkey=ddrcbxw5y4nlp59j8p5edvlgl&st=jaxomtsl&dl=0)
+::: {.spaced-list}
+* **Script:** This online script.
+* **eWhiteboard:** The annotated [eWhiteboard](https://www.dropbox.com/scl/fi/cekkrg29r1toqha35wdek/eWhiteboard_2627_annotated.pdf?rlkey=ddrcbxw5y4nlp59j8p5edvlgl&st=jaxomtsl&dl=0) from the lectures.
+* **Exercise sheets:** At the end of each chapter, with and without solutions.
+:::
 
 ### Literature {-}
 
 The script is self-contained. To prepare well for the exam, it's a good idea to work with this script. 
 
+<!-- 
 Further textbooks I can recommend:  
 
 * *All of Statistics: A Concise Course in Statistical Inference*, by Larry Wasserman
 * *Econometrics*, by F. Hayashi
 * *Econometrics*, by Bruce E. Hansen
-* *Probability and Statistics for Economists*, by Bruce E. Hansen
+* *Probability and Statistics for Economists*, by Bruce E. Hansen 
+-->
 
 <!-- * *Introduction to econometrics*, by J. Stock and M.W. Watson
 * *Econometric theory and methods*, by R. Davidson and J.G. MacKinnon
@@ -44,8 +49,15 @@ Further textbooks I can recommend:
 
 ### Information on the Exam {-}
 
-* Written exam (60 or 90 minutes)
-* **Exercises:** Each chapter ends with exercises (with solutions). They are your main resource for preparing for the exam, since the exam builds on them. However, reading the script remains advisable, particularly if you aim for a top grade: the exercises cannot cover every concept and every connection between them.
+::: {.spaced-list}
+* **Format:** Written exam (90 minutes).
+* **Exercises:** Each chapter ends with exercises and solutions. They are your main resource for preparing for the exam, since the exam builds on them. Nevertheless, you should also read the script, particularly if you aim for a top grade: the exercises cannot cover every concept and every connection between concepts.
+* **Exam dates:**
+  * Thursday, February 11, 2027
+  * Thursday, April 8, 2027
+:::
+
+
 <!--
 * **10** multiple-choice problems and
    * **2** free-text problems (each with sub-questions)

@@ -28,58 +28,58 @@ Let's start with some basic definitions and specific examples.
 
 A **scalar** $a$ is a single real number. We write $a \in \mathbb R$.
 
-A **vector** $a$ of dimension $k$ is a $(k \times 1)$ list of
+A **vector** $a$ of dimension $n$ is an $(n \times 1)$ list of
 real numbers 
 $$
-a = \begin{pmatrix} a_1 \\ a_2 \\ \vdots \\ a_k \end{pmatrix}.
+a = \begin{pmatrix} a_1 \\ a_2 \\ \vdots \\ a_n \end{pmatrix}.
 $$ 
 By default, when we refer to a vector, we always mean a **column
-vector**. We write $a \in \mathbb R^k$. 
+vector**. We write $a \in \mathbb R^n$. 
 
 The value $a_i$ is called $i$-th entry or $i$-th component of $a$. 
 
 A scalar is a (degenerated) vector of length 1. 
 
-A row vector of length $k$ is written as
+A row vector of length $n$ is written as
 $$
-b = (b_1, \ldots, b_k).
+b = (b_1, \ldots, b_n).
 $$
 
-A **matrix** $A$ of dimension (or order) $(k \times m)$ is a rectangular array of real numbers 
+A **matrix** $A$ of dimension (or order) $(n \times K)$ is a rectangular array of real numbers 
 $$
 A =\begin{pmatrix}
-             a_{11} & a_{12} & \cdots & a_{1m}\\
-             a_{21} & a_{22} & \cdots & a_{2m}\\
+             a_{11} & a_{12} & \cdots & a_{1K}\\
+             a_{21} & a_{22} & \cdots & a_{2K}\\
              \vdots & \vdots &       & \vdots\\
-             a_{k1} & a_{k2} & \cdots & a_{km}
+             a_{n1} & a_{n2} & \cdots & a_{nK}
 \end{pmatrix}
 $$ 
-with $k$ rows and $m$ columns. We write $A \in \mathbb R^{k \times m}$. 
+with $n$ rows and $K$ columns. We write $A \in \mathbb R^{n \times K}$. 
 
 
 The value $a_{ij}$ is called $(i,j)$-th entry or $(i,j)$-th component of $A$. 
 
 We also use the notation $(A)_{i,j}$ to denote the $(i,j)$-th entry. 
 
-A (column) vector of length $k$ is a $(k \times 1)$ matrix. 
+A (column) vector of length $n$ is an $(n \times 1)$ matrix. 
 
-A row vector of length $k$ is a $(1 \times k)$ matrix. 
+A row vector of length $n$ is a $(1 \times n)$ matrix. 
 
 A scalar is a (degenerated) matrix of dimension $(1 \times 1)$.
 
 <!-- 
 We may describe a matrix $A$ by its column or row vectors as
 $$
-A = \begin{pmatrix} a_1 & a_2 & \ldots & a_m \end{pmatrix} 
-= \begin{pmatrix} \alpha_1 \\ \vdots \\ \alpha_k \end{pmatrix},
+A = \begin{pmatrix} a_1 & a_2 & \ldots & a_K \end{pmatrix} 
+= \begin{pmatrix} \alpha_1 \\ \vdots \\ \alpha_n \end{pmatrix},
 $$ 
 where 
 $$
-a_i = \begin{pmatrix} a_{1i} \\ \vdots \\ a_{ki} \end{pmatrix}
+a_i = \begin{pmatrix} a_{1i} \\ \vdots \\ a_{ni} \end{pmatrix}
 $$ 
 is the $i$-th column of $A$ and 
 $$
-\alpha_i = (a_{i1}, \ldots, a_{im})
+\alpha_i = (a_{i1}, \ldots, a_{iK})
 $$ 
 is the $i$-th row. 
 -->
@@ -90,7 +90,7 @@ is the $i$-th row.
 ### Some Specific Matrices
 
 **Square Matrix:** A matrix is called **square matrix** if the numbers of rows and columns
-coincide, i.e., $k=m.$ For instance, 
+coincide, i.e., $n=K.$ For instance, 
 $$
 {B} = \begin{pmatrix}1 & 2 \\ 3 & 4 \end{pmatrix}
 $$ 
@@ -107,9 +107,9 @@ C = \mathop{\mathrm{diag}}(1,4).
 $$ 
 
 
-The $(k \times k)$ diagonal matrix 
+The $(K \times K)$ diagonal matrix 
 $$
-{I}_k=
+{I}_K=
       \begin{pmatrix}
       1      & 0      & \cdots & 0\\
       0      & 1      & \cdots & 0\\
@@ -117,9 +117,9 @@ $$
       0      & 0      & \cdots & 1
       \end{pmatrix} = \mathop{\mathrm{diag}}(1, \ldots, 1)
 $$ 
-is called **identity matrix** of dimension $k.$ The $(k \times m)$ matrix
+is called **identity matrix** of dimension $K.$ The $(n \times K)$ matrix
 $$
-\underset{(k\times m)}{0}\;=0=\begin{pmatrix}
+\underset{(n\times K)}{0}\;=0=\begin{pmatrix}
              0      & \cdots & 0\\
             \vdots &  \ddots      & \vdots\\
             0      & \cdots & 0
@@ -128,9 +128,9 @@ $$
 is called **zero matrix**. 
 
 
-The **zero (column) vector** of length $k$ is
+The **zero (column) vector** of length $n$ is
 $$
-\underset{(k\times 1)}{0}\; =0
+\underset{(n\times 1)}{0}\; =0
        =\begin{pmatrix}
              0   \\
             \vdots \\
@@ -148,22 +148,22 @@ The **transpose** $A^{\top}$ of the matrix $A$ is
 obtained by flipping rows and columns on the main diagonal:
 $$
 A =\begin{pmatrix}
-             a_{11} & a_{12} & \cdots & a_{1m}\\
-             a_{21} & a_{22} & \cdots & a_{2m}\\
+             a_{11} & a_{12} & \cdots & a_{1K}\\
+             a_{21} & a_{22} & \cdots & a_{2K}\\
              \vdots & \vdots &       & \vdots\\
-             a_{k1} & a_{k2} & \cdots & a_{km}
+             a_{n1} & a_{n2} & \cdots & a_{nK}
 \end{pmatrix}
 $$ 
 $$
 {A}^{\top}=\begin{pmatrix}
-    a_{11} & a_{21} & \cdots & a_{k1}\\
-    a_{12} & a_{22} & \cdots & a_{k2}\\
+    a_{11} & a_{21} & \cdots & a_{n1}\\
+    a_{12} & a_{22} & \cdots & a_{n2}\\
     \vdots & \vdots &       & \vdots\\
-    a_{1m} & a_{2m} & \cdots & a_{km}
+    a_{1K} & a_{2K} & \cdots & a_{nK}
 \end{pmatrix}.
 $$ 
-If $A$ is a matrix of dimension $(k\times m)$,
-then $A^{\top}$ is a matrix of dimension $(m \times k)$. 
+If $A$ is a matrix of dimension $(n\times K)$,
+then $A^{\top}$ is a matrix of dimension $(K \times n)$. 
 
 
 **Example:**
@@ -185,7 +185,7 @@ $$
 $$ 
 The transpose of a (column) vector is a row vector: 
 $$
-a^{\top} = (a_1, \ldots, a_k)
+a^{\top} = (a_1, \ldots, a_n)
 $$
 
 A **symmetric matrix** is a square matrix $A$ with
@@ -194,20 +194,133 @@ $$
 A = \begin{aligned}         \left(\begin{matrix}1 & 2 \\ 2 & 4 \end{matrix}\right)\end{aligned}.
 $$
 
-### Matrices in `R`
+
+
+
+
+::: {.callout-note}
+## Example: Running Example (Part 1) -- The Data Matrix $X$ and Its Transpose $X^{\top}$
+
+Throughout this chapter, we use a small dataset as a **running example**. Step by step, we compute all the pieces of the OLS estimator
+$$
+\hat\beta=\left(X^{\top}X\right)^{-1}X^{\top}Y,
+$$
+which we study in detail in @sec-MLR.
+
+**The data:** A retail chain randomly selects $n=4$ of its stores, located in different cities. For each store $i=1,\dots,4$, the chain records the following data of the last month:
+
+::: {.spaced-list}
+* the sales $Y_i$ (in 1000 Euro) and
+* the advertising expenses $X_{i2}$ (in 1000 Euro).
+:::
+
+| Store $i$ | Sales $Y_i$ | Advertising $X_{i2}$ |
+|:---------:|:-----------:|:--------------------:|
+| 1         | 6           | 1                    |
+| 2         | 7           | 2                    |
+| 3         | 10          | 3                    |
+| 4         | 15          | 4                    |
+
+**Vector and matrix notation:** We collect the outcomes in the $(4\times 1)$ vector $Y$ and the predictors in the $(4\times 2)$ **data matrix** $X$:
+$$
+\underset{(4\times 1)}{Y}=\begin{pmatrix}6\\7\\10\\15\end{pmatrix}
+\qquad\text{and}\qquad
+\underset{(4\times 2)}{X}=\begin{pmatrix}
+1 & 1\\
+1 & 2\\
+1 & 3\\
+1 & 4
+\end{pmatrix}.
+$$
+
+::: {.spaced-list}
+* Each **row** of $X$ contains the data of one store $i$.
+* Each **column** of $X$ belongs to one coefficient in the regression model
+$$
+Y_i=\beta_1+\beta_2X_{i2}+\varepsilon_i.
+$$
+The first column consists of $1$s and belongs to the intercept $\beta_1$. The second column contains the advertising expenses $X_{i2}$ and belongs to the slope $\beta_2$.
+* Thus, $X$ has $n=4$ rows (one per store) and $K=2$ columns (intercept and predictor).
+:::
+
+**Transpose:** Transposing $X$ turns its columns into rows. Thus, the transpose $X^{\top}$ is a $(2\times 4)$ matrix:
+$$
+\underset{(2\times 4)}{X^{\top}}=\begin{pmatrix}
+1 & 1 & 1 & 1\\
+1 & 2 & 3 & 4
+\end{pmatrix}.
+$$
+:::
+
+### Matrices in R and Python
+
+::: {.panel-tabset}
+
+## R
 
 ```{r}
-A = matrix(c(1,4,7,2,5,8), nrow = 3, ncol = 2)
+## A (3 x 2) matrix (R fills the matrix column by column)
+A <- matrix(c(1, 4, 7, 2, 5, 8), nrow = 3, ncol = 2)
 A
-t(A) #transpose of A
-A[3,2] #the (3,2)-entry of A
-B = matrix(c(1,2,2,4), nrow = 2, ncol = 2) # another matrix
-all(B == t(B)) #check whether B is symmetric
-diag(c(1,4)) #diagonal matrix
-diag(1, nrow = 3) #identity matrix
-matrix(0, nrow=2, ncol=5) #matrix of zeros
-dim(A) #number of rows and columns
+
+## Transpose of A
+t(A)
+
+## The (3,2)-entry of A
+A[3, 2]
+
+## Number of rows and columns of A
+dim(A)
+
+## Another matrix B; is B symmetric?
+B <- matrix(c(1, 2, 2, 4), nrow = 2, ncol = 2)
+all(B == t(B))
+
+## Diagonal matrix with diagonal elements 1 and 4
+diag(c(1, 4))
+
+## (3 x 3) identity matrix
+diag(1, nrow = 3)
+
+## (2 x 5) matrix of zeros
+matrix(0, nrow = 2, ncol = 5)
 ```
+
+## Python
+
+```python
+import numpy as np
+
+## A (3 x 2) matrix (numpy fills the matrix row by row)
+A = np.array([[1, 2],
+              [4, 5],
+              [7, 8]])
+print(A)
+
+## Transpose of A
+print(A.T)
+
+## The (3,2)-entry of A (Python starts counting at 0)
+print(A[2, 1])
+
+## Number of rows and columns of A
+print(A.shape)
+
+## Another matrix B; is B symmetric?
+B = np.array([[1, 2],
+              [2, 4]])
+print(np.all(B == B.T))
+
+## Diagonal matrix with diagonal elements 1 and 4
+print(np.diag([1, 4]))
+
+## (3 x 3) identity matrix
+print(np.eye(3))
+
+## (2 x 5) matrix of zeros
+print(np.zeros((2, 5)))
+```
+:::
 
 
 ## Sums and Products {#sec-MAsums}
@@ -215,14 +328,14 @@ dim(A) #number of rows and columns
 ### Matrix Summation
 
 Let $A$ and $B$ both be matrices of dimension
-$(k \times m)$. Their sum is defined componentwise:
+$(n \times K)$. Their sum is defined componentwise:
 $$
 {A} + {B}
 =\begin{pmatrix}
-a_{11}+ b_{11} & a_{12}+ b_{12} & \cdots & a_{1m}+ b_{1m} \\
-a_{21}+ b_{21} & a_{22}+ b_{22} & \cdots & a_{2m}+ b_{2m} \\
+a_{11}+ b_{11} & a_{12}+ b_{12} & \cdots & a_{1K}+ b_{1K} \\
+a_{21}+ b_{21} & a_{22}+ b_{22} & \cdots & a_{2K}+ b_{2K} \\
 \vdots        & \vdots        &       & \vdots        \\
-a_{k1}+ b_{k1} & a_{k2}+ b_{k2} & \cdots & a_{km}+ b_{km}
+a_{n1}+ b_{n1} & a_{n2}+ b_{n2} & \cdots & a_{nK}+ b_{nK}
 \end{pmatrix}.
 $$ 
 Only two matrices of the same dimensions can be added.
@@ -252,15 +365,15 @@ $$
 
 ### Scalar-Matrix Multiplication
 
-The product of a $(k \times m)$ matrix ${A}$ with a scalar
+The product of an $(n \times K)$ matrix ${A}$ with a scalar
 $\lambda\in\mathbb{R}$ is defined componentwise:
 $$
 \lambda {A} =
 \begin{pmatrix}
-   \lambda a_{11}   & \lambda a_{12} & \cdots  & \lambda a_{1m} \\
-   \lambda a_{21}   & \lambda a_{22} & \cdots  & \lambda a_{2m} \\
+   \lambda a_{11}   & \lambda a_{12} & \cdots  & \lambda a_{1K} \\
+   \lambda a_{21}   & \lambda a_{22} & \cdots  & \lambda a_{2K} \\
    \vdots           & \vdots &                & \vdots         \\
-   \lambda a_{k1}   & \lambda a_{k2} & \cdots  & \lambda a_{km}
+   \lambda a_{n1}   & \lambda a_{n2} & \cdots  & \lambda a_{nK}
 \end{pmatrix}.
 $$ 
 
@@ -268,33 +381,84 @@ $$
 $$
 \lambda=2, \quad {A}=\begin{pmatrix}2&0\\1&5\\3&2\end{pmatrix},\quad
 \lambda{A}=\begin{pmatrix}4&0\\2&10\\6&4\end{pmatrix}.$$
-Scalar-matrix multiplication satisfies the distributivity law:
-$$\begin{array}{@{}rr@{\ }c@{\ }l@{}r@{}}
-\text{(i)}    & \lambda({A}+{B})&=& \lambda{A}+\lambda{B}\, &    \\
-\text{(ii)}   & (\lambda+\mu){A} &=& \lambda{A}+\mu{A}\,     & 
+
+
+::: {.callout-tip appearance="minimal"}
+
+**Rules for scalar-matrix multiplication**
+
+For scalars $\lambda,\mu\in\mathbb{R}$ and matrices $A$, $B$ of the same dimension, the scalar-matrix multiplication satisfies the following rules:
+$$
+\begin{array}{@{}rr@{\ }c@{\ }l@{}r@{}}
+\text{(i)}    & \lambda({A}+{B}) &=& \lambda{A}+\lambda{B}\, & \text{(distributivity)} \\
+\text{(ii)}   & (\lambda+\mu){A} &=& \lambda{A}+\mu{A}\,     & \text{(distributivity)}
 \end{array}
 $$
+:::
 
-### Element-by-Element Operations in R
+### Element-by-Element Operations in R and Python
 
-Basic arithmetic operations work on an element-by-element basis in `R`:
+In `R` and in Python (`numpy`), the basic arithmetic operations `+`, `-`, `*`, and `/` work **element by element**. We use the matrices $A$ and $B$ from the matrix summation example above.
+
+::: {.panel-tabset}
+
+## R
 
 ```{r}
-A = matrix(c(2,1,3,0,5,2), ncol=2)
-B = matrix(c(-1,7,-5,1,1,2), ncol=2)
-A+B #matrix summation
-A-B #matrix subtraction
-2*A #scalar-matrix product
-A/2 #division of entries by 2
-A*B #element-wise multiplication
+A <- matrix(c(2, 1, 3, 0, 5, 2), ncol = 2)
+B <- matrix(c(-1, 7, -5, 1, 1, 2), ncol = 2)
+
+## Matrix summation
+A + B
+
+## Matrix subtraction
+A - B
+
+## Scalar-matrix product
+2 * A
+
+## Division of all entries by 2
+A / 2
+
+## Element-wise multiplication (this is NOT the matrix product!)
+A * B
 ```
+
+## Python
+
+```python
+import numpy as np
+
+A = np.array([[2, 0],
+              [1, 5],
+              [3, 2]])
+B = np.array([[-1, 1],
+              [ 7, 1],
+              [-5, 2]])
+
+## Matrix summation
+print(A + B)
+
+## Matrix subtraction
+print(A - B)
+
+## Scalar-matrix product
+print(2 * A)
+
+## Division of all entries by 2
+print(A / 2)
+
+## Element-wise multiplication (this is NOT the matrix product!)
+print(A * B)
+```
+:::
 
 ### Inner Product
 
-The **inner product** (also known as dot product) of two vectors 
-${a},{b}\in\mathbb{R}^k$ yields a scalar; i.e. a value in $\mathbb{R},$
+The **inner product**, also known as **dot product**, of two vectors 
+${a},{b}\in\mathbb{R}^n$ yields a scalar; i.e. a value in $\mathbb{R},$
 $$
-{a}^{\top}{b} = a_1 b_1+a_2b_2+\ldots+a_kb_k=\sum_{i=1}^k a_ib_i\in\mathbb{R}.
+{a}^{\top}{b} = a_1 b_1+a_2b_2+\ldots+a_nb_n=\sum_{i=1}^n a_ib_i\in\mathbb{R}.
 $$
 
 **Example:** 
@@ -330,15 +494,15 @@ $$
 ### Outer Product
 
 The outer product (also known as dyadic product) of two vectors
-${x} \in \mathbb R^k$ and ${y}\in\mathbb{R}^m$ yields a $(k\times m)$ matrix,
+${x} \in \mathbb R^n$ and ${y}\in\mathbb{R}^K$ yields an $(n\times K)$ matrix,
 $$
 {x}{y}^{\top} = 
 \left(\begin{matrix}
-x_1 y_1 & x_1 y_2  &\ldots & x_1 y_m \\ 
-x_2 y_1 & x_2 y_2 & \ldots & x_2 y_m \\ 
+x_1 y_1 & x_1 y_2  &\ldots & x_1 y_K \\ 
+x_2 y_1 & x_2 y_2 & \ldots & x_2 y_K \\ 
 \vdots   & \vdots &      & \vdots    \\
-x_k y_1 & x_k y_2 & \ldots & x_k y_m
-\end{matrix}\right)\in  \mathbb{R}^{k \times m}.
+x_n y_1 & x_n y_2 & \ldots & x_n y_K
+\end{matrix}\right)\in  \mathbb{R}^{n \times K}.
 $$ 
 
 
@@ -356,73 +520,110 @@ $$
 $$
 
 
-### Vector Multiplication in `R`
+### Vector Multiplication in R and Python
 
-For vector multiplication in `R`, we use the operator `%*%` (recall that
-`*` is already reserved for element-wise multiplication). Let's
-implement some multiplications.
+Since `*` is already reserved for element-wise multiplication, we need special operators for vector multiplication:
+
+::: {.spaced-list}
+* In `R`, we use the operator `%*%`.
+* In Python (`numpy`), we use the operator `@` for the inner product and the function `np.outer()` for the outer product.
+:::
+
+::: {.panel-tabset}
+
+## R
 
 ```{r}
-y = c(2,7,4,1) #y is treated as a column vector
-t(y) %*% y #the inner product of y with itself
-y %*% t(y) #the outer product of y with itself
-c(1,2) %*% t(c(-2,0,2)) #the example from above
+## y is treated as a column vector
+y <- c(2, 7, 4, 1)
+
+## Inner product of y with itself
+t(y) %*% y
+
+## Outer product of y with itself
+y %*% t(y)
+
+## Outer product x y^T from the example above
+x <- c(1, 2)
+z <- c(-2, 0, 2)
+x %*% t(z)
 ```
+
+## Python
+
+```python
+import numpy as np
+
+## numpy vectors have no orientation (neither column nor row)
+y = np.array([2, 7, 4, 1])
+
+## Inner product of y with itself
+print(y @ y)
+
+## Outer product of y with itself
+print(np.outer(y, y))
+
+## Outer product x y^T from the example above
+x = np.array([1, 2])
+z = np.array([-2, 0, 2])
+print(np.outer(x, z))
+```
+:::
 
 ### Matrix-Matrix Multiplication
 
 The **matrix product** of 
 
-* a $(k \times m)$ matrix ${A}$ and 
-* a $(m \times n)$ matrix ${B}$ 
+* an $(n \times K)$ matrix ${A}$ and 
+* a $(K \times m)$ matrix ${B}$ 
 
-is the $(k\times n)$ matrix $C = AB$:
+is the $(n\times m)$ matrix $C = AB$:
 \begin{align*}
 AB &= 
-\underset{(k\times m)}{\begin{pmatrix}
-a_{11} & \cdots & a_{1m}\\
+\underset{(n\times K)}{\begin{pmatrix}
+a_{11} & \cdots & a_{1K}\\
 \vdots &        & \vdots\\
-{\color{teal}{a_{i1}}} & {\color{teal}{\cdots}} & {\color{teal}{a_{im}}}\\
+{\color{teal}{a_{i1}}} & {\color{teal}{\cdots}} & {\color{teal}{a_{iK}}}\\
 \vdots &        & \vdots\\
-a_{k1} & \cdots & a_{km}
+a_{n1} & \cdots & a_{nK}
 \end{pmatrix}}
-\underset{(m\times n)}{\begin{pmatrix}
-b_{11} & \cdots & {\color{teal}{b_{1j}}} & \cdots & b_{1n}\\
+\underset{(K\times m)}{\begin{pmatrix}
+b_{11} & \cdots & {\color{teal}{b_{1j}}} & \cdots & b_{1m}\\
 \vdots &        & {\color{teal}{\vdots}} &        & \vdots\\
-b_{m1} & \cdots & {\color{teal}{b_{mj}}} & \cdots & b_{mn}
+b_{K1} & \cdots & {\color{teal}{b_{Kj}}} & \cdots & b_{Km}
 \end{pmatrix}}\\[2ex]
 &=
-\underset{(k\times n)}{\begin{pmatrix}
-c_{11} & \cdots & c_{1j} & \cdots & c_{1n}\\
+\underset{(n\times m)}{\begin{pmatrix}
+c_{11} & \cdots & c_{1j} & \cdots & c_{1m}\\
 \vdots &        & \vdots &        & \vdots\\
-c_{i1} & \cdots & {\color{teal}{c_{ij}}} & \cdots & c_{in}\\
+c_{i1} & \cdots & {\color{teal}{c_{ij}}} & \cdots & c_{im}\\
 \vdots &        & \vdots &        & \vdots\\
-c_{k1} & \cdots & c_{kj} & \cdots & c_{kn}
+c_{n1} & \cdots & c_{nj} & \cdots & c_{nm}
 \end{pmatrix}} = C
 \end{align*}
 
 The element ${\color{teal}{c_{ij}}}$ in row $i$ and column $j$ of $C$ combines the ${\color{teal}{i\text{-th row}}}$ of $A$ with the ${\color{teal}{j\text{-th column}}}$ of $B$: multiply their entries pairwise and add everything up,
 $$
-{\color{teal}{c_{ij}}} = a_{i1}b_{1j}+a_{i2}b_{2j}+\ldots+a_{im}b_{mj}=\sum_{l=1}^m a_{il}b_{lj} = a_i^{\top} b_j,
+{\color{teal}{c_{ij}}} = a_{i1}b_{1j}+a_{i2}b_{2j}+\ldots+a_{iK}b_{Kj}=\sum_{l=1}^K a_{il}b_{lj} = a_i^{\top} b_j,
 $$
 where $a_i$ is the $i$-th **row** of $A$ written as a column vector
 $$
 a_i = 
 \begin{pmatrix}
-a_{i1}\\\vdots\\ a_{im}
+a_{i1}\\\vdots\\ a_{iK}
 \end{pmatrix}
 $$
 and 
 $$
 b_j = 
 \begin{pmatrix}
-b_{1j}\\\vdots\\ b_{mj}
+b_{1j}\\\vdots\\ b_{Kj}
 \end{pmatrix}
 $$
 is the $j$-th **column** of $B$.
 
 The matrix product is only defined if the number of columns of the
-first matrix equals the number of rows of the second matrix. Therefore, we say that the $(k \times m)$ matrix $A$ and the $(m \times n)$
+first matrix equals the number of rows of the second matrix. Therefore, we say that the $(n \times K)$ matrix $A$ and the $(K \times m)$
 matrix $B$ are **conformable for matrix multiplication**.
 
 
@@ -453,16 +654,40 @@ $$
 = \left(\begin{matrix}-1 & 2 \\ -3 & 0 \\ -5 & 4 \end{matrix}\right).\end{aligned}
 $$
 
-The `%*%` operator is used in `R` for matrix-matrix multiplications:
+For matrix-matrix multiplications, we use the operator `%*%` in `R` and the operator `@` in Python:
+
+::: {.panel-tabset}
+
+## R
 
 ```{r}
-A = matrix(c(1,0,2,0,1,1), ncol=2)
-B = matrix(c(-1,-3,2,0), ncol=2)
+A <- matrix(c(1, 0, 2, 0, 1, 1), ncol = 2)
+B <- matrix(c(-1, -3, 2, 0), ncol = 2)
+
+## Matrix product AB
 A %*% B
 ```
 
+## Python
+
+```python
+import numpy as np
+
+A = np.array([[1, 0],
+              [0, 1],
+              [2, 1]])
+B = np.array([[-1, 2],
+              [-3, 0]])
+
+## Matrix product AB
+print(A @ B)
+```
+:::
+
 Matrix multiplication is **not commutative**. In general, we have
-$A B \neq B A$.
+$$
+A B \neq B A.
+$$
 
 **Example:** 
 $$
@@ -499,8 +724,8 @@ $$
 \text{(ii)}  &   {A}({B}+{D})    & = & {A}{B}+{A}{D}\,  & \text{(distributivity)} \\
 \text{(iii)} &   ({B}+{D}){C}    & = & {B}{C}+{D}{C}\,  & \text{(distributivity)} \\
 \text{(iv)}  &   {A}(\lambda {B})& = & \lambda({A}{B})\,& \text{(scalar ($\lambda\in\mathbb{R}$) commutativity)}\\
-\text{(v)}   & {A}{I}_{n}        & = & {A}\,            & \text{(identity element)}\\
-\text{(vi)}  & {I}_{m}{A}        & = & {A}\,            &
+\text{(v)}   & {A}{I}_{K}        & = & {A}\,            & \text{(identity element)}\\
+\text{(vi)}  & {I}_{n}{A}        & = & {A}\,            &
 \text{(identity element)}     \\
 \text{(vii)} &   ({A}{B})^{\top}  & = & {B}^{\top}{A}^{\top}\,         & \text{(product transposition)} \\
 \text{(viii)}&   ({A}{B} C)^{\top}  & = & C^{\top} {B}^{\top}{A}^{\top}\,  & \text{(product transposition)}
@@ -508,35 +733,118 @@ $$
 $$
 :::
 
+::: {.callout-note}
+## Example: Running Example (Part 2) -- The Products $X^{\top}X$ and $X^{\top}Y$
+
+We continue with the data of the four stores from Part 1.
+
+**The product $X^{\top}X$:** Since $X^{\top}$ is $(2\times 4)$ and $X$ is $(4\times 2)$, the two matrices are conformable, and $X^{\top}X$ is a $(2\times 2)$ matrix. Each entry multiplies a row of $X^{\top}$ (i.e., a column of $X$) with a column of $X$ and sums up over the four stores:
+\begin{align*}
+\underset{(2\times 2)}{X^{\top}X}
+&=\begin{pmatrix}
+1 & 1 & 1 & 1\\
+1 & 2 & 3 & 4
+\end{pmatrix}
+\begin{pmatrix}
+1 & 1\\
+1 & 2\\
+1 & 3\\
+1 & 4
+\end{pmatrix}\\[2ex]
+&=\begin{pmatrix}
+1+1+1+1 & 1+2+3+4\\
+1+2+3+4 & 1+4+9+16
+\end{pmatrix}\\[2ex]
+&=\begin{pmatrix}
+4  & 10\\
+10 & 30
+\end{pmatrix}.
+\end{align*}
+Note that $X^{\top}X$ is **symmetric**. This holds for every data matrix $X$, since, by the product transposition rule (vii) above,
+$$
+\left(X^{\top}X\right)^{\top}=X^{\top}\left(X^{\top}\right)^{\top}=X^{\top}X.
+$$
+
+**The product $X^{\top}Y$:** Since $X^{\top}$ is $(2\times 4)$ and $Y$ is $(4\times 1)$, the product $X^{\top}Y$ is a $(2\times 1)$ vector. Each entry multiplies a row of $X^{\top}$ with $Y$ and sums up over the four stores:
+\begin{align*}
+\underset{(2\times 1)}{X^{\top}Y}
+&=\begin{pmatrix}
+1 & 1 & 1 & 1\\
+1 & 2 & 3 & 4
+\end{pmatrix}
+\begin{pmatrix}6\\7\\10\\15\end{pmatrix}\\[2ex]
+&=\begin{pmatrix}
+6+7+10+15\\
+6+14+30+60
+\end{pmatrix}\\[2ex]
+&=\begin{pmatrix}38\\110\end{pmatrix}.
+\end{align*}
+:::
+
 ## Rank and Inverse {#sec-MArank}
 
 ### Linear Combination
 
-Let $x_1, \ldots, x_m$ be column vectors of dimension $k,$ and let $\lambda_1, \ldots, \lambda_m$ be scalars. The vector
+Let $x_1, \ldots, x_K$ be $K$ column vectors, each of dimension $n$:
 $$
-\lambda_1 x_1 + \lambda_2 x_2 + \ldots + \lambda_m x_m 
+x_1=\begin{pmatrix}x_{11}\\x_{21}\\\vdots\\x_{n1}\end{pmatrix},\quad
+x_2=\begin{pmatrix}x_{12}\\x_{22}\\\vdots\\x_{n2}\end{pmatrix},\quad
+\ldots,\quad
+x_K=\begin{pmatrix}x_{1K}\\x_{2K}\\\vdots\\x_{nK}\end{pmatrix},
 $$
-is called **linear combination** of
-$x_1, \ldots, x_m$. 
+and let $\lambda_1, \ldots, \lambda_K\in\mathbb{R}$ be scalars. The $(n\times 1)$ vector
+$$
+\underset{(n\times 1)}{\lambda_1 x_1 + \lambda_2 x_2 + \ldots + \lambda_K x_K}
+=\begin{pmatrix}
+\lambda_1 x_{11}+\lambda_2 x_{12}+\ldots+\lambda_K x_{1K}\\
+\lambda_1 x_{21}+\lambda_2 x_{22}+\ldots+\lambda_K x_{2K}\\
+\vdots\\
+\lambda_1 x_{n1}+\lambda_2 x_{n2}+\ldots+\lambda_K x_{nK}
+\end{pmatrix}
+$$
+is called a **linear combination** of $x_1, \ldots, x_K$.
 
-A linear combination of vectors $x_1, \ldots, x_m$ can also be written as a matrix-vector product. Let $X =\begin{pmatrix} x_1 & \ldots & x_m \end{pmatrix}$
-be the $(k\times m)$ matrix with columns $x_1, \ldots, x_m$,
-and let $\lambda = (\lambda_1, \ldots, \lambda_m)^{\top}$. Then,
+**Linear combination as matrix-vector product:** Collect the vectors $x_1,\ldots,x_K$ as columns of the $(n\times K)$ matrix $X$, and the scalars $\lambda_1,\ldots,\lambda_K$ in the $(K\times 1)$ vector $\lambda$:
 $$
-\lambda_1 x_1 + \lambda_2 x_2 + \ldots + \lambda_m x_m = \underset{(k\times m)}{X}\;\underset{(m\times 1)}{\lambda}.
+\underset{(n\times K)}{X}
+=\begin{pmatrix}
+x_{11} & x_{12} & \cdots & x_{1K}\\
+x_{21} & x_{22} & \cdots & x_{2K}\\
+\vdots & \vdots &        & \vdots\\
+x_{n1} & x_{n2} & \cdots & x_{nK}
+\end{pmatrix},
+\qquad
+\underset{(K\times 1)}{\lambda}=\begin{pmatrix}\lambda_1\\\lambda_2\\\vdots\\\lambda_K\end{pmatrix}.
+$$
+Then, by the definition of the matrix product,
+$$
+\lambda_1 x_1 + \lambda_2 x_2 + \ldots + \lambda_K x_K = \underset{(n\times K)}{X}\;\underset{(K\times 1)}{\lambda}.
 $$
 
-
-The vectors $x_1, \ldots, x_m$ are called
-**linearly dependent** if at least one of them can be written as a linear combination of the others. That is, if there exists a nonzero vector $\lambda\neq 0$ such that 
+<!-- 
+**Example:**
 $$
-X \lambda = \lambda_1 x_1 + \ldots + \lambda_m x_m = 0.
+x_1=\begin{pmatrix}1\\0\\2\end{pmatrix},\quad
+x_2=\begin{pmatrix}3\\1\\1\end{pmatrix},\quad
+\lambda=\begin{pmatrix}2\\-1\end{pmatrix}
+$$
+yields the linear combination
+$$
+=\underbrace{\begin{pmatrix}1&3\\0&1\\2&1\end{pmatrix}}_{X}\begin{pmatrix}2\\-1\end{pmatrix}
+=\begin{pmatrix}2-3\\0-1\\4-1\end{pmatrix}
+=\begin{pmatrix}-1\\-1\\3\end{pmatrix}.
+$$ 
+-->
+
+
+**Linearly Dependent:** The vectors $x_1, \ldots, x_K$ are called **linearly dependent** if at least one of them can be written as a linear combination of the others. That is, if there exists a nonzero vector $\lambda\neq 0$ such that 
+$$
+X \lambda = \lambda_1 x_1 + \ldots + \lambda_K x_K = 0.
 $$ 
 
-The vectors $x_1, \ldots, x_m$ are called
-**linearly independent** if 
+**Linearly Independent:** The vectors $x_1, \ldots, x_K$ are called **linearly independent** if 
 $$
-X \lambda = \lambda_1 x_1 + \ldots + \lambda_m x_m \neq 0
+X \lambda = \lambda_1 x_1 + \ldots + \lambda_K x_K \neq 0
 $$ 
 for all nonzero vectors $\lambda$.
 
@@ -548,17 +856,66 @@ To check whether the vectors are linearly independent, we can solve the system o
 $$
 X \lambda = 0
 $$
-by [Gaussian elimination](https://math.libretexts.org/Bookshelves/Algebra/Algebra_and_Trigonometry_1e_(OpenStax)/11%3A_Systems_of_Equations_and_Inequalities/11.06%3A_Solving_Systems_with_Gaussian_Elimination). 
+using, for instance, [Gaussian elimination](https://math.libretexts.org/Bookshelves/Algebra/Algebra_and_Trigonometry_1e_(OpenStax)/11%3A_Systems_of_Equations_and_Inequalities/11.06%3A_Solving_Systems_with_Gaussian_Elimination). 
 
 * If $\lambda = 0$ is the only solution, then the columns of $X$ are linearly
 independent. 
 * If there is at least one solution $\lambda$ with $\lambda \neq 0$, then the columns of $X$ are linearly dependent.
 :::
 
+::: {.callout-note}
+
+## Example: Advertising in Euro and in US-Dollar
+
+Consider again the $n=4$ stores of our running example. Suppose the data set records the advertising expenses twice: once in 1000 Euro and once in 1000 US-Dollar (with an exchange rate of 1 Euro $=$ 1.1 US-Dollar). Together with the column of 1s for the intercept, this gives the $(4\times 3)$ matrix
+$$
+X=\begin{pmatrix}
+x_1 & x_2 & x_3
+\end{pmatrix}
+=\begin{pmatrix}
+1 & 1 & 1.1\\
+1 & 2 & 2.2\\
+1 & 3 & 3.3\\
+1 & 4 & 4.4
+\end{pmatrix},
+$$
+where
+
+* $x_1$: column of 1s (intercept),
+* $x_2$: advertising in 1000 Euro,
+* $x_3$: advertising in 1000 US-Dollar.
+
+The US-Dollar column is just the Euro column multiplied by $1.1$; i.e., $x_3 = 1.1\,x_2$. Thus, $x_3$ is a linear combination of the other columns:
+$$
+\begin{aligned}
+&\qquad\qquad x_3 = 0\, x_1 + 1.1\, x_2\\[2ex]
+&\Leftrightarrow\quad 0\, x_1 + 1.1\, x_2 - 1\, x_3 = 0\\[2ex]
+&\Leftrightarrow\quad
+\underbrace{\begin{pmatrix}
+1 & 1 & 1.1\\
+1 & 2 & 2.2\\
+1 & 3 & 3.3\\
+1 & 4 & 4.4
+\end{pmatrix}}_{=X}
+\underbrace{\begin{pmatrix}0\\1.1\\-1\end{pmatrix}}_{=\lambda}
+=\begin{pmatrix}0+1.1-1.1\\0+2.2-2.2\\0+3.3-3.3\\0+4.4-4.4\end{pmatrix}
+=\begin{pmatrix}0\\0\\0\\0\end{pmatrix}.
+\end{aligned}
+$$
+So, there is a nonzero $\lambda$ with $X\lambda=0$; i.e., the columns of $X$ are **linearly dependent**.
+
+**In words:** The US-Dollar column contains no new information. It only repeats the Euro column in a different currency.
+:::
+
+
+
+
+
+
 ### Column Rank
 
-The **rank** of a $(k \times m)$ matrix
-$A = \begin{pmatrix} a_1 & \ldots & a_m \end{pmatrix}$,
+The **rank** of an $(n \times K)$ matrix
+$A = \begin{pmatrix} a_1 & \ldots & a_K \end{pmatrix}$,
 written as 
 $$
 \mathop{\mathrm{rank}}(A),
@@ -566,104 +923,217 @@ $$
 is the number of linearly independent columns $a_i$. 
 
 
-We say that a $(k \times m)$ matrix $A$ has **full column rank** if
+We say that an $(n \times K)$ matrix $A$ has **full column rank** if
 $$
-\mathop{\mathrm{rank}}(A) = m.
+\mathop{\mathrm{rank}}(A) = K.
 $$
 
 
-The identity matrix $I_k,$ for instance, has full column rank; i.e.,
+The identity matrix $I_K,$ for instance, has full column rank; i.e.,
 $$
-\mathop{\mathrm{rank}}(I_k) = k.
+\mathop{\mathrm{rank}}(I_K) = K.
 $$ 
 
 
-As another example, consider 
-$$
-X = \begin{pmatrix} 2 & 1 & 4 \\ 0 & 1 & 2 \end{pmatrix},
-$$ 
-which has linearly dependent columns since the third column is a
-linear combination of the first two columns: 
-$$
-\begin{aligned}
-&\qquad\qquad\begin{pmatrix} 4 \\ 2 \end{pmatrix} = 1 \begin{pmatrix} 2 \\ 0 \end{pmatrix} + 2 \begin{pmatrix} 1 \\ 1 \end{pmatrix}\\[2ex]
-&\Leftrightarrow\quad - 1 \begin{pmatrix} 2 \\ 0 \end{pmatrix} - 2 \begin{pmatrix} 1 \\ 1 \end{pmatrix} + \begin{pmatrix} 4 \\ 2 \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \end{pmatrix}\\[2ex]
-&\Leftrightarrow\quad\underbrace{\begin{pmatrix} 2&1&4 \\ 0&1&2 \end{pmatrix}}_{=X} \underbrace{\begin{pmatrix} -1 \\ -2\\1 \end{pmatrix}}_{=\lambda} = \begin{pmatrix} 0 \\ 0 \end{pmatrix};
-\end{aligned}
-$$
-i.e., there exists a non-zero $\lambda$ vector that solves the equation system $X\lambda = 0.$
+::: {.callout-note}
 
-However, the first two columns are linearly independent since $\lambda_1 = 0$
-and $\lambda_2 = 0$ are the only solutions to the equation 
+## Example: Advertising in Euro and in US-Dollar (continued)
+
+**With the US-Dollar column:** The $(4\times 3)$ matrix
 $$
-\begin{aligned}
-&\qquad\qquad
-\lambda_1 \begin{pmatrix} 2 \\ 0 \end{pmatrix} + \lambda_2 \begin{pmatrix} 1 \\ 1 \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \end{pmatrix}\\[2ex]
-&\Leftrightarrow\quad \begin{pmatrix} 2&1 \\ 0&1 \end{pmatrix} \begin{pmatrix} \lambda_1 \\ \lambda_2 \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \end{pmatrix}\\
-\end{aligned}
-$$ 
-Therefore, we have $\mathop{\mathrm{rank}}(X) = 2$, i.e.,
-$X$ does not have a full column rank.
+X=\begin{pmatrix}
+x_1 & x_2 & x_3
+\end{pmatrix}
+=\begin{pmatrix}
+1 & 1 & 1.1\\
+1 & 2 & 2.2\\
+1 & 3 & 3.3\\
+1 & 4 & 4.4
+\end{pmatrix}
+$$
+has $K=3$ columns. However, only two of them are linearly independent, since $x_3 = 1.1\,x_2$ is a linear combination of the others (see the example above). Thus,
+$$
+\mathop{\mathrm{rank}}(X)=2<3=K;
+$$
+i.e., $X$ does **not** have full column rank.
+
+**Without the US-Dollar column:** If we drop the redundant column $x_3$, we get the $(4\times 2)$ matrix
+$$
+X=\begin{pmatrix}
+x_1 & x_2
+\end{pmatrix}
+=\begin{pmatrix}
+1 & 1\\
+1 & 2\\
+1 & 3\\
+1 & 4
+\end{pmatrix}
+$$
+of our running example. Its two columns are linearly independent, since $x_2$ is not a multiple of the column of 1s, $x_1$ (see Part 3 of the running example below). Thus,
+$$
+\mathop{\mathrm{rank}}(X)=2=K;
+$$
+i.e., $X$ **has** full column rank.
+
+**In words:** The rank counts the columns that carry new information. The US-Dollar column carries no new information, so it does not increase the rank.
+:::
 
 ::: {.callout-tip appearance="minimal"}
 Some useful properties are
 
-i)  $\mathop{\mathrm{rank}}(A) \leq \min(k,m)$
+i)  $\mathop{\mathrm{rank}}(A) \leq \min(n,K)$
 ii) $\mathop{\mathrm{rank}}(A) = \mathop{\mathrm{rank}}(A^{\top})$
 iii) $\mathop{\mathrm{rank}}(A B) \leq \min(\mathop{\mathrm{rank}}(A), \mathop{\mathrm{rank}}(B))$
 iv) $\mathop{\mathrm{rank}}(A) = \mathop{\mathrm{rank}}(A^{\top} A) = \mathop{\mathrm{rank}}(A A^{\top})$.
 :::
 
-We can use the `qr()` function to extract the rank in `R`. Let's compute
-the rank of the matrices 
+In `R`, we can compute the rank using the function `qr()`; in Python, we use the function `np.linalg.matrix_rank()`. Let's compute the rank of the matrices
 $$
 A = \begin{pmatrix}
 1 & 2 & 3 \\ 3 & 9 & 1 \\ 0 & 11 & 5
-\end{pmatrix},
-$$ 
-$$
+\end{pmatrix}
+\quad\text{and}\quad
 B = \begin{pmatrix}
 1 & 1 & 1 \\ 1 & 1 & 1 \\ 1 & 1 & 1
 \end{pmatrix},
-$$ 
-and $X$ from the example above:
+$$
+and of the two matrices $X$ from the advertising example above.
+
+::: {.panel-tabset}
+
+## R
 
 ```{r}
-A = matrix(c(1,3,0,2,9,11,3,1,5), nrow=3)
+A <- matrix(c(1, 3, 0, 2, 9, 11, 3, 1, 5), nrow = 3)
+B <- matrix(1, nrow = 3, ncol = 3)
+## X with Euro and US-Dollar column (4 x 3)
+X_3 <- cbind(1, c(1, 2, 3, 4), 1.1 * c(1, 2, 3, 4))
+## X without the US-Dollar column (4 x 2)
+X_2 <- cbind(1, c(1, 2, 3, 4))
+
+## Ranks
 qr(A)$rank
-B = matrix(c(1,1,1,1,1,1,1,1,1), nrow=3)
 qr(B)$rank
-X = matrix(c(2,0,1,1,4,2), ncol=3)
+qr(X_3)$rank
+qr(X_2)$rank
+```
+
+## Python
+
+```python
+import numpy as np
+
+A = np.array([[1,  2, 3],
+              [3,  9, 1],
+              [0, 11, 5]])
+B = np.ones((3, 3))
+## X with Euro and US-Dollar column (4 x 3)
+X_3 = np.array([[1, 1, 1.1],
+                [1, 2, 2.2],
+                [1, 3, 3.3],
+                [1, 4, 4.4]])
+## X without the US-Dollar column (4 x 2)
+X_2 = X_3[:, :2]
+
+## Ranks
+print(np.linalg.matrix_rank(A))
+print(np.linalg.matrix_rank(B))
+print(np.linalg.matrix_rank(X_3))
+print(np.linalg.matrix_rank(X_2))
+```
+:::
+
+
+::: {.callout-note}
+## Example: Running Example (Part 3) -- $X$ Has Full Column Rank
+
+To compute the OLS estimator, the $(2\times 2)$ matrix $X^{\top}X$ must be invertible. By the rank property iv) above,
+$$
+\mathop{\mathrm{rank}}\left(X^{\top}X\right)=\mathop{\mathrm{rank}}(X).
+$$
+Thus, $X^{\top}X$ is invertible if $X$ has **full column rank**, i.e., if $\mathop{\mathrm{rank}}(X)=2$.
+
+To check this, we solve the equation system $X\lambda=0$:
+$$
+\begin{pmatrix}
+1 & 1\\
+1 & 2\\
+1 & 3\\
+1 & 4
+\end{pmatrix}
+\begin{pmatrix}\lambda_1\\\lambda_2\end{pmatrix}
+=\begin{pmatrix}0\\0\\0\\0\end{pmatrix}
+\quad\Leftrightarrow\quad
+\begin{array}{rcl}
+\lambda_1+\lambda_2&=&0\quad\text{(row 1)}\\
+\lambda_1+2\lambda_2&=&0\quad\text{(row 2)}\\
+\lambda_1+3\lambda_2&=&0\quad\text{(row 3)}\\
+\lambda_1+4\lambda_2&=&0\quad\text{(row 4)}
+\end{array}
+$$
+
+::: {.spaced-list}
+* Row 2 minus row 1 gives $\lambda_2=0$.
+* Plugging $\lambda_2=0$ into row 1 gives $\lambda_1=0$.
+:::
+
+Thus, $\lambda=0$ is the only solution. That is, the two columns of $X$ are linearly independent and
+$$
+\mathop{\mathrm{rank}}(X)=2=K.
+$$
+In words: the second column (advertising) is not a multiple of the first column (the $1$s), i.e., the advertising expenses are not the same for all stores. Consequently, $X^{\top}X$ is invertible.
+
+We can check this with `R` or Python:
+
+::: {.panel-tabset}
+
+## R
+
+```{r}
+X <- cbind(1, c(1, 2, 3, 4))
 qr(X)$rank
 ```
 
+## Python
+
+```python
+import numpy as np
+
+X = np.array([[1, 1],
+              [1, 2],
+              [1, 3],
+              [1, 4]])
+print(np.linalg.matrix_rank(X))
+```
+:::
+:::
 
 ### Nonsingular Matrix
 
-A square $(k \times k)$ matrix $A$ is called **nonsingular**
+A square $(K \times K)$ matrix $A$ is called **nonsingular**
 if it has full rank, i.e., 
 $$
-\mathop{\mathrm{rank}}(A) = k.
+\mathop{\mathrm{rank}}(A) = K.
 $$
 Conversely, $A$ is called **singular** if it does not have
 full rank, i.e., 
 $$
-\mathop{\mathrm{rank}}(A) < k.
+\mathop{\mathrm{rank}}(A) < K.
 $$
 
 
 
 ### Determinant
 
-Consider a square $(k \times k)$ matrix $A$. 
+Consider a square $(K \times K)$ matrix $A$. 
 
 The determinant
 $\det(A)$ is a measure of the volume of the geometric object
 formed by the columns of $A$ 
 
-* a parallelogram for $k=2$, 
-* a parallelepiped for $k=3$, 
-* a hyper-parallelepiped for $k>3$. 
+* a parallelogram for $K=2$, 
+* a parallelepiped for $K=3$, 
+* a hyper-parallelepiped for $K>3$. 
 
 For $(2 \times 2)$ matrices, the determinant is easy to calculate: 
 $$
@@ -684,27 +1154,53 @@ $$
 $$
 :::
 
-In `R`, we have the `det()` function to compute the determinant:
+In `R`, we compute the determinant using the function `det()`; in Python, we use the function `np.linalg.det()`. For the matrices $A$ and $B$ from the rank example above, we get:
+
+::: {.panel-tabset}
+
+## R
 
 ```{r}
+A <- matrix(c(1, 3, 0, 2, 9, 11, 3, 1, 5), nrow = 3)
+B <- matrix(1, nrow = 3, ncol = 3)
+
+## Determinants of A and B
 det(A)
 det(B)
 ```
 
-Since $\det(A) \neq 0$ and $\det(B) = 0$, we
-conclude that 
+## Python
 
-* $A$ is nonsingular and 
+```python
+import numpy as np
+
+A = np.array([[1,  2, 3],
+              [3,  9, 1],
+              [0, 11, 5]])
+B = np.ones((3, 3))
+
+## Determinants of A and B
+## (numerical rounding: 103.00000000000001 instead of 103)
+print(np.linalg.det(A))
+print(np.linalg.det(B))
+```
+:::
+
+Since $\det(A) \neq 0$ and $\det(B) = 0$, we conclude that
+
+::: {.spaced-list}
+* $A$ is nonsingular and
 * $B$ is singular.
+:::
 
 
 
 ### Inverse Matrix
 
 
-The **inverse** ${A}^{-1}$ of a square $(k \times k)$ matrix
+The **inverse** ${A}^{-1}$ of a square $(K \times K)$ matrix
 $A$ is defined by the property
-$${A} {A}^{-1} = {A}^{-1} {A} ={I}_k.$$
+$${A} {A}^{-1} = {A}^{-1} {A} ={I}_K.$$
 When multiplied from the left or the right, the inverse matrix produces
 the identity matrix. 
 
@@ -761,22 +1257,48 @@ $$
 $$
 
 
-A general way to calculate the inverse of a square matrices is to
-solve equation 
+A general way to calculate the inverse of a square matrix is to
+solve the equation 
 $$
 A A^{-1} = I
 $$ 
 with [Gaussian elimination](https://math.libretexts.org/Bookshelves/Algebra/Algebra_and_Trigonometry_1e_(OpenStax)/11%3A_Systems_of_Equations_and_Inequalities/11.06%3A_Solving_Systems_with_Gaussian_Elimination). 
 
-`R` can compute the inverse matrix quickly using the function `solve()`:
+In `R`, we compute the inverse using the function `solve()`; in Python, we use the function `np.linalg.inv()`. For the matrix $A$ from the example above, we get:
+
+::: {.panel-tabset}
+
+## R
 
 ```{r}
-A_inf <- solve(A) # inverse of A
+A <- matrix(c(5, 1, 6, 2), nrow = 2)
 
+## Inverse of A
+A_inv <- solve(A)
+A_inv
 
-A_inf %*% A 
-A     %*% A_inf 
+## Check: both products give the identity matrix
+A_inv %*% A
+A %*% A_inv
 ```
+
+## Python
+
+```python
+import numpy as np
+
+A = np.array([[5, 6],
+              [1, 2]])
+
+## Inverse of A
+A_inv = np.linalg.inv(A)
+print(A_inv)
+
+## Check: both products give the identity matrix
+print(A_inv @ A)
+print(A @ A_inv)
+```
+:::
 
 ::: {.callout-tip appearance="minimal"}
 We have the following relationships between 
@@ -786,13 +1308,13 @@ We have the following relationships between
 * rank, and
 * determinant 
 
-of a $(k\times k)$ square matrix $A$:
+of a $(K\times K)$ square matrix $A$:
 
 $$
 \begin{aligned}
   &A \ \text{is nonsingular, i.e., invertible} \\[2ex]
-  \Leftrightarrow \quad &\text{all $k$ columns of} \ A \ \text{are linearly independent} \\[2ex]
-  \Leftrightarrow \quad &A \ \text{has full column rank} \ (\mathop{\mathrm{rank}}(A)=k)\\[2ex]
+  \Leftrightarrow \quad &\text{all $K$ columns of} \ A \ \text{are linearly independent} \\[2ex]
+  \Leftrightarrow \quad &A \ \text{has full column rank} \ (\mathop{\mathrm{rank}}(A)=K)\\[2ex]
   \Leftrightarrow \quad &\text{the determinant is nonzero} \ (\det(A) \neq 0).
 \end{aligned}
 $$
@@ -802,7 +1324,7 @@ $$
 \begin{aligned}
   &A \ \text{is singular, i.e., not invertible} \\[2ex]
   \Leftrightarrow \quad &A \ \text{has linearly dependent columns} \\[2ex]
-  \Leftrightarrow \quad &A \ \text{does not have full rank} \ (\mathop{\mathrm{rank}}(A)<k)\\[2ex]
+  \Leftrightarrow \quad &A \ \text{does not have full rank} \ (\mathop{\mathrm{rank}}(A)<K)\\[2ex]
   \Leftrightarrow \quad &\text{the determinant is zero} \ (\det(A) = 0).
 \end{aligned}
 $$
@@ -820,6 +1342,132 @@ v)  $({A} {B})^{-1} = {B}^{-1} {A}^{-1}$
 vi) $(A B C)^{-1} = C^{-1} B^{-1} A^{-1}$
 vii) If ${A}$ is symmetric, then ${A}^{-1}$ is
      symmetric.
+:::
+
+::: {.callout-note}
+## Example: Running Example (Part 4) -- The Inverse $(X^{\top}X)^{-1}$ and the OLS Estimator $\hat\beta$
+
+We continue with the results from Parts 1--3.
+
+**The inverse $(X^{\top}X)^{-1}$:** Since $X^{\top}X$ is a $(2\times 2)$ matrix, we can use the simple formula for the inverse of $(2\times 2)$ matrices. The determinant is
+$$
+\det\left(X^{\top}X\right)=4\cdot 30-10\cdot 10=120-100=20.
+$$
+Swapping the main diagonal elements, reversing the sign of the off-diagonal elements, and dividing by the determinant gives
+$$
+\left(X^{\top}X\right)^{-1}=\frac{1}{20}\begin{pmatrix}
+30  & -10\\
+-10 & 4
+\end{pmatrix}.
+$$
+Indeed, this is the inverse of $X^{\top}X,$ since
+\begin{align*}
+\left(X^{\top}X\right)\left(X^{\top}X\right)^{-1}
+&=\begin{pmatrix}
+4  & 10\\
+10 & 30
+\end{pmatrix}
+\frac{1}{20}\begin{pmatrix}
+30  & -10\\
+-10 & 4
+\end{pmatrix}\\[2ex]
+&=\frac{1}{20}\begin{pmatrix}
+4\cdot 30+10\cdot(-10)  & 4\cdot(-10)+10\cdot 4\\
+10\cdot 30+30\cdot(-10) & 10\cdot(-10)+30\cdot 4
+\end{pmatrix}\\[2ex]
+&=\frac{1}{20}\begin{pmatrix}
+20 & 0\\
+0  & 20
+\end{pmatrix}
+=I_2.
+\end{align*}
+
+**The OLS estimator $\hat\beta$:** Now, we have all the pieces from Parts 2 and 4:
+\begin{align*}
+\hat\beta
+&=\left(X^{\top}X\right)^{-1}X^{\top}Y\\[2ex]
+&=\frac{1}{20}\begin{pmatrix}
+30  & -10\\
+-10 & 4
+\end{pmatrix}
+\begin{pmatrix}38\\110\end{pmatrix}\\[2ex]
+&=\frac{1}{20}\begin{pmatrix}
+30\cdot 38-10\cdot 110\\
+-10\cdot 38+4\cdot 110
+\end{pmatrix}\\[2ex]
+&=\frac{1}{20}\begin{pmatrix}
+1140-1100\\
+-380+440
+\end{pmatrix}\\[2ex]
+&=\frac{1}{20}\begin{pmatrix}40\\60\end{pmatrix}
+=\begin{pmatrix}2\\3\end{pmatrix}.
+\end{align*}
+Thus, the estimated regression function is
+$$
+\hat{Y}_i=2+3\,X_{i2}.
+$$
+**Interpretation:** Stores that spend 1000 Euro more on advertising have, on average, 3000 Euro higher sales.
+
+**Fitted values:** The fitted sales of the four stores are given by the matrix-vector product $\hat{Y}=X\hat\beta$:
+$$
+\hat{Y}=X\hat\beta=
+\begin{pmatrix}
+1 & 1\\
+1 & 2\\
+1 & 3\\
+1 & 4
+\end{pmatrix}
+\begin{pmatrix}2\\3\end{pmatrix}
+=\begin{pmatrix}
+2+3\\
+2+6\\
+2+9\\
+2+12
+\end{pmatrix}
+=\begin{pmatrix}5\\8\\11\\14\end{pmatrix}.
+$$
+
+We can check all computations with `R` or Python:
+
+::: {.panel-tabset}
+
+## R
+
+```{r}
+Y <- c(6, 7, 10, 15)
+X <- cbind(1, c(1, 2, 3, 4))
+
+XtX     <- t(X) %*% X          # X^T X
+XtY     <- t(X) %*% Y          # X^T Y
+XtX_inv <- solve(XtX)          # (X^T X)^{-1}
+
+beta_hat <- XtX_inv %*% XtY    # OLS estimator
+beta_hat
+
+X %*% beta_hat                 # fitted values
+```
+
+## Python
+
+```python
+import numpy as np
+
+Y = np.array([6, 7, 10, 15])
+X = np.array([[1, 1],
+              [1, 2],
+              [1, 3],
+              [1, 4]])
+
+XtX     = X.T @ X              # X^T X
+XtY     = X.T @ Y              # X^T Y
+XtX_inv = np.linalg.inv(XtX)   # (X^T X)^{-1}
+
+beta_hat = XtX_inv @ XtY       # OLS estimator
+print(beta_hat)
+
+print(X @ beta_hat)            # fitted values
+```
+:::
 :::
 
 ## Further Concepts {#sec-MAfurther}
@@ -859,34 +1507,34 @@ $$
 
 ### Definite Matrix
 
-The $(k \times k)$ square matrix $A$ is called 
+The $(K \times K)$ square matrix $A$ is called 
 **positive definite** 
 if 
 $$
-c^{\top}Ac > 0\quad\text{for all vectors}\quad c\in \mathbb{R}^k\quad\text{with}\quad c\neq 0.
+c^{\top}Ac > 0\quad\text{for all vectors}\quad c\in \mathbb{R}^K\quad\text{with}\quad c\neq 0.
 $$ 
 
-The $(k \times k)$ square matrix $A$ is called 
+The $(K \times K)$ square matrix $A$ is called 
 **negative definite** 
 if 
 $$
-c^{\top}Ac < 0\quad\text{for all vectors}\quad c\in \mathbb{R}^k\quad\text{with}\quad c\neq 0.
+c^{\top}Ac < 0\quad\text{for all vectors}\quad c\in \mathbb{R}^K\quad\text{with}\quad c\neq 0.
 $$ 
 
 
-The $(k \times k)$ square matrix $A$ is called 
+The $(K \times K)$ square matrix $A$ is called 
 **positive semi-definite** 
 if
 $$
-{c}^{\top}{Ac}\geq 0\quad \text{for all vectors}\quad c\in \mathbb{R}^k.
+{c}^{\top}{Ac}\geq 0\quad \text{for all vectors}\quad c\in \mathbb{R}^K.
 $$
 
 
-The $(k \times k)$ square matrix $A$ is called 
+The $(K \times K)$ square matrix $A$ is called 
 **negative semi-definite** 
 if
 $$
-{c}^{\top}{Ac}\leq 0\quad \text{for all vectors}\quad c\in \mathbb{R}^k.
+{c}^{\top}{Ac}\leq 0\quad \text{for all vectors}\quad c\in \mathbb{R}^K.
 $$
 
 
@@ -902,7 +1550,7 @@ iv) $A \leq 0$  if $A$ is negative semi-definite
 The notation $A > B$ means that the matrix $A - B$ is positive definite, and $A \geq B$ means that $A - B$ is positive semi-definite. 
 :::
 
-**Example: the scalar case.** For $k=1,$ the matrix $A=a$ is just a number and $c$ is a scalar, so that
+**Example: the scalar case.** For $K=1,$ the matrix $A=a$ is just a number and $c$ is a scalar, so that
 $$
 c^{\top}Ac = c\,a\,c = a\,c^2.
 $$
@@ -913,7 +1561,7 @@ a\,c^2>0 \;\text{ for all } c\neq 0 \quad&\Leftrightarrow\quad a>0,\\[2ex]
 a\,c^2\geq 0 \;\text{ for all } c \quad&\Leftrightarrow\quad a\geq 0.
 \end{aligned}
 $$
-That is, a $(1\times 1)$ matrix is positive definite if the number $a$ is positive, and positive semi-definite if $a$ is nonnegative. Definiteness carries this idea over to $(k\times k)$ matrices: $c^{\top}Ac$ takes the role of $a\,c^2.$
+That is, a $(1\times 1)$ matrix is positive definite if the number $a$ is positive, and positive semi-definite if $a$ is nonnegative. Definiteness carries this idea over to $(K\times K)$ matrices: $c^{\top}Ac$ takes the role of $a\,c^2.$
 
 **Example: positive definite.** For
 $$
@@ -940,8 +1588,8 @@ Why this matters in econometrics: for a random vector $Z$ with variance matrix $
 :::
 
 
-The $(k \times k)$ square matrix $A$ is called 
-**indefinite** if there are vectors $c,\tilde{c}\in\mathbb{R}^k$ such that 
+The $(K \times K)$ square matrix $A$ is called 
+**indefinite** if there are vectors $c,\tilde{c}\in\mathbb{R}^K$ such that 
 $$
 c^{\top}Ac< 0 < \tilde{c}^{\top}{A\tilde{c}}.
 $$
@@ -952,20 +1600,20 @@ In this case, the matrix $A$ is neither positive semi-definite nor negative semi
 
 ## Matrix Calculus {#sec-MAcalculus}
 
-Let $f(\beta_1, \ldots, \beta_k) = f({\beta})$ be a
+Let $f(\beta_1, \ldots, \beta_K) = f({\beta})$ be a
 twice-differentiable real-valued function that depends on some vector
-$\beta = (\beta_1, \ldots, \beta_k)^{\top}$. Examples that
+$\beta = (\beta_1, \ldots, \beta_K)^{\top}$. Examples that
 frequently appear in econometrics are functions of the inner product
 form $f(\beta) = a^{\top} \beta$, where
-$a \in \mathbb R^k$, and functions of the sandwich form
+$a \in \mathbb R^K$, and functions of the sandwich form
 $f(\beta) = \beta^{\top} A \beta$,
-where $A \in \mathbb R^{k \times k}$.
+where $A \in \mathbb R^{K \times K}$.
 
 ### Gradient
 
 The **first derivatives vector** or **gradient** is 
 $$
-\frac{\partial f(\beta)}{\partial{\beta}}  = \begin{pmatrix}\frac{\partial f(\beta)}{\partial \beta_1} \\ \vdots \\ \frac{\partial f(\beta)}{\partial \beta_k} \end{pmatrix}
+\frac{\partial f(\beta)}{\partial{\beta}}  = \begin{pmatrix}\frac{\partial f(\beta)}{\partial \beta_1} \\ \vdots \\ \frac{\partial f(\beta)}{\partial \beta_K} \end{pmatrix}
 $$ 
 If the gradient is evaluated at some particular value
 $\beta = b$, we write 
@@ -973,11 +1621,11 @@ $$
 \frac{\partial f}{\partial{\beta}}(b)
 $$ 
 
-Note that an inner product can be viewed as a linear function in $\beta\in\mathbb{R}^k$
+Note that an inner product can be viewed as a linear function in $\beta\in\mathbb{R}^K$
 $$
 f(\beta) = a^{\top} \beta
 $$
-and a sandwich form as a quadratic function in $\beta\in\mathbb{R}^k$
+and a sandwich form as a quadratic function in $\beta\in\mathbb{R}^K$
 $$
 f(\beta) = \beta^{\top} A\beta.
 $$
@@ -991,13 +1639,13 @@ $$
 
 ### Hessian
 
-The **second derivatives matrix** or **Hessian** is the $(k \times k)$
+The **second derivatives matrix** or **Hessian** is the $(K \times K)$
 matrix 
 $$
     \frac{\partial^2 f(\beta)}{\partial{\beta }\partial {\beta}^{\top}}
-    =  \begin{pmatrix}\frac{\partial^2 f(\beta)}{\partial \beta_1 \partial \beta_1} & \ldots & \frac{\partial^2 f(\beta)}{\partial \beta_k \partial \beta_1} \\ 
+    =  \begin{pmatrix}\frac{\partial^2 f(\beta)}{\partial \beta_1 \partial \beta_1} & \ldots & \frac{\partial^2 f(\beta)}{\partial \beta_K \partial \beta_1} \\ 
     \vdots & & \vdots \\
-    \frac{\partial^2 f(\beta)}{\partial \beta_1 \partial \beta_k} & \ldots & \frac{\partial^2 f(\beta)}{\partial \beta_k \partial \beta_k}
+    \frac{\partial^2 f(\beta)}{\partial \beta_1 \partial \beta_K} & \ldots & \frac{\partial^2 f(\beta)}{\partial \beta_K \partial \beta_K}
     \end{pmatrix}.
 $$
 
@@ -1028,7 +1676,7 @@ Similarly, we formulate first and second-order conditions for a multivariate fun
 $f(\beta).$ The **first-order condition** for an optimum
 (maximum or minimum) at $b$ is 
 $$
-\frac{\partial f}{\partial{\beta}}(b) = \begin{pmatrix}\frac{\partial f}{\partial \beta_1}(b) \\ \vdots \\ \frac{\partial f}{\partial \beta_k}(b) \end{pmatrix} = 0.
+\frac{\partial f}{\partial{\beta}}(b) = \begin{pmatrix}\frac{\partial f}{\partial \beta_1}(b) \\ \vdots \\ \frac{\partial f}{\partial \beta_K}(b) \end{pmatrix} = 0.
 $$ 
 The **second-order condition** is 
 $$
